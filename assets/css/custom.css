@@ -1,0 +1,90 @@
+/* 定义链接的字体图标样式 */
+.link-font-awesome {
+  background: rgb(78, 146, 224);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
+.link-blog {
+  background: rgb(68, 187, 230);
+  background: linear-gradient(
+    90deg,
+    rgb(64, 192, 214) 0%,
+    rgb(205, 219, 139) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}
+
+.link-123pan {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(255, 149, 79) 0%,
+    rgb(111, 0, 255) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}
+
+.link-ycsj {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(255, 149, 79) 0%,
+    rgb(255, 255, 0) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}
+
+.link-project {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(255, 149, 79) 0%,
+    rgb(255, 255, 0) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}
+
+.link-media {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(255, 149, 79) 0%,
+    rgb(255, 255, 0) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}
+
+.link-about {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(255, 149, 79) 0%,
+    rgb(255, 255, 0) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}
+
+.link-contact {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(255, 149, 79) 0%,
+    rgb(255, 255, 0) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}
+
+.link-join {  
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(255, 149, 79) 0%,
+    rgb(255, 255, 0) 50%,
+    rgb(255, 149, 79) 100%
+  );
+}

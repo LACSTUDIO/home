@@ -1,0 +1,90 @@
+# 设置网站的基本URL
+# baseURL = "https://your_domain.com/"
+
+# 设置网站的语言代码
+languageCode = "zh-cn"
+
+# 设置默认的内容语言
+defaultContentLanguage = "zh-cn"
+
+# 设置网站的标题
+title = "领创工作室"
+
+# 设置版权信息
+copyright = "© 2024 领创工作室"
+
+# 启用表情符号
+enableEmoji = true
+
+# 禁用特定类型的内容
+disableKinds = ["taxonomy", "term"]
+[params.author]
+  name = "领创工作室官方网站"
+  headline = """
+  数码科技爱好者
+  酷安/B站/小米社区/公众号：领创工作室
+  """
+  image = "img/author.png"  # path relative to static directory
+
+  links = [
+    { blog = { href = "https://xn--9krq6q.xn--5brr03o.top/" , text = "领创博客" , title = "领创博客" , target = "_blank" } },
+    { 123pan = { href = "https://www.123pan.com/s/0gTrVv-kadKd.html" , text = "网盘资源" , title = "网盘资源" } },
+    { ycsj = { href = "ycsj/" , text = "远程刷机" , title = "远程刷机" , target = "_self" } },
+    { project = { href = "project/" , text = "项目合作" , title = "项目合作" , target = "_self" } },
+    { contact = { href = "contact/" , text = "联系我们" , title = "联系我们" , target = "_self" } },
+    { media = { href = "media/" , text = "媒体平台" , title = "媒体平台" , target = "_self" } },
+    { about = { href = "about/" , text = "关于我们" , title = "关于我们" , target = "_self" } },
+    { join = { href = "join/" , text = "加入我们" , title = "加入我们" , target = "_self" } },
+
+    # { email = "mailto:2935278133@qq.com" },
+    # { link = "https://link-to-some-website.com/" },
+    # { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
+    # { apple = "https://www.apple.com" },
+    # { bandcamp = "https://username.bandcamp.com" },
+    # { bluesky = "https://bsky.app/profile/username" },
+    # { codepen = "https://codepen.io/username" },
+    # { dev = "https://dev.to/username" },
+    # { discord = "https://discord.gg/invitecode" },
+    # { dribbble = "https://dribbble.com/username" },
+    # { facebook = "https://facebook.com/username" },
+    # { flickr = "https://www.flickr.com/photos/username/" },
+    # { foursquare = "https://foursquare.com/username" },
+    # { github = "https://github.com/username" },
+    # { gitlab = "https://gitlab.com/username" },
+    # { google = "https://www.google.com/" },
+    # { instagram = "https://instagram.com/username" },
+    # { keybase = "https://keybase.io/username" },
+    # { kickstarter = "https://www.kickstarter.com/profile/username" },
+    # { lastfm = "https://last.fm/user/username" },
+    # { linkedin = "https://linkedin.com/in/username" },
+    # { mastodon = "https://mastodon.instance/@username" },
+    # { medium = "https://medium.com/username" },
+    # { microsoft = "https://www.microsoft.com/" },
+    # { patreon = "https://www.patreon.com/username" },
+    # { pinterest = "https://pinterest.com/username" },
+    # { reddit = "https://reddit.com/user/username" },
+    # { slack = "https://workspace.url/team/userid" },
+    # { snapchat = "https://snapchat.com/add/username" },
+    # { soundcloud = "https://soundcloud.com/username" },
+    # { spotify = "https://spotify.com/user/username" },
+    # { stack-exchange = "https://stackexchange.com/users/userid/username" },
+    # { stack-overflow = "https://stackoverflow.com/users/userid/username" },
+    # { steam = "https://steamcommunity.com/profiles/userid" },
+    # { telegram = "https://t.me/username" },
+    # { threads = "https://threads.com/username" },
+    # { tiktok = "https://tiktok.com/@username" },
+    # { tumblr = "https://username.tumblr.com" },
+    # { twitch = "https://twitch.tv/username" },
+    # { twitter = "https://twitter.com/username" },
+    # { whatsapp = "https://wa.me/phone-number" },
+    # { x = "https://x.com/username" },
+    # { youtube = "https://youtube.com/username" },
+  ]
+
+[module]
+  # 配置模块的Hugo版本信息
+  [module.hugoVersion]
+    # 是否使用扩展版本的Hugo
+    extended = false
+    # 最低支持的Hugo版本
+    min = "0.86.1"
