@@ -24,7 +24,7 @@ disableKinds = ["taxonomy", "term"]
   数码科技爱好者
   酷安/B站/小米社区/公众号：领创工作室
   """
-  image = "img/lacs.gif"
+  image = "img/lacs.png"
 
   links = [
     { blog = { href = "https://xn--9krq6q.xn--5brr03o.top/" , text = "领创博客" , title = "领创博客" , target = "_blank" } },
