@@ -3,9 +3,9 @@
   background: rgb(78, 146, 224);
   background: linear-gradient(
     90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
+    rgb(240, 201, 201) 0%,
+    rgb(235, 144, 116) 50%,
+    rgb(244, 100, 33) 100%
   );
 }
 
@@ -18,9 +18,9 @@
   background: rgb(68, 187, 230);
   background: linear-gradient(
     90deg,
-    rgb(239, 194, 70) 0%,
-    rgb(182, 124, 240) 50%,
-    rgb(244, 162, 108) 100%
+    rgb(131, 126, 126) 0%,
+    rgb(5, 90, 114) 50%,
+    rgb(129, 55, 6) 100%
   );
 }
 
@@ -28,9 +28,9 @@
   background: rgb(255, 149, 79);
   background: linear-gradient(
     90deg,     
-    rgb(255, 149, 79) 0%,
-    rgb(111, 0, 255) 50%,
-    rgb(255, 149, 79) 100%
+    rgb(87, 86, 86) 0%,
+    rgb(22, 72, 130) 50%,
+    rgb(93, 46, 15) 100%
   );
 }
 
@@ -38,9 +38,9 @@
   background: rgb(255, 149, 79);
   background: linear-gradient(
     90deg,     
-    rgb(117, 255, 135) 0%,
-    rgb(8, 220, 79) 50%,
-    rgb(113, 241, 255) 100%
+    rgb(184, 196, 14) 0%,
+    rgb(58, 182, 186) 50%,
+    rgb(238, 157, 157) 100%
   );
 }
 
@@ -48,29 +48,9 @@
   background: rgb(255, 149, 79);
   background: linear-gradient(
     90deg,     
-    rgb(126, 238, 134) 0%,
-    rgb(5, 232, 156) 50%,
-    rgb(124, 235, 203) 100%
-  );
-}
-
-.link-media {
-  background: rgb(255, 149, 79);
-  background: linear-gradient(
-    90deg,     
-    rgb(188, 191, 232) 0%,
-    rgb(90, 115, 213) 50%,
-    rgb(135, 224, 234) 100%
-  );
-}
-
-.link-about {
-  background: rgb(255, 149, 79);
-  background: linear-gradient(
-    90deg,     
-    rgb(0, 59, 237) 0%,
-    rgb(130, 238, 255) 50%,
-    rgb(171, 191, 231) 100%
+    rgb(181, 201, 91) 0%,
+    rgb(4, 187, 228) 50%,
+    rgb(240, 140, 162) 100%
   );
 }
 
@@ -78,9 +58,29 @@
   background: rgb(255, 149, 79);
   background: linear-gradient(
     90deg,     
-    rgb(181, 203, 232) 0%,
+    rgb(112, 148, 196) 0%,
     rgb(2, 101, 223) 50%,
-    rgb(85, 132, 227) 100%
+    rgb(14, 62, 157) 100%
+  );
+}
+
+.link-media {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(95, 134, 201) 0%,
+    rgb(28, 72, 181) 50%,
+    rgb(2, 34, 95) 100%
+  );
+}
+
+.link-about {
+  background: rgb(255, 149, 79);
+  background: linear-gradient(
+    90deg,     
+    rgb(86, 125, 192) 0%,
+    rgb(20, 72, 169) 50%,
+    rgb(9, 34, 102) 100%
   );
 }
 
@@ -88,8 +88,8 @@
   background: rgb(255, 149, 79);
   background: linear-gradient(
     90deg,     
-    rgb(238, 208, 208) 0%,
-    rgb(211, 227, 238) 50%,
-    rgb(9, 172, 184) 100%
+    rgb(77, 133, 231) 0%,
+    rgb(16, 64, 134) 50%,
+    rgb(2, 17, 59) 100%
   );
 }
