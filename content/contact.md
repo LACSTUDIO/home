@@ -1,12 +1,10 @@
 ---
-title: 联系方式
+title: 联系我们
 ---
 
-QQ:2935278133
+#  微信:LACS177
 
-微信：LACS177
-
-
+![](https://s3.bmp.ovh/imgs/2024/08/03/ab6dc0902f410d23.png)
 
 </section>
 <!-- 结束上一节的内容 -->

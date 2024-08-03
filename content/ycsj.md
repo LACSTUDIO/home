@@ -2,11 +2,11 @@
 title: 远程刷机[非公益性]
 ---
 
-## **远程软件:TODESK [下载todesk](https://www.todesk.com/download.html)**
+## 远程软件:TODESK [下载todesk](https://www.todesk.com/download.html)
 
-## **联系方式:**
+## 联系方式:微信 LACS177
 
-## **业务范围:**
+## 业务范围:
 
 **承接小米全系刷机Root，刷机升级降级，救砖**
 

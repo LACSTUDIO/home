@@ -22,7 +22,7 @@ disableKinds = ["taxonomy", "term"]
   name = "领创工作室官方网站"
   headline = """
   数码科技爱好者
-  酷安/B站：领创工作室
+  酷安/B站:领创工作室
   """
   image = "img/lacs.png"
 
