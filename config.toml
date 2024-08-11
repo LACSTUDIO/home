@@ -30,7 +30,7 @@ disableKinds = ["taxonomy", "term"]
     { blog = { href = "https://xn--9krq6q.xn--5brr03o.top/" , text = "领创博客" , title = "领创博客" , target = "_blank" } },
     { 123pan = { href = "https://www.123pan.com/s/0gTrVv-kadKd.html" , text = "网盘资源" , title = "网盘资源" } },
     { ycsj = { href = "ycsj/" , text = "远程刷机" , title = "远程刷机" , target = "_self" } },
-    { project = { href = "project/" , text = "项目合作" , title = "项目合作" , target = "_self" } },
+    { project = { href = "project/" , text = "我们的项目" , title = "我们的项目" , target = "_self" } },
     { contact = { href = "contact/" , text = "联系我们" , title = "联系我们" , target = "_self" } },
     { media = { href = "media/" , text = "媒体平台" , title = "媒体平台" , target = "_self" } },
     { about = { href = "about/" , text = "关于我们" , title = "关于我们" , target = "_self" } },
