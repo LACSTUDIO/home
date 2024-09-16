@@ -11,7 +11,7 @@ defaultContentLanguage = "zh-cn"
 title = "领创工作室"
 
 # 设置版权信息
-copyright = "© 2024 领创工作室"
+copyright = "© 2024 领创工作室 Lead And Create Studio"
 
 # 启用表情符号
 enableEmoji = true
@@ -28,11 +28,10 @@ disableKinds = ["taxonomy", "term"]
 
   links = [
     { blog = { href = "https://xn--9krq6q.xn--5brr03o.top/" , text = "领创博客" , title = "领创博客" , target = "_blank" } },
-    { 123pan = { href = "https://www.123pan.com/s/0gTrVv-kadKd.html" , text = "网盘资源" , title = "网盘资源" } },
+    { quark = { href = "https://pan.quark.cn/s/1c03c9db68f8" , text = "软件资源" , title = "软件资源" , target = "_blank"} },
+    { 123pan = { href = "https://www.123pan.com/s/0gTrVv-kadKd.html" , text = "网盘资源" , title = "网盘资源" , target = "_blank"} },
     { ycsj = { href = "ycsj/" , text = "远程刷机" , title = "远程刷机" , target = "_self" } },
-    { project = { href = "project/" , text = "我们的项目" , title = "我们的项目" , target = "_self" } },
-    { contact = { href = "contact/" , text = "联系我们" , title = "联系我们" , target = "_self" } },
-    { media = { href = "media/" , text = "媒体平台" , title = "媒体平台" , target = "_self" } },
+    { project = { href = "project/" , text = "软件资源" , title = "软件资源" , target = "_self" } },
     { about = { href = "about/" , text = "关于我们" , title = "关于我们" , target = "_self" } },
     { join = { href = "join/" , text = "加入我们" , title = "加入我们" , target = "_self" } },
 

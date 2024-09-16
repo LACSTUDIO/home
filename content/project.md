@@ -9,11 +9,11 @@ title: 项目列表
 
 - ## C++
 
-1. miflash-mini
+1. miflash-mini (开发中)
 
 - ## C#
 
-1. LACS
+1. 
 
 </section>
 <!-- 结束上一节的内容 -->
