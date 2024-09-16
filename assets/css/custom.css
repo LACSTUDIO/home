@@ -54,23 +54,13 @@
   );
 }
 
-.link-contact {
+.link-quark {
   background: rgb(255, 149, 79);
   background: linear-gradient(
     90deg,     
-    rgb(112, 148, 196) 0%,
-    rgb(2, 101, 223) 50%,
-    rgb(14, 62, 157) 100%
-  );
-}
-
-.link-media {
-  background: rgb(255, 149, 79);
-  background: linear-gradient(
-    90deg,     
-    rgb(95, 134, 201) 0%,
-    rgb(28, 72, 181) 50%,
-    rgb(2, 34, 95) 100%
+    rgb(120, 111, 111) 0%,
+    rgb(15, 80, 155) 50%,
+    rgb(134, 61, 12) 100%
   );
 }
 

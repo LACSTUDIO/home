@@ -11,7 +11,11 @@ defaultContentLanguage = "zh-cn"
 title = "领创工作室"
 
 # 设置版权信息
-copyright = "© 2024 领创工作室 Lead And Create Studio"
+copyright =  """
+© 2024 领创工作室  Lead And Create Studio
+
+网站最新更新日期:2024年09月16日
+"""
 
 # 启用表情符号
 enableEmoji = true
@@ -21,7 +25,8 @@ disableKinds = ["taxonomy", "term"]
 [params.author]
   name = "领创工作室官方网站"
   headline = """
-  数码科技爱好者
+  数码科技爱好者 爱编程 爱剪辑 爱创作
+
   酷安/B站:领创工作室
   """
   image = "img/lacs.png"
@@ -31,7 +36,7 @@ disableKinds = ["taxonomy", "term"]
     { quark = { href = "https://pan.quark.cn/s/1c03c9db68f8" , text = "软件资源" , title = "软件资源" , target = "_blank"} },
     { 123pan = { href = "https://www.123pan.com/s/0gTrVv-kadKd.html" , text = "网盘资源" , title = "网盘资源" , target = "_blank"} },
     { ycsj = { href = "ycsj/" , text = "远程刷机" , title = "远程刷机" , target = "_self" } },
-    { project = { href = "project/" , text = "软件资源" , title = "软件资源" , target = "_self" } },
+    { project = { href = "project/" , text = "项目列表" , title = "项目列表" , target = "_self" } },
     { about = { href = "about/" , text = "关于我们" , title = "关于我们" , target = "_self" } },
     { join = { href = "join/" , text = "加入我们" , title = "加入我们" , target = "_self" } },
 
