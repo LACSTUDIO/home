@@ -25,9 +25,7 @@ disableKinds = ["taxonomy", "term"]
 [params.author]
   name = "领创工作室官方网站"
   headline = """
-  数码科技爱好者 爱编程 爱剪辑 爱创作
-
-  酷安/B站:领创工作室
+  数码科技爱好者 酷安/B站:领创工作室
   """
   image = "img/lacs.png"
 
