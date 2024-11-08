@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.xn--5brr03o.top/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url><url>
-    <loc>https://www.xn--5brr03o.top/join/</loc>
+    <loc>http://localhost:1313/join/</loc>
   </url><url>
-    <loc>https://www.xn--5brr03o.top/</loc>
+    <loc>http://localhost:1313/</loc>
   </url><url>
-    <loc>https://www.xn--5brr03o.top/project/</loc>
+    <loc>http://localhost:1313/project/</loc>
   </url><url>
-    <loc>https://www.xn--5brr03o.top/ycsj/</loc>
+    <loc>http://localhost:1313/ycsj/</loc>
   </url>
 </urlset>
