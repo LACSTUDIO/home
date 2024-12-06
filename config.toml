@@ -14,7 +14,7 @@ title = "领创工作室"
 copyright =  """
 © 2024 领创工作室  Lead And Create Studio
 
-网站最新更新日期:2024年09月16日
+网站最新更新日期:2024年12月07日
 """
 
 # 启用表情符号
@@ -31,13 +31,12 @@ disableKinds = ["taxonomy", "term"]
 
   links = [
     { blog = { href = "https://xn--9krq6q.xn--5brr03o.top/" , text = "领创博客" , title = "领创博客" , target = "_blank" } },
-    { quark = { href = "https://pan.quark.cn/s/1c03c9db68f8" , text = "软件资源" , title = "软件资源" , target = "_blank"} },
+    { app = { href = "https://xn--5nqs58m.xn--5brr03o.top" , text = "软件资源" , title = "软件资源" , target = "_blank"} },
     { 123pan = { href = "https://www.123pan.com/s/0gTrVv-kadKd.html" , text = "网盘资源" , title = "网盘资源" , target = "_blank"} },
     { ycsj = { href = "ycsj/" , text = "远程刷机" , title = "远程刷机" , target = "_self" } },
     { project = { href = "project/" , text = "项目列表" , title = "项目列表" , target = "_self" } },
     { about = { href = "about/" , text = "关于我们" , title = "关于我们" , target = "_self" } },
     { join = { href = "join/" , text = "加入我们" , title = "加入我们" , target = "_self" } },
-
     # { email = "mailto:2935278133@qq.com" },
     # { link = "https://link-to-some-website.com/" },
     # { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },

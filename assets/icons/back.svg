@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1733499522467" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1484" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M512 0a512 512 0 1 0 0 1024A512 512 0 0 0 512 0z m201.362286 548.571429H398.921143l71.972571 71.972571a36.571429 36.571429 0 0 1-51.712 51.712L284.818286 537.819429a36.571429 36.571429 0 0 1 0-51.712l134.436571-134.436572a36.571429 36.571429 0 0 1 51.712 51.712l-72.045714 72.045714h314.441143a36.571429 36.571429 0 0 1 0 73.142858z" fill="#2D8CF0" p-id="1485"></path></svg>
