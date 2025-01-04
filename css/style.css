@@ -1,0 +1,183 @@
+:root {
+    --primary-color: #00a0e9;
+    --secondary-color: #e6f7ff;
+    --bg-gradient-light: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    --bg-gradient-dark: linear-gradient(135deg, #001f3f, #003f5f);
+    --text-color-light: #343a40;
+    --text-color-dark: #e9ecef;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #003f5f;
+    --highlight-color: #cceeff;
+}
+
+.button-long {
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-long:hover {
+    background-color: #0056b3;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--bg-gradient-light);
+    color: var(--text-color-light);
+    transition: background 0.3s ease, color 0.3s ease;
+    padding-top: 80px;
+}
+
+.section {
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg-light);
+    transition: background-color 0.3s ease;
+    width: 90%;
+    max-width: 800px;
+}
+
+.card {
+    margin: 15px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.project-card {
+    display: none;
+    opacity: 0;
+}
+
+.project-card.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+    background-color: var(--highlight-color);
+}
+
+.btn-group .btn {
+    border: 2px solid transparent;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-group .btn.active {
+    background: var(--primary-color)!important;
+    color: white;
+    border-color: var(--primary-color)!important;
+}
+.btn:hover {
+    background-color: var(--primary-color)!important;
+}
+footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+@media (max-width: 576px) {
+    .section {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+.media-platform, .other-info {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+.media-platform h3, .other-info h3 {
+    margin: 0;
+}
+
+.footer-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon img {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+.icon-long img {
+    width: 100px;
+    height: 50px;
+    margin: 5px;
+    transform: scale(2); /* 放大1.5倍 */
+    transform-origin: center; /* 从中心点放大 */
+}
+.custom-navbar {
+    background: linear-gradient(to right, #00a0e9, white);
+    color: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.custom-navbar .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 10px;
+}
+
+.custom-navbar .btn-dark-mode {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.custom-navbar .btn-dark-mode:hover {
+    color: #ddd;
+}
+
+.navbar-brand img {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+    width: 40px;
+    height: 40px;
+    align-self: center;
+}
+
+.card-deck {
+    flex-wrap: wrap;
+    justify-content: flex-end; /* 将内容推到右侧 */
+    align-items: center; /* 垂直居中对齐 */
+    margin: 10px 5px;
+}
+.card-img {
+    width: 60px;
+    height: 60px;
+    margin: 0; /* 移除自动的 margin */
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between; /* 可以根据需要调整卡片之间的间距 */
+}

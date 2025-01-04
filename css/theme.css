@@ -1,0 +1,99 @@
+/* 深色模式样式 */
+body.dark-mode {
+    background: var(--bg-gradient-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .section {
+    background-color: var(--card-bg-dark);
+}
+
+.btn-dark-mode{
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--primary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.MAO-btn {
+    position: fixed;
+    top: 10px;
+    right: 80px;
+    z-index: 1000;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    background: var(--secondary-color); /* 默认情况下使用主色 */
+}
+
+.btn-dark-mode:hover {
+    background: #0080c6;
+    transform: scale(1.1);
+}
+
+.MAO-btn:hover {
+    background: red;
+    transform: scale(1.1);
+
+}
+
+.red-theme {
+    background-color: red !important;
+}
+
+.red-theme .navbar {
+    background-color: red !important;
+}
+
+.red-theme .navbar-brand {
+    color: white !important;
+}
+
+.red-theme .MAO-btn {
+    background-color: red !important;
+    color: red;
+    border: 2px solid red;
+}
+
+.red-theme .welcome-message {
+    background-color: red;
+    color: white;
+}
+
+.red-theme .welcome-message button {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+}
+
+
+.red-theme button:not(.MAO-btn) {
+    background-color: #F08080;
+    color: white;
+    border: 2px solid red;
+}
+
+.red-theme .Mao-message {
+    background-color: rgba(255, 0, 0, 0.95);
+    color: white;
+    display: block;
+}
+
+

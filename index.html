@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+<!-- 顶部导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom-navbar">
+    <a class="navbar-brand" href="#">
+        <img src="img/lacs.png" class="d-inline-block align-top" alt="领创工作室Logo">
+        领创工作室
+    </a>
+    <!-- 深色模式按钮 -->
+    <button class="btn-dark-mode" onclick="toggleDarkMode()">🌙</button>
+    <button class="MAO-btn" onclick="toggleRedThemeAndShowPopup()">
+        <img src="img/MAO.png" alt="MAO" style="width:35px;height:35px;">
+    </button>
+</nav>
+
+<!-- 欢迎弹窗 -->
+<div class="welcome-message">
+    <img src="img/lacs.png" class="welcome-message-img" alt="lacs">
+    <h3>欢迎来到领创工作室的总站</h3>
+    <p>Lead And Create Studio</p>
+    <button onclick="closeWelcome()">关闭</button>
+</div>
+<div class="section footer-section">
+    <div class="media-platform">
+        <h5>媒体平台</h5>
+        <div>
+            <a href="#" class="icon" onclick="showModal('bilibili', '哔哩哔哩 媒体平台', '哔哩哔哩uid:1779662818', 'https://space.bilibili.com/1779662818')">
+                <img src="img/icons/bilibili.svg" alt="bilibili">
+            </a>
+            <a href="#" class="icon" onclick="showModal('coolapk', '酷安 媒体平台', '酷安id:13237789', 'https://www.coolapk.com/u/13237789')">
+                <img src="img/icons/coolapk.svg" alt="酷安">
+            </a>
+            <a href="#" class="icon" onclick="showModal('MiBBS', '小米社区 媒体平台', '小米社区uid:2376012419', 'https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')">
+                <img src="img/icons/MiBBS.svg" alt="小米社区">
+            </a>
+        </div>
+    </div>
+    <div class="other-info">
+        <a href="#" class="icon-long" onclick="showModal('Q群', 'QQ群', '群号：676581092', 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=H5pcP8wQCIkWTSPbTx0EXYRPlvuEDX2L&authKey=9FbVgaXtLcijE8lBPsAUB4IVq%2FHRKRz1LkJas1RT7DyetA2aX8dTM5WVSsPWVEv5&noverify=0&group_code=676581092')">
+            <img src="img/icons/Q群.svg" alt="QQ">
+        </a>
+        <a href="#" class="icon-long" onclick="showModalYC()">
+        <img src="img/icons/远程.svg" alt="远程">
+        </a>
+    </div>
+    <div class="media-platform">
+        <h5>联系方式</h5>
+        <div>
+            <a href="#" class="icon" onclick="showModal('email', '电子邮件', '邮箱：2935278133@qq.com', 'mailto:2935278133@qq.com')">
+                <img src="img/icons/email.svg" alt="电子邮件">
+            </a>
+            <a href="#" class="icon" onclick="showModal('wechat', '微信', '微信号：LACS177', 'none')">
+                <img src="img/icons/wechat.svg" alt="微信">
+            </a>
+            <a href="#" class="icon" onclick="showModal('公众号', '公众号', '公众号：领创工作室', 'none')">
+                <img src="img/icons/公众号.svg" alt="公众号">
+            </a>
+        </div>
+    </div>
+
+</div>
+<!-- 项目区域 -->
+<div class="section">
+    <h2>我的项目</h2>
+    <div class="btn-group" role="group" id="project-buttons">
+        <button type="button" class="btn active btn-secondary" data-project="project1">分站</button>
+        <button type="button" class="btn btn-secondary" data-project="project2">刷机</button>
+        <button type="button" class="btn btn-secondary" data-project="project4">项目</button>
+    </div>
+    <div class="card-deck">
+        <div class="card-container">
+        <div class="card project-card active" id="project1">
+            <div class="card-body">
+                <img src="img/icons/lac-blog.svg" class="card-img" alt="lacs">
+                <h5 class="card-title">领创博客</h5>
+                <a href="https://xn--9krq6q.xn--5brr03o.top/" class="btn btn-primary" target="_blank">立即访问</a>
+            </div>
+        </div>
+        <div class="card project-card active" id="project2">
+            <div class="card-body">
+                <img src="img/icons/app.svg" class="card-img" alt="lacs">
+                <h5 class="card-title">软件资源</h5>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+            </div>
+        </div>
+    </div>
+
+        <div class="card project-card" id="project3">
+            <div class="card-body">
+                <h5 class="card-title">网盘资源</h5>
+                <p class="card-text">我的网盘资源，欢迎访问！</p>
+                <a href="#" class="btn btn-primary" target="_blank">网站1</a>
+            </div>
+        </div>
+        <div class="card project-card" id="project4">
+            <div class="card-body">
+                <h5 class="card-title">远程刷机</h5>
+                <p class="card-text">我的远程刷机项目，欢迎访问！</p>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+
+    <p>Copyright © 2025 领创工作室 All rights reserved.</p>
+    <p id="last-update-time">最后更新时间：未设置</p>
+</footer>
+
+<div id="modal" class="modal">
+    <div class="modal-background">
+        <div class="content">
+            <div class="modal-header">
+                <img src="" alt="" class="modal-img">
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-main">
+                <img src="" alt="" class="qr">
+                <p class="modal-text"></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" target="_blank" id="modal-link" onclick="openLink(event)">立即访问</a>
+                <button class="button-long" onclick="closeModal()" style="background-color: red;">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="yc-modal" class="modal">
+    <div class="modal-background">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">远程刷机</h3>
+            </div>
+            <div class="YC-modal-main">
+                <h4>远程软件</h4>
+                <p>TODESK <a href="https://www.todesk.com/download.html" target="_blank">下载</a></p>
+
+                <h4>联系方式</h4>
+                <p>微信：LACS177</p>
+
+                <h4>业务范围</h4>
+                <ul>
+                    <li>承接小米全系刷机Root，刷机升级降级，救砖</li>
+                    <li>联发科秒解，澎湃解bl，线刷卡刷各种系统</li>
+                </ul>
+
+                <h4>注意事项</h4>
+                <h5>售前相关</h5>
+                <ul>
+                    <li>仅提供刷机服务，我不是售后，没时间跟你浪费时间</li>
+                    <li>先付款后刷机，别跟我提什么没钱过两天给你这些话</li>
+                    <li>不成功全额退款，不接黑产类相关业务(改Imei，外挂相关)</li>
+                </ul>
+
+                <h5>设备相关</h5>
+                <ul>
+                    <li>太卡的电脑收费会增加，（指延迟高，下载龟速，360全家桶）</li>
+                    <li>老机型的收费标准跟新机型是一样的，有能力自己弄谢谢</li>
+                    <li>需要你有一个良好的精神状态，能听懂人话，不然没法交流</li>
+                </ul>
+
+                <h5>隐私相关</h5>
+                <ul>
+                    <li>我承诺不会对刷机过程录屏、录像、拍照、直播</li>
+                    <li>我承诺不会主动获取你的手机、电脑上的隐私信息和文件</li>
+                    <li>我承诺发给你的文件都是没有病毒和木马等危险内容</li>
+                </ul>
+
+                <h5>服务相关</h5>
+                <ul>
+                    <li>老用户会有折扣（9折以下）（折扣：QQ/VX >闲鱼）</li>
+                    <li>刷完之后可以咨询不懂的问题（老板很友善）</li>
+                    <li>不免费远程，非公益，混口饭吃，自己会自己弄。</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="button-long" onclick="closeModalYC()" style="background-color: red;">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
