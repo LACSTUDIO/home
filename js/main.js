@@ -1,22 +1,44 @@
 const projects = ['project1', 'project2', 'project3', 'project4'];
 
 function showProject(projectId) {
-    document.querySelectorAll('.project-card').forEach(card => card.classList.remove('active'));
-    document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
+    try {
+        document.querySelectorAll('.project-card.active').forEach(card => card.classList.remove('active'));
+        document.querySelectorAll('.btn-group .btn.active').forEach(btn => btn.classList.remove('active'));
 
-    document.getElementById(projectId).classList.add('active');
-    const index = projects.indexOf(projectId);
-    document.querySelectorAll('.btn-group .btn')[index].classList.add('active');
+        const projectElement = document.getElementById(projectId);
+        if (!projectElement) {
+            throw new Error(`项目ID为 ${projectId} 的元素未找到`);
+        }
+        projectElement.classList.add('active');
+
+        const index = projects.indexOf(projectId);
+        if (index === -1) {
+            throw new Error(`项目ID为 ${projectId} 的索引未找到`);
+        }
+        document.querySelectorAll('.btn-group .btn')[index].classList.add('active');
+    } catch (error) {
+        console.error('设置项目时出错:', error);
+    }
 }
 
 function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const content = document.querySelector('.content');
-    content.classList.toggle('dark-mode');
-    const btn = document.querySelector('.btn-dark-mode');
-    btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-}
+    try {
+        document.body.classList.toggle('dark-mode');
+        const content = document.querySelector('.content');
+        if (!content) {
+            throw new Error('内容元素未找到');
+        }
+        content.classList.toggle('dark-mode');
 
+        const btn = document.querySelector('.btn-dark-mode');
+        if (!btn) {
+            throw new Error('按钮元素未找到');
+        }
+        btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    } catch (error) {
+        console.error('切换暗黑模式时出错:', error);
+    }
+}
 
 function toggleRedThemeAndShowPopup() {
     console.log('toggleRedThemeAndShowPopup called');
@@ -47,31 +69,26 @@ function showModal(icon, title, text, href = '#') {
         modalText.textContent = text;
 
         const qrImage = document.querySelector('.qr');
-        if (!qrImage) {
-            throw new Error('二维码图片元素未找到');
-        }
+        const modalImage = document.querySelector('.modal-img');
+        const modalLink = document.getElementById('modal-link');
+
+        [qrImage, modalImage, modalLink].forEach(element => {
+            if (!element) {
+                throw new Error('模态框中的元素未找到');
+            }
+        });
+
         if (icon === 'none') {
             qrImage.style.display = 'none';
+            modalImage.style.display = 'none';
         } else {
             qrImage.style.display = 'block';
             qrImage.src = `img/qr/${icon}.png`;
-        }
 
-        const modalImage = document.querySelector('.modal-img');
-        if (!modalImage) {
-            throw new Error('模态框图片元素未找到');
-        }
-        if (icon === 'none') {
-            modalImage.style.display = 'none';
-        } else {
             modalImage.style.display = 'block';
             modalImage.src = `img/icons/${icon}.svg`;
         }
 
-        const modalLink = document.getElementById('modal-link');
-        if (!modalLink) {
-            throw new Error('模态框链接元素未找到');
-        }
         if (href === 'none') {
             modalLink.style.display = 'none';
         } else {
@@ -82,7 +99,6 @@ function showModal(icon, title, text, href = '#') {
         console.error('显示模态框时出错:', error);
     }
 }
-
 
 function closeModal() {
     try {
@@ -113,15 +129,39 @@ function openLink(event) {
         console.error('打开链接时出错:', error);
     }
 }
-function closeWelcome(){
-    document.querySelector('.welcome-message').style.display = 'none';
+
+function closeWelcome() {
+    try {
+        const welcomeMessage = document.querySelector('.welcome-message');
+        if (!welcomeMessage) {
+            throw new Error('欢迎消息元素未找到');
+        }
+        welcomeMessage.style.display = 'none';
+    } catch (error) {
+        console.error('关闭欢迎消息时出错:', error);
+    }
 }
 
 function showModalYC() {
-    var modal = document.getElementById("yc-modal");
-    modal.style.display = "block";
+    try {
+        const modalYC = document.getElementById("yc-modal");
+        if (!modalYC) {
+            throw new Error('YC模态框元素未找到');
+        }
+        modalYC.style.display = "block";
+    } catch (error) {
+        console.error('显示YC模态框时出错:', error);
+    }
 }
+
 function closeModalYC() {
-    var modal = document.getElementById("yc-modal");
-    modal.style.display = "none";
+    try {
+        const modalYC = document.getElementById("yc-modal");
+        if (!modalYC) {
+            throw new Error('YC模态框元素未找到');
+        }
+        modalYC.style.display = "none";
+    } catch (error) {
+        console.error('关闭YC模态框时出错:', error);
+    }
 }
