@@ -10,13 +10,22 @@
     --highlight-color: #cceeff;
 }
 
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 18px;
+}
 .button-long {
     width: 100px;
     height: 40px;
     margin: 10px;
     padding: 10px;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 18px;
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -42,7 +51,7 @@ body {
 .section {
     margin: 20px auto;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 18px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     background-color: var(--card-bg-light);
     transition: background-color 0.3s ease;
@@ -54,6 +63,23 @@ body {
     margin: 15px 0;
     transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
     border: 2px solid transparent;
+}
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+}
+.card-little-content {
+    background-color: #e0e0e0;
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid #00a0e9;
+    border-radius: 10px;
+    min-width: 200px;
+    max-width: 400px;
+    transition: background-color 0.3s ease;
 }
 
 .project-card {
@@ -79,9 +105,7 @@ body {
     color: white;
     border-color: var(--primary-color)!important;
 }
-.btn:hover {
-    background-color: var(--primary-color)!important;
-}
+
 footer {
     margin-top: 50px;
     text-align: center;
@@ -101,13 +125,13 @@ footer a {
     }
 }
 
-.media-platform, .other-info {
+.media-platform {
     flex: 1;
     padding: 10px;
     text-align: center;
 }
 
-.media-platform h3, .other-info h3 {
+.media-platform h3{
     margin: 0;
 }
 
@@ -122,17 +146,20 @@ footer a {
     height: 30px;
     margin: 5px;
 }
+
 .icon-long img {
     width: 100px;
     height: 50px;
     margin: 5px;
-    transform: scale(2); /* 放大1.5倍 */
-    transform-origin: center; /* 从中心点放大 */
+    transform: scale(2);
+    transform-origin: center;
 }
+
 .custom-navbar {
     background: linear-gradient(to right, #00a0e9, white);
     color: white;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    max-height: 80px;
 }
 
 .custom-navbar .navbar-brand {
@@ -145,15 +172,25 @@ footer a {
     padding: 10px;
 }
 
-.custom-navbar .btn-dark-mode {
+
+.btn-dark-mode {
     background: none;
     border: none;
     color: white;
     font-size: 20px;
     cursor: pointer;
     transition: color 0.3s;
+    max-height: 50px;
 }
-
+.MAO-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+    max-height: 50px;
+}
 .custom-navbar .btn-dark-mode:hover {
     color: #ddd;
 }
@@ -167,17 +204,18 @@ footer a {
 
 .card-deck {
     flex-wrap: wrap;
-    justify-content: flex-end; /* 将内容推到右侧 */
-    align-items: center; /* 垂直居中对齐 */
+    justify-content: flex-end;
+    align-items: center;
     margin: 10px 5px;
 }
+
 .card-img {
     width: 60px;
     height: 60px;
-    margin: 0; /* 移除自动的 margin */
+    margin: 0;
 }
 
 .card-container {
     display: flex;
-    justify-content: space-between; /* 可以根据需要调整卡片之间的间距 */
+    justify-content: space-between;
 }

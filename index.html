@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="i8H4v3PMbp-U4dmkiyxjqxMnKm7OX6LrgDNlVlZ6uiM" />
-    <title>领创工作室</title>
+    <meta name="msvalidate.01" content="DDB6A0DB472D14167106B7221191BAEF" />
+    <meta name="description" content="领创工作室，数码科技爱好者，分享各种数码产品的原理、设计、软件、硬件、应用等信息，以及编程、设计、摄影、音乐等创作。">
+    <meta name="keywords" content="数码科技,数码产品,数码设备,数码应用,数码创意,数码设计,数码摄影,数码音乐,编程,设计,摄影,音乐">
+    <meta name="author" content="领创工作室">
+    <link rel="icon" href="img/lacs.png" type="image/png"/>
+    <title>领创工作室-官方网站-领创.top</title>
     <!-- CSS -->
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/theme.css">
 </head>
@@ -17,11 +23,12 @@
         <img src="img/lacs.png" class="d-inline-block align-top" alt="领创工作室Logo">
         领创工作室
     </a>
-    <!-- 深色模式按钮 -->
-    <button class="btn-dark-mode" onclick="toggleDarkMode()">🌙</button>
-    <button class="MAO-btn" onclick="toggleRedThemeAndShowPopup()">
-        <img src="img/MAO.png" alt="MAO" style="width:35px;height:35px;">
-    </button>
+    <ul class="navbar-nav" style="display: flex; align-items: center;">
+        <li class="btn-dark-mode" onclick="toggleDarkMode()">🌙</li>
+        <li class="MAO-btn" onclick="toggleRedThemeAndShowPopup()">
+            <img src="img/MAO.png" alt="MAO" style="width:35px;height:35px;">
+        </li>
+    </ul>
 </nav>
 
 <!-- 欢迎弹窗 -->
@@ -31,6 +38,74 @@
     <p>Lead And Create Studio</p>
     <button onclick="closeWelcome()">关闭</button>
 </div>
+
+<!-- 项目区域 -->
+<div class="section" id="projects-section">
+    <h2>我的项目</h2>
+    <div class="btn-group d-flex justify-content-center" role="group" id="project-buttons">
+        <button type="button" class="btn active btn-secondary" data-project="project1">玩机工具</button>
+        <button type="button" class="btn btn-secondary" data-project="project2">ROM相关</button>
+        <button type="button" class="btn btn-secondary" data-project="project3">小工具</button>
+        <button type="button" class="btn btn-secondary" data-project="project4">手机APP</button>
+    </div>
+    <div class="card-deck">
+        <div class="card project-card" id="project1-1" data-project="project1">
+                <h5 class="card-title">澎湃OS绕答题解锁工具箱（重构版）</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+        </div>
+        <div class="card project-card" id="project1-2" data-project="project1">
+                <h5 class="card-title">澎湃OS绕答题解锁工具箱（bat版）</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+        </div>
+        <div class="card project-card" id="project1-3" data-project="project1">
+                <h5 class="card-title">小米手机一键Root工具箱（bat版）</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+        </div>
+        <div class="card project-card" id="project2-1" data-project="project2">
+                <h5 class="card-title">项目2-1</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+        </div>
+        <div class="card project-card" id="project3-1" data-project="project3">
+                <h5 class="card-title">项目3-1</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+        </div>
+        <div class="card project-card" id="project4-1" data-project="project4">
+                <h5 class="card-title">项目4-1</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
+        </div>
+    </div>
+</div>
+
+<!-- 分站区域 -->
+<div class="section">
+    <h2>分站</h2>
+    <div class="card-container">
+        <div class="card-little">
+            <div class="card-little-content" onclick="openLink('https://xn--9krq6q.xn--5brr03o.top/')">
+                <div style="display: flex; align-items: center;">
+                    <img src="img/icons/lac-blog.svg" class="card-img" alt="lacs">
+                    <h5 class="card-title" style="margin-left: 10px;">领创博客</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card-little" onclick="openLink('https://xn--5nqs58m.xn--5brr03o.top/')">
+            <div class="card-little-content">
+                <div style="display: flex; align-items: center;">
+                    <img src="img/icons/app.svg" class="card-img" alt="lacs">
+                    <h5 class="card-title" style="margin-left: 10px;">软件资源</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 关于区域 -->
 <div class="section footer-section">
     <div class="media-platform">
         <h5>媒体平台</h5>
@@ -46,14 +121,6 @@
             </a>
         </div>
     </div>
-    <div class="other-info">
-        <a href="#" class="icon-long" onclick="showModal('Q群', 'QQ群', '群号：676581092', 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=H5pcP8wQCIkWTSPbTx0EXYRPlvuEDX2L&authKey=9FbVgaXtLcijE8lBPsAUB4IVq%2FHRKRz1LkJas1RT7DyetA2aX8dTM5WVSsPWVEv5&noverify=0&group_code=676581092')">
-            <img src="img/icons/Q群.svg" alt="QQ">
-        </a>
-        <a href="#" class="icon-long" onclick="showModalYC()">
-        <img src="img/icons/远程.svg" alt="远程">
-        </a>
-    </div>
     <div class="media-platform">
         <h5>联系方式</h5>
         <div>
@@ -68,58 +135,25 @@
             </a>
         </div>
     </div>
-
 </div>
-<!-- 项目区域 -->
-<div class="section">
-    <h2>我的项目</h2>
-    <div class="btn-group" role="group" id="project-buttons">
-        <button type="button" class="btn active btn-secondary" data-project="project1">分站</button>
-        <button type="button" class="btn btn-secondary" data-project="project2">刷机</button>
-        <button type="button" class="btn btn-secondary" data-project="project4">项目</button>
-    </div>
-    <div class="card-deck">
-        <div class="card-container">
-        <div class="card project-card active" id="project1">
-            <div class="card-body">
-                <img src="img/icons/lac-blog.svg" class="card-img" alt="lacs">
-                <h5 class="card-title">领创博客</h5>
-                <a href="https://xn--9krq6q.xn--5brr03o.top/" class="btn btn-primary" target="_blank">立即访问</a>
-            </div>
-        </div>
-        <div class="card project-card active" id="project2">
-            <div class="card-body">
-                <img src="img/icons/app.svg" class="card-img" alt="lacs">
-                <h5 class="card-title">软件资源</h5>
-                <a href="https://xn--5nqs58m.xn--5brr03o.top/" class="btn btn-primary" target="_blank">立即访问</a>
-            </div>
-        </div>
-    </div>
-
-        <div class="card project-card" id="project3">
-            <div class="card-body">
-                <h5 class="card-title">网盘资源</h5>
-                <p class="card-text">我的网盘资源，欢迎访问！</p>
-                <a href="#" class="btn btn-primary" target="_blank">网站1</a>
-            </div>
-        </div>
-        <div class="card project-card" id="project4">
-            <div class="card-body">
-                <h5 class="card-title">远程刷机</h5>
-                <p class="card-text">我的远程刷机项目，欢迎访问！</p>
-                <a href="#" class="btn btn-primary" target="_blank">立即访问</a>
-            </div>
-        </div>
-    </div>
+<div class="section" style="display: flex;align-items: center;justify-content: center;height: 60px;">
+    <a href="/jz" target="_blank" rel="noopener noreferrer" class="button-long">
+        捐赠我们
+    </a>
+    <button class="button-long" onclick="showModalYC()">
+        远程刷机
+    </button>
+    <button class="button-long" onclick="showModal('Q群', 'QQ群', '群号：676581092', 'https://qm.qq.com/q/ailMLH0bVC')">
+        QQ群
+    </button>
 </div>
-
 <!-- 页脚 -->
 <footer>
-
-    <p>Copyright © 2025 领创工作室 All rights reserved.</p>
-    <p id="last-update-time">最后更新时间：未设置</p>
+    <p>Copyright © 2021-2025 领创工作室, All rights reserved.</p>
+    <p id="update_time">最后更新时间：未设置</p>
 </footer>
 
+<!--弹窗-->
 <div id="modal" class="modal">
     <div class="modal-background">
         <div class="content">
@@ -132,14 +166,14 @@
                 <p class="modal-text"></p>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-primary" target="_blank" id="modal-link" onclick="openLink(event)">立即访问</a>
+                <button class="button-long" id="modal-link">访问</button>
                 <button class="button-long" onclick="closeModal()" style="background-color: red;">关闭</button>
             </div>
         </div>
     </div>
 </div>
 
-
+<!-- 远程刷机弹窗 -->
 <div id="yc-modal" class="modal">
     <div class="modal-background">
         <div class="modal-content">
@@ -194,7 +228,6 @@
         </div>
     </div>
 </div>
-
 
 <script src="js/main.js"></script>
 </body>
