@@ -87,21 +87,6 @@
     border-radius: 8px ;
 }
 
-.welcome-message{
-    position: fixed;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 15px;
-    border-radius: 18px;
-    text-align: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    animation: fadeOut 1.5s 0.5s forwards;
-    width: 70%;
-    max-width: 600px;
-}
 .Mao-message {
     position: fixed;
     top: 70px;
@@ -116,7 +101,7 @@
     display: none;
 }
 
-.welcome-message button, .Mao-message button {
+.Mao-message button {
     margin-top: 10px;
     background: var(--primary-color);
     color: white;
@@ -125,8 +110,7 @@
     border-radius: 5px;
     cursor: pointer;
 }
-
-.welcome-message-img, .Mao-message-img img {
+.Mao-message-img img {
     border-radius: 50%;
     width: 100px;
     height: 100px;

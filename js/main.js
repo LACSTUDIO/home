@@ -45,16 +45,38 @@ document.addEventListener('DOMContentLoaded', function() {
     if (darkModeButton) {
         darkModeButton.addEventListener('click', toggleDarkMode);
     }
+
+    // 添加滚动事件监听器
+    window.addEventListener('scroll', handleScroll);
+
+    // 初始化时检查可见性
+    handleScroll();
 });
+
+function handleScroll() {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
+}
 
 function toggleDarkMode() {
     try {
+        console.log('toggleDarkMode called'); // 添加调试信息
         document.body.classList.toggle('dark-mode');
         darkModeButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        console.log('dark-mode class toggled:', document.body.classList.contains('dark-mode')); // 添加调试信息
     } catch (error) {
         console.error('切换暗黑模式时出错:', error);
     }
 }
+
+
 
 function toggleRedThemeAndShowPopup() {
     console.log('toggleRedThemeAndShowPopup called');
@@ -126,16 +148,6 @@ function openLink(url) {
     }
 }
 
-function closeWelcome() {
-    try {
-        if (!welcomeMessage) {
-            throw new Error('欢迎消息元素未找到');
-        }
-        welcomeMessage.style.display = 'none';
-    } catch (error) {
-        console.error('关闭欢迎消息时出错:', error);
-    }
-}
 
 function showModalYC() {
     try {
@@ -164,9 +176,9 @@ function closeModalYC() {
 function showProject(project) {
     projectCards.forEach(card => {
         if (card.getAttribute('data-project') === project) {
-            card.style.display = 'block';
+            card.classList.add('active');
         } else {
-            card.style.display = 'none';
+            card.classList.remove('active');
         }
     });
 
@@ -180,3 +192,4 @@ function showProject(project) {
         }
     });
 }
+

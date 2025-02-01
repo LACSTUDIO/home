@@ -1,4 +1,5 @@
 /* 深色模式样式 */
+/* 暗黑模式样式 */
 body.dark-mode {
     background: var(--bg-gradient-dark);
     color: var(--text-color-dark);
@@ -7,6 +8,64 @@ body.dark-mode {
 body.dark-mode .section {
     background-color: var(--card-bg-dark);
 }
+
+body.dark-mode .button-long {
+    background-color: var(--highlight-color);
+}
+
+body.dark-mode .btn-group .btn.active {
+    background: var(--highlight-color) !important;
+    color: var(--text-color-dark);
+}
+
+body.dark-mode footer {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode footer a {
+    color: var(--highlight-color);
+}
+
+body.dark-mode .icon img:hover {
+    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.5));
+}
+
+body.dark-mode .custom-navbar {
+    background: linear-gradient(to right, #003f5f, #001f3f);
+}
+
+body.dark-mode .navbar-brand {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .btn-dark-mode {
+    color: #ddd;
+}
+
+body.dark-mode .navbar-brand img {
+    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.5));
+}
+
+body.dark-mode .card-little-content {
+    background-color: #333;
+    border-color: var(--highlight-color);
+}
+
+body.dark-mode .project-card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--highlight-color);
+}
+
+body.dark-mode .project-card:hover {
+    transform: scale(1.01);
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode .card-img {
+    filter: brightness(0) invert(1);
+}
+
 
 .btn-dark-mode{
     position: fixed;
