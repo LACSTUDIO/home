@@ -1,0 +1,8 @@
+{
+  "latest_version": "1.0.1",
+  "release_date": "2025-01-25",
+  "download_links": {
+    "windows": "https://gitee.com/your-repo/releases/download/v2.0.1/software_v2.0.1.exe",
+  },
+  "announcement_url": "https://gitee.com/your-repo/blob/main/latest_announcement.md"
+}
