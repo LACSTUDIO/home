@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // 默认显示 project1 卡片
     showProject('project1');
     // 获取网站更新时间
-    fetch('https://api.github.com/repos/LACSTUDIO/lacshome')
+    fetch('https://api.github.com/repos/LACSTUDIO/lacshome/commits?per_page=1')
         .then(response => response.json())
         .then(data => {
-            const updateTime = new Date(data.updated_at);
+            const updateTime = new Date(data[0].commit.committer.date);
             const formattedTime = `${updateTime.getFullYear()}年${updateTime.getMonth() + 1}月${updateTime.getDate()}日 ${updateTime.getHours()}时${updateTime.getMinutes()}分`;
             update_time.textContent += ' ' + formattedTime;
         })
