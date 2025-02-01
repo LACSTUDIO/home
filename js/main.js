@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 默认显示 project1 卡片
     showProject('project1');
     // 获取网站更新时间
-    fetch('https://api.github.com/repos/LACSTUDIO/lacshome/commits?per_page=1')
+    fetch('https://api.github.com/repos/LACSTUDIO/lacshome')
         .then(response => response.json())
         .then(data => {
             const updateTime = new Date(data[0].commit.committer.date);

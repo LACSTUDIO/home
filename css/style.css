@@ -63,10 +63,6 @@ body {
     animation: fadeIn 1s ease-out;
     animation-fill-mode: forwards;
 }
-.section:hover {
-    transform: scale(1.01);
-    transition: transform 0.3s ease;
-}
 .section.visible {
     opacity: 1;
     transform: translateY(0);

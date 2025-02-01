@@ -4,5 +4,10 @@
       "src": "/jz",
       "dest": "/jz.html"
     }
+    ,
+    {
+      "src": "/hout",
+      "dest": "/hout.html"
+    }
   ]
 }

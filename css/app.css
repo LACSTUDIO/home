@@ -1,0 +1,431 @@
+/* 基础样式 */
+:root {
+    --primary-color: #00a0e9;
+    --secondary-color: #007bff;
+    --background-color: #f4f4f9;
+    --text-color: #333;
+}
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding-top: 70px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    animation: fadeIn 1s ease-in-out;
+}
+.screenshots {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+}
+
+.screenshot-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screenshot-slider {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.screenshot-slider img {
+    width: 100%;
+    flex-shrink: 0;
+    display: none;
+}
+
+.screenshot-slider img.active {
+    display: block;
+}
+
+.screenshot-thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 60px;
+    margin: 0 5px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail.active {
+    opacity: 1;
+}
+
+.video-background {
+    padding: 60px 20px;
+    text-align: center;
+    background: white;
+    color: black;
+}
+.video-container{
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+/* 动态模糊背景 */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 160, 233, 0.8), rgba(0, 123, 255, 0.8));
+    backdrop-filter: blur(10px);
+    z-index: -1;
+}
+
+header {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* 导航栏 */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin-right: 20px;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+.hero {
+    margin-top: 80px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* 功能部分 */
+.features {
+    padding: 60px 20px;
+    text-align: center;
+    background: white;
+}
+.screenshots {
+    padding: 60px 20px;
+    text-align: center;
+    background: #00a0e9 ;
+}
+
+.feature-cards-container {
+    overflow-x: hidden; /* 修改为隐藏水平滚动条 */
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: space-between; /* 卡片之间有间距 */
+    padding: 20px 0; /* 添加一些内边距 */
+}
+
+.card {
+    width: calc(33.333% - 20px); /* 每行三个卡片，减去间距 */
+    margin-bottom: 20px; /* 卡片之间的垂直间距 */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+    animation-name: fadeIn;
+    display: inline-block; /* 确保卡片在同一行 */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-cards-container:hover .feature-cards {
+    animation-play-state: paused; /* 鼠标悬浮时暂停滚动 */
+}
+
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: space-between; /* 卡片之间有间距 */
+    width: 300%; /* 三倍宽度以容纳滚动 */
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.feature-cards:nth-child(2n) {
+    animation: scroll-reverse 10s linear infinite;
+}
+
+@keyframes scroll-reverse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+/* 下载部分 */
+.download {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.download-button {
+    padding: 15px 30px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.windows {
+    background-color: #0078d7;
+}
+
+.download-button:hover {
+    transform: translateY(-5px);
+    opacity: 0.9;
+}
+
+/* 支持部分 */
+.support {
+    padding: 60px 20px;
+    text-align: center;
+    background: white;
+}
+
+.support-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.support-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* 页脚 */
+footer {
+    background: #333;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: 30%;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    margin-bottom: 20px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 10px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 响应式设计 */
+@media (min-width: 769px) {
+    .screenshot-slider {
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .screenshot-slider img {
+        width: 30%;
+        display: block;
+    }
+
+    .screenshot-thumbnails {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        transform: translateY(-100%);
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+}
+
+/* 浏览器兼容性 */
+@supports not ((backdrop-filter: blur(10px))) {
+    header::before, nav {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
