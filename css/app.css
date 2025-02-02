@@ -81,13 +81,24 @@ body {
     text-align: center;
     background: white;
     color: black;
+
 }
 .video-container{
-    width: 100%;
+    width: 90%;
     height: 200px;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+iframe{
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #00a0e9;
+    border-radius: 10px;
+    padding: 5px;
+}
 /* 动态模糊背景 */
 header::before {
     content: '';
@@ -204,7 +215,7 @@ nav {
     background: white;
 }
 .screenshots {
-    padding: 60px 20px;
+    padding: 60px 0;
     text-align: center;
     background: #00a0e9 ;
 }
@@ -420,17 +431,6 @@ footer {
 
     .footer-section {
         width: 100%;
-    }
-
-    .screenshot-slider img {
-        width: 100%;
-        display: block;
-    }
-
-    .screenshot-thumbnails {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
     }
 }
 
