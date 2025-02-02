@@ -94,7 +94,7 @@
             src="//player.bilibili.com/player.html?isOutside=true&aid=112895966841529&bvid=BV1TuiLezEYK&cid=500001636627370&p=1"
             frameborder="0" scrolling="no">
     </iframe>
-    <p id="video-error" style="display:none; color:red;">视频加载失败，请稍后再试。</p>
+    <button onclick="openLink('https://www.bilibili.com/video/BV1TuiLezEYK')" class="button">观看视频</button>
   </div>
 </section>
 
@@ -114,7 +114,7 @@
 <section id="support" class="support">
   <h2>支持与帮助</h2>
   <p>如果您遇到任何问题，请查看我们的支持文档或联系我们的团队。</p>
-  <a href="#" class="support-button">获取支持</a>
+  <a href="#" class="button">获取支持</a>
 </section>
 
 <!-- 关于 -->
@@ -199,14 +199,6 @@
     });
   });
 
-  // 视频加载错误处理
-  const videoIframe = document.getElementById('video-player');
-  const videoError = document.getElementById('video-error');
-
-  videoIframe.onerror = function() {
-    videoIframe.style.display = 'none'; // 隐藏iframe
-    videoError.style.display = 'block'; // 显示错误信息
-  };
 </script>
 </body>
 </html>
