@@ -5,10 +5,13 @@
       "dest": "/index.html"
     },
     {
+      "src": "/home",
+      "dest": "/index.html"
+    },
+    {
       "src": "/jz",
       "dest": "/jz.html"
-    }
-    ,
+    },
     {
       "src": "/hout",
       "dest": "/hout.html"
