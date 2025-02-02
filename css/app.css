@@ -421,6 +421,17 @@ footer {
     .footer-section {
         width: 100%;
     }
+
+    .screenshot-slider img {
+        width: 100%;
+        display: block;
+    }
+
+    .screenshot-thumbnails {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
 }
 
 /* 浏览器兼容性 */
