@@ -1,5 +1,5 @@
 const projects = ['project1', 'project2', 'project3', 'project4'];
-const projectCards = document.querySelectorAll('.project-card'); // 修正这里
+const projectCards = document.querySelectorAll('.project-card');
 const modal = document.getElementById('modal');
 const modalTitle = document.querySelector('.modal-title');
 const modalText = document.querySelector('.modal-text');
@@ -13,22 +13,29 @@ const update_time = document.getElementById('update_time');
 document.addEventListener('DOMContentLoaded', function() {
     // 默认显示 project1 卡片
     showProject('project1');
+
     // 获取网站更新时间
     fetch('https://api.github.com/repos/LACSTUDIO/home')
         .then(response => response.json())
         .then(data => {
-            const updateTime = new Date(data[0].commit.committer.date);
+            const updateTime = new Date(data.updated_at);
             const formattedTime = `${updateTime.getFullYear()}年${updateTime.getMonth() + 1}月${updateTime.getDate()}日 ${updateTime.getHours()}时${updateTime.getMinutes()}分`;
-            update_time.textContent += ' ' + formattedTime;
+            document.getElementById('update_time').textContent += ' ' + formattedTime;
         })
         .catch(error => console.error('Error:', error));
+
+
 
     // 添加项目按钮点击事件监听器
     const projectButtons = document.querySelectorAll('#project-buttons button');
     projectButtons.forEach(button => {
         button.addEventListener('click', function() {
             const project = this.getAttribute('data-project');
-            showProject(project);
+            if (projects.includes(project)) {
+                showProject(project);
+            } else {
+                console.error('无效的项目名称:', project);
+            }
         });
     });
 
@@ -36,8 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (modalLink) {
         modalLink.addEventListener('click', function(event) {
             const url = this.getAttribute('data-href');
-            openLink(url);
-            event.preventDefault(); // 防止默认行为
+            if (openLink(url)) {
+                event.preventDefault(); // 防止默认行为
+            }
         });
     }
 
@@ -57,11 +65,7 @@ function handleScroll() {
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-            section.classList.add('visible');
-        } else {
-            section.classList.remove('visible');
-        }
+        section.classList.toggle('visible', rect.top <= window.innerHeight && rect.bottom >= 0);
     });
 }
 
@@ -76,17 +80,9 @@ function toggleDarkMode() {
     }
 }
 
-
-
-function toggleRedThemeAndShowPopup() {
-    console.log('toggleRedThemeAndShowPopup called');
-    document.body.classList.toggle('red-theme');
-    console.log('red-theme toggled');
-}
-
 function showModal(icon, title, text, href = '#') {
     try {
-        if (!modal || !modalTitle || !modalText || !qrImage || !modalImage || !modalLink) {
+        if (!validateModalElements()) {
             throw new Error('模态框中的一个或多个元素未找到');
         }
 
@@ -94,21 +90,15 @@ function showModal(icon, title, text, href = '#') {
         modalTitle.textContent = title;
         modalText.textContent = text;
 
-        if (icon === 'none') {
-            qrImage.style.display = 'none';
-            modalImage.style.display = 'none';
-        } else {
-            qrImage.style.display = 'block';
+        toggleVisibility(qrImage, icon !== 'none');
+        toggleVisibility(modalImage, icon !== 'none');
+        if (icon !== 'none') {
             qrImage.src = `img/qr/${icon}.png`;
-
-            modalImage.style.display = 'block';
             modalImage.src = `img/icons/${icon}.svg`;
         }
 
-        if (href === 'none') {
-            modalLink.style.display = 'none';
-        } else {
-            modalLink.style.display = 'block';
+        toggleVisibility(modalLink, href !== 'none');
+        if (href !== 'none') {
             modalLink.setAttribute('data-href', href); // 使用 data-href 传递 URL
         }
     } catch (error) {
@@ -129,25 +119,20 @@ function closeModal() {
 
 function openLink(url) {
     try {
-        if (!url || typeof url !== 'string') {
+        if (!validateUrl(url)) {
             throw new Error('无效的URL');
-        }
-
-        // 增强 URL 校验，确保是有效的 HTTP/HTTPS 链接
-        const urlPattern = /^(https?:\/\/)/i;
-        if (!urlPattern.test(url)) {
-            throw new Error('无效的URL格式');
         }
 
         // 在新标签页中打开链接
         window.open(url, '_blank');
 
         console.log(`成功打开链接: ${url}`); // 添加调试信息
+        return true;
     } catch (error) {
         console.error('打开链接时出错:', error);
+        return false;
     }
 }
-
 
 function showModalYC() {
     try {
@@ -175,21 +160,29 @@ function closeModalYC() {
 
 function showProject(project) {
     projectCards.forEach(card => {
-        if (card.getAttribute('data-project') === project) {
-            card.classList.add('active');
-        } else {
-            card.classList.remove('active');
-        }
+        card.classList.toggle('active', card.getAttribute('data-project') === project);
     });
 
     // 更新按钮样式
     const projectButtons = document.querySelectorAll('#project-buttons button');
     projectButtons.forEach(button => {
-        if (button.getAttribute('data-project') === project) {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
-        }
+        button.classList.toggle('active', button.getAttribute('data-project') === project);
     });
 }
 
+// 辅助函数：验证模态框元素是否存在
+function validateModalElements() {
+    return modal && modalTitle && modalText && qrImage && modalImage && modalLink;
+}
+
+// 辅助函数：验证URL格式
+function validateUrl(url) {
+    return url && typeof url === 'string' && /^(https?:\/\/)/i.test(url);
+}
+
+// 辅助函数：切换元素的可见性
+function toggleVisibility(element, isVisible) {
+    if (element) {
+        element.style.display = isVisible ? 'block' : 'none';
+    }
+}
