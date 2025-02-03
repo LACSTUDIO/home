@@ -28,11 +28,16 @@ body {
     animation: fadeIn 1s ease-in-out;
 }
 .screenshots {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     overflow: hidden;
-    padding: 20px;
     text-align: center;
+    padding: 70px 0;
+    background: #00a0e9 ;
+    color: white;
 }
 
 .screenshot-container {
@@ -77,7 +82,7 @@ body {
 }
 
 .video-background {
-    padding: 60px 20px;
+    padding: 70px 20px;
     text-align: center;
     background: white;
     color: black;
@@ -93,7 +98,8 @@ iframe {
     align-self: center;
     width: 100%;
     height: 100%;
-    max-height: 200px;
+    max-height: 400px;
+    max-width: 700px;
     border: 2px solid #00a0e9;
     border-radius: 10px;
     padding: 5px;
@@ -209,28 +215,38 @@ nav {
 
 /* 功能部分 */
 .features {
-    padding: 60px 20px;
+    padding: 70px 20px;
     text-align: center;
     background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-gap: 20px;
+    animation: fadeIn 3s ease-in-out;
+    height: auto; /* 确保高度为自动 */
 }
-.screenshots {
-    padding: 60px 0;
-    text-align: center;
-    background: #00a0e9 ;
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .feature-cards-container {
-    overflow-x: hidden; /* 修改为隐藏水平滚动条 */
     display: flex;
-    flex-wrap: wrap; /* 允许换行 */
-    justify-content: space-between; /* 卡片之间有间距 */
-    padding: 20px 0; /* 添加一些内边距 */
-    width: calc(33.333% - 20px); /* 每行三个卡片，减去间距 */
-    animation: slideInUp 0.5s ease-in-out;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.feature-cards {
+    display: flex;
+    flex-wrap: nowrap; /* 不允许换行 */
+    justify-content: flex-start; /* 卡片之间有间距 */
+    width: 100%; /* 修改为100%宽度 */
 }
 
 .card {
-    width: 100%; /* 修改为100%，以适应小屏幕 */
+    width: 300px; /* 设置固定宽度 */
     margin-bottom: 20px;
     background: white;
     padding: 20px;
@@ -241,7 +257,7 @@ nav {
     animation-fill-mode: both;
     animation-play-state: paused;
     animation-name: fadeIn;
-    display: block; /* 修改为block，确保卡片在同一行 */
+    display: inline-block; /* 修改为inline-block，确保卡片在同一行 */
 }
 
 .card:hover {
@@ -249,35 +265,62 @@ nav {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.feature-cards-container:hover .feature-cards {
-    animation-play-state: paused; /* 鼠标悬浮时暂停滚动 */
+.card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #cccccc;
+}
+
+.feature-cards-container {
+    overflow-x: auto; /* 允许水平滚动 */
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px; /* 添加一些间距 */
+    padding: 20px 0; /* 添加一些内边距 */
+    width: 100%; /* 设置为100%宽度 */
+    animation: slideInUp 0.5s ease-in-out;
 }
 
 .feature-cards {
     display: flex;
-    flex-wrap: wrap; /* 允许换行 */
-    justify-content: space-between; /* 卡片之间有间距 */
-    width: 300%; /* 三倍宽度以容纳滚动 */
-    animation: scroll 10s linear infinite;
+    flex-wrap: nowrap; /* 不允许换行 */
+    justify-content: flex-start; /* 卡片之间有间距 */
+    width: 100%; /* 修改为100%宽度 */
 }
 
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+.card {
+    width: 300px; /* 保持固定宽度 */
+    margin: 10px 0;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+    animation-name: fadeIn;
+    display: inline-block; /* 修改为inline-block，确保卡片在同一行 */
 }
 
-.feature-cards:nth-child(2n) {
-    animation: scroll-reverse 10s linear infinite;
-}
-
-@keyframes scroll-reverse {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(0); }
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* 下载部分 */
 .download {
-    padding: 60px 20px;
+    padding: 70px 20px;
     text-align: center;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
@@ -333,7 +376,7 @@ nav {
 footer {
     background: #333;
     color: white;
-    padding: 40px 20px;
+    padding: 70px 20px;
     text-align: center;
 }
 
@@ -402,9 +445,13 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .feature-cards {
+        flex-direction: column;
+    }
     .nav-links {
         display: none;
-        flex-direction: column;
+        justify-content: flex-end;
+        flex-direction: row;  /* 修改这里 */
         width: 100%;
         position: absolute;
         top: 60px;
@@ -413,11 +460,17 @@ footer {
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease;
         transform: translateY(-100%);
+        font-size: 14px;
     }
 
     .nav-links.active {
         display: flex;
         transform: translateY(0);
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 0.5s ease-in-out;
+        z-index: 999;
+        width: 90%;
     }
 
     .menu-toggle {
@@ -425,14 +478,24 @@ footer {
     }
 
     .card {
-        width: 100%;
+        width: 300px; /* 保持固定宽度 */
         margin: 10px 0;
     }
 
     .footer-section {
         width: 100%;
     }
-
+    iframe {
+        align-self: center;
+        width: 100%;
+        height: 100%;
+        max-height: 200px;
+        max-width: 350px;
+        overflow: hidden;
+        border: 2px solid #00a0e9;
+        border-radius: 10px;
+        padding: 5px;
+    }
 }
 
 /* 浏览器兼容性 */
