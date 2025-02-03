@@ -46,9 +46,12 @@ body {
     background: var(--bg-gradient-light);
     color: var(--text-color-light);
     transition: background 0.3s ease, color 0.3s ease;
-    padding-top: 80px;
+    padding-top: 65px;
+    animation: fadeIn 1s ease-out;
 }
-
+.background:hover {
+    animation: gradientAnimation 10s ease-in-out infinite;
+}
 .section {
     margin: 20px auto;
     padding: 10px;
@@ -78,6 +81,7 @@ body {
 .card-little :hover {
     transform: scale(1.01);
     transition: transform 0.3s ease;
+    animation: gradientAnimation 2s ease-in-out infinite;
 }
 
 .card-little-content {
@@ -103,6 +107,9 @@ body {
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: 0;
     transform: translateY(20px);
+    flex: 1 1 calc(50% - 20px); /* 修改：使一行显示两个卡片 */
+    box-sizing: border-box; /* 添加：确保内边距和边框包含在宽度内 */
+    height: 100px; /* 修改：减少卡片的高度 */
 }
 
 .project-card.active {
@@ -144,6 +151,15 @@ footer a {
     .section {
         width: 95%;
         padding: 15px;
+    }
+
+    .card-deck {
+        flex-direction: column; /* 添加：在小屏幕下垂直排列卡片 */
+    }
+
+    .project-card {
+        flex: 1 1 100%; /* 添加：在小屏幕下使卡片宽度相同 */
+        width: 100%; /* 确保卡片宽度为100% */
     }
 }
 
@@ -235,8 +251,9 @@ a:hover {
 }
 
 .card-deck {
+    display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: space-between; /* 修改：使用 space-between 使卡片之间有间距 */
     align-items: center;
     margin: 10px 5px;
 }
@@ -274,4 +291,71 @@ a:hover {
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    5% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    10% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    15% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    20% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    25% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    30% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    35% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    40% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    45% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    50% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    55% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    60% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    65% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    70% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    75% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    80% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    85% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    90% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+    95% {
+        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
+    }
+    100% {
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    }
+
 }
