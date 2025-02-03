@@ -109,7 +109,7 @@ body {
     transform: translateY(20px);
     flex: 1 1 calc(50% - 20px); /* 修改：使一行显示两个卡片 */
     box-sizing: border-box; /* 添加：确保内边距和边框包含在宽度内 */
-    height: 150px; /* 修改：减少卡片的高度 */
+    height: 140px; /* 修改：减少卡片的高度 */
 }
 
 .project-card.active {
