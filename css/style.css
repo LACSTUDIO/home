@@ -47,7 +47,6 @@ body {
     color: var(--text-color-light);
     transition: background 0.3s ease, color 0.3s ease;
     padding-top: 65px;
-    animation: fadeIn 1s ease-out;
 }
 .background:hover {
     animation: gradientAnimation 10s ease-in-out infinite;
@@ -291,71 +290,4 @@ a:hover {
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    5% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    10% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    15% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    20% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    25% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    30% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    35% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    40% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    45% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    50% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    55% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    60% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    65% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    70% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    75% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    80% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    85% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    90% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-    95% {
-        background: linear-gradient(135deg, #e6f7ff, #f0f8ff);
-    }
-    100% {
-        background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    }
-
 }

@@ -55,7 +55,7 @@
 .modal {
     display: none; /* 默认隐藏 */
     position: relative;
-    z-index: 1001; /* 确保弹窗内容在最上层 */
+    z-index: 4567; /* 确保弹窗内容在最上层 */
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
     background-color: rgba(0, 0, 0, 0.7);

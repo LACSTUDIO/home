@@ -7,7 +7,6 @@ const qrImage = document.querySelector('.qr');
 const modalImage = document.querySelector('.modal-img');
 const modalLink = document.getElementById('modal-link');
 const darkModeButton = document.querySelector('.btn-dark-mode');
-const welcomeMessage = document.querySelector('.welcome-message');
 const update_time = document.getElementById('update_time');
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -23,8 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('update_time').textContent += ' ' + formattedTime;
         })
         .catch(error => console.error('Error:', error));
-
-
 
     // 添加项目按钮点击事件监听器
     const projectButtons = document.querySelectorAll('#project-buttons button');
@@ -69,14 +66,34 @@ function handleScroll() {
     });
 }
 
+
 function toggleDarkMode() {
     try {
         console.log('toggleDarkMode called'); // 添加调试信息
         document.body.classList.toggle('dark-mode');
-        darkModeButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         console.log('dark-mode class toggled:', document.body.classList.contains('dark-mode')); // 添加调试信息
+        
+        // 确认darkModeButton是否为null或undefined
+        if (!darkModeButton) {
+            console.error('darkModeButton is not defined or not found in the DOM');
+            return;
+        }
+        
+        darkModeButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        console.log('darkModeButton textContent updated to:', darkModeButton.textContent); // 添加调试信息
     } catch (error) {
-        console.error('切换暗黑模式时出错:', error);
+        console.error('切换模式时出错:', error);
+    }
+}
+
+
+function toggleMaoMode() {
+    try {
+        console.log('toggleMao called'); // 添加调试信息
+        document.body.classList.toggle('mao');
+        console.log('mao class toggled:', document.body.classList.contains('mao')); // 添加调试信息
+    } catch (error) {
+        console.error('切换模式时出错:', error);
     }
 }
 

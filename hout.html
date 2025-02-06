@@ -145,30 +145,63 @@
 <script src="js/app.js"></script>
 <script>
   // 获取软件最新版本号
-  fetch('https://api.xn--5brr03o.top/hout.json')
-    .then(response => response.json())
-    .then(data => {
-      const latestVersion = data.latest_version;
-      const releaseDate = data.release_date;
-      const downloadUrl = data.download_links.windows.url;
-      const appLatestVersion = document.getElementById('app-latest-version');
-      const appReleaseDate = document.getElementById('app-release-date');
-      const appNotice = document.getElementById('app-notice');
-      const downloadLink = document.getElementById('download-link');
-
-      appLatestVersion.textContent = `当前版本: ${latestVersion}`;
-      appReleaseDate.textContent = `发布日期: ${releaseDate}`;
-      if (data.notice.enabled) {
-        appNotice.textContent = `通知: ${data.notice.content}`;
-      } else {
-        appNotice.textContent = '没有新的通知';
-      }
-
-      // 更新下载链接的href属性
-      downloadLink.href = downloadUrl;
-      downloadLink.textContent = `下载 Windows 版本`;
+  // 获取软件最新版本号
+fetch('https://api.xn--5brr03o.top/hout.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
     })
-    .catch(error => console.error(error));
+    .then(data => {
+        const appLatestVersion = document.getElementById('app-latest-version');
+        const appReleaseDate = document.getElementById('app-release-date');
+        const appNotice = document.getElementById('app-notice');
+        const downloadLink = document.getElementById('download-link');
+
+        if (data.latest_version) {
+            appLatestVersion.textContent = `当前版本: ${data.latest_version}`;
+        } else {
+            console.warn('API返回的数据中缺少latest_version字段');
+            appLatestVersion.textContent = '当前版本: 未知';
+        }
+
+        if (data.release_date) {
+            appReleaseDate.textContent = `发布日期: ${data.release_date}`;
+        } else {
+            console.warn('API返回的数据中缺少release_date字段');
+            appReleaseDate.textContent = '发布日期: 未知';
+        }
+
+        if (data.notice && data.notice.enabled) {
+            appNotice.textContent = `通知: ${data.notice.content}`;
+        } else {
+            appNotice.textContent = '没有新的通知';
+        }
+
+        // 更新下载链接的href属性
+        const downloadUrl = data.download_links && data.download_links.windows && data.download_links.windows.url;
+        if (downloadUrl === 'none') {
+            downloadLink.href = '#';
+            downloadLink.textContent = '即将发布，敬请期待';
+        } else if (downloadUrl) {
+            downloadLink.href = downloadUrl;
+            downloadLink.textContent = `下载 Windows 版本`;
+        } else {
+            console.warn('API返回的数据中缺少download_links.windows.url字段');
+            downloadLink.href = '#';
+            downloadLink.textContent = '下载链接不可用';
+        }
+    })
+    .catch(error => {
+        console.error('获取软件信息时出错:', error);
+        document.getElementById('app-latest-version').textContent = '当前版本: 无法获取';
+        document.getElementById('app-release-date').textContent = '发布日期: 无法获取';
+        document.getElementById('app-notice').textContent = '通知: 无法获取';
+        document.getElementById('download-link').href = '#';
+        document.getElementById('download-link').textContent = '下载链接不可用';
+    });
+
 
   // 移动端菜单切换
   const mobileMenu = document.getElementById('mobile-menu');
