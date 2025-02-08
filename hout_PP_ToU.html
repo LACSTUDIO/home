@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>澎湃OS绕答题解锁工具箱（重构版）隐私政策与使用条款</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #00a0e9;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #00a0e9;
+            border-bottom: 2px solid #00a0e9;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        .important {
+            background-color: #fff3cd;
+            border: 1px solid #ffec99;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #00a0e9;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 20px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #003d82;
+        }
+
+        #privacyPolicy, #usageTerms {
+            display: none;
+        }
+
+        #privacyPolicy.active, #usageTerms.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a href="/hout" class="button">返回首页</a>
+    <a href="#" class="button" id="privacyButton">隐私条款</a>
+    <a href="#" class="button" id="usageButton">使用条款</a>
+
+    <div id="privacyPolicy" class="active">
+        <h1>澎湃OS绕答题解锁工具箱（重构版）隐私政策</h1>
+        <p class="important">（2025年2月15日生效）</p>
+
+        <h2>【重要提示】</h2>
+        <p>本工具严格遵守数据最小化原则，所有数据处理均在设备本地完成，不会上传至任何云端服务器。请仔细阅读以下条款，使用本工具即视为同意本政策。</p>
+
+        <h2>一、数据收集与使用</h2>
+        <h3>1.1 我们收集哪些信息</h3>
+        <p><strong>设备基础信息：</strong><br>
+        设备型号、操作系统版本、屏幕分辨率（用于功能适配）<br>
+        硬件标识符（如IMEI/SN，*仅用于验证设备唯一性，不关联用户身份）</p>
+
+        <p><strong>操作行为数据：</strong><br>
+        功能使用频率（统计模块调用次数）<br>
+        异常日志（仅记录错误类型及时间戳）</p>
+
+        <p><strong>用户主动提交：</strong><br>
+        反馈建议时提供的邮箱/联系方式（需二次确认授权）</p>
+
+        <h3>1.2 数据用途说明</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>数据类型</th>
+                    <th>使用场景</th>
+                    <th>处理方式</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>设备标识符</td>
+                    <td>功能可用性校验</td>
+                    <td>SHA-256哈希处理</td>
+                </tr>
+                <tr>
+                    <td>错误日志</td>
+                    <td>稳定性优化</td>
+                    <td>本地存储</td>
+                </tr>
+                <tr>
+                    <td>设备基础信息</td>
+                    <td>功能适配</td>
+                    <td>本地存储</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>二、数据安全承诺</h2>
+        <h3>2.1 防护措施</h3>
+        <p>每日自动清除超过30天的日志文件</p>
+
+        <h3>2.2 特别说明</h3>
+        <p>因用户操作失误或系统故障导致的数据泄露风险，本工具不承担责任。<br>
+        因Root/越狱等非正常系统状态导致的数据泄露风险，本工具不承担责任。<br>
+        因用户个人信息泄露导致的数据泄露风险，本工具不承担责任。</p>
+
+        <h3>2.3 法律合规性</h3>
+        <p>本工具不参与任何第三方数据收集行为，所有数据处理皆为开发者自行完成，开发者保证不会违反任何法律、法规、规章、条例等。</p>
+
+        <h2>三、用户权利保障</h2>
+        <h3>3.1 数据控制权</h3>
+        <p><strong>实时查看：</strong> 通过"关于 >设置 > 数据看板"查阅采集内容<br>
+        <strong>一键清除：</strong> 提供"立即擦除"按钮彻底删除所有本地数据<br>
+        <strong>选择性禁用：</strong> 可单独关闭日志收集功能</p>
+
+        <h2>四、第三方关联</h2>
+        <p>本工具不包含任何SDK/广告模块，不与第三方共享数据。</p>
+
+        <h2>五、未成年人保护</h2>
+        <p>严格遵循COPPA法规，禁止14周岁以下用户使用。</p>
+
+        <h2>六、政策更新机制</h2>
+        <p><strong>非重大变更：</strong> 通过应用内公告提前3日公示。<br>
+        <strong>重大变更（涉及数据范围扩展）：</strong> 强制弹窗确认。<br>
+        <strong>历史版本存档：</strong> 访问官网policy目录查看迭代记录。</p>
+
+        <h2>七、联系我们</h2>
+        <p>邮箱：2935278133@qq.com（48小时内响应）。</p>
+
+        <p>&copy; 2025 领创工作室 . All rights reserved.<br>
+        领创工作室保留对本政策的最终解释权。<br>
+        本政策受《中华人民共和国网络安全法》约束，最终解释权归开发者所有。</p>
+    </div>
+
+    <div id="usageTerms">
+        <h1>澎湃OS绕答题解锁工具箱（重构版）使用条款</h1>
+        <p class="important">（2025年2月15日生效）</p>
+
+        <h2>【重要提示】</h2>
+        <p>请仔细阅读以下条款，使用本工具即视为同意本条款。</p>
+
+        <h2>1.1 效力范围</h2>
+        <p>本条款适用于工具所有功能模块（含后续更新），使用即视为已阅读并同意受其约束。若您未满14周岁，需法定监护人全程监督使用。</p>
+
+        <h2>1.2 即时生效机制</h2>
+        <p>首次启动时的《隐私政策》和《使用条款》需手动勾选同意</p>
+        <p>后续更新将自动更新《隐私政策》和《使用条款》，并提示用户进行确认</p>
+
+        <h2>2.1 授权范围</h2>
+        <p>您获得非独占、不可转让的有限使用权，且限于以下场景：</p>
+        <ul>
+            <li>✅ 个人设备系统维护</li>
+            <li>✅ 个人设备系统优化</li>
+            <li>✅ 非商业帮助他人解决问题</li>
+        </ul>
+
+        <h2>2.2 明令禁止行为</h2>
+        <p>以下行为将被视为违法，违反者将被立即终止使用权：</p>
+        <ul>
+            <li>❌ 通过API接口实施自动化攻击（每秒请求≥5次）</li>
+            <li>❌ 在未Root设备上强行写入引导分区</li>
+            <li>❌ 删除或修改本工具任何源代码</li>
+            <li>❌ 利用本工具进行任何盈利活动</li>
+            <li>❌ 利用本工具进行任何违法活动</li>
+            <li>❌ 利用本工具进行任何犯罪活动</li>
+            <li>❌ 利用本工具进行任何其他违法活动</li>
+
+        </ul>
+
+        <h2>2.3 免责声明</h2>
+        <p>操作前请务必阅读并理解《隐私政策》和《使用条款》，并充分理解工具的功能和使用方法，确保使用安全。</p>
+        <p>您理解并同意，您使用本工具所产生的任何数据和信息，均由您自行承担风险，本工具不对其真实性、合法性、准确性、完整性、有效性、可靠性、可用性、真实性、等作任何承诺和保证。</p>
+        <p>您理解并同意，本工具不对因使用本工具而导致的任何损失或损害承担责任，包括但不限于因数据丢失或泄露、设备损坏、设备故障、网络故障、第三方服务瑕疵、第三方服务中断、第三方服务滥用、第三方服务纠纷、第三方服务侵权等。</p>
+        <p>您理解并同意，本工具不对因您违反本条款而引起的任何法律责任或行政责任承担责任。</p>
+
+        <h2>3.1 开发者免责情形</h2>
+        <p>包括但不限于：</p>
+        <ul>
+            <li>因使用非官方渠道固件导致的基带损坏</li>
+            <li>未按指引操作引发的设备ROM损坏</li>
+            <li>未按指引操作引发的ROM损坏</li>
+            <li>未按指引操作引发的系统崩溃</li>
+            <li>未按指引操作引发的Bootloop故障</li>
+            <li>设备ROM被第三方篡改导致的ROM损坏</li>
+            <li>设备制造商因设备过热、过电、过热导致的设备损坏</li>
+            <li>设备制造商因越权操作撤销保修资格</li>
+            <li>设备制造商因设备ROM被第三方篡改导致的ROM损坏</li>
+        </ul>
+
+        <h2>3.2 用户责任</h2>
+        <p>您需保证：</p>
+        <ul>
+            <li>▸ 持有设备的完全所有权或合法处置权</li>
+        </ul>
+
+        <h2>4.1 代码保护</h2>
+        <p>任何下列行为均构成侵权：</p>
+        <ul>
+            <li>使用IDA Pro等工具反编译超过20%的代码逻辑</li>
+            <li>非法获取、篡改、删除、修改本工具源代码</li>
+            <li>删除、修改本工具任何源代码</li>
+        </ul>
+
+        <h2>4.2 衍生作品规制</h2>
+        <p>不允许任何人利用本工具进行任何衍生作品</p>
+
+        <h2>5.1 变更通知</h2>
+        <p>常规调整：通过官网公告后立即生效</p>
+        <p>重大变更（如增加数据采集项）：弹窗确认</p>
+
+        <p>© 2025 领创工作室 . All rights reserved.</br>
+           领创工作室保留对本条款的最终解释权。</p>
+        <p>本条款受《中华人民共和国网络安全法》约束，最终解释权归开发者所有。<</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const privacyButton = document.getElementById('privacyButton');
+            const usageButton = document.getElementById('usageButton');
+            const privacyPolicy = document.getElementById('privacyPolicy');
+            const usageTerms = document.getElementById('usageTerms');
+
+            privacyButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllSections();
+                privacyPolicy.classList.add('active');
+            });
+
+            usageButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllSections();
+                usageTerms.classList.add('active');
+            });
+
+            function hideAllSections() {
+                privacyPolicy.classList.remove('active');
+                usageTerms.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -15,6 +15,10 @@
     {
       "src": "/hout",
       "dest": "/hout.html"
+    },
+    {
+      "src": "/hout_PP_ToU",
+      "dest": "/hout_PP_ToU.html"
     }
   ]
 }
