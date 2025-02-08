@@ -276,6 +276,24 @@
                 privacyPolicy.classList.remove('active');
                 usageTerms.classList.remove('active');
             }
+
+            // 新增代码：根据URL锚点显示相应的部分
+            function showSectionFromHash() {
+                const hash = window.location.hash;
+                if (hash === '#privacyPolicy') {
+                    hideAllSections();
+                    privacyPolicy.classList.add('active');
+                } else if (hash === '#usageTerms') {
+                    hideAllSections();
+                    usageTerms.classList.add('active');
+                }
+            }
+
+            // 页面加载时检查URL锚点
+            showSectionFromHash();
+
+            // 监听URL变化
+            window.addEventListener('hashchange', showSectionFromHash);
         });
     </script>
 </body>
