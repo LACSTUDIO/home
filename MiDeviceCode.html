@@ -72,10 +72,32 @@
             margin-top: 20px;
             color: red; /* 提示文字颜色 */
         }
+        button {
+            margin: auto 10px;
+            padding: 10px 20px;
+            background-color: #00a0e9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .card-container {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             margin-top: 5px;
+            background-color: #f3f3f3;
+            border-radius: 8px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="card">
+        <div class="card-container">
+            <button onclick="fetchDevices()">刷新页面</button>
+            <button onclick="window.location.href='https://www.xn--5brr03o.top'">返回官网</button>
+        </div>
         <h1>小米设备代号列表</h1>
         <h4>支持模糊搜索，点击设备代号可复制到剪贴板</h4>
         <input type="text" id="searchInput" onkeyup="searchDevices()" placeholder="通过设备名称或者代号搜索...">
