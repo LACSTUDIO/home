@@ -19,6 +19,10 @@
     {
       "src": "/hout_PP_ToU",
       "dest": "/hout_PP_ToU.html"
+    },
+    {
+      "src": "/MiDeviceCode",
+      "dest": "/MiDeviceCode.html"
     }
   ]
 }
