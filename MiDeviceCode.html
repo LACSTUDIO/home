@@ -122,7 +122,7 @@
         let devices = [];
 
         function fetchDevices() {
-            fetch('https://api.xn--5brr03o.top/MiDeviceCode.json')
+            fetch('https://gitee.com/lacsgf/api/raw/main/MiDeviceCode.json')
                 .then(response => response.json())
                 .then(data => {
                     devices = data.list;
