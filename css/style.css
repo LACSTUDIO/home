@@ -58,8 +58,7 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     background-color: var(--card-bg-light);
     transition: background-color 0.3s ease;
-    width: 90%;
-    max-width: 800px;
+    width: 80%;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeIn 1s ease-out;

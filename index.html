@@ -22,8 +22,14 @@
         }
         .footer-content {
             background-color: #ffffff;
-            margin: 10px;
+            margin: auto; /* 使上下左右的margin自动调整，从而在父容器中居中 */
+            width: 90%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
             border-radius: 10px;
+            height: fit-content; /* 确保高度根据内容调整 */
         }
     </style>
 </head>
@@ -180,7 +186,7 @@
     <div class="footer-content">
         <p style="font-size: 12px;">Copyright © 2020-2025 领创工作室, All rights reserved.</p>
         <p id="update_time" style="font-size: 12px;">最后更新时间：</p>
-        <div class="tongji" style="font-size: 12px;">总访问量 <span id="pvStatic">未知</span> 次</div>
+        <div class="tongji" style="font-size: 12px;">总访问量 <span id="pvStatic">未知</span>次</div>
     </div>
 </footer>
 <!--弹窗-->
