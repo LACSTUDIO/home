@@ -76,7 +76,13 @@ body {
     font-weight: bold;
     transition: background-color 0.3s ease;
     margin: 5px 10px;
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .card-little :hover {
     transform: scale(1.01);
     transition: transform 0.3s ease;
@@ -93,6 +99,11 @@ body {
     min-width: 90px;
     max-width: 400px;
     transition: background-color 0.3s ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .project-card {
@@ -146,7 +157,7 @@ footer a {
     text-decoration: none;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .section {
         width: 95%;
         padding: 15px;
@@ -159,6 +170,36 @@ footer a {
     .project-card {
         flex: 1 1 100%; /* 添加：在小屏幕下使卡片宽度相同 */
         width: 100%; /* 确保卡片宽度为100% */
+    }
+    .card-little {
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+        margin: 5px 5px;
+        flex: 1 1 calc(33.333% - 20px);
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-little-content {
+        background-color: #e0e0e0;
+        font-size: 14px;
+        margin: 10px 0;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #00a0e9;
+        min-width: 80px;
+        max-width: 400px;
+        min-height: 160px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-img {
+        width: 60px;
+        height: 60px;
+        margin: 0;
     }
 }
 

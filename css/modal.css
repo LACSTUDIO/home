@@ -142,3 +142,8 @@
     border-radius: 8px;
     border: 1px solid #ccc;
 }
+@media (max-width: 768px) {
+    .qr {
+        margin: 0 0;
+    }
+}
