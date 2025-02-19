@@ -205,30 +205,3 @@ function toggleVisibility(element, isVisible) {
 }
 // umami统计代码
 
-async function fetchStatistics() {
-    try {
-        const response = await fetch('/api/stats') // 调用自己的API路由
-        if (!response.ok) throw Error('数据获取失败')
-        return await response.json()
-    } catch (error) {
-        console.error('统计获取失败:', error)
-        return null
-    }
-}
-
-// Update statistics on the page
-async function updateStatistics() {
-    const data = await fetchStatistics();
-    if (data) {
-        document.getElementById('pageViews').textContent = data.pageViews;
-        document.getElementById('uniqueVisitors').textContent = data.uniqueVisitors;
-        document.getElementById('bounceRate').textContent = `${data.bounceRate}%`;
-    } else {
-        console.error('Failed to update statistics');
-    }
-}
-
-// Initial data fetch
-updateStatistics();
-
-setInterval(updateStatistics, 60000); // 每分钟更新一次
