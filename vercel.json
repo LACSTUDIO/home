@@ -23,10 +23,6 @@
     {
       "src": "/MiDeviceCode",
       "dest": "/MiDeviceCode.html"
-    },
-    {
-      "src": "/api/.*",
-      "dest": "/api/stats.js"
     }
   ]
 }

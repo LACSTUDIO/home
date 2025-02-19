@@ -204,4 +204,25 @@ function toggleVisibility(element, isVisible) {
     }
 }
 // umami统计代码
+document.addEventListener('DOMContentLoaded', () => {
+    umiTongji();
+});
+
+function umiTongji() {
+    const umiId = 'a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45'; // 获取到的 websiteId
+
+    fetch(`https://umami.xn--5brr03o.top/api/umami?websiteId=${umiId}`, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default',
+    })
+        .then(res => res.json())
+        .then(resdata => {
+            document.querySelector('#pvStatic').innerHTML = resdata.pageviews.value;
+            document.querySelector('#uvStatic').innerHTML = resdata.visitors.value; // 修改这里
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
 
