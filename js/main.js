@@ -197,7 +197,7 @@ function validateUrl(url) {
     return url && typeof url === 'string' && /^(https?:\/\/)/i.test(url);
 }
 
-// 辅助函数：切换元素的可见性
+// 辅助函数：切换元素的可
 function toggleVisibility(element, isVisible) {
     if (element) {
         element.style.display = isVisible ? 'block' : 'none';
