@@ -110,7 +110,7 @@ function showModal(icon, title, text, href = '#') {
         toggleVisibility(qrImage, icon !== 'none');
         toggleVisibility(modalImage, icon !== 'none');
         if (icon !== 'none') {
-            qrImage.src = `img/qr/${icon}.png`;
+            qrImage.src = `img/qr/${icon}.webp`;
             modalImage.src = `img/icons/${icon}.svg`;
         }
 

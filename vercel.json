@@ -10,19 +10,19 @@
     },
     {
       "src": "/jz",
-      "dest": "/jz.html"
+      "dest": "/pages/jz.html"
     },
     {
       "src": "/hout",
-      "dest": "/hout.html"
+      "dest": "/pages/hout.html"
     },
     {
       "src": "/hout_PP_ToU",
-      "dest": "/hout_PP_ToU.html"
+      "dest": "/pages/hout_PP_ToU.html"
     },
     {
       "src": "/MiDeviceCode",
-      "dest": "/MiDeviceCode.html"
+      "dest": "/pages/MiDeviceCode.html"
     }
   ]
 }
