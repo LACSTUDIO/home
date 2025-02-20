@@ -157,6 +157,9 @@ footer a {
 }
 
 @media (max-width: 768px) {
+    .custom-navbar .navbar-brand {
+        font-size: 20px; /* 在较小的屏幕上减小字体大小 */
+    }
     .section {
         width: 95%;
         padding: 15px;
@@ -262,10 +265,7 @@ footer {
 .custom-navbar .navbar-brand {
     font-size: 24px;
     font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    letter-spacing: 1px;
-    text-align: center;
+    color: #f2f2f2; /* 更改为深色以支持浅色背景 */
     padding: 10px;
 }
 
