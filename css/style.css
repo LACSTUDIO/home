@@ -248,7 +248,17 @@ a:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     max-height: 80px;
 }
-
+footer {
+    background: linear-gradient(to right, #00a0e9, white);
+    color: black;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    max-height: 100px;
+    padding: 10px;
+}
+.tongji {
+    display: flex;
+    justify-content: center;
+}
 .custom-navbar .navbar-brand {
     font-size: 24px;
     font-weight: bold;
