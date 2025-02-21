@@ -1,171 +1,43 @@
-/* 深色模式样式 */
-body.dark-mode {
-    background: var(--bg-gradient-dark);
-    color: var(--text-color-dark);
-}
 
-body.dark-mode, body.white-mode .section {
-    background-color: var(--card-bg-dark);
-}
-
-body.dark-mode, body.white-mode .button-long {
-    background-color: var(--highlight-color);
-}
-
-body.dark-mode, body.white-mode .btn-group .btn.active {
-    background: var(--highlight-color) !important;
-    color: var(--text-color-dark);
-}
-
-body.dark-mode, body.white-mode footer {
-    color: var(--text-color-dark);
-}
-
-body.dark-mode footer a, body.white-mode footer a {
-    color: var(--highlight-color);
-}
-
-body.dark-mode .icon img:hover, body.white-mode .icon img:hover {
-    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.5));
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-}
-
-body.dark-mode .custom-navbar {
-    background: linear-gradient(to right, #003f5f, #001f3f);
-}
-
-body.dark-mode .navbar-brand {
+/* 通用样式修正 */
+.btn-dark-mode, .MAO-btn {
+    position: fixed;
+    top: 10px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    background: var(--secondary-color);
     color: white;
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-}
-
-body.dark-mode, body.white-mode .btn-dark-mode {
-    color: #ddd;
-}
-
-body.dark-mode .navbar-brand img, body.white-mode .navbar-brand img {
-    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.5));
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-}
-
-body.dark-mode .card-little-content {
-    background-color: #333;
-    border-color: var(--highlight-color);
-}
-
-body.dark-mode .card-img {
-    filter: brightness(0) invert(1);
-}
-
-/* 白色模式样式 */
-body.white-mode {
-    background: var(--bg-gradient-light);
-    color: var(--text-color-light);
-}
-
-body.white-mode .custom-navbar {
-    background: linear-gradient(to right, #00a0e9, white);
-}
-
-body.white-mode .navbar-brand {
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-body.white-mode .card-little-content {
-    background-color: #e0e0e0;
-    border-color: var(--primary-color);
-}
-
-body.dark-mode .project-card, body.white-mode .project-card {
-    background-color: var(--card-bg-dark);
-    border-color: var(--highlight-color);
-}
-
-body.dark-mode .project-card:hover, body.white-mode .project-card:hover {
-    transform: scale(1.01);
-    transition: transform 0.3s ease;
-}
-
-body.white-mode .card-img {
-    filter: brightness(1) invert(0);
 }
 
 .btn-dark-mode {
-    position: fixed;
-    top: 10px;
     right: 20px;
-    z-index: 1000;
-    background: var(--secondary-color);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .MAO-btn {
-    position: fixed;
-    top: 10px;
     right: 80px;
-    z-index: 1000;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    background: var(--secondary-color); /* 默认情况下使用主色 */
 }
 
-.btn-dark-mode:hover {
-    background: #0080c6;
-    transform: scale(1.1);
+/* 图标悬停效果 */
+.icon img:hover {
+    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.5));
 }
 
+body.white-mode .icon img:hover {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* MAO-btn 悬停效果 */
 .MAO-btn:hover {
     background: red;
-    transform: scale(1.1);
 }
-
-.red-theme {
-    background-color: red !important;
-}
-
-.red-theme, .red-theme .navbar {
-    background-color: red !important;
-}
-
-.red-theme .navbar-brand, .red-theme .MAO-btn {
-    color: white !important;
-}
-
-.red-theme .MAO-btn {
-    background-color: red !important;
-    border: 2px solid red;
-}
-
-.red-theme .welcome-message {
-    background-color: red;
-    color: white;
-}
-
-.red-theme .welcome-message button, .red-theme button:not(.MAO-btn) {
-    background-color: white;
-    color: red;
-    border: 2px solid red;
-}
-
-.red-theme .Mao-message {
-    background-color: rgba(255, 0, 0, 0.95);
-    color: white;
-    display: block;
+.btn-dark-mode:hover {
+    background: var(--primary-color);
 }

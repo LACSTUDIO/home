@@ -10,7 +10,7 @@
 .content {
     max-height: 80vh; /* 最大高度为视口高度的80% */
     padding: 15px; /* 内边距 */
-    background: var(--card-bg-light);  /* 背景颜色 */
+    background: var(--card-bg);  /* 背景颜色 */
     border-radius: 16px; /* 圆角 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影 */
     width: 90%; /* 弹窗宽度 */
@@ -19,7 +19,7 @@
     box-sizing: border-box; /* 包含内边距和边框在内的宽度 */
 }
 .content.dark-mode {
-    background: var(--card-bg-dark);
+    background: var(--card-bg);
 }
 .modal-main {
     margin: 10px auto;

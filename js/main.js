@@ -7,9 +7,14 @@ const qrImage = document.querySelector('.qr');
 const modalImage = document.querySelector('.modal-img');
 const modalLink = document.getElementById('modal-link');
 const darkModeButton = document.querySelector('.btn-dark-mode');
+const maoBtn = document.getElementById('mao-btn');
 const update_time = document.getElementById('update_time');
+const umiId = 'a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45'; // 获取到的 websiteId
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 初始化主题
+    initTheme();
+
     // 默认显示 project1 卡片
     showProject('project1');
 
@@ -19,13 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             const updateTime = new Date(data.updated_at);
             const formattedTime = `${updateTime.getFullYear()}年${updateTime.getMonth() + 1}月${updateTime.getDate()}日 ${updateTime.getHours()}时${updateTime.getMinutes()}分`;
-            document.getElementById('update_time').textContent += ' ' + formattedTime;
+            update_time.textContent += ' ' + formattedTime;
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error('获取网站更新时间出错:', error));
 
     // 添加项目按钮点击事件监听器
-    const projectButtons = document.querySelectorAll('#project-buttons button');
-    projectButtons.forEach(button => {
+    document.querySelectorAll('#project-buttons button').forEach(button => {
         button.addEventListener('click', function() {
             const project = this.getAttribute('data-project');
             if (projects.includes(project)) {
@@ -51,49 +55,56 @@ document.addEventListener('DOMContentLoaded', function() {
         darkModeButton.addEventListener('click', toggleDarkMode);
     }
 
+    // 为 mao-btn 添加点击事件监听器
+    if (maoBtn) {
+        maoBtn.addEventListener('click', toggleMaoTheme);
+    }
+
     // 添加滚动事件监听器
     window.addEventListener('scroll', handleScroll);
 
     // 初始化时检查可见性
     handleScroll();
+
+    // 初始化 umami 统计
+    umiTongji().catch(error => console.error('初始化 umiTongji 出错:', error));
 });
 
 function handleScroll() {
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        section.classList.toggle('visible', rect.top <= window.innerHeight && rect.bottom >= 0);
+        const isVisible = section.getBoundingClientRect().top <= window.innerHeight && section.getBoundingClientRect().bottom >= 0;
+        section.classList.toggle('visible', isVisible);
     });
 }
 
-
+// 切换主题函数
 function toggleDarkMode() {
-    try {
-        console.log('toggleDarkMode called'); // 添加调试信息
-        document.body.classList.toggle('dark-mode');
-        console.log('dark-mode class toggled:', document.body.classList.contains('dark-mode')); // 添加调试信息
-        
-        // 确认darkModeButton是否为null或undefined
-        if (!darkModeButton) {
-            console.error('darkModeButton is not defined or not found in the DOM');
-            return;
-        }
-        
-        darkModeButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        console.log('darkModeButton textContent updated to:', darkModeButton.textContent); // 添加调试信息
-    } catch (error) {
-        console.error('切换模式时出错:', error);
-    }
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    darkModeButton.textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
 }
 
+// 初始化主题
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    darkModeButton.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+}
 
-function toggleMaoMode() {
-    try {
-        console.log('toggleMao called'); // 添加调试信息
-        document.body.classList.toggle('mao');
-        console.log('mao class toggled:', document.body.classList.contains('mao')); // 添加调试信息
-    } catch (error) {
-        console.error('切换模式时出错:', error);
+function toggleMaoTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+
+    if (currentTheme === 'red') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+    } else {
+        html.setAttribute('data-theme', 'red');
+        localStorage.setItem('theme', 'red');
     }
 }
 
@@ -107,9 +118,10 @@ function showModal(icon, title, text, href = '#') {
         modalTitle.textContent = title;
         modalText.textContent = text;
 
-        toggleVisibility(qrImage, icon !== 'none');
-        toggleVisibility(modalImage, icon !== 'none');
-        if (icon !== 'none') {
+        const hasIcon = icon !== 'none';
+        toggleVisibility(qrImage, hasIcon);
+        toggleVisibility(modalImage, hasIcon);
+        if (hasIcon) {
             qrImage.src = `img/qr/${icon}.webp`;
             modalImage.src = `img/icons/${icon}.svg`;
         }
@@ -181,8 +193,7 @@ function showProject(project) {
     });
 
     // 更新按钮样式
-    const projectButtons = document.querySelectorAll('#project-buttons button');
-    projectButtons.forEach(button => {
+    document.querySelectorAll('#project-buttons button').forEach(button => {
         button.classList.toggle('active', button.getAttribute('data-project') === project);
     });
 }
@@ -197,24 +208,14 @@ function validateUrl(url) {
     return url && typeof url === 'string' && /^(https?:\/\/)/i.test(url);
 }
 
-// 辅助函数：切换元素的可
+// 辅助函数：切换元素的显示
 function toggleVisibility(element, isVisible) {
     if (element) {
         element.style.display = isVisible ? 'block' : 'none';
     }
 }
-// umami统计代码
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        await umiTongji();
-    } catch (error) {
-        console.error('Error initializing umiTongji:', error);
-    }
-});
 
 async function umiTongji() {
-    const umiId = 'a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45'; // 获取到的 websiteId
-
     const response = await fetch(`https://umami.xn--5brr03o.top/api/umami?websiteId=${umiId}`, {
         method: 'GET',
         mode: 'cors',
@@ -226,6 +227,5 @@ async function umiTongji() {
     }
 
     const resdata = await response.json();
-    document.querySelector('#pvStatic').innerHTML = resdata.pageviews.value;
+    document.querySelector('#pvStatic').textContent = resdata.pageviews.value;
 }
-

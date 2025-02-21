@@ -1,21 +1,48 @@
 :root {
+    --title-color: linear-gradient(to right, #00a0e9, white);
     --primary-color: #00a0e9;
     --secondary-color: #e6f7ff;
-    --bg-gradient-light: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-    --bg-gradient-dark: linear-gradient(135deg, #001f3f, #003f5f);
-    --text-color-light: #343a40;
-    --text-color-dark: #e9ecef;
-    --card-bg-light: #ffffff;
-    --card-bg-dark: #003f5f;
+    --bg-gradient: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    --text-color: #343a40;
+    --card-bg: #ffffff;
     --highlight-color: #cceeff;
+    --card-little: #f2f2f2;
+}
+[data-theme="dark"] {
+    --title-color: linear-gradient(to right, #00a0e9, #343a40);
+    --primary-color: #0056b3;
+    --secondary-color: linear-gradient(to right, #00a0e9, #343a40);
+    --bg-gradient: linear-gradient(135deg, #cccccc, #003f5f);
+    --text-color: #f2f2f2;
+    --card-bg: linear-gradient(to bottom, #333333, #444444); /* 更浅的渐变色 */
+    --highlight-color: #00a0e9;
+    --bg-color: #1a1a1a;
+    --card-little: #949494;
+}
+[data-theme="red"] {
+    --primary-color: #e74c3c; /* 更柔和的红色 */
+    --secondary-color: #ec7063; /* 深红色的过渡色 */
+    --bg-gradient: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    --text-color: #000000; /* 保持白色文本颜色 */
+    --card-bg: #ffebe6; /* 卡片背景使用浅红色 */
+    --highlight-color: #c0392b; /* 强调颜色使用深红色 */
+    --card-little: #f2f2f2;
 }
 
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+
+    color: var(--text-color);
+}
 h2 {
     font-size: 18px;
     font-weight: bold;
     margin: 5px 0;
     text-align: center;
-    background-color: #f2f2f2;
+    background-color: var(--highlight-color);
     padding: 5px;
     border-radius: 18px;
 }
@@ -43,32 +70,39 @@ h2 {
 
 body {
     font-family: 'Arial', sans-serif;
-    background: var(--bg-gradient-light);
-    color: var(--text-color-light);
+    background: var(--bg-gradient);
+    color: var(--text-color);
     transition: background 0.3s ease, color 0.3s ease;
     padding-top: 65px;
 }
 .background:hover {
     animation: gradientAnimation 10s ease-in-out infinite;
 }
+
 .section {
     margin: 20px auto;
     padding: 10px;
-    border-radius: 18px;
+    border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    background-color: var(--card-bg-light);
+    background-color: var(--card-bg);
     transition: background-color 0.3s ease;
-    width: 80%;
+    width: 90%;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeIn 1s ease-out;
     animation-fill-mode: forwards;
+    /* 确保动画只播放一次，除非你希望它重复播放 */
+    animation-iteration-count: 1;
 }
+
 .section.visible {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 1s ease, transform 1s ease;
+    /* 如果元素已经添加了visible类，可能需要禁用动画 */
+    animation: none;
 }
+
 
 .card-little {
     font-size: 24px;
@@ -89,7 +123,7 @@ body {
 }
 
 .card-little-content {
-    background-color: #e0e0e0;
+    background-color: var(--card-little);
     font-size: 18px;
     margin: 10px 0;
     padding: 5px;
@@ -107,7 +141,7 @@ body {
 
 .project-card {
     display: none;
-    background-color: var(--card-bg-light);
+    background-color: var(--card-bg);
     border-radius: 8px;
     border: 1px solid #00a0e9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -144,7 +178,7 @@ body {
 }
 
 footer {
-    margin-top: 30px;
+    margin-top: 80px;
     text-align: center;
     font-size: 0.9em;
     color: #6c757d;
@@ -159,10 +193,6 @@ footer a {
 @media (max-width: 768px) {
     .custom-navbar .navbar-brand {
         font-size: 20px; /* 在较小的屏幕上减小字体大小 */
-    }
-    .section {
-        width: 95%;
-        padding: 15px;
     }
 
     .card-deck {
@@ -184,7 +214,7 @@ footer a {
         align-items: center;
     }
     .card-little-content {
-        background-color: #e0e0e0;
+        background-color: var(--card-little);
         font-size: 14px;
         margin: 10px 0;
         padding: 5px;
@@ -246,13 +276,13 @@ a:hover {
 }
 
 .custom-navbar {
-    background: linear-gradient(to right, #00a0e9, white);
+    background: var(--title-color);
     color: white;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     max-height: 80px;
 }
 footer {
-    background: linear-gradient(to right, #00a0e9, white);
+    background: var(--title-color);
     color: black;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     max-height: 100px;
