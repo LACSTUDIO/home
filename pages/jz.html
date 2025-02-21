@@ -10,175 +10,137 @@
     <link rel="shortcut icon" href="../img/捐赠.svg" type="image/x-icon"/>
     <link rel="stylesheet" href="../css/twitter-bootstrap_4.6.2_css_bootstrap.css"/>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/modal.css">
-    <link rel="stylesheet" href="../css/theme.css">
     <style>
+        :root {
+            --primary-color: #00a0e9;
+            --accent-color: #ffbb00;
+            --text-dark: #333;
+        }
+
         body {
             font-family: '微软雅黑', Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* 添加垂直居中 */
-            align-items: center; /* 添加水平居中 */
-            height: auto;
-            background: linear-gradient(135deg, #00a0e9, #0077b6, #004d80, #001e42 80%); /* 更具现代化的背景 */
-            animation: gradientBackground 15s ease infinite; /* 添加背景动画 */
-            margin: 0; /* 移除默认的外边距 */
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #00a0e9, #0077b6, #004d80, #001e42 80%);
+            animation: gradientBackground 15s ease infinite;
         }
-        @keyframes gradientBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+
         .container {
-            max-width: 90%;
+            max-width: 800px;
+            width: 90%;
+            margin: 80px auto 40px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.9); /* 透明背景 */
-            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 4px dashed #ffbb00;
-            animation: fadeIn 1s ease-in-out; /* 添加容器淡入动画 */
+            border: 4px dashed var(--accent-color);
+            animation: fadeIn 1s ease-in-out;
+            will-change: transform, opacity;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
         }
-        .qr-code {
-            margin: 40px 0;
+
+        .payment-option input[type="radio"]:checked + label {
+            background-color: var(--primary-color);
+            border-color: var(--accent-color);
         }
-        .payment-option {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-        .payment-option label {
-            display: inline-block;
-            margin: 0 10px;
-            cursor: pointer;
-            background-color: #ffbb00;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-        }
-        .payment-option label:hover {
-            background-color: #00a0e9;
-        }
-        .payment-option input[type="radio"] {
-            display: none;
-        }
-        .payment-option input[type="radio"]:checked + img {
-            border: 4px solid #ffbb00;
-        }
-        img {
+
+        .qr-image {
             width: 200px;
             height: 280px;
             border-radius: 8px;
             transition: border 0.3s;
+            object-fit: cover;
         }
-        h1 {
-            max-width: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #00a0e9;
-            font-size: 2em;
-            margin-bottom: 20px;
-            background-color: #ffffff;
-            height: 50px;
-            border: 2px solid #00a0e9;
-            border-radius: 12px;
-            text-align: center;
-            align-content: center;
-            padding: 10px;
-            animation: slideIn 1s ease-in-out; /* 添加标题淡入动画 */
-        }
-        #payment-message {
-            color: #666;
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-        .thank-you {
-            margin-top: 30px;
-            font-size: 1.1em;
-            color: #333;
-            animation: slideIn 1s ease-in-out 1s forwards; /* 添加感谢文字滑入动画 */
-        }
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+
         footer {
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
+            margin-top: auto;
+            padding: 1rem;
             font-size: 0.8em;
-            color: #00a0e9;
-            animation: slideIn 1s ease-in-out; /* 添加底部淡入动画 */
-        }
-        p {
-            font-family: '微软雅黑', Arial, sans-serif;
-            font-size: 20px;
-            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            animation: slideIn 1s ease-in-out;
         }
 
+        /* 原有动画定义保持... */
     </style>
-
 </head>
-<!-- 顶部导航栏 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom-navbar">
-    <a class="navbar-brand" href="../index.html">
-        <img src="../img/lacs.webp" class="d-inline-block align-top" alt="领创工作室Logo">
-        返回主页
-    </a>
-    <ul class="navbar-nav" style="display: flex; align-items: center;">
-        <li class="btn-dark-mode" onclick="toggleDarkMode()">🌙</li>
-    </ul>
-</nav>
+
 <body>
-<h1>捐赠我们</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom-navbar">
+        <a class="navbar-brand" href="../index.html">
+            <img src="../img/lacs.webp" class="d-inline-block align-top" alt="领创工作室Logo">
+            返回主页
+        </a>
+        <ul class="navbar-nav" style="display: flex; align-items: center;">
+            <li class="btn-dark-mode" onclick="toggleDarkMode()">🌙</li>
+        </ul>
+    </nav>
+
     <div class="container">
+        <h1>捐赠我们</h1>
         <p id="payment-message">请选择支付方式</p>
-        <div class="payment-option">
-            <button class="button-long" style="background-color: chartreuse;border: #ffffff 2px solid;" name="payment" value="weixin" onclick="showQRCode(this.value)">
-                微信
-            </button>
-            <button class="button-long" style="background-color: blue;border: #ffffff 2px solid;" name="payment" value="alipay" onclick="showQRCode(this.value)">
-                支付宝
-            </button>
+
+        <div class="payment-options">
+            <div class="payment-option">
+                <input type="radio" name="payment" id="weixin" value="weixin" onchange="showQRCode(this.value)">
+                <label for="weixin" class="payment-label">微信</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="payment" id="alipay" value="alipay" onchange="showQRCode(this.value)">
+                <label for="alipay" class="payment-label">支付宝</label>
+            </div>
         </div>
-        <div class="qr-code" id="qr-code">
-            <!-- 收款码将会显示在这里 -->
-        </div>
-        <p class="thank-you">感谢您的支持与捐赠！</p> <!-- 添加感谢文字 -->
+
+        <div class="qr-code" id="qr-code" aria-live="polite"></div>
+        <p class="thank-you">感谢您的支持与捐赠！</p>
     </div>
-<footer>
-    <p>Copyright © 2021-2025 领创工作室, All rights reserved.</p>
-    <p id="update_time">最后更新时间：未设置</p>
-</footer>
+
+    <footer>
+        <p>Copyright © 2021-<span id="currentYear"></span> 领创工作室, All rights reserved.</p>
+    </footer>
+
     <script>
-        function showQRCode(paymentMethod) {
-            const wechatQRCodeUrl = 'img/qr/wechatpay.png'; // 替换为你的微信收款码URL
-            const alipayQRCodeUrl = 'img/qr/alipay.png'; // 替换为你的支付宝收款码URL
+        const paymentMethods = {
+            weixin: {
+                url: '../img/qr/wechatpay.webp',
+                alt: '微信支付二维码'
+            },
+            alipay: {
+                url: '../img/qr/alipay.webp',
+                alt: '支付宝支付二维码'
+            }
+        };
 
-            let qrCodeUrl;
-            if (paymentMethod === 'weixin') {
-                qrCodeUrl = wechatQRCodeUrl;
-            } else if (paymentMethod === 'alipay') {
-                qrCodeUrl = alipayQRCodeUrl;
-            } else {
-                qrCodeUrl = '';
+        function showQRCode(method) {
+            const qrContainer = document.getElementById('qr-code');
+            const messageEl = document.getElementById('payment-message');
+
+            if (!paymentMethods[method]) {
+                qrContainer.innerHTML = '';
+                messageEl.textContent = '请选择支付方式';
+                return;
             }
 
-            if (qrCodeUrl) {
-                document.getElementById('qr-code').innerHTML = `<img src="${qrCodeUrl}" alt="${paymentMethod} 收款码" width="200">`;
-                document.getElementById('payment-message').textContent = `请使用 ${paymentMethod === 'weixin' ? '微信' : '支付宝'} 扫描上方二维码进行支付`;
-            } else {
-                document.getElementById('qr-code').innerHTML = '';
-                document.getElementById('payment-message').textContent = '请选择支付方式';
-            }
+            const { url, alt } = paymentMethods[method];
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = alt;
+            img.className = 'qr-image';
+
+            qrContainer.replaceChildren(img);
+            messageEl.textContent = `请使用 ${method === 'weixin' ? '微信' : '支付宝'} 扫描上方二维码进行支付`;
         }
+
+        // 动态更新版权年份
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
