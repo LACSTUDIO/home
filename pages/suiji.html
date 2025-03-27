@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>随机选择</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            max-width: 400px;
+            width: 90%;
+            margin: 10px auto;
+        }
+        button {
+            background: linear-gradient(135deg, #007BFF, #0056b3);
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s ease;
+            min-height: 50px;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #0056b3, #004099);
+        }
+        p {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>随机选择</h1>
+        <div class="button-container">
+            <button onclick="selectRandomFloor()">随机楼层</button>
+            <button onclick="selectRandomStore()">随机店家</button>
+            <button onclick="selectCafe()">随机饮品</button>
+            <button>关于本站</button>
+        </div>
+    </div>
+    <div class="container">
+        <p id="selectionResult"></p>
+    </div>
+
+<script>
+    let stores = [];
+
+    // 从API获取数据并更新stores数组
+    function fetchDataAndUpdateStores() {
+        fetch('https://api.xn--5brr03o.top/test/test.json')
+            .then(response => response.json())
+            .then(data => {
+                // 将获取到的商家数据添加到stores数组中
+                stores = stores.concat(data.store);
+                console.log('商家数据已更新:', stores);
+            })
+            .catch(error => {
+                console.error('获取数据时出错:', error);
+            });
+    }
+
+    // 在页面加载时调用fetchDataAndUpdateStores函数
+    window.onload = fetchDataAndUpdateStores;
+
+    function selectRandomFloor() {
+        const floors = ["2F", "3F"];
+        const randomIndex = Math.floor(Math.random() * floors.length);
+        document.getElementById("selectionResult").innerText = "您选择了: " + floors[randomIndex];
+    }
+
+    function selectRandomStore() {
+        const randomIndex = Math.floor(Math.random() * stores.length);
+        document.getElementById("selectionResult").innerText = "您选择了: " + stores[randomIndex];
+    }
+
+    function selectCafe() {
+        const cafes = ["test"];
+        const randomIndex = Math.floor(Math.random() * cafes.length);
+        document.getElementById("selectionResult").innerText = "您选择了: " + cafes[randomIndex];
+    }
+</script>
+</body>
+</html>
