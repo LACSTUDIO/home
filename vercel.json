@@ -23,6 +23,10 @@
     {
       "src": "/MiDeviceCode",
       "dest": "/pages/MiDeviceCode.html"
+    },
+    {
+      "src": "/suiji",
+      "dest": "/pages/suiji.html"
     }
   ]
 }
