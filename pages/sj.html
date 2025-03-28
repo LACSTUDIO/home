@@ -10,6 +10,7 @@
             text-align: center;
             padding: 20px;
             margin: 0;
+            max-height: 600px;
         }
         .container {
             background-color: #ffffff;
@@ -51,26 +52,39 @@
         .button-container {
             margin-top: 20px;
         }
+        .DiaLog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <p id="log_text"></p>
+    </div>
     <div class="container">
         <h1>随机选择</h1>
         <div class="button-container">
             <button onclick="selectRandomFloor()" class="enabled">随机楼层</button>
             <button id="storeButton" onclick="selectRandomStore()">随机店家</button>
             <button id="cafeButton" onclick="selectCafe()">随机饮品</button>
-            <button id="dialogButton" onclick="selectDialog()">关于本站</button>
         </div>
     </div>
     <div class="container">
         <p id="selectionResult"></p>
     </div>
-
+<footer>
+    <p>© 2025 <a href="https://www.xn--5brr03o.top/">LAC Studio</a></p>
+</footer>
 <script>
     let stores = [];
     let cafes = [];
-
     // 从API获取数据并更新stores和cafes数组
     function fetchDataAndUpdateStores() {
         fetch('https://api.xn--5brr03o.top/test/test.json')
@@ -86,12 +100,18 @@
                 // 数据加载完成后启用按钮
                 document.getElementById('storeButton').classList.add('enabled');
                 document.getElementById('cafeButton').classList.add('enabled');
+
+                // 输出加载的日志到log_text
+                document.getElementById('log_text').innerText = '商家数据已更新 ' + '饮品数据已更新';
             })
             .catch(error => {
                 console.error('获取数据时出错:', error);
                 // 数据加载失败后可以显示错误信息或者启用按钮，这里选择启用按钮
                 document.getElementById('storeButton').classList.add('enabled');
                 document.getElementById('cafeButton').classList.add('enabled');
+
+                // 输出错误信息到log_text
+                document.getElementById('log_text').innerText = '获取数据时出错: ' + error.message;
             });
     }
 
@@ -120,6 +140,16 @@
         }
         const randomIndex = Math.floor(Math.random() * cafes.length);
         document.getElementById("selectionResult").innerText = "您选择了: " + cafes[randomIndex];
+    }
+
+    function selectDialog() {
+        const dialog = document.createElement('div');
+        dialog.classList.add('DiaLog');
+        const content = document.createElement('div');
+        content.classList.add('DiaLog-content');
+        document.body.appendChild(dialog);
+        dialog.appendChild(content);
+        dialog.style.display = 'block';
     }
 </script>
 
