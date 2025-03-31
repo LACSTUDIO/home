@@ -4,109 +4,136 @@
     <meta charset="UTF-8">
     <title>随机选择</title>
     <style>
-        body {
-            font-family: 'Microsoft YaHei', Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
-            text-align: center;
-            padding: 0;
-            margin: 0;
-            height: 100vh; /* 使body高度占满整个视口 */
-            display: flex; /* 使用flex布局 */
-            flex-direction: column; /* 设置flex方向为列 */
-            justify-content: space-between; /* 垂直方向上均匀分布 */
-        }
+    body {
+        font-family: 'Microsoft YaHei', Arial, sans-serif;
+        background: linear-gradient(135deg, #dfe9f3, #c3d2e0);
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-x: hidden;
+    }
+
+    .container-background {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        background-color: #ffffff;
+        border-radius: 18px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        margin: 15px 10px;
+        max-width: 800px;
+
+    }
+
+    button {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        padding: 15px 30px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background 0.3s ease, transform 0.2s ease;
+        min-height: 50px;
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
+    button.enabled {
+        pointer-events: auto;
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    button:hover {
+        background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    p {
+        font-size: 22px;
+        margin-top: 20px;
+        color: #333;
+        transition: color 0.3s ease;
+    }
+
+    p:hover {
+        color: #6a11cb;
+    }
+
+    .button-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 添加媒体查询以适应小屏幕 */
+    @media screen and (max-width: 600px) {
         .container-background {
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            margin: 10px;
-            padding: 5px;
-            /* 移除了 max-height 和 max-width */
+            width: 90%;
+            margin: 10px auto;
         }
 
         .container {
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            display: flex;
+            width: 100%;
             flex-direction: column;
-            align-items: center; /* 水平居中 */
-            width: 100%; /* 宽度占满整个屏幕 */
-            flex: 1; /* 使每个.container能够根据需要填充空间 */
-            margin: 10px;
-            /* 移除了 max-height */
+            align-items: center;
         }
 
         button {
-            background: linear-gradient(135deg, #007BFF, #0056b3);
-            color: white;
-            padding: 15px 30px;
-            margin: 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s ease;
-            min-height: 50px;
-            /* 初始状态为禁用 */
-            pointer-events: none;
-            opacity: 0.6;
+            padding: 10px 20px;
+            font-size: 16px;
         }
-        button.enabled {
-            /* 启用后的样式 */
-            pointer-events: auto;
-            opacity: 1;
-        }
-        button:hover {
-            background: linear-gradient(135deg, #0056b3, #004099);
-        }
+
         p {
-            font-size: 20px;
-            margin-top: 20px;
-            color: #333;
+            font-size: 18px;
         }
-        .button-container {
-            margin-top: 20px;
-        }
+    }
 
-        /* 添加媒体查询以适应小屏幕 */
-        @media screen and (max-width: 600px) {
-            .container {
-                width: 100%;
-                max-width: 100%;
-            }
-            button {
-                padding: 10px 20px;
-                font-size: 16px;
-            }
-            p {
-                font-size: 18px;
-            }
-        }
-        #floorSelect {
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #007BFF;
-    background-color: #ffffff;
-    font-size: 16px;
-    color: #333;
-    cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+    #floorSelect {
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid #2575fc;
+        background-color: #ffffff;
+        font-size: 16px;
+        color: #333;
+        cursor: pointer;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        margin-bottom: 15px;
+    }
 
-#floorSelect:hover {
-    border-color: #0056b3;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-}
+    #floorSelect:hover {
+        border-color: #6a11cb;
+        box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+        background: rgba(255, 255, 255, 0.9);
+    }
 
-#floorSelect:focus {
-    outline: none;
-    border-color: #004099;
-    box-shadow: 0 0 12px rgba(0, 86, 179, 0.5);
-}
-
-    </style>
+    #floorSelect:focus {
+        outline: none;
+        border-color: #004099;
+        box-shadow: 0 0 14px rgba(0, 86, 179, 0.5);
+        background: rgba(255, 255, 255, 1);
+    }
+</style>
 </head>
 <body>
 <div class="container-background">
