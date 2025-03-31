@@ -8,19 +8,27 @@
             font-family: 'Microsoft YaHei', Arial, sans-serif;
             background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
             text-align: center;
-            padding: 20px;
+            padding: 0;
             margin: 0;
-            max-height: 600px;
+            height: 100vh; /* 使body高度占满整个视口 */
+            display: flex; /* 使用flex布局 */
+            flex-direction: column; /* 设置flex方向为列 */
+            justify-content: space-between; /* 垂直方向上均匀分布 */
         }
         .container {
             background-color: #ffffff;
-            padding: 20px;
+            padding: 10px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            width: 90%;
-            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 水平居中 */
+            width: 90%; /* 宽度占满整个屏幕 */
+            max-width: 1200px; /* 可选：设置一个最大宽度，避免内容过于宽广 */
+            flex: 1; /* 使每个.container能够根据需要填充空间 */
+            margin: 10px;
         }
+        /* 其他样式保持不变 */
         button {
             background: linear-gradient(135deg, #007BFF, #0056b3);
             color: white;
@@ -51,16 +59,6 @@
         }
         .button-container {
             margin-top: 20px;
-        }
-        .DiaLog {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 9999;
         }
     </style>
 </head>
