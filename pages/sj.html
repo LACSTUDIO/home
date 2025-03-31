@@ -15,6 +15,15 @@
             flex-direction: column; /* 设置flex方向为列 */
             justify-content: space-between; /* 垂直方向上均匀分布 */
         }
+        .container-background {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 10px;
+            padding: 5px;
+            /* 移除了 max-height 和 max-width */
+        }
+
         .container {
             background-color: #ffffff;
             padding: 10px;
@@ -23,21 +32,12 @@
             display: flex;
             flex-direction: column;
             align-items: center; /* 水平居中 */
-            width: 90%; /* 宽度占满整个屏幕 */
-            max-width: 1200px; /* 可选：设置一个最大宽度，避免内容过于宽广 */
+            width: 100%; /* 宽度占满整个屏幕 */
             flex: 1; /* 使每个.container能够根据需要填充空间 */
             margin: 10px;
-            max-height: 80vh; /* 可选：设置一个最大高度，避免内容过于高 */
+            /* 移除了 max-height */
         }
-        .container-background {
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            max-height: 600px; /* 可选：设置一个最大高度，避免内容过于高 */
-            max-width: 100%; /* 宽度占满整个屏幕 */
-            margin: 10px;
 
-        }
         button {
             background: linear-gradient(135deg, #007BFF, #0056b3);
             color: white;
