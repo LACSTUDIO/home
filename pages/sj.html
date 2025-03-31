@@ -27,7 +27,16 @@
             max-width: 1200px; /* 可选：设置一个最大宽度，避免内容过于宽广 */
             flex: 1; /* 使每个.container能够根据需要填充空间 */
             margin: 10px;
-            max-height: 200px; /* 可选：设置一个最大高度，避免内容过于高 */
+            max-height: 80vh; /* 可选：设置一个最大高度，避免内容过于高 */
+        }
+        .container-background {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            max-height: 600px; /* 可选：设置一个最大高度，避免内容过于高 */
+            max-width: 100%; /* 宽度占满整个屏幕 */
+            margin: 10px;
+
         }
         button {
             background: linear-gradient(135deg, #007BFF, #0056b3);
@@ -78,6 +87,7 @@
     </style>
 </head>
 <body>
+<div class="container-background">
     <div class="container">
         <p id="log_text"></p>
     </div>
@@ -92,6 +102,7 @@
     <div class="container">
         <p id="selectionResult"></p>
     </div>
+</div>
 <footer>
     <p>© 2025 <a href="https://www.xn--5brr03o.top/">LAC Studio</a></p>
 </footer>
