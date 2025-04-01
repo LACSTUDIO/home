@@ -43,6 +43,19 @@
         max-width: 800px;
 
     }
+    .container-big {
+        background-color: #ffffff;
+        border-radius: 18px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        margin: 15px 10px;
+        max-width: 800px;
+        height: 150px;
+
+    }
 
     button {
         background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -134,136 +147,179 @@
         box-shadow: 0 0 14px rgba(0, 86, 179, 0.5);
         background: rgba(255, 255, 255, 1);
     }
+    .settings-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display : none;
+    }
+    .settings-content {
+        background-color: #ffffff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 </style>
 </head>
 <body>
 <div class="container-background">
     <div class="container">
         <span>
-            <p id="selectionResult-a">公告-Content:</p>
-            <p id="adContentText">test</p>
+            <p id="selectionResult-a" style="display: inline-block; margin: 0;">公告-Content:</p>
+            <p id="adContentText" style="display: inline-block; margin: 0;">test</p>
         </span>
-    </div>
-    <div class="container">
-        <p id="log_text"></p>
     </div>
     <div class="container">
         <h1>随机选择</h1>
         <div class="button-container">
-            <label for="floorSelect">楼层选择:</label>
-            <select id="floorSelect" onchange="handleFloorSelect(this.value)">
-                <option value="random">随机</option>
-                <option value="2">2层</option>
-                <option value="3">3层</option>
-                <!-- 可以在这里添加更多楼层选项 -->
-            </select>
-            <button id="storeButton" onclick="selectRandomStore()">随机店家</button>
-            <button id="cafeButton" onclick="selectCafe()">随机饮品</button>
+            <div>
+                <label for="floorSelect">楼层选择:</label>
+                <select id="floorSelect" onchange="handleFloorSelect(this.value)">
+                    <option value="random">随机</option>
+                    <option value="2">2层</option>
+                    <option value="3">3层</option>
+                </select>
+            </div>
+
+            <div >
+                <button id="storeButton" onclick="selectRandomStore()">随机店家</button>
+                <button id="cafeButton" onclick="selectWater()">随机饮品</button>
+            </div>
         </div>
     </div>
     <div class="container">
         <p id="selectionResult"></p>
     </div>
+    <div class="container-big">
+        <h1>Log</h1>
+        <p id="log_text"></p>
+    </div>
 
-
-
+</div>
+<div class="settings-container">
+    <div class="settings-content">
+        <a href="#" onclick="settings()">关闭</a>
+        <div class="settings-header">
+            <h1>设置</h1>
+        </div>
+        <div class="settings-body">
+            <h2>网站整体逻辑</h2>
+            <p>本站的主要逻辑是随机选择一个楼层的店家和饮品，并展示给用户。用户可以选择楼层，也可以随机选择。本站的主要数据来源是通过接口获取的，接口地址为https://api.xn--5brr03o.top/test/test.json，数据格式为json。</p>
+            <p>用户操作的流程是：选择楼层，点击随机店家或随机饮品按钮，页面展示随机选择的店家或饮品。</p>
+        </div>
+    </div>
 </div>
 <footer>
 <span><p>© 2025 <a href="https://www.xn--5brr03o.top/">LAC Studio</a> and <a href="https://blog.ssxaya.fun/">ssxaya</a></span>
+<a href="#" onclick="settings()">关于本站</a>
 </footer>
 <script>
     let data = {
         2: { stores: [], waters: [] },
-        3: { stores: [], waters: [] }
+        3: { stores: [], waters: [] },
+        notice: 'test'
     };
-    let selectedFloor = 'random'; // 默认选随机楼层
 
-    // 从API获取数据并更新stores和cafes数组
-    function fetchDataAndUpdateStores() {
-    fetch('https://api.xn--5brr03o.top/test/test.json')
-        .then(response => response.json())
-        .then(data => {
-            // 存储分楼层数据
-            data.floors.forEach(floorObj => {
-                const floorNumber = floorObj.floor;
-                if (!data[floorNumber]) {
-                    data[floorNumber] = {}; // 初始化楼层对象
-                }
-                data[floorNumber].stores = floorObj.stores;
-                data[floorNumber].waters = floorObj.waters;
-            });
-            console.log('数据加载完成:', data);
+    let selectedFloor = 'random';
+    let isLoading = true;
 
-            // 数据加载完成后启用按钮
-            document.getElementById('storeButton').classList.add('enabled');
-            document.getElementById('cafeButton').classList.add('enabled');
+    // 通用数据加载函数
+    async function fetchData() {
+        try {
+            const response = await fetch('https://api.xn--5brr03o.top/test/test.json');
+            if (!response.ok) throw new Error('网络响应不正常: ' + response.statusText);
+            return await response.json();
+        } catch (error) {
+            throw error;
+        }
+    }
 
-            // 输出加载的日志到log_text
-            document.getElementById('log_text').innerText = '商家数据已更新 ' + '饮品数据已更新';
-
-            // 假设API返回的数据格式为 {"notice": "目前正在测试中", ...}
-            document.getElementById('adContentText').innerText = data.notice;
-        })
-        .catch(error => {
-            console.error('获取数据时出错:', error);
-            // 数据加载失败后可以显示错误信息或者启用按钮，这里选择启用按钮
-            document.getElementById('storeButton').classList.add('enabled');
-            document.getElementById('cafeButton').classList.add('enabled');
-
-            // 输出错误信息到log_text
-            document.getElementById('log_text').innerText = '获取数据时出错: ' + error.message;
-
-            // 清空adContentText以避免显示不正确的信息
-            document.getElementById('adContentText').innerText = '';
+    // 更新数据并启用按钮
+    function updateDataAndUI(apiData) {
+        ['2', '3'].forEach(floor => {
+            data[floor].stores = apiData[`second_${floor}`]?.stores || [];
+            data[floor].waters = apiData[`second_${floor}`]?.waters || [];
         });
-}
 
+        data.notice = apiData.notice || 'test';
+        isLoading = false;
 
-    // 页面加载时调用fetchDataAndUpdateStores函数
-    window.onload = fetchDataAndUpdateStores;
+        // 更新UI
+        document.getElementById('storeButton').classList.add('enabled');
+        document.getElementById('cafeButton').classList.add('enabled');
+        document.getElementById('log_text').innerText = '商家数据已更新 饮品数据已更新';
+        document.getElementById('adContentText').innerText = data.notice;
+    }
 
-    // 新增楼层选择处理函数
+    // 处理数据加载错误
+    function handleDataError(error) {
+        console.error('获取数据时出错:', error);
+        isLoading = false;
+        document.getElementById('storeButton').classList.add('enabled');
+        document.getElementById('cafeButton').classList.add('enabled');
+        document.getElementById('log_text').innerText = '获取数据时出错: ' + error.message;
+        document.getElementById('adContentText').innerText = '';
+    }
+
+    // 页面加载时调用
+    window.onload = async () => {
+        try {
+            const apiData = await fetchData();
+            updateDataAndUI(apiData);
+        } catch (error) {
+            handleDataError(error);
+        }
+    };
+
+    // 楼层选择处理
     function handleFloorSelect(value) {
         selectedFloor = value;
     }
 
-    // 修改随机店家选择逻辑
+    // 通用随机选择函数
+    function getRandomItem(items, loadingMessage) {
+        if (isLoading) return loadingMessage;
+        if (items.length === 0) return "数据加载中...";
+        return items[Math.floor(Math.random() * items.length)];
+    }
+
+    // 随机选择店家
     function selectRandomStore() {
-        let selectedStores;
-        if (selectedFloor === 'random') {
-            const floors = ['2', '3'];
-            const randomFloor = floors[Math.floor(Math.random() * floors.length)];
-            selectedStores = data[randomFloor].stores;
-        } else {
-            selectedStores = data[selectedFloor].stores;
-        }
-        if (selectedStores.length === 0) {
-            document.getElementById("selectionResult").innerText = "商家数据加载中...";
-            return;
-        }
-        const randomIndex = Math.floor(Math.random() * selectedStores.length);
-        document.getElementById("selectionResult").innerText = "您选择了: " + selectedStores[randomIndex];
+        const floors = selectedFloor === 'random' ? ['2', '3'] : [selectedFloor];
+        const floor = floors[Math.floor(Math.random() * floors.length)];
+        const result = getRandomItem(data[floor].stores, "商家数据加载中...");
+        document.getElementById("selectionResult").innerText = "您选择了: " + result;
     }
 
-    // 修改随机饮品选择逻辑
-    function selectCafe() {
-        let selectedWaters;
-        if (selectedFloor === 'random') {
-            const floors = ['2', '3'];
-            const randomFloor = floors[Math.floor(Math.random() * floors.length)];
-            selectedWaters = data[randomFloor].waters;
-        } else {
-            selectedWaters = data[selectedFloor].waters;
-        }
-        if (selectedWaters.length === 0) {
-            document.getElementById("selectionResult").innerText = "饮品数据加载中...";
-            return;
-        }
-        const randomIndex = Math.floor(Math.random() * selectedWaters.length);
-        document.getElementById("selectionResult").innerText = "您选择了: " + selectedWaters[randomIndex];
+    // 随机选择饮品
+    function selectWater() {
+        const floors = selectedFloor === 'random' ? ['2', '3'] : [selectedFloor];
+        const floor = floors[Math.floor(Math.random() * floors.length)];
+        const result = getRandomItem(data[floor].waters, "饮品数据加载中...");
+        document.getElementById("selectionResult").innerText = "您选择了: " + result;
     }
-
+    function settings() {
+        if (document.getElementsByClassName("settings-container")[0].style.display === "none") {
+            document.getElementsByClassName("settings-container")[0].style.display = "block";
+        } else {
+            document.getElementsByClassName("settings-container")[0].style.display = "none";
+        }
+    }
 </script>
+
 
 </body>
 </html>
