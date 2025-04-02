@@ -104,47 +104,59 @@ p:hover {
 }
 
 @media screen and (max-width: 600px) {
-    .container-background {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
+.container-background {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
-    .container {
-        width: 100%;
-        margin: 10px;
-        padding: 20px; /* 增加内边距 */
-    }
+.container {
+    width: 100%;
+    margin: 10px;
+    padding: 20px; /* 增加内边距 */
+    max-width: 100%;
+}
 
-    button {
-        padding: 20px 40px; /* 增加按钮的内边距 */
-        font-size: 20px; /* 增加字体大小 */
-    }
+button {
+    padding: 20px 40px; /* 增加按钮的内边距 */
+    font-size: 20px; /* 增加字体大小 */
+}
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    margin-bottom: 20px; /* 增加底部外边距 */
+}
 
-    #floorSelect {
-        padding: 10px;
-        border-radius: 10px;
-        border: 2px solid #2575fc;
-        background-color: #ffffff;
-        font-size: 16px;
-        color: #333;
-        cursor: pointer;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-        margin-bottom: 15px;
-    }
+#floorSelect:hover {
+    border-color: #6a11cb;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+    background: rgba(255, 255, 255, 0.9);
+}
 
-    #floorSelect:hover {
-        border-color: #6a11cb;
-        box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
-        background: rgba(255, 255, 255, 0.9);
-    }
 
-    #floorSelect:focus {
-        outline: none;
-        border-color: #004099;
-        box-shadow: 0 0 14px rgba(0, 86, 179, 0.5);
-        background: #ffffff;
-    }
+#floorSelect {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #2575fc;
+    background-color: #ffffff;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    margin-bottom: 15px;
+}
+
+#floorSelect:hover {
+    border-color: #6a11cb;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#floorSelect:focus {
+    outline: none;
+    border-color: #004099;
+    box-shadow: 0 0 14px rgba(0, 86, 179, 0.5);
+    background: #ffffff;
 }
 
 .settings-container {
@@ -185,7 +197,6 @@ p:hover {
     transform: translateX(0);
 }
 </style>
-
 
 </head>
 <body>
