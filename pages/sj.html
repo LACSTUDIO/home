@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +21,9 @@ body {
 }
 
 @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
     to {
         opacity: 1;
     }
@@ -50,6 +54,7 @@ body {
     max-width: 800px;
     transition: height 0.3s ease;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in forwards;
 }
 
 .container-big {
@@ -69,6 +74,7 @@ button {
     min-height: 50px;
     pointer-events: none;
     opacity: 0.6;
+    animation: scaleIn 0.5s ease-in-out forwards;
 }
 
 button.enabled {
@@ -104,27 +110,28 @@ p:hover {
 }
 
 @media screen and (max-width: 600px) {
-.container-background {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+    .container-background {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 
-.container {
-    width: 100%;
-    margin: 10px;
-    padding: 20px; /* 增加内边距 */
-    max-width: 100%;
-}
+    .container {
+        width: 90%;
+        margin: 10px auto;
+        padding: 20px; /* 增加内边距 */
+        max-width: 100%;
+    }
 
-button {
-    padding: 20px 40px; /* 增加按钮的内边距 */
-    font-size: 20px; /* 增加字体大小 */
-}
-    color: #333;
-    cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    margin-bottom: 20px; /* 增加底部外边距 */
+    button {
+        padding: 20px 40px; /* 增加按钮的内边距 */
+        font-size: 20px; /* 增加字体大小 */
+
+        color: #333;
+        cursor: pointer;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        margin-bottom: 20px; /* 增加底部外边距 */
+    }
 }
 
 #floorSelect:hover {
@@ -190,6 +197,7 @@ button {
     opacity: 0;
     transform: translateX(100%);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: slideIn 0.5s ease-in-out forwards;
 }
 
 #selectionResult.show {
@@ -331,7 +339,7 @@ button {
         const floor = floors[Math.floor(Math.random() * floors.length)];
         const result = getRandomItem(data[floor].stores, "商家数据加载中...");
         const selectionResult = document.getElementById("selectionResult");
-        selectionResult.innerText = "您选择了: " + result;
+        selectionResult.innerText = result;
         selectionResult.classList.add('show');
     }
 
@@ -341,7 +349,7 @@ button {
         const floor = floors[Math.floor(Math.random() * floors.length)];
         const result = getRandomItem(data[floor].waters, "饮品数据加载中...");
         const selectionResult = document.getElementById("selectionResult");
-        selectionResult.innerText = "您选择了: " + result;
+        selectionResult.innerText = result;
         selectionResult.classList.add('show');
     }
 
