@@ -205,7 +205,7 @@
     </div>
     <div class="container-big">
         <h1>Log</h1>
-        <p id="log_text"></p>
+        <p id="log_text">正在获取数据...</p>
     </div>
 
 </div>
@@ -250,19 +250,21 @@
     // 更新数据并启用按钮
     function updateDataAndUI(apiData) {
         ['2', '3'].forEach(floor => {
-            data[floor].stores = apiData[`second_${floor}`]?.stores || [];
-            data[floor].waters = apiData[`second_${floor}`]?.waters || [];
+            const floorKey = floor === '2' ? 'second' : 'third'; // 根据楼层选择正确的键名
+            data[floor].stores = apiData[floorKey]?.stores || [];
+            data[floor].waters = apiData[floorKey]?.waters || [];
         });
 
         data.notice = apiData.notice || 'test';
         isLoading = false;
 
-        // 更新UI
+        // 更新 UI
         document.getElementById('storeButton').classList.add('enabled');
         document.getElementById('cafeButton').classList.add('enabled');
         document.getElementById('log_text').innerText = '商家数据已更新 饮品数据已更新';
         document.getElementById('adContentText').innerText = data.notice;
     }
+
 
     // 处理数据加载错误
     function handleDataError(error) {
@@ -319,8 +321,6 @@
         }
     }
 </script>
-
-
 </body>
 </html>
 
