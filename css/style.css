@@ -73,7 +73,16 @@ body {
     background: var(--bg-gradient);
     color: var(--text-color);
     transition: background 0.3s ease, color 0.3s ease;
+    /*background-image: url('https://gitee.com/lacsgf/img/raw/master/webp/168296.webp');*/
+    background-size: cover; /* 确保背景图片覆盖整个元素 */
+    background-position: center; /* 设置背景图片居中 */
+    background-repeat: no-repeat; /* 防止背景图片重复 */
     padding-top: 65px;
+}
+
+.background {
+
+    width: 100%;
 }
 .background:hover {
     animation: gradientAnimation 10s ease-in-out infinite;

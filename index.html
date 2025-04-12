@@ -37,10 +37,49 @@
     </ul>
 </nav>
 <div class="background">
+<!-- 新增的轮播区域 -->
 <!-- 项目 -->
 <div class="section" id="projects-section">
+    <div id="projectCarousel" class="carousel slide mb-4" data-bs-ride="carousel" style="margin: 0 auto;">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://gitee.com/lacsgf/img/raw/master/webp/20250405101908686.webp" class="d-block w-100" alt="项目展示1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>最新项目展示</h5>
+                    <p>澎湃OS工具箱整体界面演示</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x500" class="d-block w-100" alt="项目展示2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>模块展示</h5>
+                    <p>独家定制模块功能预览</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x500" class="d-block w-100" alt="项目展示3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>开发中项目</h5>
+                    <p>即将上线的新功能预告</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
     <h1 style="display:none;">领创工作室原创项目软件</h1>
     <h2>我的项目</h2>
+
+
     <div class="btn-group d-flex justify-content-center" role="group" id="project-buttons">
         <button type="button" class="btn active btn-secondary" data-project="project1">玩机工具</button>
         <button type="button" class="btn btn-secondary" data-project="project2">面具模块</button>
