@@ -13,16 +13,27 @@
     <meta name="robots" content="index, follow" />
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>领创工作室-官方网站-领创.top</title>
-    <link rel="stylesheet" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css"/>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/theme.css">
+    <link rel="preload" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/loading.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/modal.css">
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/loading.css">
+    </noscript>
     <script>
         document.write('<meta name="google-site-verification" content="' + process.env.GOOGLE_SITE_VERIFICATION + '" />');
         document.write('<meta name="msvalidate.01" content="' + process.env.MSVALIDATE_01 + '" />');
     </script>
 </head>
 <body>
+<div class="loading-container">
+    <div class="loading-spinner"></div>
+</div>
 <!-- 顶部导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom-navbar">
     <a class="navbar-brand" href="#">
@@ -292,7 +303,14 @@
     </div>
 </div>
 
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 <script defer src="https://umami.xn--5brr03o.top/script.js" data-website-id="a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45"></script>
+<script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.querySelector('.loading-container').classList.add('fade-out');
+        }, 500);
+    });
+</script>
 </body>
 </html>

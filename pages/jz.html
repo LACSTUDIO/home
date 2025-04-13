@@ -80,9 +80,6 @@
             <img src="../img/lacs.webp" class="d-inline-block align-top" alt="领创工作室Logo">
             返回主页
         </a>
-        <ul class="navbar-nav" style="display: flex; align-items: center;">
-            <li class="btn-dark-mode" onclick="toggleDarkMode()">🌙</li>
-        </ul>
     </nav>
 
     <div class="container">
@@ -137,10 +134,8 @@
             img.className = 'qr-image';
 
             qrContainer.replaceChildren(img);
-            messageEl.textContent = `请使用 ${method === 'weixin' ? '微信' : '支付宝'} 扫描上方二维码进行支付`;
+            messageEl.innerHTML = `请使用 ${method === 'weixin' ? '微信' : '支付宝'} 扫描上方二维码进行支付<br>使用${method === 'weixin' ? '微信 进行捐赠时，会强制收集您的姓名和电话号，用于后续的捐赠记录, 请放心填写。' : '支付宝 进行捐赠时，建议您将您的姓名和电话号添加到备注信息中，用于后续的捐赠记录。'}`;
         }
-
-        // 动态更新版权年份
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
