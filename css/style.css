@@ -38,13 +38,18 @@
     color: var(--text-color);
 }
 h2 {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
-    margin: 5px 0;
+    margin: 10px 0 20px;
     text-align: center;
     background-color: var(--highlight-color);
-    padding: 5px;
-    border-radius: 18px;
+    padding: 8px 15px;
+    border-radius: 25px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 .button-long {
     width: 100px;
@@ -69,15 +74,16 @@ h2 {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Microsoft YaHei', 'Arial', sans-serif;
     background: var(--bg-gradient);
     color: var(--text-color);
-    transition: background 0.3s ease, color 0.3s ease;
-    /*background-image: url('https://gitee.com/lacsgf/img/raw/master/webp/168296.webp');*/
-    background-size: cover; /* 确保背景图片覆盖整个元素 */
-    background-position: center; /* 设置背景图片居中 */
-    background-repeat: no-repeat; /* 防止背景图片重复 */
+    transition: all 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding-top: 65px;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .background {
@@ -89,19 +95,17 @@ body {
 }
 
 .section {
-    margin: 20px auto;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     background-color: var(--card-bg);
-    transition: background-color 0.3s ease;
-    width: 90%;
+    transition: all 0.4s ease;
+    width: 92%;
+    max-width: 1200px;
     opacity: 0;
-    transform: translateY(50px);
-    animation: fadeIn 1s ease-out;
-    animation-fill-mode: forwards;
-    /* 确保动画只播放一次，除非你希望它重复播放 */
-    animation-iteration-count: 1;
+    transform: translateY(30px);
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .section.visible {
@@ -135,49 +139,82 @@ body {
     background-color: var(--card-little);
     font-size: 18px;
     margin: 10px 0;
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid #00a0e9;
-    min-width: 90px;
+    padding: 15px 10px;
+    border-radius: 16px;
+    border: 1px solid var(--primary-color);
+    min-width: 120px;
     max-width: 400px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .project-card {
     display: none;
     background-color: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid #00a0e9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin: 10px 5px;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    margin: 12px 8px;
+    transition: all 0.4s ease;
     opacity: 0;
     transform: translateY(20px);
-    flex: 1 1 calc(50% - 20px); /* 修改：使一行显示两个卡片 */
-    box-sizing: border-box; /* 添加：确保内边距和边框包含在宽度内 */
-    height: 160px; /* 修改：减少卡片的高度 */
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content {
+    flex-grow: 1;
+}
+
+.card-btn {
+    align-self: flex-end;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    padding: 6px 15px;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.card-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project-card.active {
-    display: block;
+    display: flex;
     opacity: 1;
     transform: translateY(0);
 }
 
 .project-card:hover {
-    transform: scale(1.01);
-    transition: transform 0.3s ease;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 160, 233, 0.15);
+}
+
+.btn-group {
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .btn-group .btn {
     border: 2px solid transparent;
-    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease;
+    margin: 5px 2px;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: 500;
 }
 
 .btn-group .btn.active {
@@ -205,6 +242,10 @@ footer a {
     }
 
     .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -8px;
         flex-direction: column; /* 添加：在小屏幕下垂直排列卡片 */
     }
 
@@ -245,19 +286,24 @@ footer a {
 }
 
 .media-platform {
-    flex: 1;
-    padding: 10px;
+    margin: 30px 0;
     text-align: center;
-}
-
-.media-platform h3{
-    margin: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
 }
 
 .footer-section {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        flex-direction: column;
+    }
 }
 a:hover {
     text-decoration: none;
@@ -265,16 +311,26 @@ a:hover {
 }
 
 
-.icon img {
-    width: 30px;
-    height: 30px;
-    margin: 5px;
+.icon {
+    display: inline-block;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    position: relative;
 }
-.icon img:hover {
-    transform: scale(1.4) rotate(360deg);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.icon img {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+}
+
+.icon:hover img {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 .icon-long img {
     width: 100px;
@@ -285,10 +341,15 @@ a:hover {
 }
 
 .custom-navbar {
-    background: var(--title-color);
-    color: white;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    max-height: 80px;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .custom-navbar {
+    background-color: rgba(26, 26, 26, 0.9) !important;
 }
 footer {
     background: var(--title-color);
@@ -341,6 +402,10 @@ footer {
 .card-deck {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -8px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between; /* 修改：使用 space-between 使卡片之间有间距 */
     align-items: center;
     margin: 10px 5px;
@@ -354,12 +419,57 @@ footer {
 
 .card-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    display: flex;
     justify-content: space-between;
 }
 /* 页面加载动画 */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* 卡片动画 */
