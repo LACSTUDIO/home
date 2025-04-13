@@ -25,7 +25,6 @@
             min-height: 100vh;
             margin: 0;
             background: linear-gradient(135deg, #00a0e9, #0077b6, #004d80, #001e42 80%);
-            animation: gradientBackground 15s ease infinite;
         }
 
         .container {
@@ -33,44 +32,120 @@
             width: 90%;
             margin: 80px auto 40px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 4px dashed var(--accent-color);
-            animation: fadeIn 1s ease-in-out;
-            will-change: transform, opacity;
+            border: 2px solid var(--accent-color);
         }
 
         .payment-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-option {
+            position: relative;
+        }
+
+        .payment-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .payment-option label {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            background-color: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .payment-option input[type="radio"]:checked + label {
             background-color: var(--primary-color);
+            color: white;
             border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .qr-image {
-            width: 200px;
-            height: 280px;
+            width: 180px;
+            height: 250px;
             border-radius: 8px;
-            transition: border 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             object-fit: cover;
+        }
+
+        .qr-code {
+            margin: 1rem auto;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
         }
 
         footer {
             margin-top: auto;
-            padding: 1rem;
+            padding: 0.75rem;
             font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.8);
-            animation: slideIn 1s ease-in-out;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
         }
 
         /* 原有动画定义保持... */
+        .donors-list-container {
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .donors-list-container h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .donors-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 6rem;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) transparent;
+        }
+
+        .donors-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .donors-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .donors-list::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .donors-list li {
+            padding: 0.4rem;
+            margin: 0.2rem 0;
+            background: rgba(0, 160, 233, 0.08);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .donors-list li:hover {
+            background: rgba(0, 160, 233, 0.15);
+            transform: translateX(3px);
+        }
     </style>
 </head>
 
@@ -99,6 +174,11 @@
 
         <div class="qr-code" id="qr-code" aria-live="polite"></div>
         <p class="thank-you">感谢您的支持与捐赠！</p>
+
+        <div class="donors-list-container">
+            <h3>捐赠人员名单,感谢支持！！</h3>
+            <ul class="donors-list" id="donors-list"></ul>
+        </div>
     </div>
 
     <footer>
@@ -132,11 +212,42 @@
             img.src = url;
             img.alt = alt;
             img.className = 'qr-image';
+            img.loading = 'lazy'; // 添加懒加载
 
-            qrContainer.replaceChildren(img);
-            messageEl.innerHTML = `请使用 ${method === 'weixin' ? '微信' : '支付宝'} 扫描上方二维码进行支付<br>使用${method === 'weixin' ? '微信 进行捐赠时，会强制收集您的姓名和电话号，用于后续的捐赠记录, 请放心填写。' : '支付宝 进行捐赠时，建议您将您的姓名和电话号添加到备注信息中，用于后续的捐赠记录。'}`;
+            qrContainer.innerHTML = '';
+            qrContainer.appendChild(img);
+            messageEl.innerHTML = `请使用${method === 'weixin' ? '微信' : '支付宝'}扫描二维码进行支付<br>${method === 'weixin' ? '微信捐赠会收集姓名和电话，用于捐赠记录' : '支付宝捐赠请在备注中添加姓名和电话'}`;
         }
+
+        // 获取并显示捐赠者名单
+        async function fetchDonors() {
+            try {
+                const donorsList = document.getElementById('donors-list');
+                donorsList.innerHTML = '<li>正在加载捐赠者名单...</li>';
+                
+                const response = await fetch('https://api.领创.top/jz.json');
+                const data = await response.json();
+                
+                // 使用文档片段减少DOM重绘次数
+                const fragment = document.createDocumentFragment();
+                data.name_list.forEach(name => {
+                    const li = document.createElement('li');
+                    li.textContent = name;
+                    fragment.appendChild(li);
+                });
+                
+                donorsList.innerHTML = '';
+                donorsList.appendChild(fragment);
+            } catch (error) {
+                console.error('获取捐赠者名单失败:', error);
+                const donorsList = document.getElementById('donors-list');
+                donorsList.innerHTML = '<li>加载捐赠者名单失败，请稍后再试</li>';
+            }
+        }
+
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // 页面加载完成后获取捐赠者名单
+        document.addEventListener('DOMContentLoaded', fetchDonors);
     </script>
 </body>
 </html>
