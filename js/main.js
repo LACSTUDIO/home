@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 默认显示 project1 卡片
     showProject('project1');
+    
+    // 动态调整项目卡片高度
+    adjustProjectCardHeight();
 
     // 获取网站更新时间
     fetch('https://api.github.com/repos/LACSTUDIO/home')
@@ -187,16 +190,74 @@ function closeModalYC() {
     }
 }
 
-function showProject(project) {
-    projectCards.forEach(card => {
-        card.classList.toggle('active', card.getAttribute('data-project') === project);
+function showProject(projectId) {
+    const container = document.getElementById('project-cards-container');
+    const cards = document.querySelectorAll('.project-card');
+    const cardsPerRow = window.innerWidth >= 768 ? 2 : 1;
+
+    // 隐藏所有项目卡片
+    cards.forEach(card => {
+        card.style.display = 'none';
+        card.classList.remove('active');
     });
 
-    // 更新按钮样式
-    document.querySelectorAll('#project-buttons button').forEach(button => {
-        button.classList.toggle('active', button.getAttribute('data-project') === project);
+    // 显示选中项目组的卡片
+    const activeCards = document.querySelectorAll(`.project-card[data-project="${projectId}"]`);
+    activeCards.forEach(card => {
+        card.style.display = 'flex';
+        card.classList.add('active');
+    });
+
+    // 计算并设置容器高度
+    const cardHeight = 160; // 卡片的最小高度
+    const cardMargin = 24; // 上下边距总和
+    const rows = Math.ceil(activeCards.length / cardsPerRow);
+    const containerHeight = rows * (cardHeight + cardMargin);
+    container.style.minHeight = `${containerHeight}px`;
+
+    // 更新按钮状态
+    document.querySelectorAll('#project-buttons .btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-project') === projectId) {
+            btn.classList.add('active');
+        }
     });
 }
+
+// 动态调整项目卡片高度
+function adjustProjectCardHeight() {
+    const activeCards = document.querySelectorAll('.project-card.active');
+    if (activeCards.length === 0) return;
+    
+    // 重置高度以便重新计算
+    activeCards.forEach(card => {
+        card.style.height = 'auto';
+    });
+    
+    // 根据屏幕宽度决定布局方式
+    if (window.innerWidth > 768) {
+        // 桌面布局：每行两个卡片，确保每行卡片高度一致
+        for (let i = 0; i < activeCards.length; i += 2) {
+            const currentCard = activeCards[i];
+            const nextCard = activeCards[i + 1];
+            
+            if (nextCard) {
+                // 如果有下一个卡片，取两者中较高的高度
+                const maxHeight = Math.max(currentCard.scrollHeight, nextCard.scrollHeight);
+                currentCard.style.height = `${maxHeight}px`;
+                nextCard.style.height = `${maxHeight}px`;
+            }
+        }
+    } else {
+        // 移动布局：每个卡片高度自适应内容
+        activeCards.forEach(card => {
+            card.style.height = 'auto';
+        });
+    }
+}
+
+// 窗口大小改变时重新调整卡片高度
+window.addEventListener('resize', adjustProjectCardHeight);
 
 // 辅助函数：验证模态框元素是否存在
 function validateModalElements() {

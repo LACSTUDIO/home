@@ -1,5 +1,5 @@
 :root {
-    --title-color: linear-gradient(to right, #00a0e9, white);
+    --title-color: linear-gradient(to right, #00a0e9, #0056b3);
     --primary-color: #00a0e9;
     --secondary-color: #e6f7ff;
     --bg-gradient: linear-gradient(135deg, #f0f8ff, #e6f7ff);
@@ -9,12 +9,12 @@
     --card-little: #f2f2f2;
 }
 [data-theme="dark"] {
-    --title-color: linear-gradient(to right, #00a0e9, #343a40);
+    --title-color: linear-gradient(to right, #00a0e9, #003366);
     --primary-color: #0056b3;
-    --secondary-color: linear-gradient(to right, #00a0e9, #343a40);
-    --bg-gradient: linear-gradient(135deg, #cccccc, #003f5f);
+    --secondary-color: #003366;
+    --bg-gradient: linear-gradient(135deg, #1a1a1a, #003f5f);
     --text-color: #f2f2f2;
-    --card-bg: linear-gradient(to bottom, #333333, #444444); /* 更浅的渐变色 */
+    --card-bg: #2a2a2a;
     --highlight-color: #00a0e9;
     --bg-color: #1a1a1a;
     --card-little: #949494;
@@ -42,7 +42,8 @@ h2 {
     font-weight: bold;
     margin: 10px 0 20px;
     text-align: center;
-    background-color: var(--highlight-color);
+    background: var(--title-color);
+    color: white;
     padding: 8px 15px;
     border-radius: 25px;
     display: inline-block;
@@ -155,7 +156,7 @@ body {
 
 .project-card {
     display: none;
-    background-color: var(--card-bg);
+    background: linear-gradient(135deg, var(--card-bg), var(--secondary-color));
     border-radius: 12px;
     border: 1px solid var(--primary-color);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
@@ -201,6 +202,8 @@ body {
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 160, 233, 0.15);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
 }
 
 .btn-group {
@@ -242,16 +245,23 @@ footer a {
     }
 
     .card-deck {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 -8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 -8px;
         flex-direction: column; /* 添加：在小屏幕下垂直排列卡片 */
     }
 
     .project-card {
         flex: 1 1 100%; /* 添加：在小屏幕下使卡片宽度相同 */
         width: 100%; /* 确保卡片宽度为100% */
+        min-height: auto; /* 允许卡片高度自适应内容 */
+        margin-bottom: 15px; /* 增加卡片间距 */
+    }
+    
+    h2 {
+        font-size: 18px; /* 在小屏幕上减小标题字体 */
+        padding: 6px 12px; /* 减小内边距 */
     }
     .card-little {
         font-size: 14px;
@@ -353,7 +363,7 @@ a:hover {
 }
 footer {
     background: var(--title-color);
-    color: black;
+    color: white;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     max-height: 100px;
     padding: 10px;
@@ -402,13 +412,11 @@ footer {
 .card-deck {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 -8px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* 修改：使用 space-between 使卡片之间有间距 */
-    align-items: center;
+    justify-content: space-between;
+    align-items: stretch;
     margin: 10px 5px;
+    min-height: 0;
+    transition: min-height 0.3s ease-in-out;
 }
 
 .card-img {
