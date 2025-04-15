@@ -27,6 +27,10 @@
     {
       "src": "/sj",
       "dest": "/pages/sj.html"
+    },
+    {
+      "src": "/ai",
+      "dest": "/pages/ai.html"
     }
   ]
 }
