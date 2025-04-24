@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalLink.addEventListener('click', function(event) {
             const url = this.getAttribute('data-href');
             if (openLink(url)) {
-                event.preventDefault(); // 防止默认行为
+                event.preventDefault();
             }
         });
     }
@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 初始化 umami 统计
     umiTongji().catch(error => console.error('初始化 umiTongji 出错:', error));
+    
+    // 获取哔哩哔哩粉丝数据
+    fetchBilibiliFans();
 });
 
 function handleScroll() {
@@ -114,7 +117,7 @@ function toggleMaoTheme() {
 function showModal(icon, title, text, href = '#') {
     try {
         if (!validateModalElements()) {
-            throw new Error('模态框中的一个或多个元素未找到');
+            throw new Error('error: 模态框元素未找到');
         }
 
         modal.style.display = 'block';
@@ -289,4 +292,42 @@ async function umiTongji() {
 
     const resdata = await response.json();
     document.querySelector('#pvStatic').textContent = resdata.pageviews.value;
+}
+
+// 获取哔哩哔哩粉丝数据
+function fetchBilibiliFans() {
+    // 使用JSONP方式解决跨域问题
+    const script = document.createElement('script');
+    script.src = 'https://api.bilibili.com/x/relation/stat?vmid=1779662818&jsonp=handleBilibiliFansData';
+    document.body.appendChild(script);
+    
+    // 设置超时处理，防止API请求失败时没有显示
+    setTimeout(() => {
+        const fansElement = document.getElementById('bilibili-fans');
+        if (fansElement && fansElement.textContent === '粉丝数:') {
+            fansElement.textContent = '粉丝数: 获取中...';
+            console.log('B站粉丝数据获取超时');
+        }
+    }, 5000);
+}
+
+// JSONP回调函数
+function handleBilibiliFansData(response) {
+    console.log('收到B站API响应:', response);
+    if (response && response.code === 0 && response.data) {
+        const fansCount = response.data.follower;
+        const fansElement = document.getElementById('bilibili-fans');
+        if (fansElement) {
+            fansElement.textContent = '粉丝数: ' + fansCount;
+            console.log('成功更新B站粉丝数:', fansCount);
+        } else {
+            console.error('未找到显示粉丝数的元素');
+        }
+    } else {
+        console.error('B站API返回错误:', response);
+        const fansElement = document.getElementById('bilibili-fans');
+        if (fansElement) {
+            fansElement.textContent = '粉丝数: 获取失败';
+        }
+    }
 }

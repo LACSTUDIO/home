@@ -18,12 +18,14 @@
     <link rel="preload" href="css/modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/loading.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/modal.css">
         <link rel="stylesheet" href="css/theme.css">
         <link rel="stylesheet" href="css/loading.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </noscript>
     <script>
         document.write('<meta name="google-site-verification" content="' + process.env.GOOGLE_SITE_VERIFICATION + '" />');
@@ -41,9 +43,10 @@
         领创工作室
     </a>
     <ul class="navbar-nav" style="display: flex; align-items: center;">
-        <li class="btn-dark-mode">🌙</li>
+        <li class="btn-dark-mode"><i class="fas fa-moon"></i></li>
     </ul>
 </nav>
+
 <div class="background">
 <!-- 新增的轮播 -->
 <!-- 项目 -->
@@ -100,7 +103,7 @@
         <div class="project-card" id="project1-1" data-project="project1">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/app.svg" class="card-icon" alt="工具箱图标">
+                        <i class="fas fa-tools fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">澎湃OS绕答题解锁工具箱(重构版)</h5>
@@ -112,7 +115,7 @@
         <div class="project-card" id="project1-2" data-project="project1">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/app.svg" class="card-icon" alt="工具箱图标">
+                        <i class="fas fa-terminal fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">澎湃OS绕答题解锁工具箱(bat版)</h5>
@@ -124,11 +127,11 @@
         <div class="project-card" id="project1-3" data-project="project1">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/app.svg" class="card-icon" alt="工具箱图标">
+                        <i class="fas fa-unlock-alt fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">小米手机一键Root工具箱（bat版）</h5>
-                        <p class="card-text">即将集成在HOUT工具箱中，敬请期待！</p>
+                        <p class="card-text">即将集成在HOUT工具箱中,敬请期待！</p>
                     </div>
                 </div>
                 <a href="https://www.coolapk.com/collection/3368316" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目1-3">立即访问</a>
@@ -136,7 +139,7 @@
         <div class="project-card" id="project1-4" data-project="project1">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/app.svg" class="card-icon" alt="驱动图标">
+                        <i class="fas fa-usb fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">安卓玩机驱动</h5>
@@ -148,7 +151,7 @@
         <div class="project-card" id="project2-1" data-project="project2">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/MiBBS.svg" class="card-icon" alt="模块图标">
+                        <i class="fas fa-puzzle-piece fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">坤坤模块</h5>
@@ -160,7 +163,7 @@
         <div class="project-card" id="project2-2" data-project="project2">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/MiBBS.svg" class="card-icon" alt="模块图标">
+                        <i class="fas fa-puzzle-piece fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">Flyme_On_Mi模块</h5>
@@ -172,7 +175,7 @@
         <div class="project-card" id="project3-1" data-project="project3">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/app.svg" class="card-icon" alt="工具箱图标">
+                        <i class="fab fa-windows fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">win11工具箱</h5>
@@ -184,7 +187,7 @@
         <div class="project-card" id="project4-1" data-project="project4">
                 <div class="card-content">
                     <div class="card-icon-wrapper">
-                        <img src="img/icons/app.svg" class="card-icon" alt="应用图标">
+                        <i class="fas fa-mobile-alt fa-2x"></i>
                     </div>
                     <div class="card-text-content">
                         <h5 class="card-title">项目4-1</h5>
@@ -204,7 +207,7 @@
         <div class="card-little" >
             <div class="card-little-content" onclick="openLink('https://xn--9krq6q.xn--5brr03o.top/')" data-umami-event="访问领创博客">
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="img/icons/lac-blog.svg" class="card-img" alt="lacs">
+                    <img src="img/icons/lac-blog.svg" alt="领创博客" style="width: 50px; height: 50px;">
                     <h5 class="card-title" style="margin-top: 10px;">领创博客</h5>
                 </div>
             </div>
@@ -212,7 +215,7 @@
         <div class="card-little" onclick="openLink('https://xn--5nqs58m.xn--5brr03o.top/')" data-umami-event="访问领创软件资源">
             <div class="card-little-content">
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="img/icons/app.svg" class="card-img" alt="lacs">
+                    <img src="img/icons/app.svg" alt="领创博客" style="width: 50px; height: 50px;">
                     <h5 class="card-title" style="margin-top: 10px;">软件资源</h5>
                 </div>
             </div>
@@ -220,7 +223,7 @@
         <div class="card-little" onclick="openLink('https://xn--5brr03o.top/MiDeviceCode')" data-umami-event="访问小米设备代号查询">
             <div class="card-little-content">
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="img/icons/icon-小米归属.svg" class="card-img" alt="lacs">
+                    <i class="fas fa-mobile-alt fa-3x"></i>
                     <h5 class="card-title" style="margin-top: 10px;">小米设备代号查询</h5>
                 </div>
             </div>
@@ -232,38 +235,160 @@
 <!-- 关于区域 -->
 <div class="section" id="about">
     <h2>关于我们</h2>
-    <p style="text-align: center;">点击对应的图标即可查看相关信息</p>
     <div class="footer-section">
-    <div class="media-platform">
-        <h5>媒体平台</h5>
-        <div>
-            <a href="#" class="icon" onclick="showModal('bilibili', '哔哩哔哩 媒体平台', '哔哩哔哩uid:1779662818', 'https://space.bilibili.com/1779662818')">
-                <img src="img/icons/bilibili.svg" alt="bilibili">
-            </a>
-            <a href="#" class="icon" onclick="showModal('coolapk', '酷安 媒体平台', '酷安id:13237789', 'https://www.coolapk.com/u/13237789')">
-                <img src="img/icons/coolapk.svg" alt="酷安">
-            </a>
-            <a href="#" class="icon" onclick="showModal('MiBBS', '小米社区 媒体平台', '小米社区uid:2376012419', 'https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')">
-                <img src="img/icons/MiBBS.svg" alt="小米社区">
-            </a>
+        <!-- 媒体平台 -->
+        <div class="media-platform">
+            <h5>媒体平台</h5>
+            <div class="contact-cards">
+                <!-- 哔哩哔哩卡片 -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <img src="img/icons/bilibili.svg"style="width: 40px; height: 40px;margin-right: 10px">
+                        <h5 class="card-title">哔哩哔哩</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>用户名: 领创工作室</p>
+                        <p>UID: 1779662818</p>
+                        <p id="bilibili-fans">粉丝数: 获取中...</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-button" onclick="showModal('bilibili', '哔哩哔哩 媒体平台', '哔哩哔哩uid:1779662818', 'https://space.bilibili.com/1779662818')">
+                            <i class="fas fa-qrcode"></i>
+                            二维码
+                        </button>
+                        <button class="card-button" onclick="openLink('https://space.bilibili.com/1779662818')" data-umami-event="访问哔哩哔哩">
+                            <i class="fas fa-external-link-alt"></i>
+                            访问
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 酷安卡片 -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <img src="img/icons/coolapk.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                        <h5 class="card-title">酷安</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>用户名: 领创工作室</p>
+                        <p>ID: 13237789</p>
+                        <p id="coolapk-fans">粉丝数: 2962</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-button" onclick="showModal('coolapk', '酷安 媒体平台', '酷安id:13237789', 'https://www.coolapk.com/u/13237789')">
+                            <i class="fas fa-qrcode"></i>
+                            二维码
+                        </button>
+                        <button class="card-button" onclick="openLink('https://www.coolapk.com/u/13237789')" data-umami-event="访问酷安">
+                            <i class="fas fa-external-link-alt"></i>
+                            访问
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 小米社区卡片 -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <img src="img/icons/MiBBS.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                        <h5 class="card-title">小米社区</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>用户名: 领创工作室</p>
+                        <p>UID: 2376012419</p>
+                        <p>活跃度: 活跃</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-button" onclick="showModal('MiBBS', '小米社区 媒体平台', '小米社区uid:2376012419', 'https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')">
+                            <i class="fas fa-qrcode"></i>
+                            二维码
+                        </button>
+                        <button class="card-button" onclick="openLink('https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')" data-umami-event="访问小米社区">
+                            <i class="fas fa-external-link-alt"></i>
+                            访问
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="media-platform">
-        <h5>联系方式</h5>
-        <div>
-            <a href="#" class="icon" onclick="showModal('email', '电子邮件', '邮箱：2935278133@qq.com', 'mailto:2935278133@qq.com')">
-                <img src="img/icons/email.svg" alt="电子邮件">
-            </a>
-            <a href="#" class="icon" onclick="showModal('wechat', '微信', '微信号：LACS177', 'none')">
-                <img src="img/icons/wechat.svg" alt="微信">
-            </a>
-            <a href="#" class="icon" onclick="showModal('公众号', '公众号', '公众号：领创工作室', 'none')">
-                <img src="img/icons/公众号.svg" alt="公众号">
-            </a>
+        
+        <!-- 联系方式 -->
+        <div class="media-platform">
+            <h5>联系方式</h5>
+            <div class="contact-cards">
+                <!-- 电子邮件卡片 -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <i class="fas fa-envelope"></i>
+                        <h5 class="card-title">电子邮件</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>邮箱地址:</p>
+                        <p>2935278133@qq.com</p>
+                        <p>工作日24小时内回复</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-button" onclick="showModal('email', '电子邮件', '邮箱：2935278133@qq.com', 'mailto:2935278133@qq.com')">
+                            <i class="fas fa-qrcode"></i>
+                            二维码
+                        </button>
+                        <button class="card-button" onclick="window.location.href='mailto:2935278133@qq.com'" data-umami-event="发送邮件">
+                            <i class="fas fa-paper-plane"></i>
+                            发送
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 微信卡片 -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <i class="fab fa-weixin"></i>
+                        <h5 class="card-title">微信</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>微信号:</p>
+                        <p>LACS177</p>
+                        <p>添加请注明来意</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-button" onclick="showModal('wechat', '微信', '微信号：LACS177', 'none')">
+                            <i class="fas fa-qrcode"></i>
+                            二维码
+                        </button>
+                        <button class="card-button copy-btn" data-content="LACS177" data-umami-event="复制微信号">
+                            <i class="fas fa-copy"></i>
+                            复制
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 公众号卡片 -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <i class="fas fa-comment-dots"></i>
+                        <h5 class="card-title">公众号</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>公众号名称:</p>
+                        <p>领创工作室</p>
+                        <p>欢迎关注获取最新动态</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-button" onclick="showModal('公众号', '公众号', '公众号：领创工作室', 'none')">
+                            <i class="fas fa-qrcode"></i>
+                            二维码
+                        </button>
+                        <button class="card-button copy-btn" data-content="领创工作室" data-umami-event="复制公众号">
+                            <i class="fas fa-copy"></i>
+                            复制
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     </div>
 </div>
+
+<!-- 底部按钮区域 -->
 <div class="section" style="display: flex;align-items: center;justify-content: center;height: 60px;">
     <a href="/jz" target="_blank" rel="noopener noreferrer" class="button-long" data-umami-event="访问捐赠">
         捐赠我们
@@ -365,6 +490,24 @@
             document.querySelector('.loading-container').classList.add('fade-out');
         }, 500);
     });
+
+    // 复制功能
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const text = this.getAttribute('data-content');
+                navigator.clipboard.writeText(text).then(() => {
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('复制失败:', err);
+                });
+            });
+        });
+    });
+
 </script>
 </body>
 </html>
