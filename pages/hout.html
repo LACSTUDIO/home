@@ -9,21 +9,236 @@
   <title>刷机工具箱 - 现代化刷机解决方案</title>
   <link rel="stylesheet" href="../css/app.css">
   <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="canonical" href="https://xn--5brr03o.top/" />
+  <style>
+    :root {
+      --primary-color: #4a6cf7;
+      --secondary-color: #2c3e50;
+      --accent-color: #ff6b6b;
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --light-gray: #f5f8fa;
+      --border-radius: 8px;
+      --box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* 导航栏样式 */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), #7e5bef);
+      color: white;
+      position: relative;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+    
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: white;
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    
+    .menu-toggle .bar {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    
+    /* 英雄区样式 */
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 8rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 120%;
+      height: 180%;
+      background: url('../img/hero-bg.svg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: white;
+      color: var(--primary-color);
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      font-size: 1.1rem;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        flex-direction: column;
+        background-color: var(--primary-color);
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+        transition: var(--transition);
+        z-index: 100;
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-links li {
+        margin: 1.5rem 0;
+      }
+      
+      .menu-toggle {
+        display: flex;
+        z-index: 101;
+      }
+      
+      .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      
+      .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+      
+      .hero {
+        padding: 4rem 1rem 6rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 <!-- 导航栏 -->
 <header>
   <nav>
-    <div class="logo">HOUT-领创工作室</div>
+    <div class="logo"><i class="fas fa-tools"></i> HOUT-领创工作室</div>
     <ul class="nav-links">
-      <li><a href="#features">功能</a></li>
-      <li><a href="#screenshots">软件截图</a></li>
-      <li><a href="#video">视频介绍</a></li>
-      <li><a href="#download">下载</a></li>
-      <li><a href="#support">捐赠</a></li>
-      <li><a href="#community">关于</a></li>
+      <li><a href="#features"><i class="fas fa-star"></i> 功能</a></li>
+      <li><a href="#screenshots"><i class="fas fa-images"></i> 软件截图</a></li>
+      <li><a href="#video"><i class="fas fa-play-circle"></i> 视频介绍</a></li>
+      <li><a href="#download"><i class="fas fa-download"></i> 下载</a></li>
+      <li><a href="#support"><i class="fas fa-heart"></i> 捐赠</a></li>
+      <li><a href="#community"><i class="fas fa-users"></i> 关于</a></li>
     </ul>
     <div class="menu-toggle" id="mobile-menu">
       <span class="bar"></span>
@@ -34,129 +249,181 @@
   <div class="hero">
     <h1>现代化刷机工具箱</h1>
     <p>简单、快速、安全的刷机体验</p>
-    <a href="#download" class="cta-button">立即下载</a>
+    <a href="#download" class="cta-button"><i class="fas fa-download"></i> 立即下载</a>
   </div>
 </header>
 
 
 <!-- 功能 -->
 <section id="features" class="features">
-  <h2>主要功能</h2>
-  <div class="feature-cards-container">
-    <div class="feature-cards">
-        <div class="card">
-          <h3>一键刷机</h3>
-          <p>简单易用的刷机工具，支持多种设备。</p>
-        </div>
-        <div class="card">
-          <h3>安全可靠</h3>
-          <p>经过严格测试，确保刷机过程安全无风险。</p>
-        </div>
-        <div class="card">
-          <h3>多设备支持</h3>
-          <p>支持多种品牌和型号的设备。</p>
-        </div>
-    </div>
-    <div class="feature-cards">
-        <div class="card">
-          <h3>免费试用</h3>
-          <p>无需注册，即可免费试用。</p>
-        </div>
-        <div class="card">
-          <h3>自动更新</h3>
-          <p>自动检测更新，确保您使用的是最新版本。</p>
-        </div>
-        <div class="card">
-          <h3>自定义刷机</h3>
-          <p>灵活的自定义刷机选项，满足您的个性化需求。</p>
-        </div>
+  <div class="section-container">
+    <h2 class="section-title">主要功能</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>一键刷机</h3>
+        <p>简单易用的刷机工具，支持多种设备。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>安全可靠</h3>
+        <p>经过严格测试，确保刷机过程安全无风险。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>多设备支持</h3>
+        <p>支持多种品牌和型号的设备。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-tag"></i></div>
+        <h3>免费试用</h3>
+        <p>无需注册，即可免费试用。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+        <h3>自动更新</h3>
+        <p>自动检测更新，确保您使用的是最新版本。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
+        <h3>自定义刷机</h3>
+        <p>灵活的自定义刷机选项，满足您的个性化需求。</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- 截图 -->
 <section id="screenshots" class="screenshots">
-  <h2>软件截图</h2>
-  <div class="screenshot-container">
-    <div class="screenshot-slider">
-      <img src="../img/hout/main.png" alt="screenshot1" class="active" title="主界面">
-      <img src="../img/hout/about.png" alt="screenshot2" title="关于我们">
-      <img src="../img/hout/adbtool01.png" alt="screenshot3" title="ADB工具">
-      <img src="../img/hout/adbtool02.png" alt="screenshot4" title="澎湃OS一键解锁">
-      <img src="../img/hout/adbinstall_online.png" alt="screenshot5" title="ADB安装">
-    </div>
-    <div class="screenshot-thumbnails">
-      <img src="../img/hout/main.png" alt="thumbnail1" class="thumbnail active" data-index="0" title="主界面">
-      <img src="../img/hout/about.png" alt="thumbnail2" class="thumbnail" data-index="1" title="关于我们">
-      <img src="../img/hout/adbtool01.png" alt="thumbnail3" class="thumbnail" data-index="2" title="ADB工具">
-      <img src="../img/hout/adbtool02.png" alt="thumbnail4" class="thumbnail" data-index="3" title="澎湃OS一键解锁">
-      <img src="../img/hout/adbinstall_online.png" alt="thumbnail5" class="thumbnail" data-index="4" title="ADB安装">
+  <div class="section-container">
+    <h2 class="section-title">软件截图</h2>
+    <div class="screenshot-container">
+      <div class="screenshot-main">
+        <div class="screenshot-slider">
+          <img src="../img/hout/main.png" alt="screenshot1" class="active" title="主界面">
+          <img src="../img/hout/about.png" alt="screenshot2" title="关于我们">
+          <img src="../img/hout/adbtool01.png" alt="screenshot3" title="ADB工具">
+          <img src="../img/hout/adbtool02.png" alt="screenshot4" title="澎湃OS一键解锁">
+          <img src="../img/hout/adbinstall_online.png" alt="screenshot5" title="ADB安装">
+        </div>
+        <div class="slider-controls">
+          <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+      <div class="screenshot-thumbnails">
+        <img src="../img/hout/main.png" alt="thumbnail1" class="thumbnail active" data-index="0" title="主界面">
+        <img src="../img/hout/about.png" alt="thumbnail2" class="thumbnail" data-index="1" title="关于我们">
+        <img src="../img/hout/adbtool01.png" alt="thumbnail3" class="thumbnail" data-index="2" title="ADB工具">
+        <img src="../img/hout/adbtool02.png" alt="thumbnail4" class="thumbnail" data-index="3" title="澎湃OS一键解锁">
+        <img src="../img/hout/adbinstall_online.png" alt="thumbnail5" class="thumbnail" data-index="4" title="ADB安装">
+      </div>
     </div>
   </div>
 </section>
 
 <!--视频-->
-<section id="video" class="video-background">
-  <h2>视频介绍</h2>
-  <div class="video-container">
-    <iframe id="video-player"
-            src="//player.bilibili.com/player.html?isOutside=true&aid=112895966841529&bvid=BV1TuiLezEYK&cid=500001636627370&p=1">
-    </iframe>
+<section id="video" class="video-section">
+  <div class="section-container">
+    <h2 class="section-title">视频介绍</h2>
+    <div class="video-wrapper">
+      <div class="video-container">
+        <iframe id="video-player"
+                src="//player.bilibili.com/player.html?isOutside=true&aid=112895966841529&bvid=BV1TuiLezEYK&cid=500001636627370&p=1">
+        </iframe>
+      </div>
+    </div>
+    <div class="video-action">
+      <button onclick="openLink('https://www.bilibili.com/video/BV1TuiLezEYK')" class="action-button">
+        <i class="fas fa-play"></i> 在B站观看
+      </button>
+    </div>
   </div>
-  <button onclick="openLink('https://www.bilibili.com/video/BV1TuiLezEYK')" class="button">观看视频</button>
 </section>
 
 <!-- 下载 -->
-<section id="download" class="download">
-  <h2>下载</h2>
-  <p id="app-latest-version">当前版本:</p>
-  <p id="app-release-date">发布日期:</p>
-  <p id="app-notice">通知:</p>
-  <p>选择您的操作系统进行下载：</p>
-  <div class="download-buttons">
-    <a id="download-link" href="#" class="download-button windows" data-umami-event="下载软件">Windows</a>
-  </div>
-  <div class="download-buttons">
-    <a id="history-link" href="#" class="download-button windows">历史版本</a>
+<section id="download" class="download-section">
+  <div class="section-container">
+    <h2 class="section-title">下载</h2>
+    <div class="download-info">
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-code-branch"></i></div>
+        <h3>当前版本</h3>
+        <p id="app-latest-version">加载中...</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>发布日期</h3>
+        <p id="app-release-date">加载中...</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-bell"></i></div>
+        <h3>公告</h3>
+        <p id="app-notice">加载中...</p>
+      </div>
+    </div>
+    <div class="download-actions">
+      <a id="download-link" href="#" class="download-button" data-umami-event="下载软件">
+        <i class="fab fa-windows"></i> Windows 版本
+      </a>
+      <a id="history-link" href="#" class="history-button">
+        <i class="fas fa-history"></i> 历史版本
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- 支持 -->
-<section id="support" class="support">
-  <h2>捐赠我们</h2>
-  <p>您的支持是我们不断进步的动力。</p>
-  <a href="/jz" class="button">点我了解</a>
+<section id="support" class="support-section">
+  <div class="section-container">
+    <h2 class="section-title">捐赠我们</h2>
+    <div class="support-content">
+      <div class="support-text">
+        <p>您的支持是我们不断进步的动力。如果您觉得我们的工具对您有所帮助，请考虑给予我们一些支持。</p>
+        <p>我们承诺将持续改进产品，为用户提供更好的体验。</p>
+        <a href="/jz" class="action-button">
+          <i class="fas fa-heart"></i> 点我了解
+        </a>
+      </div>
+      <div class="support-image">
+        <img src="../img/support.svg" alt="支持我们" class="support-img">
+      </div>
+    </div>
+  </div>
 </section>
 
 <div id="version-modal" class="modal">
   <div class="modal-content">
-    <span class="close" style="color: red;width: 20px;height: 20px">&times;</span>
+    <span class="close">&times;</span>
+    <h3 class="modal-title">历史版本</h3>
     <div id="version-list" class="version-container"></div>
   </div>
 </div>
 
 <!-- 关于 -->
 <footer id="community">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>关于我们</h3>
-      <ul>
-        <li><a href="https://www.xn--5brr03o.top/#about">联系我们</a></li>
-        <li><a href="/hout_PP_ToU#privacyPolicy">隐私政策</a></li>
-        <li><a href="/hout_PP_ToU#usageTerms">使用条款</a></li>
-      </ul>
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>关于我们</h3>
+        <ul>
+          <li><a href="https://www.xn--5brr03o.top/#about"><i class="fas fa-envelope"></i> 联系我们</a></li>
+          <li><a href="/hout_PP_ToU#privacyPolicy"><i class="fas fa-shield-alt"></i> 隐私政策</a></li>
+          <li><a href="/hout_PP_ToU#usageTerms"><i class="fas fa-file-contract"></i> 使用条款</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>相关链接</h3>
+        <ul>
+          <li><a href="https://xn--9krq6q.xn--5brr03o.top/"><i class="fas fa-blog"></i> 博客</a></li>
+          <li><a href="https://xn--5nqs58m.xn--5brr03o.top/"><i class="fas fa-download"></i> 软件资源网</a></li>
+          <li><a href="https://xn--5brr03o.top/"><i class="fas fa-home"></i> 领创工作室官网</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-section">
-      <h3>相关链接</h3>
-      <ul>
-        <li><a href="https://xn--9krq6q.xn--5brr03o.top/">博客</a></li>
-        <li><a href="https://xn--5nqs58m.xn--5brr03o.top/">软件资源网</a></li>
-        <li><a href="https://xn--5brr03o.top/">领创工作室官网</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>&copy; 2024-2025 领创工作室, All rights reserved.</p>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024-2025 领创工作室, All rights reserved.</p>
   </div>
 </footer>
 
@@ -205,49 +472,42 @@
         return response.json();
     })
     .then(data => {
-        const setElementText = (elementId, text, defaultText = '未知') => {
-            const element = document.getElementById(elementId);
-            element.textContent = text || `当前版本: ${defaultText}`;
-        };
-
-        const setDownloadLink = (downloadLink, downloadUrl) => {
-            if (downloadUrl === 'none') {
-                downloadLink.href = '#';
-                downloadLink.textContent = '即将发布，敬请期待';
-            } else if (downloadUrl) {
-                downloadLink.href = downloadUrl;
-                downloadLink.textContent = `下载 Windows 版本`;
-            } else {
-                downloadLink.href = '#';
-                downloadLink.textContent = '下载链接不可用';
-            }
-        };
-
-        setElementText('app-latest-version', data.latest_version);
-        setElementText('app-release-date', data.release_date);
-        setElementText('app-notice', data.notice && data.notice.enabled ? data.notice.content : '没有新的通知');
+        document.getElementById('app-latest-version').textContent = data.latest_version || '未知';
+        document.getElementById('app-release-date').textContent = data.release_date || '未知';
+        document.getElementById('app-notice').textContent = data.notice && data.notice.enabled ? data.notice.content : '没有新的通知';
 
         const downloadLink = document.getElementById('download-link');
-        setDownloadLink(downloadLink, data.download_links && data.download_links.windows && data.download_links.windows.url);
+        if (data.download_links && data.download_links.windows) {
+            if (data.download_links.windows.url === 'none') {
+                downloadLink.href = '#';
+                downloadLink.innerHTML = '<i class="fab fa-windows"></i> 即将发布，敬请期待';
+            } else {
+                downloadLink.href = data.download_links.windows.url;
+                downloadLink.innerHTML = '<i class="fab fa-windows"></i> 下载 Windows 版本';
+            }
+        } else {
+            downloadLink.href = '#';
+            downloadLink.innerHTML = '<i class="fab fa-windows"></i> 下载链接不可用';
+        }
     })
     .catch(error => {
         console.error('获取软件信息时出错:', error);
-        setElementText('app-latest-version', null, '无法获取');
-        setElementText('app-release-date', null, '无法获取');
-        setElementText('app-notice', '通知: 无法获取');
-        setDownloadLink(document.getElementById('download-link'), null);
+        document.getElementById('app-latest-version').textContent = '无法获取';
+        document.getElementById('app-release-date').textContent = '无法获取';
+        document.getElementById('app-notice').textContent = '无法获取';
+        
+        const downloadLink = document.getElementById('download-link');
+        downloadLink.href = '#';
+        downloadLink.innerHTML = '<i class="fab fa-windows"></i> 下载链接不可用';
     });
 
   // 移动端菜单切换
   const mobileMenu = document.getElementById('mobile-menu');
   const navLinks = document.querySelector('.nav-links');
-  let isMenuActive = false;
 
   mobileMenu.addEventListener('click', () => {
-    isMenuActive = !isMenuActive;
-    setTimeout(() => {
-      navLinks.classList.toggle('active', isMenuActive);
-    }, 200);
+    mobileMenu.classList.toggle('active');
+    navLinks.classList.toggle('active');
   });
 
   // 平滑滚动
@@ -259,34 +519,614 @@
         document.querySelector(href).scrollIntoView({
           behavior: 'smooth'
         });
+        
+        // 如果是移动设备，点击导航链接后关闭菜单
+        if (window.innerWidth <= 768) {
+          mobileMenu.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
       }
     });
   });
 
-  // 辅助函数，减少重复代码
-  function setElementText(elementId, text, defaultText = '未知') {
-    const element = document.getElementById(elementId);
-    element.textContent = text ? text : `当前版本: ${defaultText}`;
+  // 截图轮播
+  const slides = document.querySelectorAll('.screenshot-slider img');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  const prevBtn = document.querySelector('.slider-arrow.prev');
+  const nextBtn = document.querySelector('.slider-arrow.next');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    thumbnails[index].classList.add('active');
+    currentSlide = index;
   }
 
-  function setDownloadLink(downloadLink, downloadUrl) {
-    if (downloadUrl === 'none') {
-      downloadLink.href = '#';
-      downloadLink.textContent = '即将发布，敬请期待';
-    } else if (downloadUrl) {
-      downloadLink.href = downloadUrl;
-      downloadLink.textContent = '下载 Windows 版本';
-    } else {
-      downloadLink.href = '#';
-      downloadLink.textContent = '下载链接不可用';
-    }
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
   }
+
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+      showSlide(index);
+    });
+  });
 
   // 定义一个函数来打开链接，避免全局污染
   function openLink(url) {
     window.open(url, '_blank');
   }
 </script>
+
+<style>
+  /* 通用样式和根容器 */
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+    position: relative;
+  }
+  
+  .section-title:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  /* 功能部分样式 */
+  .features {
+    background-color: var(--light-gray);
+    padding: 2rem 0;
+  }
+  
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    text-align: center;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+  
+  .feature-card p {
+    color: #666;
+  }
+  
+  /* 截图部分样式 */
+  .screenshots {
+    background-color: white;
+    padding: 2rem 0;
+  }
+  
+  .screenshot-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .screenshot-main {
+    position: relative;
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .screenshot-slider {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  
+  .screenshot-slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .screenshot-slider img.active {
+    opacity: 1;
+  }
+  
+  .slider-controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 10;
+  }
+  
+  .slider-arrow {
+    background: rgba(255,255,255,0.8);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .slider-arrow:hover {
+    background: white;
+    transform: scale(1.1);
+  }
+  
+  .screenshot-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+  }
+  
+  .thumbnail {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0.6;
+    border: 2px solid transparent;
+  }
+  
+  .thumbnail.active {
+    opacity: 1;
+    border-color: var(--primary-color);
+  }
+  
+  .thumbnail:hover {
+    opacity: 0.9;
+  }
+  
+  /* 视频部分样式 */
+  .video-section {
+    background-color: var(--light-gray);
+    padding: 2rem 0;
+  }
+  
+  .video-wrapper {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  
+  .video-action {
+    text-align: center;
+  }
+  
+  .action-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-button:hover {
+    background-color: #3a5dda;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+  
+  /* 下载部分样式 */
+  .download-section {
+    background-color: white;
+    padding: 2rem 0;
+  }
+  
+  .download-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .info-card {
+    background-color: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+  }
+  
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .info-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .info-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+  }
+  
+  .download-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .download-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  
+  .download-button:hover {
+    background-color: #3a5dda;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  
+  .history-button {
+    display: inline-block;
+    background-color: white;
+    color: var(--secondary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid var(--secondary-color);
+  }
+  
+  .history-button:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* 捐赠部分样式 */
+  .support-section {
+    background-color: var(--light-gray);
+    padding: 2rem 0;
+  }
+  
+  .support-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .support-text {
+    flex: 1;
+  }
+  
+  .support-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  
+  .support-image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .support-img {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  /* 模态框样式 */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: auto;
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    max-width: 700px;
+    width: 90%;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .modal-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+  }
+  
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--accent-color);
+  }
+  
+  .version-item {
+    border-bottom: 1px solid #eee;
+    padding: 1.5rem 0;
+  }
+  
+  .version-item:last-child {
+    border-bottom: none;
+  }
+  
+  .version-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .version-item p {
+    color: #777;
+    margin-bottom: 1rem;
+  }
+  
+  .version-content {
+    line-height: 1.6;
+  }
+  
+  /* 页脚样式 */
+  footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 3rem 0 1rem;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .footer-section h3:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: 0;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+  }
+  
+  .footer-section li {
+    margin-bottom: 0.8rem;
+  }
+  
+  .footer-section a {
+    color: #ddd;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  .footer-section a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .footer-section a i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 992px) {
+    .section-title {
+      font-size: 2.2rem;
+    }
+    
+    .feature-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .support-content {
+      flex-direction: column;
+    }
+    
+    .support-image {
+      order: -1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .section-container {
+      padding: 3.5rem 1.5rem;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    
+    .feature-grid {
+      gap: 1.5rem;
+    }
+    
+    .feature-card {
+      padding: 1.5rem;
+    }
+    
+    .download-info {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .download-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .download-button, .history-button {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .screenshot-thumbnails {
+      justify-content: center;
+    }
+    
+    .thumbnail {
+      width: 70px;
+      height: 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .cta-button {
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.1rem;
+    }
+    
+    .footer-content {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+</style>
 
 <script type="application/ld+json">
 {

@@ -2,37 +2,93 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Kimi AI 助手</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 基础样式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
+        
+        /* 颜色变量 */
+        :root {
+            --primary-color: #3e9bff;
+            --primary-hover: #2d8ae5;
+            --bg-dark: #1e1e1e;
+            --bg-darker: #202123;
+            --bg-lighter: #2d2d2d;
+            --bg-lightest: #383838;
+            --border-color: #444;
+            --text-color: #f1f1f1;
+            --text-muted: #aaa;
+        }
+        
         body {
-            background-color: #1e1e1e;
-            color: #f1f1f1;
+            background-color: var(--bg-dark);
+            color: var(--text-color);
             line-height: 1.6;
             height: 100vh;
             display: flex;
+            flex-direction: row;
         }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) and (orientation: portrait) {
+            body {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .sidebar {
+                width: 100%;
+                height: 60px;
+                overflow-y: hidden;
+            }
+            .main-content {
+                height: calc(100vh - 60px);
+                width: 100%;
+                padding: 10px;
+            }
+            .chat-container {
+                padding: 10px;
+                width: 100%;
+            }
+            .message {
+                max-width: 100%;
+                padding: 10px 0;
+            }
+            .input-textarea {
+                min-height: 50px;
+                padding: 10px 40px 10px 10px;
+                font-size: 14px;
+            }
+            .settings-toggle {
+                bottom: 70px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* 侧边栏样式 */
         .sidebar {
             width: 260px;
-            background-color: #202123;
-            color: #fff;
+            background-color: var(--bg-darker);
+            color: var(--text-color);
             height: 100%;
             display: flex;
             flex-direction: column;
         }
         .sidebar-header {
             padding: 16px;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid var(--border-color);
         }
         .new-chat-btn {
-            background-color: #3e9bff;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 12px;
@@ -47,7 +103,7 @@
             transition: background-color 0.3s;
         }
         .new-chat-btn:hover {
-            background-color: #2d8ae5;
+            background-color: var(--primary-hover);
         }
         .chat-history {
             flex: 1;
@@ -73,7 +129,7 @@
         }
         .sidebar-footer {
             padding: 16px;
-            border-top: 1px solid #444;
+            border-top: 1px solid var(--border-color);
         }
         .user-info {
             display: flex;
@@ -91,19 +147,21 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background-color: #3e9bff;
+            background-color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
         }
+
+        /* 主内容区域 */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             height: 100%;
-            background-color: #1e1e1e;
+            background-color: var(--bg-dark);
         }
         .chat-container {
             flex: 1;
@@ -112,8 +170,10 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            background-color: #1e1e1e;
+            background-color: var(--bg-dark);
         }
+
+        /* 消息样式 */
         .message {
             display: flex;
             gap: 16px;
@@ -130,29 +190,27 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-        }
-        .user-message .message-avatar {
-            background-color: #3e9bff;
             color: white;
         }
-        .ai-message .message-avatar {
-            background-color: #3e9bff;
-            color: white;
+        .user-message .message-avatar, .ai-message .message-avatar {
+            background-color: var(--primary-color);
         }
         .message-content {
             flex: 1;
             line-height: 1.6;
         }
         .ai-message {
-            background-color: #2d2d2d;
+            background-color: var(--bg-lighter);
         }
         .user-message {
-            background-color: #383838;
+            background-color: var(--bg-lightest);
         }
+
+        /* 输入区域 */
         .input-container {
             padding: 20px;
-            border-top: 1px solid #444;
-            background-color: #2d2d2d;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-lighter);
         }
         .input-box {
             max-width: 800px;
@@ -164,7 +222,7 @@
             min-height: 60px;
             max-height: 200px;
             padding: 15px 50px 15px 15px;
-            border: 1px solid #444;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             resize: none;
             font-size: 16px;
@@ -172,12 +230,12 @@
             overflow-y: auto;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
             transition: border-color 0.3s;
-            background-color: #383838;
-            color: #f1f1f1;
+            background-color: var(--bg-lightest);
+            color: var(--text-color);
         }
         .input-textarea:focus {
             outline: none;
-            border-color: #3e9bff;
+            border-color: var(--primary-color);
         }
         .send-btn {
             position: absolute;
@@ -185,7 +243,7 @@
             bottom: 15px;
             background-color: transparent;
             border: none;
-            color: #3e9bff;
+            color: var(--primary-color);
             cursor: pointer;
             font-size: 20px;
             transition: transform 0.2s;
@@ -193,6 +251,8 @@
         .send-btn:hover {
             transform: scale(1.1);
         }
+
+        /* 欢迎屏幕 */
         .welcome-screen {
             display: flex;
             flex-direction: column;
@@ -201,22 +261,17 @@
             height: 100%;
             text-align: center;
             padding: 20px;
-            background-color: #1e1e1e;
-            color: #f1f1f1;
-        }
-        .welcome-logo {
-            font-size: 48px;
-            color: #3e9bff;
-            margin-bottom: 20px;
+            background-color: var(--bg-dark);
+            color: var(--text-color);
         }
         .welcome-title {
             font-size: 32px;
             margin-bottom: 10px;
-            color: #f1f1f1;
+            color: var(--text-color);
         }
         .welcome-subtitle {
             font-size: 18px;
-            color: #aaa;
+            color: var(--text-muted);
             margin-bottom: 30px;
         }
         .examples-container {
@@ -227,7 +282,7 @@
             width: 100%;
         }
         .example-card {
-            background-color: #2d2d2d;
+            background-color: var(--bg-lighter);
             padding: 16px;
             border-radius: 8px;
             cursor: pointer;
@@ -241,32 +296,34 @@
         .example-card h3 {
             font-size: 16px;
             margin-bottom: 8px;
-            color: #3e9bff;
+            color: var(--primary-color);
         }
         .example-card p {
             font-size: 14px;
-            color: #aaa;
+            color: var(--text-muted);
         }
+
+        /* 映射面板 */
         .mapping-panel {
             position: fixed;
             top: 0;
             right: -350px;
             width: 350px;
             height: 100%;
-            background-color: #2d2d2d;
+            background-color: var(--bg-lighter);
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
             transition: right 0.3s ease;
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            color: #f1f1f1;
+            color: var(--text-color);
         }
         .mapping-panel.open {
             right: 0;
         }
         .mapping-header {
             padding: 16px;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -276,7 +333,7 @@
             border: none;
             font-size: 20px;
             cursor: pointer;
-            color: #aaa;
+            color: var(--text-muted);
         }
         .mapping-content {
             flex: 1;
@@ -291,18 +348,18 @@
         }
         .mapping-input {
             padding: 10px 12px;
-            border: 1px solid #444;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 14px;
-            background-color: #383838;
-            color: #f1f1f1;
+            background-color: var(--bg-lightest);
+            color: var(--text-color);
         }
         .mapping-input:focus {
             outline: none;
-            border-color: #3e9bff;
+            border-color: var(--primary-color);
         }
         .mapping-btn {
-            background-color: #3e9bff;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 10px;
@@ -312,10 +369,10 @@
             transition: background-color 0.3s;
         }
         .mapping-btn:hover {
-            background-color: #2d8ae5;
+            background-color: var(--primary-hover);
         }
         .mapping-list {
-            border: 1px solid #444;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
         }
@@ -323,7 +380,7 @@
             display: flex;
             justify-content: space-between;
             padding: 12px;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid var(--border-color);
         }
         .mapping-item:last-child {
             border-bottom: none;
@@ -343,14 +400,16 @@
             cursor: pointer;
             font-size: 16px;
         }
+
+        /* 设置按钮 */
         .settings-toggle {
             position: fixed;
-            bottom: 20px;
+            bottom: 70px;
             right: 20px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #3e9bff;
+            background-color: var(--primary-color);
             color: white;
             display: flex;
             align-items: center;
@@ -363,6 +422,8 @@
         .settings-toggle:hover {
             transform: scale(1.1);
         }
+
+        /* 状态和加载指示器 */
         .status {
             margin-top: 15px;
             padding: 10px;
@@ -377,17 +438,51 @@
             background-color: #fff5f5;
             color: #e03131;
         }
+        .loading-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+        .error-message {
+            background-color: #fff5f5;
+            color: #e03131;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <button class="new-chat-btn">
+            <button class="new-chat-btn" id="new-chat-btn">
                 <i class="fas fa-plus"></i>
                 新对话
             </button>
         </div>
-        <div class="chat-history">
+        <div class="chat-history" id="chat-history">
             <div class="chat-item">
                 <i class="fas fa-comment"></i>
                 <span>文本替换助手</span>
@@ -404,10 +499,13 @@
     <div class="main-content">
         <div class="chat-container" id="chat-container">
             <div class="welcome-screen" id="welcome-screen">
-                
                 <h1 class="welcome-title">KIMI</h1>
                 <p class="welcome-subtitle">智能文本处理助手，帮助您快速替换和处理文本</p>
-                <div class="examples-container">
+                <div id="loading-container" class="loading-indicator">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">正在加载问答数据，请稍候...</p>
+                </div>
+                <div id="examples-container" class="examples-container" style="display: none;">
                     <div class="example-card" data-text="帮我替换文本中的敏感词">
                         <h3>敏感词替换</h3>
                         <p>自动检测并替换文本中的敏感词汇</p>
@@ -426,8 +524,8 @@
 
         <div class="input-container">
             <div class="input-box">
-                <textarea class="input-textarea" id="user-input" placeholder="输入消息，按Enter发送..."></textarea>
-                <button class="send-btn" id="send-btn">
+                <textarea class="input-textarea" id="user-input" placeholder="输入消息，按Enter发送..." disabled></textarea>
+                <button class="send-btn" id="send-btn" disabled>
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
@@ -459,94 +557,181 @@
     </div>
 
     <script>
-        const loginTestCases = [
-            ['测试用例编号', '功能点', '用例说明', '前置条件', '输入执行步骤', '预期结果', '重要程度'],
-            ['1', '登录功能-正常登录', '输入正确的用户名和密码，点击"登录"按钮，验证能否正常登录系统', '已打开ERP实训系统登录页面', '在"请输入账号"输入框中输入正确的用户名，在"请输入密码"输入框中输入正确的密码，点击"登录"按钮', '成功进入系统，默认打开对应角色左侧菜单首功能页面，系统右上角显示"个人中心"头像、"消息"图标，左侧显示系统Logo、菜单', '高'],
-            ['2', '登录功能-未输入用户名', '未输入用户名，仅输入密码，点击"登录"按钮，验证系统提示信息', '已打开ERP实训系统登录页面', '在"请输入密码"输入框中输入任意密码，点击"登录"按钮', '系统弹出提示："请输入用户名', '高'],
-            ['3', '登录功能-未输入密码', '输入用户名，未输入密码，点击"登录"按钮，验证系统提示信息', '已打开ERP实训系统登录页面', '在"请输入账号"输入框中输入任意用户名，点击"登录"按钮', '系统弹出提示："请输入密码"', '高'],
-            ['4', '登录功能-输入错误用户名', '输入错误的用户名，输入正确密码，点击"登录"按钮，验证系统提示信息', '已打开ERP实训系统登录页面', '在"请输入账号"输入框中输入错误的用户名，在"请输入密码"输入框中输入正确的密码，点击"登录"按钮', '系统弹出提示："登录账号不存在！"', '高'],
-            ['5', '登录功能-输入错误密码', '输入正确用户名，输入错误密码，点击"登录"按钮，验证系统提示信息', '已打开ERP实训系统登录页面', '在"请输入账号"输入框中输入正确的用户名，在"请输入密码"输入框中输入错误的密码，点击"登录"按钮', '系统弹出提示："登录密码错误!"', '高'],
-            ['6', '登录功能-用户名长度超过限制', '输入长度超过16位的用户名，输入正确密码，点击"登录"按钮，验证系统是否限制用户名长度', '已打开ERP实训系统登录页面', '在"请输入账号"输入框中输入长度超过16位的用户名，在"请输入密码"输入框中输入正确的密码，点击"登录"按钮', '系统对超过16位的用户名输入进行限制，无法正常输入完整超长用户名；若可完整输入，点击"登录"按钮后，根据实际系统规则给出相应提示（如"用户名格式错误"等，需根据实际系统处理逻辑判断）', '中'],
-            ['7', '登录功能-密码长度超过限制', '输入正确用户名，输入长度超过16位的密码，点击"登录"按钮，验证系统是否限制密码长度', '已打开ERP实训系统登录页面', '在"请输入账号"输入框中输入正确的用户名，在"请输入密码"输入框中输入长度超过16位的密码，点击"登录"按钮', '系统对超过16位的密码输入进行限制，无法正常输入完整超长密码；若可完整输入，点击"登录"按钮后，根据实际系统规则给出相应提示（如"密码格式错误"等，需根据实际系统处理逻辑判断）', '中'],
-            ['8', '登录功能-记住密码功能', '勾选"记住密码"，输入正确用户名和密码登录，关闭页面后重新打开，验证是否自动填充用户名和密码', '已打开ERP实训系统登录页面', '勾选"记住密码"选项，在"请输入账号"输入框中输入正确的用户名，在"请输入密码"输入框中输入正确的密码，点击"登录"按钮，成功登录后关闭浏览器页面，再次打开ERP实训系统登录页面', '再次打开登录页面时，"请输入账号"和"请输入密码"输入框中自动填充上次登录的用户名和密码', '中'],
-            ['9', '登录功能-未勾选记住密码', '未勾选"记住密码"，输入正确用户名和密码登录，关闭页面后重新打开，验证是否不会自动填充用户名和密码', '已打开ERP实训系统登录页面', '不勾选"记住密码"选项，在"请输入账号"输入框中输入正确的用户名，在"请输入密码"输入框中输入正确的密码，点击"登录"按钮，成功登录后关闭浏览器页面，再次打开ERP实训系统登录页面', '再次打开登录页面时，"请输入账号"和"请输入密码"输入框为空，不会自动填充上次登录的用户名和密码', '中'],
+        // 问答数据对象
+        const qaData = [
+            {
+              "q": "你好",
+              "a": "I'm Kimi, an AI assistant developed by Moonshot AI. I'm here to help you!"
+            },
+            {
+              "q": "好的",
+              "a": "I can help you with a variety of tasks, such as answering questions, reading and summarizing documents, and even generating text for essays, reports, or creative writing. Just let me know how I can assist you!"
+            }
         ];
-        function getLoginTestCasesMessage() {
-            const tableHeader = '|' + loginTestCases[0].join('|') + '|\n';
-            const tableSeparator = '|' + loginTestCases[0].map(() => '---').join('|') + '|\n';
-            const tableBody = loginTestCases.slice(1).map(row => '|' + row.join('|') + '|').join('\n');
-            return `我已经帮你生成了登录模块的测试用例：\n\n${tableHeader}${tableSeparator}${tableBody}`;
-        }
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // 初始化变量
-            const mappings = [];
-            const inputTextEl = document.getElementById('input-text');
-            const outputTextEl = document.getElementById('output-text');
-            const addMappingBtn = document.getElementById('add-mapping');
-            const mappingListEl = document.getElementById('mapping-list');
-            const mappingStatusEl = document.getElementById('mapping-status');
-            const userInputEl = document.getElementById('user-input');
-            const sendBtn = document.getElementById('send-btn');
-            const chatContainer = document.getElementById('chat-container');
-            const welcomeScreen = document.getElementById('welcome-screen');
-            const mappingPanel = document.getElementById('mapping-panel');
-            const settingsToggle = document.getElementById('settings-toggle');
-            const mappingClose = document.getElementById('mapping-close');
-            const exampleCards = document.querySelectorAll('.example-card');
-            const newChatBtn = document.querySelector('.new-chat-btn');
+            // DOM元素
+            const elements = {
+                userInput: document.getElementById('user-input'),
+                sendBtn: document.getElementById('send-btn'),
+                chatContainer: document.getElementById('chat-container'),
+                welcomeScreen: document.getElementById('welcome-screen'),
+                mappingPanel: document.getElementById('mapping-panel'),
+                settingsToggle: document.getElementById('settings-toggle'),
+                mappingClose: document.getElementById('mapping-close'),
+                exampleCards: document.querySelectorAll('.example-card'),
+                newChatBtn: document.getElementById('new-chat-btn'),
+                loadingContainer: document.getElementById('loading-container'),
+                examplesContainer: document.getElementById('examples-container'),
+                inputText: document.getElementById('input-text'),
+                outputText: document.getElementById('output-text'),
+                addMappingBtn: document.getElementById('add-mapping'),
+                mappingList: document.getElementById('mapping-list'),
+                mappingStatus: document.getElementById('mapping-status'),
+                chatHistory: document.getElementById('chat-history')
+            };
+            
+            // 应用状态
+            const state = {
+                mappings: [],
+                currentChatId: null,
+                chats: []
+            };
+            
+            // 初始化UI
+            initializeUI();
+            
+            // 事件监听器
+            setupEventListeners();
+            
+            // 初始化映射列表
+            updateMappingList();
+            
+            // 初始化UI函数
+            function initializeUI() {
+                // 启用输入框和发送按钮
+                elements.userInput.disabled = false;
+                elements.sendBtn.disabled = false;
+                
+                // 隐藏加载指示器，显示示例卡片
+                elements.loadingContainer.style.display = 'none';
+                elements.examplesContainer.style.display = 'grid';
+            }
+            
+            // 设置事件监听器
+            function setupEventListeners() {
+                // 设置面板切换
+                elements.settingsToggle.addEventListener('click', () => {
+                    elements.mappingPanel.classList.toggle('open');
+                });
 
-            // 设置面板切换
-            settingsToggle.addEventListener('click', function() {
-                mappingPanel.classList.toggle('open');
-            });
+                elements.mappingClose.addEventListener('click', () => {
+                    elements.mappingPanel.classList.remove('open');
+                });
 
-            mappingClose.addEventListener('click', function() {
-                mappingPanel.classList.remove('open');
-            });
+                // 添加映射
+                elements.addMappingBtn.addEventListener('click', addMapping);
 
+                // 发送按钮点击事件
+                elements.sendBtn.addEventListener('click', sendMessage);
+
+                // 按Enter发送消息
+                elements.userInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+
+                // 示例卡片点击事件
+                elements.exampleCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        const text = this.getAttribute('data-text');
+                        elements.userInput.value = text;
+                        sendMessage();
+                    });
+                });
+
+                // 新对话按钮
+                elements.newChatBtn.addEventListener('click', createNewChat);
+
+                // 映射输入框快捷键
+                elements.inputText.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') elements.outputText.focus();
+                });
+
+                elements.outputText.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') elements.addMappingBtn.click();
+                });
+            }
+            
+            // 创建新对话
+            function createNewChat() {
+                // 清空聊天容器
+                while (elements.chatContainer.firstChild) {
+                    elements.chatContainer.removeChild(elements.chatContainer.firstChild);
+                }
+                
+                // 显示欢迎屏幕
+                elements.welcomeScreen.style.display = 'flex';
+                elements.chatContainer.appendChild(elements.welcomeScreen);
+                
+                // 生成新的聊天ID
+                state.currentChatId = Date.now().toString();
+                
+                // 添加到聊天历史
+                const chatItem = document.createElement('div');
+                chatItem.className = 'chat-item';
+                chatItem.innerHTML = `
+                    <i class="fas fa-comment"></i>
+                    <span>新对话 ${new Date().toLocaleTimeString()}</span>
+                `;
+                elements.chatHistory.insertBefore(chatItem, elements.chatHistory.firstChild);
+            }
+            
             // 添加映射
-            addMappingBtn.addEventListener('click', function() {
-                const inputText = inputTextEl.value.trim();
-                const outputText = outputTextEl.value.trim();
+            function addMapping() {
+                const inputText = elements.inputText.value.trim();
+                const outputText = elements.outputText.value.trim();
 
                 if (inputText === '' || outputText === '') {
-                    showStatus(mappingStatusEl, '请输入要检测的文字和要输出的文字', 'error');
+                    showStatus(elements.mappingStatus, '请输入要检测的文字和要输出的文字', 'error');
                     return;
                 }
 
                 // 检查是否已存在相同的输入文字
-                const existingMapping = mappings.find(m => m.input === inputText);
+                const existingMapping = state.mappings.find(m => m.input === inputText);
                 if (existingMapping) {
-                    showStatus(mappingStatusEl, '已存在相同的检测文字', 'error');
+                    showStatus(elements.mappingStatus, '已存在相同的检测文字', 'error');
                     return;
                 }
 
                 // 添加到映射数组
-                mappings.push({
+                state.mappings.push({
                     input: inputText,
                     output: outputText
                 });
 
                 // 更新UI
                 updateMappingList();
-                showStatus(mappingStatusEl, '映射添加成功', 'success');
+                showStatus(elements.mappingStatus, '映射添加成功', 'success');
 
                 // 清空输入框
-                inputTextEl.value = '';
-                outputTextEl.value = '';
-                inputTextEl.focus();
-            });
+                elements.inputText.value = '';
+                elements.outputText.value = '';
+                elements.inputText.focus();
+            }
 
             // 更新映射列表
             function updateMappingList() {
-                mappingListEl.innerHTML = '';
+                elements.mappingList.innerHTML = '';
                 
-                if (mappings.length === 0) {
-                    mappingListEl.innerHTML = '<div class="mapping-item">暂无映射配置</div>';
+                if (state.mappings.length === 0) {
+                    elements.mappingList.innerHTML = '<div class="mapping-item">暂无映射配置</div>';
                     return;
                 }
 
-                mappings.forEach((mapping, index) => {
+                state.mappings.forEach((mapping, index) => {
                     const mappingItem = document.createElement('div');
                     mappingItem.className = 'mapping-item';
                     mappingItem.innerHTML = `
@@ -555,161 +740,62 @@
                         <div class="mapping-text">${escapeHtml(mapping.output)}</div>
                         <button class="delete-btn" data-index="${index}">×</button>
                     `;
-                    mappingListEl.appendChild(mappingItem);
+                    elements.mappingList.appendChild(mappingItem);
                 });
 
                 // 添加删除按钮事件
                 document.querySelectorAll('.delete-btn').forEach(btn => {
                     btn.addEventListener('click', function() {
                         const index = parseInt(this.getAttribute('data-index'));
-                        mappings.splice(index, 1);
+                        state.mappings.splice(index, 1);
                         updateMappingList();
-                        showStatus(mappingStatusEl, '映射已删除', 'success');
+                        showStatus(elements.mappingStatus, '映射已删除', 'success');
                     });
                 });
             }
             
             // 发送消息
             function sendMessage() {
-                const userInput = userInputEl.value.trim();
+                const userInput = elements.userInput.value.trim();
                 if (userInput === '') return;
-
+                
                 // 隐藏欢迎屏幕
-                welcomeScreen.style.display = 'none';
+                elements.welcomeScreen.style.display = 'none';
 
                 // 添加用户消息
                 addMessage(userInput, 'user');
 
                 // 清空输入框
-                userInputEl.value = '';
+                elements.userInput.value = '';
 
                 // 处理文本并添加AI回复
                 setTimeout(() => {
                     let processedText = userInput;
+                    let aiResponse = '';
                     
-                    if (mappings.length > 0) {
+                    // 在qaData中查找匹配的问题
+                    const qaMatch = qaData.find(item => 
+                        item.q && userInput.toLowerCase().includes(item.q.toLowerCase())
+                    );
+                    
+                    if (qaMatch && qaMatch.a) {
+                        aiResponse = qaMatch.a;
+                    }
+                    // 如果在JSON中没有找到匹配，应用文本映射
+                    else if (state.mappings.length > 0) {
                         // 应用所有映射
-                        mappings.forEach(mapping => {
+                        state.mappings.forEach(mapping => {
                             const regex = new RegExp(escapeRegExp(mapping.input), 'g');
                             processedText = processedText.replace(regex, mapping.output);
                         });
 
                         if (processedText !== userInput) {
-                            addMessage(`我已经帮你处理了文本，以下是替换后的结果：\n\n${processedText}`, 'ai');
+                            aiResponse = `我已经帮你处理了文本，以下是替换后的结果：\n\n${processedText}`;
                         } else {
-                            addMessage('我已经处理了你的文本，但没有找到需要替换的内容。你可以通过右下角的设置按钮添加更多文本映射规则。', 'ai');
-                        }
-                    } else {
-                        if (userInput.includes('如何') || userInput.includes('怎么') || userInput.includes('使用')) {
-                            addMessage('要使用文本映射功能，请点击右下角的设置图标，然后添加你想要检测和替换的文字对。添加完成后，当你发送消息时，我会自动替换文本中的相应内容。', 'ai');
-                        } else if (userInput.includes('替换') || userInput.includes('映射')) {
-                            addMessage('你可以通过右下角的设置按钮添加文本映射规则。添加后，我会自动替换你发送的消息中的特定文字。', 'ai');
-                        } else if (userInput.includes('帮我生成登录模块的测试用例')) {
-                            addMessage(getLoginTestCasesMessage(), 'ai');
-                        } else if (userInput.includes('python')) {
-                            addMessage(getLoginTestCasesMessage(), 'ai');
-                        }
-                        else {
-                            addMessage('我是Kimi AI文本助手，可以帮你处理和替换文本。请通过右下角的设置按钮添加文本映射规则，或者直接告诉我你需要什么帮助。', 'ai');
+                            aiResponse = '我已经处理了你的文本，但没有找到需要替换的内容。你可以通过右下角的设置按钮添加更多文本映射规则。';
                         }
                     }
-                }, 600);
-            }
-
-            // 添加消息到聊天界面
-            function addMessage(text, sender) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${sender}-message`;
-                
-                const avatar = document.createElement('div');
-                avatar.className = 'message-avatar';
-                avatar.innerHTML = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
-                
-                const content = document.createElement('div');
-                content.className = 'message-content';
-                content.textContent = text;
-                
-                messageDiv.appendChild(avatar);
-                messageDiv.appendChild(content);
-                
-                chatContainer.appendChild(messageDiv);
-                
-                // 滚动到底部
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-
-            // 发送按钮点击事件
-            sendBtn.addEventListener('click', sendMessage);
-
-            // 按Enter发送消息
-            userInputEl.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-
-            // 示例卡片点击事件
-            exampleCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const text = this.getAttribute('data-text');
-                    userInputEl.value = text;
-                    sendMessage();
-                });
-            });
-
-            // 新对话按钮
-            newChatBtn.addEventListener('click', function() {
-                // 清空聊天容器
-                while (chatContainer.firstChild) {
-                    chatContainer.removeChild(chatContainer.firstChild);
-                }
-                
-                // 显示欢迎屏幕
-                welcomeScreen.style.display = 'flex';
-                chatContainer.appendChild(welcomeScreen);
-            });
-
-            // 辅助函数：显示状态信息
-            function showStatus(element, message, type) {
-                element.textContent = message;
-                element.className = `status ${type}`;
-                element.style.display = 'block';
-                
-                // 3秒后自动隐藏
-                setTimeout(() => {
-                    element.style.display = 'none';
-                }, 3000);
-            }
-
-            // 辅助函数：转义HTML
-            function escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-
-            // 辅助函数：转义正则表达式特殊字符
-            function escapeRegExp(string) {
-                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            }
-
-            // 初始化映射列表
-            updateMappingList();
-
-            // 添加键盘快捷键
-            inputTextEl.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    outputTextEl.focus();
-                }
-            });
-
-            outputTextEl.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    addMappingBtn.click();
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                    // 默认回复
+                    else {
+                        if (userInput.includes('如何') || userInput.includes('怎么') || userInput.includes('使用')) {
+                            aiResponse = '要使用文本映射功能，请点击右下角的设置图标，然后添加你想要检测和替换的文字对。添
