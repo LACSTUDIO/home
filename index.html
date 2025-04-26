@@ -51,7 +51,7 @@
             cssLink.href = href;
             document.head.appendChild(cssLink);
         };
-        // 如果preload不被支持，手动加载CSS
+        // 如果preload不被支持
         setTimeout(function() {
             var links = document.querySelectorAll('link[rel="preload"][as="style"]');
             for (var i = 0; i < links.length; i++) {
