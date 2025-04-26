@@ -7,7 +7,7 @@
     --text-color: #333333;
     --text-light: #767676;
     --bg-color: #ffffff;
-    --card-bg:  rgba(255, 255, 255, 0.5);
+    --card-bg:  rgba(255, 255, 255, 0.8);
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     --header-height: 70px;
@@ -24,7 +24,7 @@
     --text-color: #f0f0f0;
     --text-light: #f0f0f0;
     --bg-color: #121212;
-    --card-bg: rgba(0, 0, 0, 0.5); /* 改为深黑色 */
+    --card-bg: rgba(0, 0, 0, 0.8); /* 改为深黑色 */
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
@@ -182,7 +182,9 @@ body {
 .project-card:hover .card-icon {
     transform: scale(1.1);
 }
-
+.card-text{
+    color:var(--text-color)
+}
 .card-text-content {
     flex: 1;
 }
