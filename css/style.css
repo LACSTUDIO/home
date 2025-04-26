@@ -864,3 +864,53 @@ a:hover {
         font-size: 14px;
     }
 }
+
+/* 二维码容器样式 */
+.qr-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 关闭按钮美化 */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.close-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    background-color: #ff4081;
+}
+
+.close-button i {
+    font-size: 16px;
+}
+
+/* 暗黑模式适配 */
+[data-theme="dark"] .close-button {
+    background-color: #0078d4;
+    color: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .close-button:hover {
+    background-color: #ff5c8d;
+}

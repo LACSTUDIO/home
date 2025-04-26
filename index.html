@@ -262,7 +262,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- 酷安卡片 -->
                 <div class="contact-card">
                     <div class="card-header">
@@ -285,7 +285,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- 小米社区卡片 -->
                 <div class="contact-card">
                     <div class="card-header">
@@ -310,7 +310,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- 联系方式 -->
         <div class="media-platform">
             <h5>联系方式</h5>
@@ -327,17 +327,13 @@
                         <p>工作日24小时内回复</p>
                     </div>
                     <div class="card-footer">
-                        <button class="card-button" onclick="showModal('email', '电子邮件', '邮箱：2935278133@qq.com', 'mailto:2935278133@qq.com')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
                         <button class="card-button" onclick="window.location.href='mailto:2935278133@qq.com'" data-umami-event="发送邮件">
                             <i class="fas fa-paper-plane"></i>
                             发送
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- 微信卡片 -->
                 <div class="contact-card">
                     <div class="card-header">
@@ -360,7 +356,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- 公众号卡片 -->
                 <div class="contact-card">
                     <div class="card-header">
@@ -410,17 +406,11 @@
 <div id="modal" class="modal">
     <div class="modal-background">
         <div class="content">
-            <div class="modal-header">
-                <img src="" alt="" class="modal-img">
-                <h3 class="modal-title"></h3>
-            </div>
-            <div class="modal-main">
-                <img src="" alt="" class="qr" alt="二维码">
-                <p class="modal-text"></p>
-            </div>
-            <div class="modal-footer">
-                <button class="button-long" id="modal-link">访问</button>
-                <button class="button-long" onclick="closeModal()" style="background-color: red;">关闭</button>
+            <div class="qr-container">
+                <img src="" alt="二维码" class="qr">
+                <button class="close-button" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
         </div>
     </div>

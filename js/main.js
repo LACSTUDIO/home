@@ -74,6 +74,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 获取哔哩哔哩粉丝数据
     fetchBilibiliFans();
+
+    // 获取模态框元素
+    const ycModal = document.getElementById('yc-modal');
+    
+    // 点击模态框背景时关闭模态框
+    if (modal) {
+        const modalBackground = modal.querySelector('.modal-background');
+        modalBackground.addEventListener('click', function(e) {
+            // 只有当点击的是背景元素本身时才关闭模态框
+            if (e.target === modalBackground) {
+                closeModal();
+            }
+        });
+    }
+    
+    // 点击远程刷机模态框背景时关闭
+    if (ycModal) {
+        const ycModalBackground = ycModal.querySelector('.modal-background');
+        ycModalBackground.addEventListener('click', function(e) {
+            // 只有当点击的是背景元素本身时才关闭模态框
+            if (e.target === ycModalBackground) {
+                closeModalYC();
+            }
+        });
+    }
 });
 
 function handleScroll() {
@@ -121,20 +146,12 @@ function showModal(icon, title, text, href = '#') {
         }
 
         modal.style.display = 'block';
-        modalTitle.textContent = title;
-        modalText.textContent = text;
-
-        const hasIcon = icon !== 'none';
-        toggleVisibility(qrImage, hasIcon);
-        toggleVisibility(modalImage, hasIcon);
-        if (hasIcon) {
+        
+        if (icon !== 'none') {
             qrImage.src = `img/qr/${icon}.webp`;
-            modalImage.src = `img/icons/${icon}.svg`;
-        }
-
-        toggleVisibility(modalLink, href !== 'none');
-        if (href !== 'none') {
-            modalLink.setAttribute('data-href', href); // 使用 data-href 传递 URL
+            qrImage.style.display = 'block';
+        } else {
+            qrImage.style.display = 'none';
         }
     } catch (error) {
         console.error('显示模态框时出错:', error);
@@ -264,7 +281,7 @@ window.addEventListener('resize', adjustProjectCardHeight);
 
 // 辅助函数：验证模态框元素是否存在
 function validateModalElements() {
-    return modal && modalTitle && modalText && qrImage && modalImage && modalLink;
+    return modal && qrImage;
 }
 
 // 辅助函数：验证URL格式
