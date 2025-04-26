@@ -7,7 +7,7 @@
     --text-color: #333333;
     --text-light: #767676;
     --bg-color: #ffffff;
-    --card-bg: #ffffff;
+    --card-bg:  rgba(255, 255, 255, 0.5);
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     --header-height: 70px;
@@ -22,19 +22,18 @@
     --secondary-color: #0078d4;
     --accent-color: #ff5c8d;
     --text-color: #f0f0f0;
-    --text-light: #aaaaaa;
+    --text-light: #f0f0f0;
     --bg-color: #121212;
-    --card-bg: #1e1e1e;
+    --card-bg: rgba(0, 0, 0, 0.5); /* 改为深黑色 */
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 body {
     font-family: 'Microsoft YaHei', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background: url(../img/test1.png);
     line-height: 1.6;
-    transition: background-color var(--transition-speed) ease, 
+    transition: background-color var(--transition-speed) ease,
                 color var(--transition-speed) ease;
     padding-top: var(--header-height);
     overflow-x: hidden;
@@ -132,7 +131,7 @@ body {
     border-radius: var(--border-radius);
     background-color: var(--card-bg);
     box-shadow: var(--card-shadow);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, 
+    transition: transform 0.4s ease, box-shadow 0.4s ease,
                 background-color var(--transition-speed) ease;
     max-width: 1200px;
     width: 92%;
@@ -248,10 +247,11 @@ body {
 }
 
 footer {
-    background-color: var(--card-bg);
+    background-color: var(--bg-color);
     padding: 40px 0 20px;
     margin-top: 60px;
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
 }
 
 .footer-links {
@@ -669,7 +669,7 @@ a:hover {
 }
 
 .card-header {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     padding: 15px;
     display: flex;
     align-items: center;

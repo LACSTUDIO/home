@@ -139,7 +139,7 @@ function toggleMaoTheme() {
     }
 }
 
-function showModal(icon, title, text, href = '#') {
+function showModal(icon) {
     try {
         if (!validateModalElements()) {
             throw new Error('error: 模态框元素未找到');
