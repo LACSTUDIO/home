@@ -139,16 +139,16 @@ function toggleMaoTheme() {
     }
 }
 
-function showModal(icon) {
+function showModal(iconUrl) {
     try {
         if (!validateModalElements()) {
             throw new Error('error: 模态框元素未找到');
         }
 
         modal.style.display = 'block';
-        
-        if (icon !== 'none') {
-            qrImage.src = `img/qr/${icon}.webp`;
+
+        if (iconUrl !== 'none') {
+            qrImage.src = iconUrl; // 直接使用 URL
             qrImage.style.display = 'block';
         } else {
             qrImage.style.display = 'none';
@@ -157,6 +157,7 @@ function showModal(icon) {
         console.error('显示模态框时出错:', error);
     }
 }
+
 
 function closeModal() {
     try {

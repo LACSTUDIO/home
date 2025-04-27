@@ -409,228 +409,230 @@
 </div>
 </div>
 
+
 <!-- 关于区域 -->
-<div class="section" id="about">
-    <h2>关于我们</h2>
-    <div class="footer-section">
-        <!-- 媒体平台 -->
-        <div class="media-platform">
-            <h5>媒体平台</h5>
-            <div class="contact-cards">
-                <!-- 哔哩哔哩卡片 -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <img src="img/icons/bilibili.svg" style="width: 40px; height: 40px;margin-right: 10px">
-                        <h5 class="card-title">哔哩哔哩</h5>
+    <div class="section" id="about">
+        <h2>关于我们</h2>
+        <div class="footer-section">
+            <!-- 媒体平台 -->
+            <div class="media-platform">
+                <h5>媒体平台</h5>
+                <div class="contact-cards">
+                    <!-- 哔哩哔哩卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="img/icons/bilibili.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">哔哩哔哩</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>用户名: 领创工作室</p>
+                            <p>UID: 1779662818</p>
+                            <p id="bilibili-fans">粉丝数: 获取中...</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/bilibili.webp', '哔哩哔哩 媒体平台', '哔哩哔哩uid:1779662818', 'https://space.bilibili.com/1779662818')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://space.bilibili.com/1779662818')" data-umami-event="访问哔哩哔哩">
+                                <i class="fas fa-external-link-alt"></i>
+                                访问
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>用户名: 领创工作室</p>
-                        <p>UID: 1779662818</p>
-                        <p id="bilibili-fans">粉丝数: 获取中...</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('bilibili', '哔哩哔哩 媒体平台', '哔哩哔哩uid:1779662818', 'https://space.bilibili.com/1779662818')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button" onclick="openLink('https://space.bilibili.com/1779662818')" data-umami-event="访问哔哩哔哩">
-                            <i class="fas fa-external-link-alt"></i>
-                            访问
-                        </button>
-                    </div>
-                </div>
 
-                <!-- 酷安卡片 -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <img src="img/icons/coolapk.svg" style="width: 40px; height: 40px;margin-right: 10px">
-                        <h5 class="card-title">酷安</h5>
+                    <!-- 酷安卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="img/icons/coolapk.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">酷安</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>用户名: 领创工作室</p>
+                            <p>ID: 13237789</p>
+                            <p id="coolapk-fans">粉丝数: 2962</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/coolapk.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://www.coolapk.com/u/13237789')" data-umami-event="访问酷安">
+                                <i class="fas fa-external-link-alt"></i>
+                                访问
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>用户名: 领创工作室</p>
-                        <p>ID: 13237789</p>
-                        <p id="coolapk-fans">粉丝数: 2962</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('coolapk', '酷安 媒体平台', '酷安id:13237789', 'https://www.coolapk.com/u/13237789')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button" onclick="openLink('https://www.coolapk.com/u/13237789')" data-umami-event="访问酷安">
-                            <i class="fas fa-external-link-alt"></i>
-                            访问
-                        </button>
-                    </div>
-                </div>
 
-                <!-- 小米社区卡片 -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <img src="img/icons/MiBBS.svg" style="width: 40px; height: 40px;margin-right: 10px">
-                        <h5 class="card-title">小米社区</h5>
-                    </div>
-                    <div class="card-body">
-                        <p>用户名: 领创工作室</p>
-                        <p>UID: 2376012419</p>
-                        <p>活跃度: 活跃</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('MiBBS', '小米社区 媒体平台', '小米社区uid:2376012419', 'https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button" onclick="openLink('https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')" data-umami-event="访问小米社区">
-                            <i class="fas fa-external-link-alt"></i>
-                            访问
-                        </button>
+                    <!-- 小米社区卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="img/icons/MiBBS.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">小米社区</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>用户名: 领创工作室</p>
+                            <p>UID: 2376012419</p>
+                            <p>活跃度: 活跃</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/MiBBS.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')" data-umami-event="访问小米社区">
+                                <i class="fas fa-external-link-alt"></i>
+                                访问
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 联系方式 -->
-        <div class="media-platform">
-            <h5>联系方式</h5>
-            <div class="contact-cards">
-                <!-- 电子邮件卡片 -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <img src="img/icons/email.svg" style="width: 40px; height: 40px;margin-right: 10px">
-                        <h5 class="card-title">电子邮件</h5>
+            <!-- 联系方式 -->
+            <div class="media-platform">
+                <h5>联系方式</h5>
+                <div class="contact-cards">
+                    <!-- 电子邮件卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="img/icons/email.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">电子邮件</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>邮箱地址:</p>
+                            <p>2935278133@qq.com</p>
+                            <p>工作日24小时内回复</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="window.location.href='mailto:2935278133@qq.com'" data-umami-event="发送邮件">
+                                <i class="fas fa-paper-plane"></i>
+                                发送
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>邮箱地址:</p>
-                        <p>2935278133@qq.com</p>
-                        <p>工作日24小时内回复</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="window.location.href='mailto:2935278133@qq.com'" data-umami-event="发送邮件">
-                            <i class="fas fa-paper-plane"></i>
-                            发送
-                        </button>
-                    </div>
-                </div>
 
-                <!-- 微信卡片 -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <img src="img/icons/wechat.svg" style="width: 40px; height: 40px;margin-right: 10px">
-                        <h5 class="card-title">微信</h5>
+                    <!-- 微信卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="img/icons/wechat.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">微信</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>微信号:</p>
+                            <p>LACS177</p>
+                            <p>添加请注明来意</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/wechat.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button copy-btn" data-content="LACS177" data-umami-event="复制微信号">
+                                <i class="fas fa-copy"></i>
+                                复制
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>微信号:</p>
-                        <p>LACS177</p>
-                        <p>添加请注明来意</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('wechat', '微信', '微信号：LACS177', 'none')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button copy-btn" data-content="LACS177" data-umami-event="复制微信号">
-                            <i class="fas fa-copy"></i>
-                            复制
-                        </button>
-                    </div>
-                </div>
 
-                <!-- 公众号卡片 -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <img src="img/icons/公众号.svg" style="width: 40px; height: 40px;margin-right: 10px">
-                        <h5 class="card-title">公众号</h5>
-                    </div>
-                    <div class="card-body">
-                        <p>公众号名称:</p>
-                        <p>领创工作室</p>
-                        <p>欢迎关注获取最新动态</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('公众号', '公众号', '公众号：领创工作室', 'none')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button copy-btn" data-content="领创工作室" data-umami-event="复制公众号">
-                            <i class="fas fa-copy"></i>
-                            复制
-                        </button>
+                    <!-- 公众号卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="img/icons/公众号.svg" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">公众号</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>公众号名称:</p>
+                            <p>领创工作室</p>
+                            <p>欢迎关注获取最新动态</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/公众号.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button copy-btn" data-content="领创工作室" data-umami-event="复制公众号">
+                                <i class="fas fa-copy"></i>
+                                复制
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- 群聊 -->
-        <div class="media-platform">
-            <h5>官方群聊</h5>
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <div class="card-header">
-                        <i class="fas fa-envelope"></i>
-                        <h5 class="card-title">QQ大群-1</h5>
+            <!-- 群聊 -->
+            <div class="media-platform">
+                <h5>官方群聊</h5>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <i class="fas fa-envelope"></i>
+                            <h5 class="card-title">QQ大群-1</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>群号: </p>
+                            <p>676581092</p>
+                            <p>群聊限制500人</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/Q群.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button copy-btn" data-content="676581092" data-umami-event="复制群号">
+                                <i class="fas fa-copy"></i>
+                                复制
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>群号: </p>
-                        <p>676581092</p>
-                        <p>群聊限制500人</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('Q群')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button copy-btn" data-content="676581092" data-umami-event="复制群号">
-                            <i class="fas fa-copy"></i>
-                            复制
-                        </button>
-                    </div>
-                </div>
 
-                <div class="contact-card">
-                    <div class="card-header">
-                        <i class="fas fa-envelope"></i>
-                        <h5 class="card-title">QQ大群-2</h5>
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <i class="fas fa-envelope"></i>
+                            <h5 class="card-title">QQ大群-2</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>群号: </p>
+                            <p>921998770</p>
+                            <p>群聊限制500人</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/q2群.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button copy-btn" data-content="676581092" data-umami-event="复制群号">
+                                <i class="fas fa-copy"></i>
+                                复制
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>群号: </p>
-                        <p>921998770</p>
-                        <p>群聊限制500人</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('Qqun1')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button copy-btn" data-content="676581092" data-umami-event="复制群号">
-                            <i class="fas fa-copy"></i>
-                            复制
-                        </button>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="card-header">
-                        <i class="fas fa-envelope"></i>
-                        <h5 class="card-title">QQ频道</h5>
-                    </div>
-                    <div class="card-body">
-                        <p>频道号: </p>
-                        <p>4k233e56bg</p>
-                        <p>频道不限制人数</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="card-button" onclick="showModal('wechat')">
-                            <i class="fas fa-qrcode"></i>
-                            二维码
-                        </button>
-                        <button class="card-button copy-btn" data-content="676581092" data-umami-event="复制群号">
-                            <i class="fas fa-copy"></i>
-                            复制
-                        </button>
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <i class="fas fa-envelope"></i>
+                            <h5 class="card-title">QQ频道</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>频道号: </p>
+                            <p>4k233e56bg</p>
+                            <p>频道不限制人数</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/qq频道.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button copy-btn" data-content="4k233e56bg" data-umami-event="复制群号">
+                                <i class="fas fa-copy"></i>
+                                复制
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
+
 
 <!-- 底部按钮区域 -->
 <div class="section" style="display: flex;align-items: center;justify-content: center;height: 60px;">
