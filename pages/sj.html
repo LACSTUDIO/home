@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>随机选择</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 body {
     font-family: 'Microsoft YaHei', Arial, sans-serif;
@@ -366,17 +367,19 @@ footer a:hover {
 </head>
 <body>
 <div class="container-background">
-    <div class="container">
-        <span>
-            <p id="selectionResult-a" style="display: inline-block; margin: 0;">公告:</p>
-            <p id="adContentText" style="display: inline-block; margin: 0;">test</p>
-        </span>
+    <div class="container notice-container">
+        <div class="notice-content">
+            <i class="fas fa-bullhorn"></i>
+            <span id="adContentText">加载中...</span>
+        </div>
     </div>
     <div class="container">
-        <h1>今天吃/喝什么？</h1>
-        <div class="button-container">
-            <div>
-                <label for="floorSelect" style="font-weight: bold; font-size: 18px;">楼层选择:</label>
+        <h1><i class="fas fa-random"></i> 今天吃/喝什么？</h1>
+        <div class="selection-container">
+            <div class="floor-select">
+                <label for="floorSelect">
+                    <i class="fas fa-building"></i> 楼层选择:
+                </label>
                 <select id="floorSelect" onchange="handleFloorSelect(this.value)">
                     <option value="random">随机</option>
                     <option value="2">2层</option>
@@ -384,17 +387,21 @@ footer a:hover {
                 </select>
             </div>
 
-            <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-                <button id="storeButton" onclick="selectRandomStore()" data-umami-event="随机店家">随机店家</button>
-                <button id="cafeButton" onclick="selectWater()" data-umami-event="随机饮品">随机饮品</button>
+            <div class="button-group">
+                <button id="storeButton" onclick="selectRandomStore()" data-umami-event="随机店家">
+                    <i class="fas fa-store"></i> 随机店家
+                </button>
+                <button id="cafeButton" onclick="selectWater()" data-umami-event="随机饮品">
+                    <i class="fas fa-coffee"></i> 随机饮品
+                </button>
             </div>
         </div>
     </div>
-    <div class="container">
-        <p id="selectionResult"></p>
+    <div class="container result-container">
+        <div id="selectionResult"></div>
     </div>
     <div class="container-big">
-        <h1>日志信息</h1>
+        <h2><i class="fas fa-history"></i> 日志信息</h2>
         <p id="log_text">正在获取数据...</p>
     </div>
 </div>
@@ -415,7 +422,7 @@ footer a:hover {
 
 <footer>
     <span><p style="margin: 0; font-size: 16px;">© 2025 <a href="https://www.xn--5brr03o.top/">LAC Studio</a> and <a href="https://blog.ssxaya.fun/">ssxaya</a></p></span>
-    <a href="#" onclick="settings()" style="font-size: 16px;">关于本站</a>
+    <a href="#" onclick="settings()" style="font-size: 16px;"><i class="fas fa-info-circle"></i> 关于本站</a>
 </footer>
 
 <script defer src="https://umami.xn--5brr03o.top/script.js" data-website-id="a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45"></script>
@@ -492,16 +499,6 @@ footer a:hover {
         document.getElementById('cafeButton').classList.add('enabled');
         document.getElementById('log_text').innerText = '商家数据已更新 饮品数据已更新';
         document.getElementById('adContentText').innerText = data.notice;
-    }
-
-    // 处理数据加载错误
-    function handleDataError(error) {
-        console.error('获取数据时出错:', error);
-        isLoading = false;
-        document.getElementById('storeButton').classList.add('enabled');
-        document.getElementById('cafeButton').classList.add('enabled');
-        document.getElementById('log_text').innerText = '获取数据时出错: ' + error.message;
-        document.getElementById('adContentText').innerText = '';
     }
 
     // 页面加载时调用

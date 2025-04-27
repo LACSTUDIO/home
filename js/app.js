@@ -402,18 +402,18 @@ function openLightbox(index) {
     });
 }
 
-    bindEvents() {
-        window.addEventListener('scroll', () => this.checkVisibility());
-        window.addEventListener('resize', () => this.checkVisibility());
-    },
+bindEvents() {
+    window.addEventListener('scroll', () => this.checkVisibility());
+    window.addEventListener('resize', () => this.checkVisibility());
+},
 
-    checkVisibility() {
-        this.sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
-            section.classList.toggle('visible', isVisible);
-        });
-    }
+checkVisibility() {
+    this.sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+        section.classList.toggle('visible', isVisible);
+    });
+}
 };
 
 // 初始化
