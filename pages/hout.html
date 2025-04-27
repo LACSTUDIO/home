@@ -4,25 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="hout2.0 - 领创工作室推出的现代化刷机工具箱，提供简单、快速、安全的刷机体验，支持多种设备和操作系统。">
-  <meta name="author" content="领创工作室"/>
-  <meta name="keywords" content="刷机工具箱,刷机,刷机软件,刷机教程,解锁工具,刷机软件下载,刷机软件推荐,刷机软件推荐,小米澎湃os解锁"/>
+  <meta name="author" content="领创工作室">
+  <meta name="keywords" content="刷机工具箱,刷机,刷机软件,刷机教程,解锁工具,刷机软件下载,刷机软件推荐,小米澎湃os解锁">
   <title>刷机工具箱 - 现代化刷机解决方案</title>
-  <!-- 预加载关键资源 -->
+  
+  <!-- 资源预加载 -->
   <link rel="preload" href="../css/app.css" as="style">
-  <link rel="preload" href="../img/hout/main.png" as="image">
+  <link rel="preload" href="../img/hout/main.png" as="image" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   
+  <!-- 样式表 -->
   <link rel="stylesheet" href="../css/app.css">
-  <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="canonical" href="https://xn--5brr03o.top/" />
   
-  <!-- 页面加载优化 -->
+  <!-- 其他元数据 -->
+  <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://xn--5brr03o.top/">
+  
+  <!-- 特性检测 -->
   <script>
-    // 检测浏览器是否支持Intersection Observer API
     const hasIntersectionObserver = 'IntersectionObserver' in window;
   </script>
   <style>
@@ -247,232 +250,237 @@
   </style>
 </head>
 <body>
-<!-- 导航栏 -->
-<header>
-  <nav>
-    <div class="logo"><i class="fas fa-tools"></i> HOUT-领创工作室</div>
-    <ul class="nav-links">
-      <li><a href="#features"><i class="fas fa-star"></i> 功能</a></li>
-      <li><a href="#screenshots"><i class="fas fa-images"></i> 软件截图</a></li>
-      <li><a href="#video"><i class="fas fa-play-circle"></i> 视频介绍</a></li>
-      <li><a href="#download"><i class="fas fa-download"></i> 下载</a></li>
-      <li><a href="#support"><i class="fas fa-heart"></i> 捐赠</a></li>
-      <li><a href="#community"><i class="fas fa-users"></i> 关于</a></li>
-    </ul>
-    <div class="menu-toggle" id="mobile-menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+<header class="site-header" role="banner">
+  <nav class="nav" role="navigation" aria-label="主导航">
+    <div class="logo" role="heading" aria-level="1">
+      <i class="fas fa-tools" aria-hidden="true"></i>
+      <span>HOUT-领创工作室</span>
     </div>
+    <ul class="nav-links" role="menubar">
+      <li role="none"><a href="#features" role="menuitem"><i class="fas fa-star" aria-hidden="true"></i><span>功能</span></a></li>
+      <li role="none"><a href="#screenshots" role="menuitem"><i class="fas fa-images" aria-hidden="true"></i><span>软件截图</span></a></li>
+      <li role="none"><a href="#video" role="menuitem"><i class="fas fa-play-circle" aria-hidden="true"></i><span>视频介绍</span></a></li>
+      <li role="none"><a href="#download" role="menuitem"><i class="fas fa-download" aria-hidden="true"></i><span>下载</span></a></li>
+      <li role="none"><a href="#support" role="menuitem"><i class="fas fa-heart" aria-hidden="true"></i><span>捐赠</span></a></li>
+      <li role="none"><a href="#community" role="menuitem"><i class="fas fa-users" aria-hidden="true"></i><span>关于</span></a></li>
+    </ul>
+    <button class="menu-toggle" id="mobile-menu" aria-label="菜单" aria-expanded="false" aria-controls="nav-links">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </nav>
-  <div class="hero">
-    <h1>现代化刷机工具箱</h1>
-    <p>简单、快速、安全的刷机体验</p>
-    <a href="#download" class="cta-button"><i class="fas fa-download"></i> 立即下载</a>
-  </div>
 </header>
 
+<main role="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <h1 id="hero-title">现代化刷机工具箱</h1>
+      <p>简单、快速、安全的刷机体验</p>
+      <a href="#download" class="btn btn-primary" role="button">立即下载</a>
+    </div>
+  </section>
 
-<!-- 功能 -->
-<section id="features" class="features">
-  <div class="section-container">
-    <h2 class="section-title">主要功能</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-        <h3>一键刷机</h3>
-        <p>简单易用的刷机工具，支持多种设备。</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-        <h3>安全可靠</h3>
-        <p>经过严格测试，确保刷机过程安全无风险。</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
-        <h3>多设备支持</h3>
-        <p>支持多种品牌和型号的设备。</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-tag"></i></div>
-        <h3>免费试用</h3>
-        <p>无需注册，即可免费试用。</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-        <h3>自动更新</h3>
-        <p>自动检测更新，确保您使用的是最新版本。</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
-        <h3>自定义刷机</h3>
-        <p>灵活的自定义刷机选项，满足您的个性化需求。</p>
+  <section class="features" aria-labelledby="features-title">
+    <div class="container">
+      <h2 id="features-title">主要功能</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+          <h3>一键刷机</h3>
+          <p>简单易用的刷机工具，支持多种设备。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>安全可靠</h3>
+          <p>经过严格测试，确保刷机过程安全无风险。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>多设备支持</h3>
+          <p>支持多种品牌和型号的设备。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tag"></i></div>
+          <h3>免费试用</h3>
+          <p>无需注册，即可免费试用。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+          <h3>自动更新</h3>
+          <p>自动检测更新，确保您使用的是最新版本。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
+          <h3>自定义刷机</h3>
+          <p>灵活的自定义刷机选项，满足您的个性化需求。</p>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 截图 -->
-<section id="screenshots" class="screenshots">
-  <div class="section-container">
-    <h2 class="section-title">软件截图</h2>
-    
-    <!-- 添加大图卡片 -->
-    <div class="featured-screenshot-card">
-      <div class="featured-screenshot-title">
-        <h3><i class="fas fa-image"></i> <span id="featured-title">主界面</span></h3>
-        <div class="featured-indicators">
-          <span class="current-slide">1</span>/<span class="total-slides">5</span>
+  <!-- 截图 -->
+  <section id="screenshots" class="screenshots">
+    <div class="section-container">
+      <h2 class="section-title">软件截图</h2>
+      
+      <!-- 添加大图卡片 -->
+      <div class="featured-screenshot-card">
+        <div class="featured-screenshot-title">
+          <h3><i class="fas fa-image"></i> <span id="featured-title">主界面</span></h3>
+          <div class="featured-indicators">
+            <span class="current-slide">1</span>/<span class="total-slides">5</span>
+          </div>
+        </div>
+        <div class="featured-screenshot-image">
+          <img id="featured-image" src="../img/hout/main.png" alt="主界面" class="featured-img">
+          <div class="featured-controls">
+            <button class="featured-arrow prev" aria-label="上一张"><i class="fas fa-chevron-left"></i></button>
+            <button class="featured-arrow next" aria-label="下一张"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="featured-action">
+            <button class="featured-button" onclick="openLightbox(currentSlide)">
+              <i class="fas fa-search-plus"></i> 查看大图
+            </button>
+          </div>
         </div>
       </div>
-      <div class="featured-screenshot-image">
-        <img id="featured-image" src="../img/hout/main.png" alt="主界面" class="featured-img">
-        <div class="featured-controls">
-          <button class="featured-arrow prev" aria-label="上一张"><i class="fas fa-chevron-left"></i></button>
-          <button class="featured-arrow next" aria-label="下一张"><i class="fas fa-chevron-right"></i></button>
+      
+      <div class="screenshot-container">
+        <div class="screenshot-main">
+          <div class="screenshot-slider">
+            <!-- 只预加载第一张图片，其他图片懒加载 -->
+            <img src="../img/hout/main.png" alt="screenshot1" class="active" title="主界面">
+            <img data-src="../img/hout/about.png" alt="screenshot2" title="关于我们" loading="lazy">
+            <img data-src="../img/hout/adbtool01.png" alt="screenshot3" title="ADB工具" loading="lazy">
+            <img data-src="../img/hout/adbtool02.png" alt="screenshot4" title="澎湃OS一键解锁" loading="lazy">
+            <img data-src="../img/hout/adbinstall_online.png" alt="screenshot5" title="ADB安装" loading="lazy">
+          </div>
+          <div class="slider-controls">
+            <button class="slider-arrow prev" aria-label="上一张"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arrow next" aria-label="下一张"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="slider-indicators">
+            <span class="current-slide">1</span>/<span class="total-slides">5</span>
+          </div>
         </div>
-        <div class="featured-action">
-          <button class="featured-button" onclick="openLightbox(currentSlide)">
-            <i class="fas fa-search-plus"></i> 查看大图
-          </button>
+        <div class="screenshot-thumbnails">
+          <!-- 缩略图也使用懒加载 -->
+          <img src="../img/hout/main.png" alt="thumbnail1" class="thumbnail active" data-index="0" title="主界面">
+          <img data-src="../img/hout/about.png" alt="thumbnail2" class="thumbnail" data-index="1" title="关于我们" loading="lazy">
+          <img data-src="../img/hout/adbtool01.png" alt="thumbnail3" class="thumbnail" data-index="2" title="ADB工具" loading="lazy">
+          <img data-src="../img/hout/adbtool02.png" alt="thumbnail4" class="thumbnail" data-index="3" title="澎湃OS一键解锁" loading="lazy">
+          <img data-src="../img/hout/adbinstall_online.png" alt="thumbnail5" class="thumbnail" data-index="4" title="ADB安装" loading="lazy">
         </div>
       </div>
     </div>
-    
-    <div class="screenshot-container">
-      <div class="screenshot-main">
-        <div class="screenshot-slider">
-          <!-- 只预加载第一张图片，其他图片懒加载 -->
-          <img src="../img/hout/main.png" alt="screenshot1" class="active" title="主界面">
-          <img data-src="../img/hout/about.png" alt="screenshot2" title="关于我们" loading="lazy">
-          <img data-src="../img/hout/adbtool01.png" alt="screenshot3" title="ADB工具" loading="lazy">
-          <img data-src="../img/hout/adbtool02.png" alt="screenshot4" title="澎湃OS一键解锁" loading="lazy">
-          <img data-src="../img/hout/adbinstall_online.png" alt="screenshot5" title="ADB安装" loading="lazy">
-        </div>
-        <div class="slider-controls">
-          <button class="slider-arrow prev" aria-label="上一张"><i class="fas fa-chevron-left"></i></button>
-          <button class="slider-arrow next" aria-label="下一张"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        <div class="slider-indicators">
-          <span class="current-slide">1</span>/<span class="total-slides">5</span>
-        </div>
-      </div>
-      <div class="screenshot-thumbnails">
-        <!-- 缩略图也使用懒加载 -->
-        <img src="../img/hout/main.png" alt="thumbnail1" class="thumbnail active" data-index="0" title="主界面">
-        <img data-src="../img/hout/about.png" alt="thumbnail2" class="thumbnail" data-index="1" title="关于我们" loading="lazy">
-        <img data-src="../img/hout/adbtool01.png" alt="thumbnail3" class="thumbnail" data-index="2" title="ADB工具" loading="lazy">
-        <img data-src="../img/hout/adbtool02.png" alt="thumbnail4" class="thumbnail" data-index="3" title="澎湃OS一键解锁" loading="lazy">
-        <img data-src="../img/hout/adbinstall_online.png" alt="thumbnail5" class="thumbnail" data-index="4" title="ADB安装" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!--视频-->
-<section id="video" class="video-section">
-  <div class="section-container">
-    <h2 class="section-title">视频介绍</h2>
-    <div class="video-wrapper">
-      <div class="video-container">
-        <iframe id="video-player"
-                src="//player.bilibili.com/player.html?isOutside=true&aid=112895966841529&bvid=BV1TuiLezEYK&cid=500001636627370&p=1">
-        </iframe>
+  <!--视频-->
+  <section id="video" class="video-section">
+    <div class="section-container">
+      <h2 class="section-title">视频介绍</h2>
+      <div class="video-wrapper">
+        <div class="video-container">
+          <iframe id="video-player"
+                  src="//player.bilibili.com/player.html?isOutside=true&aid=112895966841529&bvid=BV1TuiLezEYK&cid=500001636627370&p=1">
+          </iframe>
+        </div>
+      </div>
+      <div class="video-action">
+        <button onclick="openLink('https://www.bilibili.com/video/BV1TuiLezEYK')" class="action-button">
+          <i class="fas fa-play"></i> 在B站观看
+        </button>
       </div>
     </div>
-    <div class="video-action">
-      <button onclick="openLink('https://www.bilibili.com/video/BV1TuiLezEYK')" class="action-button">
-        <i class="fas fa-play"></i> 在B站观看
-      </button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- 下载 -->
-<section id="download" class="download-section">
-  <div class="section-container">
-    <h2 class="section-title">下载</h2>
-    <div class="download-info">
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-code-branch"></i></div>
-        <h3>当前版本</h3>
-        <p id="app-latest-version">加载中...</p>
+  <!-- 下载 -->
+  <section id="download" class="download-section">
+    <div class="section-container">
+      <h2 class="section-title">下载</h2>
+      <div class="download-info">
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-code-branch"></i></div>
+          <h3>当前版本</h3>
+          <p id="app-latest-version">加载中...</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h3>发布日期</h3>
+          <p id="app-release-date">加载中...</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-bell"></i></div>
+          <h3>公告</h3>
+          <p id="app-notice">加载中...</p>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-calendar-alt"></i></div>
-        <h3>发布日期</h3>
-        <p id="app-release-date">加载中...</p>
-      </div>
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-bell"></i></div>
-        <h3>公告</h3>
-        <p id="app-notice">加载中...</p>
-      </div>
-    </div>
-    <div class="download-actions">
-      <a id="download-link" href="#" class="download-button" data-umami-event="下载软件">
-        <i class="fab fa-windows"></i> Windows 版本
-      </a>
-      <a id="history-link" href="#" class="history-button">
-        <i class="fas fa-history"></i> 历史版本
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- 支持 -->
-<section id="support" class="support-section">
-  <div class="section-container">
-    <h2 class="section-title">捐赠我们</h2>
-    <div class="support-content">
-      <div class="support-text">
-        <p>您的支持是我们不断进步的动力。如果您觉得我们的工具对您有所帮助，请考虑给予我们一些支持。</p>
-        <p>我们承诺将持续改进产品，为用户提供更好的体验。</p>
-        <a href="/jz" class="action-button">
-          <i class="fas fa-heart"></i> 点我了解
+      <div class="download-actions">
+        <a id="download-link" href="#" class="download-button" data-umami-event="下载软件">
+          <i class="fab fa-windows"></i> Windows 版本
+        </a>
+        <a id="history-link" href="#" class="history-button">
+          <i class="fas fa-history"></i> 历史版本
         </a>
       </div>
-      <div class="support-image">
-        <img src="../img/support.svg" alt="支持我们" class="support-img">
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div id="version-modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3 class="modal-title">历史版本</h3>
-    <div id="version-list" class="version-container"></div>
-  </div>
-</div>
+  <!-- 支持 -->
+  <section id="support" class="support-section">
+    <div class="section-container">
+      <h2 class="section-title">捐赠我们</h2>
+      <div class="support-content">
+        <div class="support-text">
+          <p>您的支持是我们不断进步的动力。如果您觉得我们的工具对您有所帮助，请考虑给予我们一些支持。</p>
+          <p>我们承诺将持续改进产品，为用户提供更好的体验。</p>
+          <a href="/jz" class="action-button">
+            <i class="fas fa-heart"></i> 点我了解
+          </a>
+        </div>
+        <div class="support-image">
+          <img src="../img/support.svg" alt="支持我们" class="support-img">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- 关于 -->
-<footer id="community">
-  <div class="footer-container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>关于我们</h3>
-        <ul>
-          <li><a href="https://www.xn--5brr03o.top/#about"><i class="fas fa-envelope"></i> 联系我们</a></li>
-          <li><a href="/hout_PP_ToU#privacyPolicy"><i class="fas fa-shield-alt"></i> 隐私政策</a></li>
-          <li><a href="/hout_PP_ToU#usageTerms"><i class="fas fa-file-contract"></i> 使用条款</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>相关链接</h3>
-        <ul>
-          <li><a href="https://xn--9krq6q.xn--5brr03o.top/"><i class="fas fa-blog"></i> 博客</a></li>
-          <li><a href="https://xn--5nqs58m.xn--5brr03o.top/"><i class="fas fa-download"></i> 软件资源网</a></li>
-          <li><a href="https://xn--5brr03o.top/"><i class="fas fa-home"></i> 领创工作室官网</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024-2025 领创工作室, All rights reserved.</p>
+  <div id="version-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 class="modal-title">历史版本</h3>
+      <div id="version-list" class="version-container"></div>
     </div>
   </div>
-</footer>
+
+  <!-- 关于 -->
+  <footer id="community">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>关于我们</h3>
+          <ul>
+            <li><a href="https://www.xn--5brr03o.top/#about"><i class="fas fa-envelope"></i> 联系我们</a></li>
+            <li><a href="/hout_PP_ToU#privacyPolicy"><i class="fas fa-shield-alt"></i> 隐私政策</a></li>
+            <li><a href="/hout_PP_ToU#usageTerms"><i class="fas fa-file-contract"></i> 使用条款</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>相关链接</h3>
+          <ul>
+            <li><a href="https://xn--9krq6q.xn--5brr03o.top/"><i class="fas fa-blog"></i> 博客</a></li>
+            <li><a href="https://xn--5nqs58m.xn--5brr03o.top/"><i class="fas fa-download"></i> 软件资源网</a></li>
+            <li><a href="https://xn--5brr03o.top/"><i class="fas fa-home"></i> 领创工作室官网</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2025 领创工作室, All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</main>
 
 <script src="../js/app.js"></script>
 <script defer src="https://umami.xn--5brr03o.top/script.js" data-website-id="a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45"></script>
@@ -620,57 +628,59 @@
   // 初始化懒加载
   loadLazyImages();
   
-  // 轮播图功能
+  // 优化后的轮播图功能
   const slides = document.querySelectorAll('.screenshot-slider img');
   const thumbnails = document.querySelectorAll('.thumbnail');
   const prevBtn = document.querySelector('.slider-arrow.prev');
   const nextBtn = document.querySelector('.slider-arrow.next');
-  const currentSlideIndicator = document.querySelector('.current-slide');
-  const totalSlidesIndicator = document.querySelector('.total-slides');
   let currentSlide = 0;
   let slideInterval;
-  
-  // 更新轮播指示器
-  if (totalSlidesIndicator) {
-    totalSlidesIndicator.textContent = slides.length;
-  }
-  
-  function showSlide(index) {
-    slides.forEach(slide => {
-      slide.classList.remove('active');
-      // 确保图片已加载
-      if (slide.dataset.src && !slide.src.includes(slide.dataset.src)) {
-        slide.src = slide.dataset.src;
-        slide.removeAttribute('data-src');
-      }
-    });
-    
-    thumbnails.forEach(thumb => {
-      thumb.classList.remove('active');
-      // 确保缩略图已加载
-      if (thumb.dataset.src && !thumb.src.includes(thumb.dataset.src)) {
-        thumb.src = thumb.dataset.src;
-        thumb.removeAttribute('data-src');
-      }
-    });
-    
-    slides[index].classList.add('active');
-    thumbnails[index].classList.add('active');
-    currentSlide = index;
-    
-    // 更新指示器
-    if (currentSlideIndicator) {
-      currentSlideIndicator.textContent = index + 1;
+
+  // 预加载图片
+  function preloadImage(index) {
+    const img = slides[index];
+    if (img.dataset.src && !img.src.includes(img.dataset.src)) {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
     }
   }
-  
+
+  // 显示指定幻灯片
+  function showSlide(index) {
+    // 预加载前后图片
+    const prevIndex = (index - 1 + slides.length) % slides.length;
+    const nextIndex = (index + 1) % slides.length;
+    preloadImage(prevIndex);
+    preloadImage(nextIndex);
+
+    // 切换当前幻灯片
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+
+    thumbnails.forEach((thumb, i) => {
+      thumb.classList.toggle('active', i === index);
+    });
+
+    currentSlide = index;
+    updateSlideIndicator();
+  }
+
+  // 更新幻灯片指示器
+  function updateSlideIndicator() {
+    const currentSlideIndicator = document.querySelector('.current-slide');
+    if (currentSlideIndicator) {
+      currentSlideIndicator.textContent = currentSlide + 1;
+    }
+  }
+
   // 自动轮播功能
   function startSlideshow() {
-    stopSlideshow(); // 确保没有多个定时器运行
+    stopSlideshow();
     slideInterval = setInterval(() => {
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
-    }, 5000); // 5秒切换一次
+    }, 5000);
   }
 
   function stopSlideshow() {
@@ -679,250 +689,46 @@
     }
   }
 
-  // 初始化轮播
-  startSlideshow();
+  // 初始化轮播图
+  function initSlideshow() {
+    // 预加载第一张图片
+    preloadImage(0);
 
-  // 鼠标悬停时暂停轮播
-  document.querySelector('.screenshot-main').addEventListener('mouseenter', stopSlideshow);
-  document.querySelector('.screenshot-main').addEventListener('mouseleave', startSlideshow);
-
-  // 按钮控制
-  prevBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-    stopSlideshow();
-    setTimeout(startSlideshow, 10000); // 10秒后恢复自动轮播
-  });
-
-  nextBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-    stopSlideshow();
-    setTimeout(startSlideshow, 10000);
-  });
-
-  // 缩略图点击事件
-  thumbnails.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => {
-      showSlide(index);
+    // 添加事件监听
+    prevBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
       stopSlideshow();
       setTimeout(startSlideshow, 10000);
     });
-  });
 
-  // 大图预览功能
-  slides.forEach((slide, index) => {
-    slide.addEventListener('click', () => {
-      openLightbox(index);
+    nextBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+      stopSlideshow();
+      setTimeout(startSlideshow, 10000);
     });
-  });
 
-  // 添加触摸滑动支持
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  const sliderElement = document.querySelector('.screenshot-slider');
-  if (sliderElement) {
-    sliderElement.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-    
-    sliderElement.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, {passive: true});
-  }
-  
-  function handleSwipe() {
-    const swipeThreshold = 50; // 最小滑动距离
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // 向左滑动 - 下一张
-      nextBtn.click();
-    } else if (touchEndX > touchStartX + swipeThreshold) {
-      // 向右滑动 - 上一张
-      prevBtn.click();
-    }
-  }
-  
-  // 创建灯箱预览（优化版本）
-  function openLightbox(index) {
-    stopSlideshow(); // 打开灯箱时暂停轮播
-    
-    // 预加载前后图片以提高响应速度
-    const preloadImages = () => {
-      const prevIndex = (index - 1 + slides.length) % slides.length;
-      const nextIndex = (index + 1) % slides.length;
-      const preloadLinks = [];
-      
-      [prevIndex, nextIndex].forEach(idx => {
-        const imgSrc = slides[idx].dataset.src || slides[idx].src;
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = imgSrc;
-        document.head.appendChild(link);
-        preloadLinks.push(link);
-      });
-      
-      // 5秒后移除预加载链接，避免内存占用
-      setTimeout(() => {
-        preloadLinks.forEach(link => document.head.removeChild(link));
-      }, 5000);
-    };
-    
-    preloadImages();
-    
-    const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
-    
-    // 确保图片已加载
-    const imgSrc = slides[index].dataset.src || slides[index].src;
-    
-    lightbox.innerHTML = `
-      <div class="lightbox-content">
-        <span class="lightbox-close">&times;</span>
-        <div class="lightbox-loading"><div class="spinner"></div></div>
-        <img src="${imgSrc}" alt="${slides[index].alt}" class="lightbox-image">
-        <div class="lightbox-caption">${slides[index].title || slides[index].alt}</div>
-        <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
-        <div class="lightbox-counter"><span class="current">${index + 1}</span>/${slides.length}</div>
-      </div>
-    `;
-    
-    document.body.appendChild(lightbox);
-    document.body.style.overflow = 'hidden'; // 防止背景滚动
-    
-    // 图片加载完成后隐藏加载动画
-    const lightboxImg = lightbox.querySelector('.lightbox-image');
-    const loadingIndicator = lightbox.querySelector('.lightbox-loading');
-    
-    lightboxImg.onload = function() {
-      loadingIndicator.style.display = 'none';
-    };
-    
-    // 如果图片已经缓存，可能不会触发onload事件
-    if (lightboxImg.complete) {
-      loadingIndicator.style.display = 'none';
-    }
-    
-    // 关闭灯箱 - 优化立即响应
-    const close = lightbox.querySelector('.lightbox-close');
-    close.addEventListener('click', () => {
-      lightbox.style.animation = 'none';
-      lightbox.style.opacity = 0;
-      // 立即解除背景滚动锁定
-      document.body.style.overflow = '';
-      // 使用requestAnimationFrame确保UI更新
-      requestAnimationFrame(() => {
-        document.body.removeChild(lightbox);
-        startSlideshow(); // 关闭灯箱后恢复轮播
+    // 缩略图点击事件
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        showSlide(index);
+        stopSlideshow();
+        setTimeout(startSlideshow, 10000);
       });
     });
-    
-    // 点击灯箱背景立即关闭
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.style.animation = 'none';
-        lightbox.style.opacity = 0;
-        document.body.style.overflow = '';
-        requestAnimationFrame(() => {
-          document.body.removeChild(lightbox);
-          startSlideshow();
-        });
-      }
-    });
-    
-    // 上一张/下一张切换优化
-    let currentLightboxIndex = index;
-    const prevBtn = lightbox.querySelector('.lightbox-prev');
-    const nextBtn = lightbox.querySelector('.lightbox-next');
-    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-    const lightboxCounter = lightbox.querySelector('.lightbox-counter .current');
-    
-    function updateLightboxImage(newIndex) {
-      loadingIndicator.style.display = 'flex';
-      const newSrc = slides[newIndex].dataset.src || slides[newIndex].src;
-      
-      // 优化图片切换
-      const nextImg = new Image();
-      nextImg.onload = function() {
-        loadingIndicator.style.display = 'none';
-        lightboxImg.src = newSrc;
-        lightboxImg.alt = slides[newIndex].alt;
-        lightboxCaption.textContent = slides[newIndex].title || slides[newIndex].alt;
-        lightboxCounter.textContent = newIndex + 1;
-        
-        // 预加载下一张图片
-        const nextLoadIndex = (newIndex + 1) % slides.length;
-        const nextLoadSrc = slides[nextLoadIndex].dataset.src || slides[nextLoadIndex].src;
-        const preloadImg = new Image();
-        preloadImg.src = nextLoadSrc;
-      };
-      
-      nextImg.src = newSrc;
-      
-      // 如果图片已经缓存，手动触发onload
-      if (nextImg.complete) {
-        nextImg.onload();
-      }
-      
-      currentLightboxIndex = newIndex;
-    }
-    
-    prevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const newIndex = (currentLightboxIndex - 1 + slides.length) % slides.length;
-      updateLightboxImage(newIndex);
-    });
-    
-    nextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const newIndex = (currentLightboxIndex + 1) % slides.length;
-      updateLightboxImage(newIndex);
-    });
-    
-    // 键盘导航优化
-    const keyListener = function(e) {
-      if (e.key === 'ArrowLeft') {
-        prevBtn.click();
-      } else if (e.key === 'ArrowRight') {
-        nextBtn.click();
-      } else if (e.key === 'Escape') {
-        close.click();
-      }
-    };
-    
-    document.addEventListener('keydown', keyListener);
-    
-    // 当灯箱关闭时移除事件监听器
-    lightbox.addEventListener('remove', () => {
-      document.removeEventListener('keydown', keyListener);
-    });
-    
-    // 触摸滑动支持优化
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    lightbox.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-    
-    lightbox.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const swipeThreshold = 50;
-      
-      if (touchEndX < touchStartX - swipeThreshold) {
-        nextBtn.click();
-      } else if (touchEndX > touchStartX + swipeThreshold) {
-        prevBtn.click();
-      }
-    }, {passive: true});
+
+    // 鼠标悬停控制
+    const sliderContainer = document.querySelector('.screenshot-main');
+    sliderContainer.addEventListener('mouseenter', stopSlideshow);
+    sliderContainer.addEventListener('mouseleave', startSlideshow);
+
+    // 初始化自动轮播
+    startSlideshow();
   }
 
-  // 定义一个函数来打开链接，避免全局污染
-  function openLink(url) {
-    window.open(url, '_blank');
-  }
+  // 页面加载完成后初始化
+  document.addEventListener('DOMContentLoaded', initSlideshow);
 </script>
 
 <style>
@@ -1126,8 +932,17 @@
     opacity: 0;
     transition: opacity 0.5s ease;
   }
-  
+
   .screenshot-slider img.active {
+    opacity: 1;
+  }
+
+  .thumbnail {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .thumbnail.active {
+    transform: scale(1.05);
     opacity: 1;
   }
   
