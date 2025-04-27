@@ -111,7 +111,7 @@ button {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.8px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.3s, transform 0.2s;
     min-height: 56px;
     min-width: 220px;
     pointer-events: none;
@@ -210,7 +210,7 @@ footer {
     align-items: center;
     width: 100%;
 }
-5
+
 footer a {
     color: #2575fc;
     text-decoration: none;
@@ -477,14 +477,12 @@ footer a:hover {
     }
 
     // 更新数据并启用按钮
-    function updateDataAndUI(apiData) {
-        ['2', '3'].forEach(floor => {
-            const floorKey = floor === '2' ? 'second' : 'third'; // 根据楼层选择正确的键名
-            data[floor].stores = apiData[floorKey]?.stores || [];
-            data[floor].waters = apiData[floorKey]?.waters || [];
-        });
-
-        data.notice = apiData.notice || 'test';
+    function updateDataAndUI({second, third, notice}) {
+        data['2'].stores = second?.stores || [];
+        data['2'].waters = second?.waters || [];
+        data['3'].stores = third?.stores || [];
+        data['3'].waters = third?.waters || [];
+        data.notice = notice || 'test';
         isLoading = false;
 
         // 更新 UI
@@ -492,16 +490,6 @@ footer a:hover {
         document.getElementById('cafeButton').classList.add('enabled');
         document.getElementById('log_text').innerText = '商家数据已更新 饮品数据已更新';
         document.getElementById('adContentText').innerText = data.notice;
-    }
-
-    // 处理数据加载错误
-    function handleDataError(error) {
-        console.error('获取数据时出错:', error);
-        isLoading = false;
-        document.getElementById('storeButton').classList.add('enabled');
-        document.getElementById('cafeButton').classList.add('enabled');
-        document.getElementById('log_text').innerText = '获取数据时出错: ' + error.message;
-        document.getElementById('adContentText').innerText = '';
     }
 
     // 页面加载时调用
