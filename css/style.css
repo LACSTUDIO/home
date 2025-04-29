@@ -396,7 +396,7 @@ footer {
     margin-top: 80px;
     text-align: center;
     font-size: 0.9em;
-    color: #6c757d;
+    background-color: #1d4ed8 !important;
     animation: fadeIn 1s ease-out;
 }
 
@@ -474,6 +474,7 @@ footer a {
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
+    color: black;
 }
 
 @media (max-width: 768px) {
