@@ -100,10 +100,22 @@ function initSlideshow() {
 // 移动端菜单
 function initMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks = document.getElementById('nav-links');
+    
+    // 切换菜单状态
     mobileMenu.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
         navLinks.classList.toggle('active');
+        mobileMenu.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
+    });
+    
+    // 点击菜单项后自动关闭菜单
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            navLinks.classList.remove('active');
+            mobileMenu.setAttribute('aria-expanded', 'false');
+        });
     });
 }
 
