@@ -776,7 +776,7 @@ nav .logo {
 
 /* 页脚样式 */
 footer {
-  background: var(--secondary-color);
+  background: #004d80;
   color: black;
   padding: 3rem 0;
 }
