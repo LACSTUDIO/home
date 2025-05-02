@@ -30,13 +30,7 @@ function initSlideshow() {
     let currentSlide = 0;
     let slideInterval;
 
-    function preloadImage(index) {
-        const img = slides[index];
-        if (img.dataset.src && !img.src.includes(img.dataset.src)) {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-        }
-    }
+    
 
     function showSlide(index) {
         slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
@@ -86,7 +80,6 @@ function initSlideshow() {
     document.querySelector('.screenshot-main').addEventListener('mouseenter', stopSlideshow);
     document.querySelector('.screenshot-main').addEventListener('mouseleave', startSlideshow);
 
-    preloadImage(0);
     showSlide(0);
     startSlideshow();
 }
@@ -113,31 +106,16 @@ function initMobileMenu() {
 
 // 更新版本模态框内容
 
-// 懒加载图片
-function loadLazyImages() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src || img.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-            }
-        });
-    }, { rootMargin: '50px 0px' });
 
-    document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
-}
 
-// 更新大图
+// 更新预览图
 function updateFeaturedImage(index) {
-    const featuredImage = document.getElementById('featured-image');
-    const featuredTitle = document.getElementById('featured-title');
+    const previewImage = document.getElementById('preview-image');
+    const previewTitle = document.getElementById('preview-title');
     const slides = document.querySelectorAll('.screenshot-slider img');
     const currentSlide = slides[index];
-    const imgSrc = currentSlide.dataset.src || currentSlide.src;
-    featuredImage.src = imgSrc;
-    featuredTitle.textContent = currentSlide.title || currentSlide.alt;
+    previewImage.src = currentSlide.src;
+    previewTitle.textContent = currentSlide.title || currentSlide.alt;
 }
 
 // 工具函数
@@ -264,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlideshow();
     initMobileMenu();
     initSmoothScroll();
-    loadLazyImages();
+
     initFeaturedButton();
     initVersionInfo(); // 添加版本信息初始化
     window.openLightbox = openLightbox;

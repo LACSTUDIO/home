@@ -763,7 +763,7 @@ nav .logo {
   width: 90%;
   padding: 2.5rem;
   position: relative;
-  margin: 40px auto;
+  margin: 40px 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
   max-height: 80vh;
   overflow-y: auto;
@@ -801,6 +801,7 @@ nav .logo {
   padding: 1.5rem;
   background: var(--light-gray);
   border-radius: var(--border-radius);
+  margin: 10px;
 }
 
 .version-item h3 {
