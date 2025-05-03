@@ -775,6 +775,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" defer></script>
 <script src="js/main.js" defer></script>
 
+<!-- 延迟加载umami统计脚本 -->
+<script>
+    // 页面完全加载后再加载umami统计脚本
+    window.addEventListener('load', function() {
+        // 给页面内容加载留出足够时间
+        setTimeout(function() {
+            const umamiScript = document.createElement('script');
+            umamiScript.src = 'https://umami.xn--5brr03o.top/script.js';
+            umamiScript.setAttribute('data-website-id', 'a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45');
+            umamiScript.setAttribute('async', '');
+            document.body.appendChild(umamiScript);
+            console.log('Umami统计脚本已加载');
+        }, 1000); // 延迟1秒加载统计脚本
+    });
+</script>
+
 </div>
 </body>
 </html>

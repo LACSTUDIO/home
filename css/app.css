@@ -192,7 +192,7 @@ nav .logo {
   height: 100%;
   top: 0;
   left: 0;
-  background: url('../img/pattern.svg');
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   background-size: cover;
   opacity: 0.05;
   animation: pulse 15s ease-in-out infinite alternate;
