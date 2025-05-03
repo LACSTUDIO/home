@@ -31,7 +31,7 @@
 
 body {
     font-family: 'Microsoft YaHei', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: url(../img/test1.png);
+    background: url(https://gitee.com/lacsgf/img/raw/master/webp/test1.webp);
     line-height: 1.6;
     transition: background-color var(--transition-speed) ease,
                 color var(--transition-speed) ease;
