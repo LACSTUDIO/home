@@ -28,6 +28,64 @@
   <script>
     const hasIntersectionObserver = 'IntersectionObserver' in window;
   </script>
+  
+  <!-- 添加固定下载按钮的样式 -->
+  <style>
+    .floating-download-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 98, 245, 0.3);
+      cursor: pointer;
+      z-index: 999;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .floating-download-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 98, 245, 0.4);
+    }
+    
+    .floating-download-btn i {
+      font-size: 18px;
+    }
+    
+    @media (max-width: 768px) {
+      .floating-download-btn {
+        padding: 10px 16px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 14px;
+      }
+    }
+    
+    /* 滚动高亮效果 */
+    .scroll-highlight {
+      position: absolute;
+      border: 3px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      pointer-events: none;
+      z-index: 998;
+      opacity: 0;
+      animation: highlight-pulse 1.5s ease-out;
+    }
+    
+    @keyframes highlight-pulse {
+      0% { opacity: 0; transform: scale(0.95); }
+      20% { opacity: 0.8; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.05); }
+    }
+  </style>
 </head>
 <body>
 <header class="site-header" role="banner">
@@ -60,11 +118,10 @@
       </video>
       <h1 id="hero-title">现代化刷机工具箱</h1>
       <p>简单、快速、安全的刷机体验</p>
-      <a href="#download" class="btn btn-primary" role="button">立即下载</a>
     </div>
   </section>
 
-  <section class="features" aria-labelledby="features-title">
+  <section class="features" aria-labelledby="features-title" id="features">
     <div class="container">
       <h2 id="features-title">主要功能</h2>
       <div class="feature-grid">
@@ -176,7 +233,7 @@
         </div>
       </div>
       <div class="download-actions">
-        <a id="download-link" href="#" class="download-button" data-umami-event="下载软件" onclick="openLink(this.getAttribute('data-url')); return false;">
+        <a id="download-link" href="#" class="download-button" data-umami-event="下载软件" onclick="openLink(this.href); return false;">
           <i class="fab fa-windows"></i> Windows 版本
         </a>
         <a id="history-link" href="#" class="history-button">
@@ -240,6 +297,13 @@
     </div>
   </footer>
 </main>
+
+<!-- 固定在右下角的下载按钮 -->
+<div class="floating-download-btn" id="floatingDownloadBtn">
+  <i class="fas fa-download"></i>
+  <span>下载</span>
+</div>
+
 <script src="../js/app.js"></script>
 <script defer src="https://umami.xn--5brr03o.top/script.js" data-website-id="a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45"></script>
 <script type="application/ld+json">

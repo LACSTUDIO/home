@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://xn--5brr03o.top/" />
+    <title>HOUT澎湃设备可用机型列表</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center; /* 设置文本居中 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px auto;
+        }
+        h1 {
+            color: #00a0e9;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="button"] {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #00a0e9;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #0080d4; /* 修改悬停时的颜色变化，使其与新强调色更协调 */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-left: auto; /* 使表格水平居中 */
+            margin-right: auto;
+        }
+        tr {
+            line-height: 2; /* 增加行高 */
+        }
+        td {
+            padding: 10px; /* 增加内边距，间接增大行高 */
+            min-height: 50px; /* 设置最小高度 */
+        }
+        th {
+            background-color: #00a0e9;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+        .no-results {
+            margin-top: 20px;
+            color: red; /* 提示文字颜色 */
+        }
+        button {
+            margin: auto 10px;
+            padding: 10px 20px;
+            background-color: #00a0e9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .card-container {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             margin-top: 5px;
+            background-color: #f3f3f3;
+            border-radius: 8px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-container">
+            <button onclick="fetchDevices()">刷新页面</button>
+            <button onclick="window.location.href='https://www.xn--5brr03o.top'">返回官网</button>
+        </div>
+        <h1>HOUT澎湃设备可用机型列表</h1>
+        <h4>支持模糊搜索，点击设备代号可复制到剪贴板</h4>
+        <input type="text" id="searchInput" onkeyup="searchDevices()" placeholder="通过设备名称或者代号搜索...">
+        <input type="button" value="搜索" onclick="searchDevices()">
+        <div id="noResults" class="no-results" style="display: none;">没有找到相关设备</div>
+    </div>
+    <div class="card">
+        <table id="deviceTable">
+            <thead>
+                <tr>
+                    <th>设备名称</th>
+                    <th>设备代号</th>
+                    <th>发布时间</th>
+                    <th>最高可用版本</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+<script>
+    let devices = [];
+
+    function fetchDevices() {
+        fetch('https://api.xn--5brr03o.top/Hout_AvailableModels.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // 检查API返回的数据
+                devices = data.list;
+                displayDevices(devices);
+            })
+            .catch(error => console.error('Error fetching devices:', error));
+    }
+
+    function displayDevices(devices) {
+        const tableBody = document.getElementById('deviceTable').getElementsByTagName('tbody')[0];
+        const noResults = document.getElementById('noResults');
+        tableBody.innerHTML = ''; // 清空表格内容
+        noResults.style.display = 'none'; // 隐藏没有结果的提示
+
+        if (devices.length === 0) {
+            noResults.style.display = 'block'; // 显示没有结果的提示
+        } else {
+            devices.forEach(device => {
+                const row = tableBody.insertRow();
+                const modelCell = row.insertCell(0);
+                const dhCell = row.insertCell(1);
+                const dateCell = row.insertCell(2);
+                const vsCell = row.insertCell(3);
+
+                modelCell.textContent = device.model;
+                dhCell.textContent = device.dh;
+                dateCell.textContent = device.date;
+                vsCell.textContent = device.vs || '未知';
+
+                // 为代号单元添加点击事件
+                dhCell.onclick = function() {
+                    copyToClipboard(device.dh);
+                };
+            });
+        }
+    }
+
+    function searchDevices() {
+        const input = document.getElementById('searchInput').value.toLowerCase().replace(/\s+/g, '');
+        const filteredDevices = devices.filter(device =>
+            device.model.toLowerCase().replace(/\s+/g, '').includes(input) ||
+            device.dh.toLowerCase().replace(/\s+/g, '').includes(input) ||
+            (device.vs && device.vs.toLowerCase().replace(/\s+/g, '').includes(input))
+        );
+        displayDevices(filteredDevices);
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('代号 "' + text + '" 已复制到剪贴板');
+        }).catch(err => {
+            console.error('复制失败:', err);
+        });
+    }
+
+    fetchDevices();
+</script>
+</body>
+</html>

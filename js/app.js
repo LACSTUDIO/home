@@ -203,14 +203,6 @@ async function initVersionInfo() {
     }
 }
 
-function openLink(url) {
-    if (url) {
-        window.open(url, '_blank');
-    } else {
-        console.error('下载链接未设置');
-    }
-}
-
 function updateVersionModalContent(data) {
     const modalContent = document.getElementById('modal-content');
     modalContent.innerHTML = ''; // 清空模态框内容
@@ -227,14 +219,36 @@ function updateVersionModalContent(data) {
 // 调用initVersionInfo函数以初始化版本信息
 document.addEventListener('DOMContentLoaded', initVersionInfo);
 
-function openLink(url) {
-    if (url) {
-        window.open(url, '_blank');
-    } else {
-        console.error('下载链接未设置');
+// 初始化浮动下载按钮
+function initFloatingDownloadBtn() {
+    const floatingBtn = document.getElementById('floatingDownloadBtn');
+
+    if (floatingBtn) {
+        floatingBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // 阻止默认行为
+            const downloadSection = document.getElementById('download');
+            if (downloadSection) {
+                // 确保平滑滚动到下载区域
+                downloadSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+                
+                // 添加高亮效果
+                const highlightElement = document.createElement('div');
+                highlightElement.className = 'scroll-highlight';
+                document.body.appendChild(highlightElement);
+                const rect = downloadSection.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                highlightElement.style.top = `${rect.top + scrollTop - 10}px`;
+                highlightElement.style.left = `${rect.left - 10}px`;
+                highlightElement.style.width = `${rect.width + 20}px`;
+                highlightElement.style.height = `${rect.height + 20}px`;
+                setTimeout(() => highlightElement.remove(), 1500);
+            }
+        });
     }
 }
-
 
 // 初始化所有功能
 document.addEventListener('DOMContentLoaded', () => {
@@ -245,6 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initFeaturedButton();
     initVersionInfo(); // 添加版本信息初始化
+    initFloatingDownloadBtn(); // 初始化浮动下载按钮
     window.openLightbox = openLightbox;
     window.openLink = openLink;
 });
+
+// 确保浮动下载按钮在页面加载后立即可用
+initFloatingDownloadBtn();
