@@ -21,15 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 动态调整项目卡片高度
     adjustProjectCardHeight();
 
-    // 获取网站更新时间
-    fetch('https://api.github.com/repos/LACSTUDIO/home')
-        .then(response => response.json())
-        .then(data => {
-            const updateTime = new Date(data.updated_at);
-            const formattedTime = `${updateTime.getFullYear()}年${updateTime.getMonth() + 1}月${updateTime.getDate()}日 ${updateTime.getHours()}时${updateTime.getMinutes()}分`;
-            update_time.textContent += ' ' + formattedTime;
-        })
-        .catch(error => console.error('获取网站更新时间出错:', error));
+    // 使用本地时间替代GitHub API调用，避免跨国请求延迟
+    if (update_time) {
+        const now = new Date();
+        const formattedTime = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日更新`;
+        update_time.textContent += ' ' + formattedTime;
+    }
 
     // 添加项目按钮点击事件监听器
     document.querySelectorAll('#project-buttons button').forEach(button => {

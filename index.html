@@ -20,8 +20,7 @@
     <link rel="dns-prefetch" href="https://code.jquery.com">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>领创工作室-官方网站-领创.top</title>
-    <!-- 预加载首屏关键图片 -->
-    <link rel="preload" href="https://gitee.com/lacsgf/img/raw/master/webp/20250405101908686.webp" as="image" fetchpriority="high">
+
     
     <!-- 关键CSS -->
     <style>
@@ -34,9 +33,6 @@
     </style>
     <!-- 关键CSS内联加载 -->
     <link rel="stylesheet" href="css/loading.css">
-    <!-- 预加载关键字体 -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <!-- 优先加载关键CSS -->
     <link rel="stylesheet" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css">
     <!-- 异步加载非关键CSS -->
@@ -48,18 +44,35 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/modal.css">
         <link rel="stylesheet" href="css/theme.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </noscript>
     <!-- CSS加载回退脚本 -->
     <script>
-        // 用于处理CSS异步加载的回退方案
+        // 优化的CSS加载回退方案
         var loadCSS = function(href) {
             var cssLink = document.createElement('link');
             cssLink.rel = 'stylesheet';
             cssLink.href = href;
             document.head.appendChild(cssLink);
         };
-        // 如果preload不被支持
+        
+        // 检测网络状况，根据网络质量调整资源加载策略
+        function checkNetworkQuality() {
+            if ('connection' in navigator) {
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (connection && (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
+                    // 低网速模式 - 进一步延迟非关键资源加载
+                    document.documentElement.classList.add('slow-connection');
+                    return 'slow';
+                }
+            }
+            return 'fast';
+        }
+        
+        // 根据网络状况调整加载策略
+        const networkQuality = checkNetworkQuality();
+        const loadTimeout = networkQuality === 'slow' ? 3000 : 1000;
+        
+        // 如果preload不被支持，使用回退方案
         setTimeout(function() {
             var links = document.querySelectorAll('link[rel="preload"][as="style"]');
             for (var i = 0; i < links.length; i++) {
@@ -67,7 +80,7 @@
                     loadCSS(links[i].href);
                 }
             }
-        }, 2000);
+        }, loadTimeout);
     </script>
     <script>
         document.write('<meta name="google-site-verification" content="' + process.env.GOOGLE_SITE_VERIFICATION + '" />');
@@ -746,19 +759,28 @@
 <script src="js/bootstrap.bundle.js" defer></script>
 <script src="js/main.js" defer></script>
 
-<!-- 延迟加载umami统计脚本 -->
+<!-- 优化统计脚本加载 -->
 <script>
-    // 页面完全加载后再加载umami统计脚本
+    // 使用requestIdleCallback优化统计脚本加载时机
     window.addEventListener('load', function() {
-        // 给页面内容加载留出足够时间
-        setTimeout(function() {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() {
+                loadAnalytics();
+            }, {timeout: 2000});
+        } else {
+            // 回退方案
+            setTimeout(loadAnalytics, 1500);
+        }
+        
+        function loadAnalytics() {
             const umamiScript = document.createElement('script');
             umamiScript.src = 'https://umami.xn--5brr03o.top/script.js';
             umamiScript.setAttribute('data-website-id', 'a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45');
             umamiScript.setAttribute('async', '');
             document.body.appendChild(umamiScript);
-            console.log('Umami统计脚本已加载');
-        }, 1000); // 延迟1秒加载统计脚本
+            // 标记页面渲染完成
+            document.querySelector('.background-card').setAttribute('data-render-complete', 'true');
+        }
     });
 </script>
 
