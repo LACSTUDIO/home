@@ -20,23 +20,31 @@
     <link rel="dns-prefetch" href="https://code.jquery.com">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>领创工作室-官方网站-领创.top</title>
+    <!-- 预加载首屏关键图片 -->
+    <link rel="preload" href="https://gitee.com/lacsgf/img/raw/master/webp/20250405101908686.webp" as="image" fetchpriority="high">
+    
     <!-- 关键CSS内联 -->
     <style>
         .loading-container{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;display:flex;justify-content:center;align-items:center;z-index:9999;transition:opacity .5s ease-out}.loading-spinner{width:40px;height:40px;border:4px solid rgba(0,0,0,.1);border-radius:50%;border-top-color:#3498db;animation:spin 1s ease-in-out infinite}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+        /* 轮播图关键样式内联 */
+        #projectCarousel{border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.15);margin-top:20px;transition:all .5s ease;contain:layout style;content-visibility:auto}
+        @media (min-width:992px){#projectCarousel{max-width:80%;height:auto;margin:30px auto 0}}
+        @media (max-width:991px){#projectCarousel{max-width:100%;margin:0 auto;height:auto}}
+        .carousel-item{overflow:hidden;border-radius:12px;background-color:#f8f9fa}.carousel-item img{width:100%;height:auto;object-fit:contain;transition:transform .5s ease;display:block}.carousel-item:hover img{transform:scale(1.02)}.carousel-caption{background:rgba(0,0,0,.5);border-radius:8px;padding:15px;bottom:20px;width:auto;left:10%;right:10%;transition:all .3s ease;backdrop-filter:blur(5px);box-shadow:0 4px 15px rgba(0,0,0,.2)}.carousel-caption:hover{background:rgba(0,0,0,.7)}.carousel-indicators{bottom:0;margin-bottom:.5rem}.carousel-indicators button{width:10px;height:10px;border-radius:50%;background-color:rgba(255,255,255,.5);margin:0 5px;transition:background-color .3s ease}.carousel-indicators button.active{background-color:#3498db;transform:scale(1.2)}.carousel-control-prev,.carousel-control-next{width:10%;opacity:.7;transition:opacity .3s ease}.carousel-control-prev:hover,.carousel-control-next:hover{opacity:1}
     </style>
     <!-- 关键CSS内联加载 -->
     <link rel="stylesheet" href="css/loading.css">
     <!-- 预加载关键字体 -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- 优先加载关键CSS -->
+    <link rel="stylesheet" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css">
     <!-- 异步加载非关键CSS -->
-    <link rel="preload" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/modal.css">
         <link rel="stylesheet" href="css/theme.css">
@@ -65,78 +73,7 @@
         document.write('<meta name="google-site-verification" content="' + process.env.GOOGLE_SITE_VERIFICATION + '" />');
         document.write('<meta name="msvalidate.01" content="' + process.env.MSVALIDATE_01 + '" />');
     </script>
-    <style>
-        /* 轮播图响应式布局 */
-        @media (min-width: 992px) {
-            #projectCarousel {
-                max-width: 80%;
-                height: auto;
-                margin   : 30px auto 0;
-            }
-        }
-        @media (max-width: 991px) {
-            #projectCarousel {
-                max-width: 100%;
-                margin: 0 auto;
-                height: auto;
-            }
-        }
-        /* 轮播图内容样式优化 */
-        .carousel-item {
-            overflow: hidden;
-            border-radius: 12px;
-            background-color: #f8f9fa;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            transition: transform 0.5s ease;
-        }
-        .carousel-item:hover img {
-            transform: scale(1.02);
-        }
-        .carousel-caption {
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
-            padding: 15px;
-            bottom: 20px;
-            width: auto;
-            left: 10%;
-            right: 10%;
-            transition: all 0.3s ease;
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        .carousel-caption:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        .carousel-indicators {
-            bottom: 0;
-            margin-bottom: 0.5rem;
-        }
-        .carousel-indicators button {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            margin: 0 5px;
-            transition: background-color 0.3s ease;
-        }
-        .carousel-indicators button.active {
-            background-color: var(--primary-color);
-            transform: scale(1.2);
-        }
-        .carousel-control-prev, .carousel-control-next {
-            width: 10%;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-        .carousel-control-prev:hover, .carousel-control-next:hover {
-            opacity: 1;
-        }
-    </style>
+    <!-- 非关键轮播图样式移至内联CSS，减少样式阻塞 -->
 </head>
 
 <body>
@@ -145,6 +82,37 @@
     <div class="loading-spinner"></div>
 </div>
 <script>
+    // 优先处理首屏内容
+    (function() {
+        // 预加载首屏轮播图
+        const firstSlideImg = document.querySelector('.carousel-item.active img');
+        if (firstSlideImg) {
+            // 确保首屏图片优先加载
+            firstSlideImg.onload = function() {
+                // 图片加载完成后立即调整轮播图尺寸
+                adjustCarouselHeight(firstSlideImg);
+            };
+            
+            // 如果图片已经缓存并加载完成
+            if (firstSlideImg.complete) {
+                adjustCarouselHeight(firstSlideImg);
+            }
+        }
+        
+        // 轮播图尺寸调整函数
+        function adjustCarouselHeight(img) {
+            const carousel = document.getElementById('projectCarousel');
+            if (!carousel) return;
+            
+            // 使用预设的宽高比例减少布局偏移
+            const aspectRatio = 675/1200; // 基于图片预设的高宽比
+            const carouselWidth = carousel.clientWidth;
+            const maxHeight = window.innerHeight * 0.6;
+            const calculatedHeight = carouselWidth * aspectRatio;
+            carousel.style.height = Math.min(calculatedHeight, maxHeight) + 'px';
+        }
+    })();
+    
     // 页面加载完成后隐藏加载动画
     window.addEventListener('load', function() {
         document.querySelector('.loading-container').style.opacity = '0';
@@ -153,64 +121,67 @@
         }, 500);
     });
 
-    // 轮播图图片加载优化
+    // DOM内容加载后初始化其他功能
     document.addEventListener('DOMContentLoaded', function() {
         // 延迟加载轮播图中的懒加载图片
         const lazyImages = document.querySelectorAll('.carousel-item img.lazy');
-
-        // 初始化IntersectionObserver来监视图片元素
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
+        
+        if ('IntersectionObserver' in window) {
+            // 使用IntersectionObserver懒加载图片
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
                     }
+                });
+            }, {rootMargin: "50px 0px"});
+
+            // 为每个懒加载图片添加观察者
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        } else {
+            // 兼容不支持IntersectionObserver的浏览器
+            lazyImages.forEach(img => {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
                 }
             });
-        }, {rootMargin: "50px 0px"});
+        }
 
-        // 为每个懒加载图片添加观察者
-        lazyImages.forEach(img => {
-            imageObserver.observe(img);
-        });
-
-        // 轮播图动态调整尺寸
-        function adjustCarouselHeight() {
+        // 窗口大小改变时重新调整轮播图尺寸
+        window.addEventListener('resize', function() {
             const carousel = document.getElementById('projectCarousel');
             const activeItem = carousel.querySelector('.carousel-item.active');
             const img = activeItem.querySelector('img');
-
-            // 当图片加载完成后，根据图片比例调整轮播图容器高度
-            if (img.complete) {
-                setCarouselHeight(img);
-            } else {
-                img.onload = function() {
-                    setCarouselHeight(img);
-                };
+            if (img && carousel) {
+                const aspectRatio = 675/1200; // 使用预设比例
+                const carouselWidth = carousel.clientWidth;
+                const maxHeight = window.innerHeight * 0.6;
+                const calculatedHeight = carouselWidth * aspectRatio;
+                carousel.style.height = Math.min(calculatedHeight, maxHeight) + 'px';
             }
-        }
-
-        function setCarouselHeight(img) {
-            const carousel = document.getElementById('projectCarousel');
-            const aspectRatio = img.naturalHeight / img.naturalWidth;
-            const carouselWidth = carousel.clientWidth;
-            // 设置最大高度限制，避免在大屏幕上过高
-            const maxHeight = window.innerHeight * 0.6;
-            const calculatedHeight = carouselWidth * aspectRatio;
-            carousel.style.height = Math.min(calculatedHeight, maxHeight) + 'px';
-        }
-
-        // 初始调整
-        adjustCarouselHeight();
-
-        // 窗口大小改变时重新调整
-        window.addEventListener('resize', adjustCarouselHeight);
+        });
 
         // 轮播图切换时重新调整
-        $('#projectCarousel').on('slid.bs.carousel', adjustCarouselHeight);
+        $('#projectCarousel').on('slid.bs.carousel', function() {
+            const carousel = document.getElementById('projectCarousel');
+            const activeItem = carousel.querySelector('.carousel-item.active');
+            const img = activeItem.querySelector('img');
+            if (img && carousel) {
+                const aspectRatio = 675/1200; // 使用预设比例
+                const carouselWidth = carousel.clientWidth;
+                const maxHeight = window.innerHeight * 0.6;
+                const calculatedHeight = carouselWidth * aspectRatio;
+                carousel.style.height = Math.min(calculatedHeight, maxHeight) + 'px';
+            }
+        });
     });
 </script>
 <!-- 顶部导航栏 -->
@@ -228,7 +199,7 @@
 <!-- 新增的轮播 -->
 <!-- 项目 -->
 <div class="section" id="projects-section">
-    <div id="projectCarousel" class="carousel slide mb-5 carousel-fade" data-ride="carousel" data-interval="5000" style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); margin-top: 20px; transition: all 0.5s ease;">
+    <div id="projectCarousel" class="carousel slide mb-5 carousel-fade" data-ride="carousel" data-interval="5000">
         <div class="carousel-indicators">
             <button type="button" data-target="#projectCarousel" data-slide-to="0" class="active" aria-current="true" aria-label="幻灯片 1"></button>
             <button type="button" data-target="#projectCarousel" data-slide-to="1" aria-label="幻灯片 2"></button>
@@ -236,21 +207,21 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://gitee.com/lacsgf/img/raw/master/webp/20250405101908686.webp" class="d-block w-100" alt="澎湃OS工具箱界面演示" loading="eager">
+                <img src="https://gitee.com/lacsgf/img/raw/master/webp/20250405101908686.webp" class="d-block w-100" alt="澎湃OS工具箱界面演示" loading="eager" width="1200" height="675" fetchpriority="high">
                 <div class="carousel-caption d-flex flex-column justify-content-center">
                     <h5 class="mb-2 font-weight-bold">最新项目展示</h5>
                     <p class="mb-0">澎湃OS工具箱整体界面演示</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img data-src="https://gitee.com/lacsgf/img/raw/master/OIP-C.S8kbDtSRUlR60KgcDAbJogHaDU" class="d-block w-100 lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="模块功能预览" loading="lazy">
+                <img data-src="https://gitee.com/lacsgf/img/raw/master/OIP-C.S8kbDtSRUlR60KgcDAbJogHaDU" class="d-block w-100 lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="模块功能预览" loading="lazy" width="1200" height="675">
                 <div class="carousel-caption d-flex flex-column justify-content-center">
                     <h5 class="mb-2 font-weight-bold">模块展示</h5>
                     <p class="mb-0">独家定制模块功能预览</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img data-src="https://gitee.com/lacsgf/img/raw/master/webp/wallhaven-xl2mov.webp" class="d-block w-100 lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="新功能预告" loading="lazy">
+                <img data-src="https://gitee.com/lacsgf/img/raw/master/webp/wallhaven-xl2mov.webp" class="d-block w-100 lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="新功能预告" loading="lazy" width="1200" height="675">
                 <div class="carousel-caption d-flex flex-column justify-content-center">
                     <h5 class="mb-2 font-weight-bold">开发中项目</h5>
                     <p class="mb-0">即将上线的新功能预告</p>
@@ -771,8 +742,8 @@
     });
 </script>
 <!-- 异步加载非关键JavaScript -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/jquery-3.6.0.js" defer></script>
+<script src="js/bootstrap.bundle.js" defer></script>
 <script src="js/main.js" defer></script>
 
 <!-- 延迟加载umami统计脚本 -->
