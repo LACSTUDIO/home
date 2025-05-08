@@ -8,7 +8,6 @@ const modalImage = document.querySelector('.modal-img');
 const modalLink = document.getElementById('modal-link');
 const darkModeButton = document.querySelector('.btn-dark-mode');
 const maoBtn = document.getElementById('mao-btn');
-const update_time = document.getElementById('update_time');
 const umiId = 'a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45'; // 获取到的 websiteId
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -21,12 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // 动态调整项目卡片高度
     adjustProjectCardHeight();
 
-    // 使用本地时间替代GitHub API调用，避免跨国请求延迟
-    if (update_time) {
-        const now = new Date();
-        const formattedTime = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日更新`;
-        update_time.textContent += ' ' + formattedTime;
-    }
 
     // 添加项目按钮点击事件监听器
     document.querySelectorAll('#project-buttons button').forEach(button => {
