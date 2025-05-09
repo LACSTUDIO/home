@@ -60,12 +60,171 @@
       font-size: 18px;
     }
     
+    /* 移动端导航菜单样式 */
     @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+      
+      .nav-links.active {
+        max-height: 500px;
+        padding: 20px 0;
+      }
+      
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links a {
+        padding: 10px;
+        width: 100%;
+        display: inline-block;
+      }
+      
+      /* 菜单按钮样式 */
+      .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 101;
+      }
+      
+      .menu-toggle .bar {
+        height: 3px;
+        width: 100%;
+        background-color: var(--primary-color);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+      
+      .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      
       .floating-download-btn {
         padding: 10px 16px;
         bottom: 20px;
         right: 20px;
         font-size: 14px;
+      }
+    }
+    
+    /* 教程部分样式 */
+    .tutorials-section {
+      background-color: var(--bg-light);
+      padding: 60px 0;
+    }
+    
+    .tutorials-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+    
+    .tutorials-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .tutorial-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .tutorial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .tutorial-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .tutorial-icon i {
+      font-size: 30px;
+      color: white;
+    }
+    
+    .tutorial-card h3 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--heading-color);
+    }
+    
+    .tutorial-card p {
+      margin-bottom: 25px;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .tutorial-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      color: var(--primary-color);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .tutorial-button:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .tutorials-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .tutorials-intro {
+        font-size: 16px;
+        padding: 0 20px;
       }
     }
     
@@ -95,12 +254,13 @@
       <span>HOUT-领创工作室</span>
     </div>
     <ul class="nav-links" role="menubar">
-      <li role="none"><a href="#features" role="menuitem"><i class="fas fa-star" aria-hidden="true"></i><span>功能</span></a></li>
+      <li role="none"><a href="#features" role="menuitem"><i class="fas fa-star" aria-hidden="true"></i><span>功能介绍</span></a></li>
       <li role="none"><a href="#screenshots" role="menuitem"><i class="fas fa-images" aria-hidden="true"></i><span>软件截图</span></a></li>
       <li role="none"><a href="#video" role="menuitem"><i class="fas fa-play-circle" aria-hidden="true"></i><span>视频介绍</span></a></li>
-      <li role="none"><a href="#download" role="menuitem"><i class="fas fa-download" aria-hidden="true"></i><span>下载</span></a></li>
-      <li role="none"><a href="#support" role="menuitem"><i class="fas fa-heart" aria-hidden="true"></i><span>捐赠</span></a></li>
-      <li role="none"><a href="#community" role="menuitem"><i class="fas fa-users" aria-hidden="true"></i><span>关于</span></a></li>
+      <li role="none"><a href="#tutorials" role="menuitem"><i class="fas fa-book" aria-hidden="true"></i><span>使用教程</span></a></li>
+      <li role="none"><a href="#download" role="menuitem"><i class="fas fa-download" aria-hidden="true"></i><span>下载软件</span></a></li>
+      <li role="none"><a href="#support" role="menuitem"><i class="fas fa-heart" aria-hidden="true"></i><span>捐赠我们</span></a></li>
+      <li role="none"><a href="#community" role="menuitem"><i class="fas fa-users" aria-hidden="true"></i><span>关于我们</span></a></li>
     </ul>
     <button class="menu-toggle" id="mobile-menu" aria-label="菜单" aria-expanded="false" aria-controls="nav-links">
       <span class="bar"></span>
@@ -212,6 +372,45 @@
     </div>
   </section>
 
+  <!-- 教程 -->
+  <section id="tutorials" class="tutorials-section">
+    <div class="section-container">
+      <h2 class="section-title">使用教程</h2>
+      <div class="tutorials-content">
+        <p class="tutorials-intro">我们提供了详细的使用教程，帮助您快速上手并充分利用澎湃解锁工具箱的所有功能。</p>
+        
+        <div class="tutorials-cards">
+          <div class="tutorial-card">
+            <div class="tutorial-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>文字教程</h3>
+            <p>详细的步骤说明，帮助您了解每个功能的使用方法。</p>
+            <a href="/tutorials/text" class="tutorial-button">
+              <i class="fas fa-book-open"></i> 查看文字教程
+            </a>
+          </div>
+          
+          <div class="tutorial-card">
+            <div class="tutorial-icon"><i class="fas fa-video"></i></div>
+            <h3>视频教程</h3>
+            <p>直观的视频演示，让您更轻松地掌握操作流程。</p>
+            <a href="/tutorials/video" class="tutorial-button">
+              <i class="fas fa-play"></i> 观看视频教程
+            </a>
+          </div>
+          
+          <div class="tutorial-card">
+            <div class="tutorial-icon"><i class="fas fa-question-circle"></i></div>
+            <h3>常见问题</h3>
+            <p>解答用户在使用过程中遇到的常见问题。</p>
+            <a href="/tutorials/faq" class="tutorial-button">
+              <i class="fas fa-info-circle"></i> 查看常见问题
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 下载 -->
   <section id="download" class="download-section">
     <div class="section-container">
@@ -305,6 +504,149 @@
   <span>下载</span>
 </div>
 
+<script>
+  // 页面加载完成后执行
+  document.addEventListener('DOMContentLoaded', function() {
+    // 悬浮下载按钮点击事件
+    const floatingDownloadBtn = document.getElementById('floatingDownloadBtn');
+    if (floatingDownloadBtn) {
+      floatingDownloadBtn.addEventListener('click', function() {
+        const downloadSection = document.getElementById('download');
+        if (downloadSection) {
+          downloadSection.scrollIntoView({ behavior: 'smooth' });
+          // 添加高亮效果
+          highlightElement(downloadSection);
+        }
+      });
+    }
+
+    // 添加高亮效果函数
+    function highlightElement(element) {
+      const highlight = document.createElement('div');
+      highlight.className = 'scroll-highlight';
+      
+      const rect = element.getBoundingClientRect();
+      highlight.style.width = rect.width + 'px';
+      highlight.style.height = rect.height + 'px';
+      highlight.style.top = (window.scrollY + rect.top) + 'px';
+      highlight.style.left = rect.left + 'px';
+      
+      document.body.appendChild(highlight);
+      
+      // 动画结束后移除高亮元素
+      setTimeout(() => {
+        document.body.removeChild(highlight);
+      }, 1500);
+    }
+
+    // 处理缩略图懒加载
+    const thumbnails = document.querySelectorAll('.thumbnail[data-src]');
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      thumbnails.forEach(img => {
+        imageObserver.observe(img);
+      });
+    } else {
+      // 回退方案：立即加载所有图片
+      thumbnails.forEach(img => {
+        img.src = img.dataset.src;
+      });
+    }
+
+    // 处理截图轮播
+    const featuredImage = document.getElementById('featured-image');
+    const featuredTitle = document.getElementById('featured-title');
+    const currentSlide = document.querySelector('.current-slide');
+    const totalSlides = document.querySelector('.total-slides');
+    const prevButton = document.querySelector('.featured-arrow.prev');
+    const nextButton = document.querySelector('.featured-arrow.next');
+    const thumbnailsContainer = document.querySelector('.screenshot-thumbnails');
+    
+    if (featuredImage && thumbnailsContainer) {
+      const thumbnails = thumbnailsContainer.querySelectorAll('.thumbnail');
+      let currentIndex = 0;
+      
+      // 设置总幻灯片数量
+      if (totalSlides) {
+        totalSlides.textContent = thumbnails.length;
+      }
+      
+      // 更新当前幻灯片
+      function updateSlide(index) {
+        // 更新当前索引
+        currentIndex = index;
+        
+        // 更新特色图片
+        const activeThumbnail = thumbnails[index];
+        featuredImage.src = activeThumbnail.src || activeThumbnail.dataset.src;
+        featuredImage.alt = activeThumbnail.alt;
+        
+        // 更新标题
+        if (featuredTitle) {
+          featuredTitle.textContent = activeThumbnail.title || activeThumbnail.alt;
+        }
+        
+        // 更新当前幻灯片指示器
+        if (currentSlide) {
+          currentSlide.textContent = index + 1;
+        }
+        
+        // 更新缩略图活动状态
+        thumbnails.forEach((thumb, i) => {
+          if (i === index) {
+            thumb.classList.add('active');
+          } else {
+            thumb.classList.remove('active');
+          }
+        });
+      }
+      
+      // 缩略图点击事件
+      thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+          updateSlide(index);
+        });
+      });
+      
+      // 上一张按钮
+      if (prevButton) {
+        prevButton.addEventListener('click', () => {
+          let newIndex = currentIndex - 1;
+          if (newIndex < 0) {
+            newIndex = thumbnails.length - 1;
+          }
+          updateSlide(newIndex);
+        });
+      }
+      
+      // 下一张按钮
+      if (nextButton) {
+        nextButton.addEventListener('click', () => {
+          let newIndex = currentIndex + 1;
+          if (newIndex >= thumbnails.length) {
+            newIndex = 0;
+          }
+          updateSlide(newIndex);
+        });
+      }
+    }
+
+    // 外部链接打开函数
+    window.openLink = function(url) {
+      window.open(url, '_blank');
+    };
+  });
+</script>
 <script src="../js/app.js"></script>
 <script defer src="https://umami.xn--5brr03o.top/script.js" data-website-id="a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45"></script>
 <script type="application/ld+json">

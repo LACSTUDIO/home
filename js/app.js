@@ -87,21 +87,23 @@ function initSlideshow() {
 // 移动端菜单
 function initMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
+    const navLinks = document.querySelector('.nav-links');
 
-    mobileMenu.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        mobileMenu.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            navLinks.classList.remove('active');
-            mobileMenu.setAttribute('aria-expanded', 'false');
+    if (mobileMenu && navLinks) {
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            mobileMenu.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
         });
-    });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+                mobileMenu.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 }
 
 // 更新版本模态框内容
@@ -251,13 +253,12 @@ function initFloatingDownloadBtn() {
 }
 
 // 初始化所有功能
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     VisibilityObserver.init();
-    initSlideshow();
-    initMobileMenu();
     initSmoothScroll();
-
+    initSlideshow();
     initFeaturedButton();
+    initMobileMenu(); // 初始化移动端菜单
     initVersionInfo(); // 添加版本信息初始化
     initFloatingDownloadBtn(); // 初始化浮动下载按钮
     window.openLightbox = openLightbox;
