@@ -31,6 +31,10 @@
     {
       "src": "/ai",
       "dest": "/pages/ai.html"
+    },
+    {
+      "src": "/yc",
+      "dest": "/pages/yc.html"
     }
   ]
 }
