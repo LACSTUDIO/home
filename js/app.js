@@ -90,14 +90,15 @@ function initMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileMenu && navLinks) {
-        mobileMenu.addEventListener('click', () => {
+        mobileMenu.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
             mobileMenu.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
         });
 
+        // 确保点击菜单项后关闭菜单
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
                 navLinks.classList.remove('active');
                 mobileMenu.setAttribute('aria-expanded', 'false');

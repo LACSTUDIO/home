@@ -35,7 +35,7 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: var(--primary-color);
+      background: #0062F5;
       color: white;
       border-radius: 50px;
       padding: 12px 20px;
@@ -51,7 +51,7 @@
     }
     
     .floating-download-btn:hover {
-      background: var(--primary-dark);
+      background: #0050CC;
       transform: translateY(-3px);
       box-shadow: 0 6px 16px rgba(0, 98, 245, 0.4);
     }
@@ -61,39 +61,38 @@
     }
     
     /* 移动端导航菜单样式 */
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-      }
-      
-      .nav-links.active {
-        max-height: 500px;
-        padding: 20px 0;
-      }
-      
-      .nav-links li {
-        margin: 15px 0;
-        width: 100%;
-        text-align: center;
-      }
-      
-      .nav-links a {
-        padding: 10px;
-        width: 100%;
-        display: inline-block;
-      }
+    /* 移动端导航菜单样式 */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: none;        /* 隐藏菜单 */
+  }
+
+  .nav-links.active {
+    display: flex;        /* 展开时显示 */
+    padding: 20px 0;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+  }
       
       /* 菜单按钮样式 */
       .menu-toggle {
@@ -109,7 +108,7 @@
       .menu-toggle .bar {
         height: 3px;
         width: 100%;
-        background-color: var(--primary-color);
+        background-color: #0062F5;
         border-radius: 3px;
         transition: all 0.3s ease;
       }
@@ -136,7 +135,7 @@
     
     /* 教程部分样式 */
     .tutorials-section {
-      background-color: var(--bg-light);
+      background-color: #f8f9fa;
       padding: 60px 0;
     }
     
@@ -146,7 +145,7 @@
       margin: 0 auto 40px;
       font-size: 18px;
       line-height: 1.6;
-      color: var(--text-color);
+      color: #333;
     }
     
     .tutorials-cards {
@@ -203,8 +202,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--primary-light);
-      color: var(--primary-color);
+      background: #e3f2fd;
+      color: #0062F5;
       padding: 10px 20px;
       border-radius: 50px;
       font-weight: 600;
@@ -213,7 +212,7 @@
     }
     
     .tutorial-button:hover {
-      background: var(--primary-color);
+      background: #0062F5;
       color: white;
     }
     
@@ -231,8 +230,8 @@
     /* 滚动高亮效果 */
     .scroll-highlight {
       position: absolute;
-      border: 3px solid var(--primary-color);
-      border-radius: var(--border-radius);
+      border: 3px solid #0062F5;
+      border-radius: 8px;
       pointer-events: none;
       z-index: 998;
       opacity: 0;
@@ -244,6 +243,88 @@
       20% { opacity: 0.8; transform: scale(1); }
       100% { opacity: 0; transform: scale(1.05); }
     }
+    
+    /* 感谢卡片样式 */
+    .thanks-section {
+      margin-top: 40px;
+    }
+    
+    .thanks-section h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: var(--heading-color);
+    }
+    
+    .thanks-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .thanks-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .thanks-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .thanks-card h4 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--heading-color);
+    }
+    
+    .thanks-card p {
+      margin-bottom: 20px;
+      color: var(--text-color);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+    
+    .thanks-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e3f2fd;
+      color: #0062F5;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-top: auto;
+    }
+    
+    .thanks-card a:hover {
+      background: #0062F5;
+      color: white;
+    }
+    
+    .thanks-loading {
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+      color: #666;
+    }
+    
+    @media (max-width: 768px) {
+      .thanks-cards {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -253,14 +334,14 @@
       <img  src="https://gitee.com/lacsgf/img/raw/master/webp/hout-logo-big.webp" alt="HOUT-领创工作室" style="width: 50px; height: 50px;">
       <span>HOUT-领创工作室</span>
     </div>
-    <ul class="nav-links" role="menubar">
-      <li role="none"><a href="#features" role="menuitem"><i class="fas fa-star" aria-hidden="true"></i><span>功能介绍</span></a></li>
-      <li role="none"><a href="#screenshots" role="menuitem"><i class="fas fa-images" aria-hidden="true"></i><span>软件截图</span></a></li>
-      <li role="none"><a href="#video" role="menuitem"><i class="fas fa-play-circle" aria-hidden="true"></i><span>视频介绍</span></a></li>
-      <li role="none"><a href="#tutorials" role="menuitem"><i class="fas fa-book" aria-hidden="true"></i><span>使用教程</span></a></li>
-      <li role="none"><a href="#download" role="menuitem"><i class="fas fa-download" aria-hidden="true"></i><span>下载软件</span></a></li>
-      <li role="none"><a href="#support" role="menuitem"><i class="fas fa-heart" aria-hidden="true"></i><span>捐赠我们</span></a></li>
-      <li role="none"><a href="#community" role="menuitem"><i class="fas fa-users" aria-hidden="true"></i><span>关于我们</span></a></li>
+    <ul class="nav-links" role="menubar" aria-hidden="true">
+      <li role="none"><a href="#features" role="menuitem" class="nav-item"><i class="fas fa-star" aria-hidden="true"></i><span>功能介绍</span></a></li>
+      <li role="none"><a href="#screenshots" role="menuitem" class="nav-item"><i class="fas fa-images" aria-hidden="true"></i><span>软件截图</span></a></li>
+      <li role="none"><a href="#video" role="menuitem" class="nav-item"><i class="fas fa-play-circle" aria-hidden="true"></i><span>视频介绍</span></a></li>
+      <li role="none"><a href="#tutorials" role="menuitem" class="nav-item"><i class="fas fa-book" aria-hidden="true"></i><span>使用教程</span></a></li>
+      <li role="none"><a href="#download" role="menuitem" class="nav-item"><i class="fas fa-download" aria-hidden="true"></i><span>下载软件</span></a></li>
+      <li role="none"><a href="#support" role="menuitem" class="nav-item"><i class="fas fa-heart" aria-hidden="true"></i><span>捐赠/支持</span></a></li>
+      <li role="none"><a href="#community" role="menuitem" class="nav-item"><i class="fas fa-users" aria-hidden="true"></i><span>关于我们</span></a></li>
     </ul>
     <button class="menu-toggle" id="mobile-menu" aria-label="菜单" aria-expanded="false" aria-controls="nav-links">
       <span class="bar"></span>
@@ -446,7 +527,7 @@
   <!-- 支持 -->
   <section id="support" class="support-section">
     <div class="section-container">
-      <h2 class="section-title">捐赠我们</h2>
+      <h2 class="section-title">捐赠/支持</h2>
       <div class="support-content">
         <div class="support-text">
           <p>您的支持是我们不断进步的动力。如果您觉得我们的工具对您有所帮助，请考虑给予我们一些支持。</p>
@@ -454,6 +535,14 @@
           <a href="/jz" class="action-button">
             <i class="fas fa-heart"></i> 点我了解
           </a>
+        </div>
+        
+        <div class="thanks-section">
+          <h3>特别感谢</h3>
+          <div class="thanks-cards" id="thanks-cards">
+            <!-- 感谢卡片将通过JavaScript动态加载 -->
+            <div class="thanks-loading">加载中...</div>
+          </div>
         </div>
       </div>
     </div>
@@ -507,6 +596,102 @@
 <script>
   // 页面加载完成后执行
   document.addEventListener('DOMContentLoaded', function() {
+    // 获取感谢名单数据
+    fetchThanksData();
+    
+    // 从API获取感谢名单数据并显示
+    function fetchThanksData() {
+      fetch('https://api.xn--5brr03o.top/hout.json')
+        .then(response => response.json())
+        .then(data => {
+          if (data && data.thanks && Array.isArray(data.thanks)) {
+            displayThanksCards(data.thanks);
+          } else {
+            console.error('感谢数据格式不正确');
+            document.getElementById('thanks-cards').innerHTML = '<p>暂无数据</p>';
+          }
+        })
+        .catch(error => {
+          console.error('获取感谢数据失败:', error);
+          document.getElementById('thanks-cards').innerHTML = '<p>数据加载失败</p>';
+        });
+    }
+    
+    // 显示感谢卡片
+    function displayThanksCards(thanksData) {
+      const thanksContainer = document.getElementById('thanks-cards');
+      thanksContainer.innerHTML = '';
+      
+      thanksData.forEach(item => {
+        // 修复URL中可能存在的错误
+        let url = item.url;
+        if (url.startsWith('h http')) {
+          url = url.replace('h http', 'http');
+        }
+        
+        const card = document.createElement('div');
+        card.className = 'thanks-card';
+        card.innerHTML = `
+          <h4>${item.name}</h4>
+          <p>${item.content}</p>
+          <a href="${url}" target="_blank">
+            <i class="fas fa-external-link-alt"></i> 访问链接
+          </a>
+        `;
+        thanksContainer.appendChild(card);
+      });
+    }
+    // 初始化移动端菜单
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenu && navLinks) {
+      // 移动端菜单初始化（兼容CSS动画）
+      function initMenu() {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        mobileMenu.style.display = isMobile ? 'flex' : 'none';
+        navLinks.style.maxHeight = isMobile ? '0' : '';
+        navLinks.style.overflow = 'hidden';
+      }
+      initMenu();
+      
+      mobileMenu.addEventListener('click', function(e) {
+        e.preventDefault(); // 阻止默认行为
+        // 切换菜单状态（保持CSS过渡效果）
+        const isActive = mobileMenu.classList.toggle('active');
+        if (isActive) {
+          navLinks.style.maxHeight = '500px';
+          navLinks.style.padding = '20px 0';
+        } else {
+          navLinks.style.maxHeight = '0';
+          navLinks.style.padding = '0';
+        }
+        navLinks.classList.toggle('active');
+        
+        // 窗口resize时重置菜单状态
+        window.addEventListener('resize', () => {
+          initMenu();
+          mobileMenu.classList.remove('active');
+          navLinks.style.maxHeight = '';
+          navLinks.style.padding = '';
+        });
+        mobileMenu.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
+        
+        // 调试信息
+        console.log('菜单按钮点击');
+        console.log('菜单状态:', navLinks.classList.contains('active') ? '显示' : '隐藏');
+      });
+      
+      // 点击菜单项后关闭菜单
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          navLinks.classList.remove('active');
+          mobileMenu.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+    
     // 悬浮下载按钮点击事件
     const floatingDownloadBtn = document.getElementById('floatingDownloadBtn');
     if (floatingDownloadBtn) {

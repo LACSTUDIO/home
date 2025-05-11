@@ -15,6 +15,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --section-spacing: 120px;
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    --heading-color: #0A1F44;
 }
 
 /* 全局样式 */
