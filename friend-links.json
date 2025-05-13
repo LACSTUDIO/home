@@ -1,0 +1,17 @@
+[
+    {
+        "name": "示例网站1",
+        "description": "这是一个示例网站，提供丰富的数码科技内容",
+        "url": "https://example1.com"
+    },
+    {
+        "name": "示例网站2",
+        "description": "专注于编程开发的学习资源网站",
+        "url": "https://example2.com"
+    },
+    {
+        "name": "示例网站3",
+        "description": "分享设计创意的平台",
+        "url": "https://example3.com"
+    }
+]
