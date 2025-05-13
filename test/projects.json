@@ -1,0 +1,20 @@
+[
+  {
+    "category": "project1",
+    "icon": "fa fa-tools fa-xl",
+    "title": "澎湃解锁工具箱(重构版)",
+    "description": "一款功能强大的安卓手机工具集合，支持多种系统功能解锁与优化",
+    "tech": "Android",
+    "updateDate": "2023-05-15",
+    "link": "/hout"
+  },
+  {
+    "category": "project1",
+    "icon": "fa fa-mobile fa-xl",
+    "title": "系统精简助手",
+    "description": "安全地精简安卓系统预装应用，释放存储空间，提升系统性能",
+    "tech": "Android",
+    "updateDate": "2023-04-20",
+    "link": "#"
+  }
+]
