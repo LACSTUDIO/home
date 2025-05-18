@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="领创工作室分享数码科技相关内容，各种原创软件，原创内容。">
+    <meta name="keywords" content="领创工作室,领创,LACS,数码科技,数码产品,数码设备,数码应用,数码创意,数码设计,数码摄影,数码音乐,编程,设计,摄影,音乐">
+    <meta property="og:title" content="领创工作室-官方网站-领创.top" />
+    <meta property="og:description" content="领创工作室，数码科技爱好者，分享各种数码产品的原理、设计、软件、硬件、应用等信息，以及编程、设计、摄影、音乐等创作。" />
+    <meta property="og:image" content="img/lacs.ico" />
+    <meta property="og:url" content="https://xn--5brr03o.top/"/>
+    <link rel="canonical" href="https://xn--5brr03o.top/" />
+    <meta name="robots" content="index, follow" />
+    <!-- 资源提示 -->
+    <link rel="preconnect" href="https://gitee.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://code.jquery.com" crossorigin>
+    <link rel="dns-prefetch" href="https://gitee.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://code.jquery.com">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>领创工作室-官方网站-领创.top</title>
+
+    
+    <!-- 关键CSS -->
+    <style>
+        .loading-container{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;display:flex;justify-content:center;align-items:center;z-index:9999;transition:opacity .5s ease-out}.loading-spinner{width:40px;height:40px;border:4px solid rgba(0,0,0,.1);border-radius:50%;border-top-color:#0062cc;animation:spin 1s ease-in-out infinite}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+        /* 轮播图关键样式内联 */
+        #projectCarousel{border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.18);margin-top:20px;transition:all .5s ease;contain:layout style;content-visibility:auto}
+        @media (min-width:992px){#projectCarousel{max-width:85%;height:auto;margin:35px auto 0}}
+        @media (max-width:991px){#projectCarousel{max-width:100%;margin:0 auto;height:auto}}
+        .carousel-item{overflow:hidden;border-radius:16px;background-color:#f8f9fa}.carousel-item img{width:100%;height:auto;object-fit:cover;transition:transform .5s ease;display:block}.carousel-item:hover img{transform:scale(1.02)}.carousel-caption{background:linear-gradient(135deg, rgba(0,0,0,.7), rgba(0,0,0,.5));border-radius:10px;padding:18px;bottom:25px;width:auto;left:10%;right:10%;transition:all .3s ease;backdrop-filter:blur(8px);box-shadow:0 6px 20px rgba(0,0,0,.25)}.carousel-caption:hover{background:linear-gradient(135deg, rgba(0,0,0,.8), rgba(0,0,0,.6))}.carousel-indicators{bottom:0;margin-bottom:.8rem}.carousel-indicators button{width:12px;height:12px;border-radius:50%;background-color:rgba(255,255,255,.5);margin:0 6px;transition:all .3s ease}.carousel-indicators button.active{background-color:#0062cc;transform:scale(1.2)}.carousel-control-prev,.carousel-control-next{width:10%;opacity:.7;transition:opacity .3s ease}.carousel-control-prev:hover,.carousel-control-next:hover{opacity:1}
+    </style>
+    <!-- 关键CSS内联加载 -->
+    <link rel="stylesheet" href="css/loading.css">
+    <!-- 优先加载关键CSS -->
+    <link rel="stylesheet" href="css/twitter-bootstrap_4.6.2_css_bootstrap.css">
+    <!-- 异步加载非关键CSS -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/modal.css">
+        <link rel="stylesheet" href="css/theme.css">
+    </noscript>
+    <!-- CSS加载回退脚本 -->
+    <script>
+        // 优化的CSS加载回退方案
+        var loadCSS = function(href) {
+            var cssLink = document.createElement('link');
+            cssLink.rel = 'stylesheet';
+            cssLink.href = href;
+            document.head.appendChild(cssLink);
+        };
+        
+        // 检测网络状况，根据网络质量调整资源加载策略
+        function checkNetworkQuality() {
+            if ('connection' in navigator) {
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (connection && (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
+                    // 低网速模式 - 进一步延迟非关键资源加载
+                    document.documentElement.classList.add('slow-connection');
+                    return 'slow';
+                }
+            }
+            return 'fast';
+        }
+        
+        // 根据网络状况调整加载策略
+        const networkQuality = checkNetworkQuality();
+        const loadTimeout = networkQuality === 'slow' ? 3000 : 1000;
+        
+        // 如果preload不被支持，使用回退方案
+        setTimeout(function() {
+            var links = document.querySelectorAll('link[rel="preload"][as="style"]');
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].getAttribute('data-loaded') !== 'true') {
+                    loadCSS(links[i].href);
+                }
+            }
+        }, loadTimeout);
+    </script>
+    <script>
+        document.write('<meta name="google-site-verification" content="' + process.env.GOOGLE_SITE_VERIFICATION + '" />');
+        document.write('<meta name="msvalidate.01" content="' + process.env.MSVALIDATE_01 + '" />');
+    </script>
+    <!-- 非关键轮播图样式移至内联CSS，减少样式阻塞 -->
+</head>
+
+<body>
+<div class="background-card">
+<div class="loading-container">
+    <div class="loading-spinner"></div>
+</div>
+<script>
+    // 优先处理首屏内容
+    (function() {
+        // 预加载首屏轮播图
+        const firstSlideImg = document.querySelector('.carousel-item.active img');
+        if (firstSlideImg) {
+            // 确保首屏图片优先加载
+            firstSlideImg.onload = function() {
+                // 图片加载完成后立即调整轮播图尺寸
+                adjustCarouselHeight(firstSlideImg);
+            };
+            
+            // 如果图片已经缓存并加载完成
+            if (firstSlideImg.complete) {
+                adjustCarouselHeight(firstSlideImg);
+            }
+        }
+        
+        // 轮播图尺寸调整函数
+        function adjustCarouselHeight(img) {
+            const carousel = document.getElementById('projectCarousel');
+            if (!carousel) return;
+            
+            // 使用预设的宽高比例减少布局偏移
+            const aspectRatio = 675/1200; // 基于图片预设的高宽比
+            const carouselWidth = carousel.clientWidth;
+            const maxHeight = window.innerHeight * 0.6;
+            const calculatedHeight = carouselWidth * aspectRatio;
+            carousel.style.height = Math.min(calculatedHeight, maxHeight) + 'px';
+        }
+    })();
+    
+    // 页面加载完成后隐藏加载动画
+    window.addEventListener('load', function() {
+        document.querySelector('.loading-container').style.opacity = '0';
+        setTimeout(function() {
+            document.querySelector('.loading-container').style.display = 'none';
+        }, 500);
+    });
+
+    // DOM内容加载后初始化其他功能
+    document.addEventListener('DOMContentLoaded', function() {
+        // 延迟加载轮播图中的懒加载图片
+        const lazyImages = document.querySelectorAll('.carousel-item img.lazy');
+        
+        if ('IntersectionObserver' in window) {
+            // 使用IntersectionObserver懒加载图片
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            }, {rootMargin: "50px 0px"});
+
+            // 为每个懒加载图片添加观察者
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        } else {
+            // 兼容不支持IntersectionObserver的浏览器
+            lazyImages.forEach(img => {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                }
+            });
+        }
+
+        // 窗口大小改变时重新调整轮播图尺寸
+        window.addEventListener('resize', function() {
+            const carousel = document.getElementById('projectCarousel');
+            const activeItem = carousel.querySelector('.carousel-item.active');
+            const img = activeItem.querySelector('img');
+            if (img && carousel) {
+                const aspectRatio = 675/1200; // 使用预设比例
+                const carouselWidth = carousel.clientWidth;
+                const maxHeight = window.innerHeight * 0.6;
+                const calculatedHeight = carouselWidth * aspectRatio;
+                carousel.style.height = Math.min(calculatedHeight, maxHeight) + 'px';
+            }
+        });
+
+        // 轮播图切换时重新调整
+        $('#projectCarousel').on('slid.bs.carousel', function() {
+            const carousel = document.getElementById('projectCarousel');
+            const activeItem = carousel.querySelector('.carousel-item.active');
+            const img = activeItem.querySelector('img');
+            if (img && carousel) {
+                const aspectRatio = 675/1200; // 使用预设比例
+                const carouselWidth = carousel.clientWidth;
+                const maxHeight = window.innerHeight * 0.6;
+                const calculatedHeight = carouselWidth * aspectRatio;
+                carousel.style.height = Math.min(calculatedHeight, maxHeight) + 'px';
+            }
+        });
+    });
+</script>
+<!-- 顶部导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/lacs.webp" class="d-inline-block align-top" alt="领创工作室Logo">
+            <span>领创工作室</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects-section">项目</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#sites-section">分站</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">关于我们</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn-dark-mode"><i class="fas fa-moon"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="background">
+<!-- 新增的轮播 -->
+<!-- 项目 -->
+<div class="section" id="projects-section">
+    <div id="projectCarousel" class="carousel slide mb-5 carousel-fade shadow" data-ride="carousel" data-interval="5000">
+        <div class="carousel-indicators">
+            <button type="button" data-target="#projectCarousel" data-slide-to="0" class="active" aria-current="true" aria-label="幻灯片 1"></button>
+            <button type="button" data-target="#projectCarousel" data-slide-to="1" aria-label="幻灯片 2"></button>
+            <button type="button" data-target="#projectCarousel" data-slide-to="2" aria-label="幻灯片 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://gitee.com/lacsgf/img/raw/master/webp/20250405101908686.webp" class="d-block w-100" alt="澎湃OS工具箱界面演示" loading="eager" width="1200" height="675" fetchpriority="high">
+                <div class="carousel-caption d-flex flex-column justify-content-center">
+                    <h5 class="mb-2 font-weight-bold">最新项目展示</h5>
+                    <p class="mb-0">澎湃OS工具箱整体界面演示</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img data-src="https://gitee.com/lacsgf/img/raw/master/OIP-C.S8kbDtSRUlR60KgcDAbJogHaDU" class="d-block w-100 lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="模块功能预览" loading="lazy" width="1200" height="675">
+                <div class="carousel-caption d-flex flex-column justify-content-center">
+                    <h5 class="mb-2 font-weight-bold">模块展示</h5>
+                    <p class="mb-0">独家定制模块功能预览</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img data-src="https://gitee.com/lacsgf/img/raw/master/webp/wallhaven-xl2mov.webp" class="d-block w-100 lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="新功能预告" loading="lazy" width="1200" height="675">
+                <div class="carousel-caption d-flex flex-column justify-content-center">
+                    <h5 class="mb-2 font-weight-bold">开发中项目</h5>
+                    <p class="mb-0">即将上线的新功能预告</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#projectCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">上一个</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#projectCarousel" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">下一个</span>
+        </button>
+    </div>
+    <h1 style="display:none;">领创工作室原创项目软件</h1>
+    <div class="section-header">
+        <h2>精选项目</h2>
+        <p class="section-description">我们精心打造的原创软件与工具</p>
+    </div>
+
+
+    <div class="btn-group d-flex justify-content-center filter-buttons" role="group" id="project-buttons">
+        <button type="button" class="btn active btn-filter" data-project="project1">玩机工具</button>
+        <button type="button" class="btn btn-filter" data-project="project2">面具模块</button>
+        <button type="button" class="btn btn-filter" data-project="project3">小工具</button>
+        <button type="button" class="btn btn-filter" data-project="project4">手机APP</button>
+    </div>
+    <div class="card-deck" id="project-cards-container">
+        <div class="project-card" id="project1-1" data-project="project1">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fas fa-tools fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">澎湃解锁工具箱(重构版)</h5>
+                        <p class="card-text">当前正在完善功能</p>
+                    </div>
+                </div>
+                <a href="/hout" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目1-1">立即访问</a>
+        </div>
+        <div class="project-card" id="project1-2" data-project="project1">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fas fa-terminal fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">澎湃OS绕答题解锁工具箱(bat版)</h5>
+                        <p class="card-text">已停止维护，请使用最新重构版。</p>
+                    </div>
+                </div>
+                <a href="https://www.coolapk.com/feed/58102704?shareKey=NWViZTZiOGFkYWU0NjdhMmMwZjk~&shareUid=13237789&shareFrom=com.coolapk.market_15.0.2" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目1-2">立即访问</a>
+        </div>
+        <div class="project-card" id="project1-3" data-project="project1">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fas fa-unlock-alt fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">小米手机一键Root工具箱（bat版）</h5>
+                        <p class="card-text">即将集成在HOUT工具箱中,敬请期待！</p>
+                    </div>
+                </div>
+                <a href="https://www.coolapk.com/collection/3368316" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目1-3">立即访问</a>
+        </div>
+        <div class="project-card" id="project1-4" data-project="project1">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fas fa-usb fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">安卓玩机驱动</h5>
+                        <p class="card-text">正在开发中（进度：新建文件夹）</p>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目1-4">立即访问</a>
+        </div>
+        <div class="project-card" id="project2-1" data-project="project2">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fas fa-puzzle-piece fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">坤坤模块</h5>
+                        <p class="card-text">早已停止维护，不推荐刷入！</p>
+                    </div>
+                </div>
+                <a href="https://www.coolapk.com/feed/38994253?shareKey=ZjNjNmViNjUzZmMxNjdhMmMwOGQ~&shareUid=13237789&shareFrom=com.coolapk.market_15.0.2" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目2-1">立即访问</a>
+        </div>
+        <div class="project-card" id="project2-2" data-project="project2">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fas fa-puzzle-piece fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">Flyme_On_Mi模块</h5>
+                        <p class="card-text">早已停止维护，不推荐刷入！</p>
+                    </div>
+                </div>
+                <a href="https://www.coolapk.com/feed/39022923?shareKey=Njg2ZjdkYzg2ZjVlNjdhMmMwMjM~&shareUid=13237789&shareFrom=com.coolapk.market_15.0.2" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目2-2">立即访问</a>
+        </div>
+        <div class="project-card" id="project3-1" data-project="project3">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fab fa-windows fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">win11工具箱</h5>
+                        <p class="card-text">正在开发中（进度：新建文件夹）</p>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目3-1">立即访问</a>
+        </div>
+        <div class="project-card" id="project4-1" data-project="project4">
+                <div class="card-content">
+                    <div class="card-icon-wrapper">
+                        <i class="fas fa-mobile-alt fa-2x"></i>
+                    </div>
+                    <div class="card-text-content">
+                        <h5 class="card-title">项目4-1</h5>
+                        <p class="card-text">敬请期待</p>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary card-btn" target="_blank" data-umami-event="访问项目4-1">立即访问</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- 分站区域 -->
+<div class="section" id="sites-section">
+    <div class="section-header">
+        <h2>其他分站</h2>
+        <p class="section-description">探索我们的更多服务与资源</p>
+    </div>
+    <div class="card-container">
+        <div class="card-little" >
+            <div class="card-little-content" onclick="openLink('https://xn--9krq6q.xn--5brr03o.top/')" data-umami-event="访问领创博客">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <img data-src="https://gitee.com/lacsgf/img/raw/master/lac-blog.webp" class="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="领创博客" style="width: 50px; height: 50px;" loading="lazy">
+                    <h5 class="card-title" style="margin-top: 10px;">领创博客</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card-little" onclick="openLink('https://xn--5nqs58m.xn--5brr03o.top/')" data-umami-event="访问领创软件资源">
+            <div class="card-little-content">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <img data-src="https://gitee.com/lacsgf/img/raw/master/webp/app.webp" class="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="领创博客" style="width: 50px; height: 50px;" loading="lazy">
+                    <h5 class="card-title" style="margin-top: 10px;">软件资源</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card-little" onclick="openLink('https://xn--5brr03o.top/MiDeviceCode')" data-umami-event="访问小米设备代号查询">
+            <div class="card-little-content">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <img data-src="https://gitee.com/lacsgf/img/raw/master/webp/icon-小米归属.webp" class="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3C/svg%3E" alt="领创博客" style="width: 50px; height: 50px;" loading="lazy">
+                    <h5 class="card-title" style="margin-top: 10px;">小米设备代号查询</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- 关于区域 -->
+    <div class="section" id="about">
+        <div class="section-header">
+            <h2>关于我们</h2>
+            <p class="section-description">了解领创工作室的故事与使命</p>
+        </div>
+        <div class="footer-section">
+            <!-- 媒体平台 -->
+            <div class="media-platform">
+                <h5>媒体平台</h5>
+                <div class="contact-cards">
+                    <!-- 哔哩哔哩卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="https://gitee.com/lacsgf/img/raw/master/webp/bilibili-logo.webp" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">哔哩哔哩</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>用户名: 领创工作室</p>
+                            <p>UID: 1779662818</p>
+                            <p id="bilibili-fans">粉丝数: 获取中...</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/bilibili.webp', '哔哩哔哩 媒体平台', '哔哩哔哩uid:1779662818', 'https://space.bilibili.com/1779662818')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://space.bilibili.com/1779662818')" data-umami-event="访问哔哩哔哩">
+                                <i class="fas fa-external-link-alt"></i>
+                                访问
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 酷安卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="https://gitee.com/lacsgf/img/raw/master/webp/coolapk-logo.webp" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">酷安</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>用户名: 领创工作室</p>
+                            <p>ID: 13237789</p>
+                            <p id="coolapk-fans">粉丝数: 2962</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/coolapk.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://www.coolapk.com/u/13237789')" data-umami-event="访问酷安">
+                                <i class="fas fa-external-link-alt"></i>
+                                访问
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 小米社区卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="https://gitee.com/lacsgf/img/raw/master/webp/MiBBS-logo.webp" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">小米社区</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>用户名: 领创工作室</p>
+                            <p>UID: 2376012419</p>
+                            <p>活跃度: 活跃</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/MiBBS.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://web.vip.miui.com/page/info/mio/mio/homePage?uid=2376012419')" data-umami-event="访问小米社区">
+                                <i class="fas fa-external-link-alt"></i>
+                                访问
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系方式 -->
+            <div class="media-platform">
+                <h5>联系方式</h5>
+                <div class="contact-cards">
+                    <!-- 电子邮件卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="https://gitee.com/lacsgf/img/raw/master/webp/email-logo.webp" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">电子邮件</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>邮箱地址:</p>
+                            <p>2935278133@qq.com</p>
+                            <p>工作日24小时内回复</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="window.location.href='mailto:2935278133@qq.com'" data-umami-event="发送邮件">
+                                <i class="fas fa-paper-plane"></i>
+                                发送
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 微信卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="https://gitee.com/lacsgf/img/raw/master/webp/wechat-logo.webp" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">微信</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>微信号:</p>
+                            <p>LACS177</p>
+                            <p>添加请注明来意</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/wechat.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button copy-btn" data-content="LACS177" data-umami-event="复制微信号">
+                                <i class="fas fa-copy"></i>
+                                复制
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 公众号卡片 -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <img src="https://gitee.com/lacsgf/img/raw/master/webp/公众号-logo.webp" style="width: 40px; height: 40px;margin-right: 10px">
+                            <h5 class="card-title">公众号</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>公众号名称:</p>
+                            <p>领创工作室</p>
+                            <p>欢迎关注获取最新动态</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/公众号.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button copy-btn" data-content="领创工作室" data-umami-event="复制公众号">
+                                <i class="fas fa-copy"></i>
+                                复制
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 群聊 -->
+            <div class="media-platform">
+                <h5>官方群聊</h5>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <i class="fas fa-envelope"></i>
+                            <h5 class="card-title">QQ大群-1</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>群号: </p>
+                            <p>676581092</p>
+                            <p>群聊限制500人</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/Q群.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://qm.qq.com/q/THPI65KdyK')" data-umami-event="加入群聊1">
+                                 <i class="fas fa-user-plus"></i>
+                                加入
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <i class="fas fa-envelope"></i>
+                            <h5 class="card-title">QQ大群-2</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>群号: </p>
+                            <p>921998770</p>
+                            <p>群聊限制500人</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/q2群.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://qm.qq.com/q/7QFNDoPrKU')" data-umami-event="加入群聊2">
+                                <i class="fas fa-user-plus"></i>
+                                加入
+                            </button>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <i class="fas fa-envelope"></i>
+                            <h5 class="card-title">QQ频道</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>频道号: </p>
+                            <p>4k233e56bg</p>
+                            <p>频道不限制人数</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-button" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/qq频道.webp')">
+                                <i class="fas fa-qrcode"></i>
+                                二维码
+                            </button>
+                            <button class="card-button" onclick="openLink('https://pd.qq.com/s/avxiousfd')" data-umami-event="加入频道">
+                                <i class="fas fa-user-plus"></i>
+                                加入
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- 固定悬浮按钮区域 -->
+<div class="floating-buttons">
+    <a href="/jz" target="_blank" rel="noopener noreferrer" class="floating-button" data-umami-event="访问捐赠" title="捐赠我们">
+        <i class="fas fa-heart">捐赠</i>
+    </a>
+    <a href="http://xn--5brr03o.top/yc" class="floating-button" data-umami-event="访问远程刷机" title="远程刷机">
+        <i class="fas fa-tools">刷机</i>
+    </a>
+</div>
+
+<style>
+/* 悬浮按钮样式 */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.floating-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.floating-button:hover {
+    transform: translateY(-3px);
+    background: #0056b3;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.floating-button i {
+    font-size: 1.2rem;
+}
+
+</style>
+<!--友情链接   -->
+<!-- 友情链接区域 -->
+<div class="section" id="friend-links">
+    <h2>友情链接</h2>
+    <div class="contact-cards friend-links-container">
+        <!-- 友情链接卡片将由JS动态加载 -->
+    </div>
+</div>
+</div> <!-- 结束.background容器 -->
+
+<!-- 页脚 -->
+<footer>
+    <div class="tongji" style="font-size: 12px;">本站总访问量：<span id="pvStatic" style="color: #6c757d ;">正在获取....</span>次</div>
+    <p style="font-size: 14px;">Copyright © 2020-2025 领创工作室, All rights reserved.</p>
+</footer>
+
+<!-- JavaScript代码用于加载友情链接 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 渲染友情链接卡片
+        const friendLinksContainer = document.querySelector('.friend-links-container');
+
+        if (friendLinksContainer) {
+            // 使用fetch API获取JSON数据
+            fetch("json/friend-links.json")
+                .then(response => response.json())
+                .then(data => {
+                    data.friendLinks.forEach(link => {
+                        const card = document.createElement('div');
+                        card.className = 'contact-card friend-link-card';
+                        
+                        card.innerHTML = `
+                            <div class="card-header">
+                                <img src="${link.logo}" alt="${link.name}" style="width: 40px; height: 40px; margin-right: 10px;"
+                                     onerror="this.src='https://gitee.com/lacsgf/img/raw/master/webp/默认头像.webp'; this.onerror=null;">
+                                <h5 class="card-title">${link.name}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>${link.description}</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="card-button" onclick="openLink('${link.url}')" data-umami-event="访问${link.name}">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    访问网站
+                                </button>
+                            </div>
+                        `;
+                        
+                        friendLinksContainer.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error('加载友情链接失败:', error);
+                });
+        }
+    });
+</script>
+
+
+
+<!--弹窗-->
+<div id="modal" class="modal">
+    <div class="modal-background">
+        <div class="content">
+            <div class="qr-container">
+                <img src="" alt="二维码" class="qr">
+                <button class="close-button" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.querySelector('.loading-container').classList.add('fade-out');
+        }, 500);
+    });
+
+    //
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const text = this.getAttribute('data-content');
+                navigator.clipboard.writeText(text).then(() => {
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('复制失败:', err);
+                });
+            });
+        });
+    });
+
+</script>
+<!-- 图片懒加载优化 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 修改选择器为全站所有.lazy图片
+        const lazyImages = document.querySelectorAll('img.lazy');
+        
+        // 初始化IntersectionObserver来监视图片元素
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        observer.unobserve(img);
+                    }
+                }
+            });
+        }, {rootMargin: "50px 0px"});
+        
+        // 为每个懒加载图片添加观察者
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    });
+</script>
+<!-- 异步加载非关键JavaScript -->
+<script src="js/jquery-3.6.0.js" defer></script>
+<script src="js/bootstrap.bundle.js" defer></script>
+<script src="js/main.js" defer></script>
+
+<!-- 优化统计脚本加载 -->
+<script>
+    // 使用requestIdleCallback优化统计脚本加载时机
+    window.addEventListener('load', function() {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() {
+                loadAnalytics();
+            }, {timeout: 2000});
+        } else {
+            // 回退方案
+            setTimeout(loadAnalytics, 1500);
+        }
+        
+        function loadAnalytics() {
+            const umamiScript = document.createElement('script');
+            umamiScript.src = 'https://umami.xn--5brr03o.top/script.js';
+            umamiScript.setAttribute('data-website-id', 'a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45');
+            umamiScript.setAttribute('async', '');
+            document.body.appendChild(umamiScript);
+            // 标记页面渲染完成
+            document.querySelector('.background-card').setAttribute('data-render-complete', 'true');
+        }
+    });
+</script>
+
+</div>
+</body>
+</html>
