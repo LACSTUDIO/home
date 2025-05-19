@@ -1,0 +1,114 @@
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="project-cards-container">
+    <!-- 动态生成的项目卡片将插入此处 -->
+</div>
+
+
+<script>
+    // 项目数据（可替换为外部JSON）
+    const projectsData = [
+        {
+            name: "澎湃解锁工具箱(重构版)",
+            icon: "tools",
+            description: "一款功能强大的安卓手机工具集合，支持多种系统功能解锁与优化",
+            category: "project1",
+            tech: "Android",
+            date: "2023-05-15",
+            link: "/hout"
+        },
+        {
+            name: "系统精简助手",
+            icon: "mobile",
+            description: "安全地精简安卓系统预装应用，释放存储空间，提升系统性能",
+            category: "project1",
+            tech: "Android",
+            date: "2023-04-20",
+            link: "#"
+        },
+        {
+            name: "状态栏美化模块",
+            icon: "mask",
+            description: "自定义安卓状态栏，支持多种样式和布局调整，让你的状态栏焕然一新",
+            category: "project2",
+            tech: "Magisk",
+            date: "2023-06-02",
+            link: "#"
+        },
+        {
+            name: "隐私保护模块",
+            icon: "shield-alt",
+            description: "保护你的隐私数据，阻止应用获取不必要的权限和信息",
+            category: "project2",
+            tech: "Magisk",
+            date: "2023-05-28",
+            link: "#"
+        },
+        {
+            name: "单位转换器",
+            icon: "calculator",
+            description: "简单易用的单位转换工具，支持长度、重量、温度等多种单位转换",
+            category: "project3",
+            tech: "Web",
+            date: "2023-03-15",
+            link: "#"
+        },
+        {
+            name: "二维码生成器",
+            icon: "qrcode",
+            description: "快速生成各种类型的二维码，支持自定义样式和颜色",
+            category: "project3",
+            tech: "Web",
+            date: "2023-04-05",
+            link: "#"
+        },
+        {
+            name: "极简相机",
+            icon: "camera",
+            description: "界面简洁、功能强大的相机应用，支持多种拍摄模式和滤镜",
+            category: "project4",
+            tech: "Android",
+            date: "2023-05-10",
+            link: "#"
+        },
+        {
+            name: "音乐播放器",
+            icon: "music",
+            description: "本地音乐播放器，支持多种音频格式，界面美观，功能丰富",
+            category: "project4",
+            tech: "Android",
+            date: "2023-06-01",
+            link: "#"
+        }
+    ];
+
+    // 动态生成项目卡片
+    const container = document.getElementById("project-cards-container");
+
+    projectsData.forEach(project => {
+        const card = document.createElement("div");
+        card.className = "project-card bg-white rounded-xl shadow-md overflow-hidden card-hover";
+        card.setAttribute("data-category", project.category);
+
+        card.innerHTML = `
+            <div class="p-6">
+                <div class="card-icon-wrapper mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <i class="fa fa-${project.icon} fa-xl text-primary"></i>
+                </div>
+                <h5 class="card-title text-xl font-bold mb-2">${project.name}</h5>
+                <p class="card-text text-gray-600 mb-4">${project.description}</p>
+                <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <span class="flex items-center mr-3"><i class="fa fa-code mr-1"></i> ${project.tech}</span>
+                    <span class="flex items-center"><i class="fa fa-calendar mr-1"></i> 更新于 ${project.date}</span>
+                </div>
+            </div>
+            <div class="px-6 pb-6">
+                <a href="${project.link}" class="btn-primary block text-center" target="_blank" data-umami-event="访问项目">
+                    立即访问
+                </a>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+
+</script>
