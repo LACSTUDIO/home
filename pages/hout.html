@@ -66,8 +66,13 @@
       <!-- Logo -->
       <div class="flex items-center">
         <img src="https://gitee.com/lacsgf/img/raw/master/webp/hout-logo-big.webp" alt="HOUT-领创工作室" class="w-12 h-12">
-        <span class="ml-2 text-lg font-semibold">HOUT-领创工作室</span>
+        <div id="mode-name" class="text-lg font-medium text-gray-700">
+          HOUT-GUI
+        </div>
       </div>
+
+      <!-- 新增模式名称显示区域 -->
+
 
       <!-- 导航链接 - 桌面版 -->
       <ul class="hidden md:flex items-center space-x-6">
@@ -93,7 +98,29 @@
           <i class="fas fa-users mr-2"></i><span>关于我们</span>
         </a></li>
       </ul>
+      
+      <!-- 版本切换按钮 - 桌面版 -->
+      <div class="hidden md:inline-flex rounded-md shadow-sm ml-6" role="group">
+        <button type="button" id="gui-tab" class="px-4 py-1.5 text-sm font-medium bg-primary text-white rounded-l-lg border border-primary hover:bg-secondary focus:z-10 focus:ring-2 focus:ring-primary-light">
+          <i class="fas fa-desktop mr-1"></i>GUI版本
+        </button>
+        <button type="button" id="bat-tab" class="px-4 py-1.5 text-sm font-medium bg-white text-gray-700 rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-2 focus:ring-primary-light">
+          <i class="fas fa-terminal mr-1"></i>命令行版本
+        </button>
+      </div>
 
+      <!-- 版本切换按钮 - 移动版 -->
+      <div class="md:hidden flex items-center mr-4">
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+          <button type="button" id="mobile-gui-tab" class="p-2 text-sm font-medium bg-primary text-white rounded-l-lg border border-primary hover:bg-secondary focus:z-10 focus:ring-2 focus:ring-primary-light">
+            <i class="fas fa-desktop"></i>
+          </button>
+          <button type="button" id="mobile-bat-tab" class="p-2 text-sm font-medium bg-white text-gray-700 rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-2 focus:ring-primary-light">
+            <i class="fas fa-terminal"></i>
+          </button>
+        </div>
+      </div>
+      
       <!-- 汉堡菜单按钮 - 移动版 -->
       <button id="mobile-menu" class="md:hidden flex flex-col justify-between w-8 h-6 cursor-pointer" aria-label="菜单" aria-expanded="false">
         <span class="h-1 w-full bg-primary rounded-full transition-all duration-300"></span>
@@ -127,6 +154,8 @@
           <i class="fas fa-users w-6 inline-block"></i> 关于我们
         </a></li>
       </ul>
+      
+      <!-- 版本切换按钮已移至头部导航栏 -->
     </div>
   </header>
 
@@ -313,18 +342,6 @@
     <section id="download" class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">下载</h2>
-        
-        <!-- 版本选择标签 -->
-        <div class="flex justify-center mb-8">
-          <div class="inline-flex rounded-md shadow-sm" role="group">
-            <button type="button" id="gui-tab" class="px-5 py-2 text-sm font-medium bg-primary text-white rounded-l-lg border border-primary hover:bg-secondary focus:z-10 focus:ring-2 focus:ring-primary-light">
-              <i class="fas fa-desktop mr-2"></i>GUI 版本
-            </button>
-            <button type="button" id="bat-tab" class="px-5 py-2 text-sm font-medium bg-white text-gray-700 rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-2 focus:ring-primary-light">
-              <i class="fas fa-terminal mr-2"></i>命令行版本
-            </button>
-          </div>
-        </div>
         
         <!-- GUI版本下载信息卡片 -->
         <div id="gui-content" class="version-content">
@@ -536,7 +553,23 @@
 
       // 显示通知弹窗
       showNotification();
+
+      // 初始化模式名称显示
+      updateModeName();
     });
+
+    // 更新模式名称函数
+    function updateModeName() {
+      const modeNameElement = document.getElementById('mode-name');
+      const guiContent = document.getElementById('gui-content');
+      const batContent = document.getElementById('bat-content');
+
+      if (guiContent && !guiContent.classList.contains('hidden')) {
+        modeNameElement.textContent = 'HOUT-GUI';
+      } else if (batContent && !batContent.classList.contains('hidden')) {
+        modeNameElement.textContent = 'HOUT-CLI';
+      }
+    }
 
     // 显示通知弹窗函数
     function showNotification() {
@@ -634,35 +667,72 @@
     function initVersionTabs() {
       const guiTab = document.getElementById('gui-tab');
       const batTab = document.getElementById('bat-tab');
+      const mobileGuiTab = document.getElementById('mobile-gui-tab');
+      const mobileBatTab = document.getElementById('mobile-bat-tab');
       const guiContent = document.getElementById('gui-content');
       const batContent = document.getElementById('bat-content');
       
-      guiTab.addEventListener('click', function() {
-        // 激活GUI标签
+      // 切换到GUI版本的函数
+      function switchToGui() {
+        // 激活桌面版GUI标签
         guiTab.classList.remove('bg-white', 'text-gray-700');
         guiTab.classList.add('bg-primary', 'text-white');
         
-        // 取消激活命令行标签
+        // 取消激活桌面版命令行标签
         batTab.classList.remove('bg-primary', 'text-white');
         batTab.classList.add('bg-white', 'text-gray-700');
+        
+        // 激活移动版GUI标签
+        mobileGuiTab.classList.remove('bg-white', 'text-gray-700');
+        mobileGuiTab.classList.add('bg-primary', 'text-white');
+        
+        // 取消激活移动版命令行标签
+        mobileBatTab.classList.remove('bg-primary', 'text-white');
+        mobileBatTab.classList.add('bg-white', 'text-gray-700');
         
         // 显示GUI内容，隐藏命令行内容
         guiContent.classList.remove('hidden');
         batContent.classList.add('hidden');
-      });
+
+        updateModeName(); // 更新模式名称
+      }
       
-      batTab.addEventListener('click', function() {
-        // 激活命令行标签
+      // 切换到命令行版本的函数
+      function switchToBat() {
+        // 激活桌面版命令行标签
         batTab.classList.remove('bg-white', 'text-gray-700');
         batTab.classList.add('bg-primary', 'text-white');
         
-        // 取消激活GUI标签
+        // 取消激活桌面版GUI标签
         guiTab.classList.remove('bg-primary', 'text-white');
         guiTab.classList.add('bg-white', 'text-gray-700');
+        
+        // 激活移动版命令行标签
+        mobileBatTab.classList.remove('bg-white', 'text-gray-700');
+        mobileBatTab.classList.add('bg-primary', 'text-white');
+        
+        // 取消激活移动版GUI标签
+        mobileGuiTab.classList.remove('bg-primary', 'text-white');
+        mobileGuiTab.classList.add('bg-white', 'text-gray-700');
         
         // 显示命令行内容，隐藏GUI内容
         batContent.classList.remove('hidden');
         guiContent.classList.add('hidden');
+
+        updateModeName(); // 更新模式名称
+      }
+      
+      // 为桌面版按钮添加事件监听器
+      guiTab.addEventListener('click', switchToGui);
+      batTab.addEventListener('click', switchToBat);
+      
+      // 为移动版按钮添加事件监听器
+      mobileGuiTab.addEventListener('click', function() {
+        switchToGui();
+      });
+      
+      mobileBatTab.addEventListener('click', function() {
+        switchToBat();
       });
     }
     

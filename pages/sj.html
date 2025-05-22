@@ -7,7 +7,7 @@
 <style>
 body {
     font-family: 'Microsoft YaHei', Arial, sans-serif;
-    background: linear-gradient(135deg, #4a90e2, #f5f7fa);
+    background: #f0f4f8;
     text-align: center;
     padding: 0;
     margin: 0;
@@ -15,82 +15,41 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow-x: hidden;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
-    will-change: opacity, transform;
     color: #2c3e50;
 }
 
+/* 简化动画效果 */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* 添加滑入动画 */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* 添加缩放动画 */
-@keyframes scaleIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0.6;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .container-background {
     flex: 1;
     overflow: auto;
     position: relative;
-    margin: 20px;
-    padding: 25px;
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .container, .container-big {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 90%;
     margin: 0;
     max-width: 800px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    animation: slideIn 0.6s ease-out forwards;
-    will-change: transform, box-shadow;
-}
-
-.container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .container-big {
@@ -101,63 +60,43 @@ body {
 }
 
 button {
-    background: linear-gradient(135deg, #4a90e2, #2575fc);
+    background: #4a90e2;
     color: white;
-    padding: 18px 36px;
-    margin: 12px;
+    padding: 12px 24px;
+    margin: 10px;
     border: none;
-    border-radius: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    transition: opacity 0.3s, transform 0.2s;
-    min-height: 56px;
-    min-width: 220px;
+    font-size: 16px;
+    font-weight: 500;
+    min-height: 45px;
+    min-width: 180px;
     pointer-events: none;
     opacity: 0.6;
-    animation: scaleIn 0.5s ease-out forwards;
-    box-shadow: 0 8px 20px rgba(37, 117, 252, 0.25);
-    will-change: transform, box-shadow;
+    transition: background-color 0.2s, opacity 0.2s;
 }
 
 button.enabled {
     pointer-events: auto;
     opacity: 1;
-    transform: scale(1);
-}
-
-button:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 8px rgba(37, 117, 252, 0.15);
 }
 
 button:hover {
-    background: linear-gradient(135deg, #2575fc, #6a11cb);
-    box-shadow: 0 8px 20px rgba(37, 117, 252, 0.3);
-    transform: translateY(-2px);
+    background: #3a80d2;
 }
 
 p {
-    font-size: 20px;
-    margin-top: 16px;
+    font-size: 16px;
+    margin-top: 12px;
     color: #2c3e50;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    line-height: 1.6;
-    letter-spacing: 0.3px;
+    line-height: 1.5;
 }
 
 h1 {
-    color: #2575fc;
-    margin-bottom: 20px;
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-p:hover {
-    color: #6a11cb;
-    transform: translateX(5px);
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .button-container {
@@ -181,30 +120,25 @@ p:hover {
 
 /* 结果显示优化 */
 #selectionResult {
-    font-size: 26px;
+    font-size: 20px;
     font-weight: bold;
-    color: #2575fc;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #4a90e2;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #f0f4f8;
     opacity: 0;
-    transform: translateX(100%);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    animation: slideIn 0.5s ease-in-out forwards;
+    transition: opacity 0.3s ease;
 }
 
 #selectionResult.show {
     opacity: 1;
-    transform: translateX(0);
 }
 
 /* 页脚样式优化 */
 footer {
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px 10px 0 0;
-    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f4f8;
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -230,43 +164,43 @@ footer a:hover {
     }
 
     .container, .container-big {
-        width: 92%;
-        margin: 10px auto;
-        padding: 20px;
+        width: 95%;
+        margin: 8px auto;
+        padding: 15px;
         max-width: 100%;
     }
     
     h1 {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     button {
         width: 100%;
-        padding: 18px 30px;
-        font-size: 20px;
-        margin-bottom: 15px;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-bottom: 10px;
     }
     
     #floorSelect {
         width: 100%;
-        padding: 15px;
-        font-size: 18px;
-        margin-bottom: 20px;
+        padding: 8px;
+        font-size: 14px;
+        margin-bottom: 15px;
     }
     
     p {
-        font-size: 18px;
+        font-size: 14px;
     }
     
     #selectionResult {
-        font-size: 22px;
-        padding: 12px;
+        font-size: 18px;
+        padding: 8px;
     }
     
     footer {
         flex-direction: column;
-        gap: 10px;
-        padding: 10px;
+        gap: 8px;
+        padding: 8px;
     }
 }
 
@@ -277,37 +211,25 @@ footer a:hover {
     }
     
     button {
-        padding: 16px 28px;
+        padding: 10px 20px;
     }
 }
 
 #floorSelect {
-    padding: 16px;
-    border-radius: 16px;
-    border: 2px solid #4a90e2;
-    background-color: rgba(255, 255, 255, 0.95);
-    font-size: 16px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #4a90e2;
+    background-color: #ffffff;
+    font-size: 14px;
     color: #2c3e50;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-bottom: 24px;
-    min-width: 200px;
-    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.2);
-    letter-spacing: 0.5px;
-    will-change: transform, box-shadow;
-}
-
-#floorSelect:hover {
-    border-color: #6a11cb;
-    box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
-    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+    min-width: 150px;
 }
 
 #floorSelect:focus {
     outline: none;
-    border-color: #004099;
-    box-shadow: 0 0 14px rgba(0, 86, 179, 0.5);
-    background: #ffffff;
+    border-color: #4a90e2;
 }
 
 .settings-container {
@@ -330,13 +252,12 @@ footer a:hover {
     transform: translate(-50%, -50%);
     width: 85%;
     max-width: 600px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: scaleIn 0.3s ease-in-out forwards;
 }
 
 .settings-header {
@@ -393,7 +314,7 @@ footer a:hover {
     <div class="container">
         <p id="selectionResult"></p>
     </div>
-    <div class="container-big">
+    <div class="container">
         <h1>日志信息</h1>
         <p id="log_text">正在获取数据...</p>
     </div>
