@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>远程刷机服务 - 领创工作室专业小米设备解决方案</title>
+    <meta name="description" content="领创工作室提供专业的远程刷机服务，包括小米全系设备的ROM升级、降级、救砖及Root服务，安全可靠，售后完善。">
+    <meta name="keywords" content="远程刷机服务,小米刷机,ROM升级,设备救砖,Root服务,领创工作室">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://lacs.cc/yc" />
+    <meta name="author" content="领创工作室"/>
+    <link rel="shortcut icon" href="../img/捐赠.svg" type="image/x-icon"/>
+    <link rel="stylesheet" href="../css/twitter-bootstrap_4.6.2_css_bootstrap.css"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="canonical" href="https://lacs.cc/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00a0e9;
+            --accent-color: #ff5722;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-gradient: linear-gradient(135deg, #00a0e9, #0077b6, #004d80, #001e42 80%);
+        }
+
+        body {
+            font-family: '微软雅黑', Arial, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .service-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .service-header p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feature-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+
+        .feature {
+            flex: 0 0 calc(33.333% - 20px);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .feature {
+                flex: 0 0 100%;
+            }
+
+            .service-header h1 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                padding: 20px 15px;
+            }
+            
+            .nav-buttons {
+                top: 10px;
+                left: 10px;
+                gap: 5px;
+            }
+            
+            .nav-button {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons" style="position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 10px;">
+        <a href="https://lacs.cc/" class="nav-button" style="display: flex; align-items: center; background-color: var(--primary-color); color: var(--text-light); padding: 8px 15px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.2)'">
+            <i class="fas fa-home" style="margin-right: 5px;"></i> 返回官网
+        </a>
+        <button onclick="sharePage()" class="nav-button" style="display: flex; align-items: center; background-color: var(--accent-color); color: var(--text-light); padding: 8px 15px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.2)'">
+            <i class="fas fa-share-alt" style="margin-right: 5px;"></i> 分享页面
+        </button>
+    </div>
+    <div class="page-container">
+        <div class="service-card">
+            <div class="service-header">
+                <h1>专业远程刷机服务</h1>
+                <p>领创工作室提供专业的远程刷机服务，无论您的设备遇到什么问题，我们都能为您提供专业的解决方案。</p>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>全系列支持</h3>
+                    <p>支持小米全系列设备刷机、Root、解锁、救砖等服务，联发科秒解，澎湃解bl。</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>安全可靠</h3>
+                    <p>我们承诺保护您的隐私，不会录屏、录像或获取您的个人信息，所有操作透明可靠。</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>专业服务</h3>
+                    <p>多年刷机经验，技术精湛，服务周到，老用户享受优惠，刷机后提供技术咨询。</p>
+                </div>
+            </div>
+            
+            <div class="service-card" style="margin-top: 30px;">
+                <div class="service-header">
+                    <h3 style="color: var(--primary-color);">远程刷机详情</h3>
+                </div>
+                
+                <div style="padding: 20px;">
+                    <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 10px; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; display: inline-block;">远程软件</h4>
+                    <p>TODESK <a href="https://www.todesk.com/download.html" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">下载</a></p>
+
+                    <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 10px; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; display: inline-block;">联系方式</h4>
+                    
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-md-6" style="margin-bottom: 20px;">
+                            <div style="background-color: #f8f8f8; border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                                <h5 style="color: #07c160; font-weight: bold;"><i class="fab fa-weixin" style="margin-right: 8px;"></i>微信联系</h5>
+                                <p style="margin-bottom: 10px;">微信号：<span style="font-weight: bold;">LACS177</span></p>
+                                <div style="text-align: center;">
+                                    <img src="https://gitee.com/lacsgf/img/raw/master/webp/wechat.webp" alt="微信二维码" style="max-width: 150px; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 0.9rem; color: #666;">扫码添加微信</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-bottom: 20px;">
+                            <div style="background-color: #f8f8f8; border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                                <h5 style="color: #ff8c00; font-weight: bold;"><i class="fas fa-shopping-bag" style="margin-right: 8px;"></i>闲鱼店铺</h5>
+                                <p style="margin-bottom: 10px;">闲鱼号：<span style="font-weight: bold;">领创工作室</span></p>
+                                <div style="text-align: center;">
+                                    <img src="https://gitee.com/lacsgf/img/raw/master/webp/IMG_20250510_123615.webp" alt="闲鱼二维码" style="max-width: 150px; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 0.9rem; color: #666;">扫码访问店铺</p>
+                                </div>
+                                <div style="text-align: center; margin-top: 10px;">
+                                    <a href="https://m.tb.cn/h.6pFeTVp?tk=3opdV6towms" target="_blank" class="btn" style="background-color: #ff8c00; color: white; border-radius: 20px; padding: 5px 15px; font-size: 0.9rem;">访问闲鱼店铺</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 10px; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; display: inline-block;">业务范围</h4>
+                    <ul>
+                        <li>承接小米全系刷机Root，刷机升级降级，救砖</li>
+                        <li>联发科秒解，澎湃解bl，线刷卡刷各种系统</li>
+                    </ul>
+
+                    <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 10px; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; display: inline-block;">注意事项</h4>
+                    <h5 style="color: var(--accent-color); margin-top: 15px; margin-bottom: 8px; font-size: 1.1rem;">售前相关</h5>
+                    <ul>
+                        <li>仅提供刷机服务，我不是售后，没时间跟你浪费时间</li>
+                        <li>先付款后刷机，别跟我提什么没钱过两天给你这些话</li>
+                        <li>不成功全额退款，不接黑产类相关业务(改Imei，外挂相关)</li>
+                    </ul>
+
+                    <h5 style="color: var(--accent-color); margin-top: 15px; margin-bottom: 8px; font-size: 1.1rem;">设备相关</h5>
+                    <ul>
+                        <li>太卡的电脑收费会增加，（指延迟高，下载龟速，360全家桶）</li>
+                        <li>老机型的收费标准跟新机型是一样的，有能力自己弄谢谢</li>
+                        <li>需要你有一个良好的精神状态，能听懂人话，不然没法交流</li>
+                    </ul>
+
+                    <h5 style="color: var(--accent-color); margin-top: 15px; margin-bottom: 8px; font-size: 1.1rem;">隐私相关</h5>
+                    <ul>
+                        <li>我承诺不会对刷机过程录屏、录像、拍照、直播</li>
+                        <li>我承诺不会主动获取你的手机、电脑上的隐私信息和文件</li>
+                        <li>我承诺发给你的文件都是没有病毒和木马等危险内容</li>
+                    </ul>
+
+                    <h5 style="color: var(--accent-color); margin-top: 15px; margin-bottom: 8px; font-size: 1.1rem;">服务相关</h5>
+                    <ul>
+                        <li>老用户会有折扣（9折以下）（折扣：QQ/VX >闲鱼）</li>
+                        <li>刷完之后可以咨询不懂的问题（老板很友善）</li>
+                        <li>不免费远程，非公益，混口饭吃，自己会自己弄。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '远程刷机服务 - 领创工作室',
+                    text: '领创工作室提供专业的远程刷机服务，包括小米全系刷机Root，刷机升级降级，救砖等服务。',
+                    url: window.location.href
+                })
+                .then(() => console.log('分享成功'))
+                .catch((error) => console.log('分享失败', error));
+            } else {
+                // 如果浏览器不支持原生分享API，则复制链接到剪贴板
+                const dummy = document.createElement('input');
+                document.body.appendChild(dummy);
+                dummy.value = window.location.href;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                alert('链接已复制到剪贴板，您可以手动分享给朋友');
+            }
+        }
+    </script>
+</body>
+</html>

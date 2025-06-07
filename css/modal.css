@@ -1,0 +1,149 @@
+/* 弹窗样式 */
+.modal-header {
+    text-align: center;
+    background-color: #00a0e9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    height: 60px; /* 根据需要设定高度 */
+}
+.content {
+    max-height: 80vh; /* 最大高度为视口高度的80% */
+    padding: 15px; /* 内边距 */
+    background: var(--card-bg);  /* 背景颜色 */
+    border-radius: 16px; /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影 */
+    width: 90%; /* 弹窗宽度 */
+    margin: 0 auto; /* 水平居中 */
+    max-width: 400px;
+    box-sizing: border-box; /* 包含内边距和边框在内的宽度 */
+}
+.content.dark-mode {
+    background: var(--card-bg);
+}
+.modal-main {
+    margin: 10px auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    max-height: 400px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 0;
+}
+
+.modal-background {
+    position: fixed; /* 固定定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 确保弹窗在最上层 */
+}
+
+.modal {
+    display: none; /* 默认隐藏 */
+    position: relative;
+    z-index: 4567; /* 确保弹窗内容在最上层 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 显示弹窗时的样式 */
+.modal.show {
+    display: block;
+}
+.modal-img {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+}
+.modal-text {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+.qr {
+    width: 100%; /* 图片宽度自适应其容器 */
+    height: auto; /* 图片高度根据宽度自适应 */
+    max-width: 300px; /* 设置图片的最大宽度 */
+    max-height: 300px; /* 设置图片的最大高度 */
+    margin: 0 20px;
+    border-radius: 8px ;
+}
+
+.Mao-message {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 600px;
+    display: none;
+}
+
+.Mao-message button {
+    margin-top: 10px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.Mao-message-img img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+.modal-content {
+    max-height: 80vh; /* 最大高度为视口高度的80% */
+    padding: 20px; /* 内边距 */
+    background-color: #ccc; /* 背景颜色 */
+    border-radius: 16px; /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影 */
+    width: 90%; /* 弹窗宽度 */
+    margin: 0 auto; /* 水平居中 */
+    max-width: 600px;
+    box-sizing: border-box; /* 包含内边距和边框在内的宽度 */
+}
+.YC-modal-main {
+    margin: 10px auto;
+    overflow-y: auto; /* 内容超出最大高度时，显示垂直滚动条 */
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+@media (max-width: 768px) {
+    .qr {
+        margin: 0 0;
+    }
+}

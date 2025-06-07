@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澎湃OS解锁工具 - 领创工作室</title>
+    <meta name="description" content="领创工作室提供专业的澎湃OS一键解锁工具，支持小米设备Bootloader解锁，安全可靠，操作简单。">
+    <meta name="keywords" content="澎湃OS解锁,小米解锁,Bootloader解锁,刷机工具,领创工作室,LACS">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://lacs.cc/hout" />
+    <!-- 保留原有脚本和样式 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#FF7D00',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            .animate-pulse-slow {
+                animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            .animate-glow {
+                animation: glow 2s ease-in-out infinite alternate;
+            }
+            .animate-gradient {
+                background-size: 400% 400%;
+                animation: gradient 15s ease infinite;
+            }
+            .backdrop-blur {
+                backdrop-filter: blur(8px);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(22, 93, 255, 0.5), 0 0 10px rgba(22, 93, 255, 0.3);
+            }
+            to {
+                box-shadow: 0 0 10px rgba(22, 93, 255, 0.8), 0 0 20px rgba(22, 93, 255, 0.5), 0 0 30px rgba(22, 93, 255, 0.3);
+            }
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-dark to-gray-900 text-light font-inter overflow-x-hidden">
+    <!-- 背景粒子效果 -->
+    <div id="particles-js" class="fixed inset-0 z-0 opacity-60"></div>
+    
+    <!-- 顶部导航 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-dark/60 border-b border-white/10 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-exchange text-primary text-2xl"></i>
+                <span class="text-xl font-bold tracking-tight">站点迁移</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                    <i class="fa fa-question-circle mr-1"></i>帮助
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                    <i class="fa fa-info-circle mr-1"></i>关于
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 主内容区 -->
+    <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-16">
+        <div class="max-w-4xl w-full mx-auto text-center">
+            <!-- 主标题 -->
+            <div class="mb-10 animate-float">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white mb-4 tracking-tight text-shadow-lg">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">此站已停止服务</span>
+                </h1>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-300 max-w-2xl mx-auto">
+                    感谢您的理解与支持，我们已迁移至新的服务平台，为您提供更优质的体验
+                </p>
+            </div>
+            
+            <!-- 信息卡片 -->
+            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 shadow-xl mb-12 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+                <div class="flex flex-col items-center">
+                    <!-- 警告图标 -->
+                    <div class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-6 animate-pulse-slow">
+                        <i class="fa fa-exclamation-triangle text-4xl text-primary"></i>
+                    </div>
+                    
+                    <!-- 主要信息 -->
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-white">请访问新站点继续您的业务</h2>
+                    
+                    <!-- 新站点地址 -->
+                    <div class="mb-8 w-full max-w-xl">
+                        <div class="relative">
+                            <input type="text" value="hout.lacs.cc" id="newSiteUrl" 
+                                class="w-full bg-white/10 border border-white/20 rounded-lg py-4 px-6 text-center text-xl font-medium text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                                readonly>
+                            <button id="copyBtn" class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-all flex items-center space-x-1">
+                                <i class="fa fa-copy"></i>
+                                <span>复制</span>
+                            </button>
+                        </div>
+                        <p id="copyNotification" class="mt-2 text-sm text-green-400 opacity-0 transition-opacity duration-300">已复制到剪贴板!</p>
+                    </div>
+                    
+                    <!-- 跳转按钮 -->
+                    <a href="https://hout.lacs.cc" target="_blank" 
+                        class="group relative bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-primary text-white font-semibold py-4 px-12 rounded-full text-lg shadow-lg animate-glow transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-2">
+                        <span>立即跳转</span>
+                        <i class="fa fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 常见问题 -->
+            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 mb-10">
+                <h3 class="text-xl font-semibold mb-4 text-white flex items-center">
+                    <i class="fa fa-question-circle text-primary mr-2"></i>
+                    常见问题
+                </h3>
+                <div class="space-y-4">
+                    <div class="border-b border-white/10 pb-4">
+                        <h4 class="font-medium text-white mb-2">为什么要迁移到新站点？</h4>
+                        <p class="text-gray-300">为了提供更稳定、高效的服务，我们对基础设施进行了全面升级，并优化了用户体验。</p>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-white mb-2">我的数据会受到影响吗？</h4>
+                        <p class="text-gray-300">不会，所有数据已完整迁移至新站点，您可以使用原有账号继续访问。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="relative z-10 bg-dark/60 backdrop-blur border-t border-white/10 py-6">
+        <div class="container mx-auto px-4 text-center text-gray-400 text-sm">
+            <p>© 2025 站点迁移项目 | 我们重视您的体验与隐私</p>
+            <div class="flex justify-center space-x-4 mt-3">
+                <a href="#" class="hover:text-primary transition-colors">
+                    <i class="fa fa-weibo"></i>
+                </a>
+                <a href="#" class="hover:text-primary transition-colors">
+                    <i class="fa fa-wechat"></i>
+                </a>
+                <a href="#" class="hover:text-primary transition-colors">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 粒子效果JS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 粒子背景配置
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#165DFF" },
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#000000" },
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#165DFF",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // 复制功能
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const urlInput = document.getElementById('newSiteUrl');
+            const notification = document.getElementById('copyNotification');
+            
+            // 复制到剪贴板
+            urlInput.select();
+            document.execCommand('copy');
+            
+            // 显示通知
+            notification.style.opacity = '1';
+            setTimeout(() => {
+                notification.style.opacity = '0';
+            }, 2000);
+        });
+        
+        // 滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-3');
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.add('py-3');
+                nav.classList.remove('py-2');
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
+    

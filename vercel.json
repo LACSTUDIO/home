@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/jz",
+      "dest": "/pages/jz.html"
+    },
+    {
+      "src": "/hout",
+      "dest": "/pages/hout.html"
+    },
+    {
+      "src": "/sj",
+      "dest": "/pages/sj.html"
+    },
+    {
+      "src": "/yc",
+      "dest": "/pages/yc.html"
+    }
+  ]
+}

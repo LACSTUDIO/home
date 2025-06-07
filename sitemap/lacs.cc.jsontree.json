@@ -1,0 +1,72 @@
+var site_tree_node = {
+  "url": "https://lacs.cc/",
+  "incount": "3",
+  "outcount": "3",
+  "title": "领创工作室...",
+  "childs": [
+  {
+    "url": "https://lacs.cc/hout",
+    "incount": "5",
+    "outcount": "8",
+    "title": "刷机工具箱...",
+    "childs": [
+    {
+      "url": "https://lacs.cc/tutorials/text",
+      "incount": "1",
+      "outcount": "3",
+      "title": "领创工作室...",
+      "childs": [
+            ]
+    }
+    ,{
+      "url": "https://lacs.cc/tutorials/video",
+      "incount": "1",
+      "outcount": "3",
+      "title": "领创工作室...",
+      "childs": [
+            ]
+    }
+    ,{
+      "url": "https://lacs.cc/tutorials/faq",
+      "incount": "1",
+      "outcount": "3",
+      "title": "领创工作室...",
+      "childs": [
+            ]
+    }
+    ,{
+      "url": "https://lacs.cc/hout_PP_ToU",
+      "incount": "2",
+      "outcount": "1",
+      "title": "澎湃解锁工...",
+      "childs": [
+            ]
+    }
+    ]
+  }
+  ,{
+    "url": "https://lacs.cc/jz",
+    "incount": "6",
+    "outcount": "1",
+    "title": "捐赠我们-...",
+    "childs": [
+    {
+      "url": "https://lacs.cc/../index-a.html",
+      "incount": "1",
+      "outcount": "0",
+      "title": "null",
+      "childs": [
+            ]
+    }
+    ]
+  }
+  ,{
+    "url": "https://lacs.cc/yc",
+    "incount": "4",
+    "outcount": "1",
+    "title": "远程刷机服...",
+    "childs": [
+        ]
+  }
+  ]
+}

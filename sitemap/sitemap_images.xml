@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Created By http://www.zhetao.com/sitemapcreator,  URLs: 8 Generated at: 2025-06-03 18:58:26 -->
+
+  <url>
+    <loc>https://lacs.cc/</loc>
+    <priority>1.00</priority>
+<image:image>
+<image:loc>https://lacs.cc/img/lacs.webp</image:loc>
+<image:caption>领创工作室Logo</image:caption>
+</image:image>
+  </url>
+
+  <url>
+    <loc>https://lacs.cc/hout</loc>
+    <priority>1.00</priority>
+<image:image>
+<image:loc>https://lacs.cc/../img/hout/main.png</image:loc>
+<image:caption>主界面</image:caption>
+</image:image>
+<image:image>
+<image:loc>https://lacs.cc/../img/hout/about.png</image:loc>
+<image:caption>关于我们</image:caption>
+</image:image>
+<image:image>
+<image:loc>https://lacs.cc/../img/hout/adbtool01.png</image:loc>
+<image:caption>ADB工具</image:caption>
+</image:image>
+<image:image>
+<image:loc>https://lacs.cc/../img/hout/adbtool02.png</image:loc>
+<image:caption>澎湃OS一键解锁</image:caption>
+</image:image>
+<image:image>
+<image:loc>https://lacs.cc/../img/hout/adbinstall_online.png</image:loc>
+<image:caption>ADB安装</image:caption>
+</image:image>
+  </url>
+
+  <url>
+    <loc>https://lacs.cc/jz</loc>
+    <priority>1.00</priority>
+<image:image>
+<image:loc>https://lacs.cc/../img/lacs.webp</image:loc>
+<image:caption>领创工作室Logo</image:caption>
+</image:image>
+  </url>
+
+  <url>
+    <loc>https://lacs.cc/tutorials/text</loc>
+    <priority>1.00</priority>
+<image:image>
+<image:loc>https://lacs.cc/tutorials/img/lacs.webp</image:loc>
+<image:caption>领创工作室Logo</image:caption>
+</image:image>
+  </url>
+
+</urlset>

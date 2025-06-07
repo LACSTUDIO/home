@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="领创工作室专注于数码科技领域，提供原创软件工具、技术教程和创意内容，涵盖编程、设计、摄影、音乐等多个方面。">
+    <meta name="keywords" content="领创工作室,数码科技创新,原创软件工具,编程教程,设计资源,摄影作品,音乐创作">
+    <meta property="og:title" content="领创工作室 - 数码科技与创意内容平台" />
+    <meta property="og:description" content="探索领创工作室，获取专业的数码科技解决方案，包括原创软件工具、技术教程和创意内容资源。" />
+    <meta name="robots" content="index, follow" />
+    <!-- 保留原有canonical标签和其他内容 -->
+    <link rel="canonical" href="https://lacs.cc/" />
+    <!-- 引入Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>领创工作室-官方网站-lacs.cc</title>
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#FF7D00',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-all duration-300;
+            }
+            .btn-filter {
+                @apply px-4 py-2 rounded-md transition-all duration-300;
+            }
+            .floating-button {
+                @apply transition-all duration-300 hover:scale-110 hover:shadow-lg;
+            }
+            .nav-scrolled {
+                @apply py-2 shadow-lg;
+            }
+            .nav-default {
+                @apply py-3 shadow-md;
+            }
+            /* 添加奇数卡片背景色 */
+            .project-card:nth-child(odd) {
+                @apply bg-white;
+            }
+            
+            /* 添加偶数卡片背景色 */
+            .project-card:nth-child(even) {
+                @apply bg-gray-50;
+            }
+        }
+        /* 添加自定义跳动动画 */
+        @keyframes bounce-highlight {
+            0% { transform: translate(-50%) scale(1); box-shadow: 0 0 0 0 rgba(173, 216, 230, 0.5); }
+            50% { transform: translate(-50%) scale(1.1); box-shadow: 0 0 0 10px rgba(173, 216, 230, 0); }
+            100% { transform: translate(-50%) scale(1); box-shadow: 0 0 0 0 rgba(173, 216, 230, 0); }
+        }
+
+        .animate-bounce-highlight {
+            animation: bounce-highlight 1s infinite;
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 text-gray-800">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 bg-white z-50 transition-all duration-300 nav-default" id="main-nav">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a class="flex items-center" href="#">
+                <img src="img/lacs.webp" class="h-8 mr-2" alt="领创工作室Logo">
+                <span class="text-xl font-bold text-primary">领创工作室</span>
+            </a>
+            <button class="navbar-toggler md:hidden text-gray-700 focus:outline-none" type="button" id="menu-toggle" aria-label="切换菜单">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+            <div class="hidden md:flex items-center space-x-6" id="navbar-menu">
+                <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-300">首页</a>
+                <a href="#projects-section" class="text-gray-700 hover:text-primary transition-colors duration-300">项目</a>
+                <a href="#sites-section" class="text-gray-700 hover:text-primary transition-colors duration-300">分站</a>
+                <a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-300">关于我们</a>
+                <button class="btn-dark-mode text-gray-700 hover:text-primary transition-colors duration-300" id="dark-mode-toggle" aria-label="切换深色模式">
+                    <i class="fa fa-moon-o"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden bg-white hidden transition-all duration-300" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-300 py-2">首页</a>
+                <a href="#projects-section" class="text-gray-700 hover:text-primary transition-colors duration-300 py-2">项目</a>
+                <a href="#sites-section" class="text-gray-700 hover:text-primary transition-colors duration-300 py-2">分站</a>
+                <a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-300 py-2">关于我们</a>
+                <button class="btn-dark-mode text-gray-700 hover:text-primary transition-colors duration-300 py-2" id="dark-mode-toggle" aria-label="切换深色模式">
+                    <i class="fa fa-moon-o"></i> 深色模式
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-28 pb-16 bg-gradient-to-br from-primary/10 to-secondary/10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark leading-tight">
+                        领创工作室<br>
+                        <span class="text-primary">Lead And Create Studio</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-600 max-w-xl">
+                        我们致力于开发高质量的原创软件和工具，分享数码科技知识，为您带来更好的数字体验。
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#projects-section" class="btn-primary px-6 py-3 rounded-lg flex items-center gap-2">
+                            <i class="fa fa-rocket"></i> 探索项目
+                        </a>
+                        <a href="#about" class="bg-white text-primary border border-primary px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/5 transition-all duration-300">
+                            <i class="fa fa-info-circle"></i> 关于我们
+                        </a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目区域 -->
+    <div class="section py-16" id="projects-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-header text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">项目列表</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto"></p>
+            </div>
+            <div class="btn-group flex flex-wrap justify-center gap-3 mb-10" id="project-buttons">
+                <button type="button" class="btn-filter active bg-primary text-white px-5 py-2.5 rounded-lg" data-project="all">全部项目</button>
+                <button type="button" class="btn-filter bg-gray-200 hover:bg-primary hover:text-white px-5 py-2.5 rounded-lg" data-project="project1">玩机工具</button>
+                <button type="button" class="btn-filter bg-gray-200 hover:bg-primary hover:text-white px-5 py-2.5 rounded-lg" data-project="project2">面具模块</button>
+                <button type="button" class="btn-filter bg-gray-200 hover:bg-primary hover:text-white px-5 py-2.5 rounded-lg" data-project="project3">小工具</button>
+                <button type="button" class="btn-filter bg-gray-200 hover:bg-primary hover:text-white px-5 py-2.5 rounded-lg" data-project="project4">手机APP</button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="project-cards-container">
+                <!-- 玩机工具 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden card-hover" data-category="project1">
+                    <div class="p-6">
+                        <div class="card-icon-wrapper mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fa fa-tools fa-xl text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-xl font-bold mb-2">澎湃解锁工具箱(重构版)</h5>
+                        <p class="card-text text-gray-600 mb-4">一款功能强大的安卓手机工具集合，支持多种系统功能解锁与优化</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="flex items-center mr-3"><i class="fa fa-code mr-1"></i> Windows</span>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://hout.lacs.cc/" class="btn-primary block text-center" target="_blank" rel="noopener noreferrer" data-umami-event="访问项目1-1">
+                            立即访问
+                        </a>
+                    </div>
+                </div>
+                                
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden card-hover" data-category="project1">
+                    <div class="p-6">
+                        <div class="card-icon-wrapper mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fa fa-tools fa-xl text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-xl font-bold mb-2">小米手机一键Root工具箱（bat版）</h5>
+                        <p class="card-text text-gray-600 mb-4">即将集成在HOUT工具箱中,敬请期待！</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="flex items-center mr-3"><i class="fa fa-code mr-1"></i> Windows</span>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://www.coolapk.com/collection/3368316" class="btn-primary block text-center" target="_blank" rel="noopener noreferrer" data-umami-event="访问项目1-1">
+                            立即访问
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 面具模块 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden card-hover" data-category="project2">
+                    <div class="p-6">
+                        <div class="card-icon-wrapper mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fa fa-mask fa-xl text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-xl font-bold mb-2">状态栏美化模块</h5>
+                        <p class="card-text text-gray-600 mb-4">自定义安卓状态栏，支持多种样式和布局调整，让你的状态栏焕然一新</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="flex items-center mr-3"><i class="fa fa-code mr-1"></i> Magisk</span>
+                            <span class="flex items-center"><i class="fa fa-calendar mr-1"></i> 更新于 2023-06-02</span>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#" class="btn-primary block text-center" target="_blank" data-umami-event="访问项目2-1">
+                            立即访问
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- 小工具 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden card-hover" data-category="project3">
+                    <div class="p-6">
+                        <div class="card-icon-wrapper mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fa fa-calculator fa-xl text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-xl font-bold mb-2">单位转换器</h5>
+                        <p class="card-text text-gray-600 mb-4">简单易用的单位转换工具，支持长度、重量、温度等多种单位转换</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="flex items-center mr-3"><i class="fa fa-code mr-1"></i> Web</span>
+                            <span class="flex items-center"><i class="fa fa-calendar mr-1"></i> 更新于 2023-03-15</span>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#" class="btn-primary block text-center" target="_blank" data-umami-event="访问项目3-1">
+                            立即访问
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- 手机APP -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden card-hover" data-category="project4">
+                    <div class="p-6">
+                        <div class="card-icon-wrapper mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fa fa-music fa-xl text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-xl font-bold mb-2">音乐播放器</h5>
+                        <p class="card-text text-gray-600 mb-4">本地音乐播放器，支持多种音频格式，界面美观，功能丰富</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="flex items-center mr-3"><i class="fa fa-code mr-1"></i> Android</span>
+                            <span class="flex items-center"><i class="fa fa-calendar mr-1"></i> 更新于 2023-06-01</span>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="#" class="btn-primary block text-center" target="_blank" data-umami-event="访问项目4-2">
+                            立即访问
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分站区域 -->
+    <div class="section py-16 bg-gradient-to-br from-blue-500/10 to-blue-300/10" id="sites-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-header text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">其他分站</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">探索我们的更多服务与资源，满足您的多样化需求</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-little bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="card-little-content cursor-pointer" onclick="openLink('https://blog.lacs.cc/')" data-umami-event="访问领创博客">
+                        <div class="p-6 text-center">
+                            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <img src="https://gitee.com/lacsgf/img/raw/master/lac-blog.webp" class="w-8 h-8" alt="领创博客">
+                            </div>
+                            <h5 class="card-title text-xl font-bold mb-2">领创博客</h5>
+                            <p class="text-gray-600">分享数码科技、编程开发、设计创意等方面的文章和教程</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-little bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="card-little-content cursor-pointer" onclick="openLink('https://apps.lacs.cc')" data-umami-event="访问资源商店">
+                        <div class="p-6 text-center">
+                            <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa fa-shopping-bag fa-2x text-secondary"></i>
+                            </div>
+                            <h5 class="card-title text-xl font-bold mb-2">资源商店</h5>
+                            <p class="text-gray-600">提供各种高质量的数码资源下载，包括主题、壁纸、字体等</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-little bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="card-little-content cursor-pointer" onclick="openLink('https://lacs.cc/forum')" data-umami-event="访问技术论坛">
+                        <div class="p-6 text-center">
+                            <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa fa-comments fa-2x text-accent"></i>
+                            </div>
+                            <h5 class="card-title text-xl font-bold mb-2">技术论坛</h5>
+                            <p class="text-gray-600">技术交流社区，讨论数码玩机、编程开发、设计创意等话题</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-little bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="card-little-content cursor-pointer" onclick="openLink('https://lacs.cc/support')" data-umami-event="访问技术支持">
+                        <div class="p-6 text-center">
+                            <div class="w-16 h-16 bg-dark/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa fa-life-ring fa-2x text-dark"></i>
+                            </div>
+                            <h5 class="card-title text-xl font-bold mb-2">技术支持</h5>
+                            <p class="text-gray-600">提供项目技术支持、问题解答和个性化定制服务</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 关于 -->
+    <div class="section py-16" id="about">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-header text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">关于我们</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">了解领创工作室的故事与使命，与我们一起探索数字世界的无限可能</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 媒体平台 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <h5 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-share-alt text-primary mr-2"></i> 媒体平台
+                    </h5>
+                    <div class="space-y-4">
+                        <!-- 哔哩哔哩卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <img src="https://gitee.com/lacsgf/img/raw/master/webp/bilibili-logo.webp" class="h-10 w-10 mr-3 rounded-full" alt="哔哩哔哩">
+                                <div>
+                                    <h6 class="font-bold">哔哩哔哩</h6>
+                                    <p class="text-sm text-gray-500">UID: 1779662818</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <button class="text-primary hover:text-primary/80" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/bilibili.webp', '哔哩哔哩 媒体平台', '哔哩哔哩uid:1779662818', 'https://space.bilibili.com/1779662818')" aria-label="查看哔哩哔哩二维码">
+                                        <i class="fa fa-qrcode"></i>
+                                    </button>
+                                    <button class="text-primary hover:text-primary/80" onclick="openLink('https://space.bilibili.com/1779662818')" data-umami-event="访问哔哩哔哩" aria-label="访问哔哩哔哩">
+                                        <i class="fa fa-external-link-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 微信公众号卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <img src="https://gitee.com/lacsgf/img/raw/master/webp/wechat-logo.webp" class="h-10 w-10 mr-3 rounded-full" alt="微信公众号">
+                                <div>
+                                    <h6 class="font-bold">微信公众号</h6>
+                                    <p class="text-sm text-gray-500">领创工作室</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <p class="text-sm text-gray-600">关注获取最新动态</p>
+                                <button class="text-primary hover:text-primary/80" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/wechat.webp', '微信公众号', '扫码关注领创工作室', '')" aria-label="查看微信公众号二维码">
+                                    <i class="fa fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                         <!-- 酷安卡片 -->  
+                         <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <img src="https://gitee.com/lacsgf/img/raw/master/webp/coolapk-logo.webp" class="h-10 w-10 mr-3 rounded-full" alt="微信公众号">
+                                <div>
+                                    <h6 class="font-bold">酷安</h6>
+                                    <p class="text-sm text-gray-500">领创工作室</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <p class="text-sm text-gray-600">关注获取最新动态</p>
+                                <button class="text-primary hover:text-primary/80" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/coolapk.webp', '酷安', '扫码关注领创工作室', '')" aria-label="查看酷安二维码">
+                                    <i class="fa fa-qrcode"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 联系方式 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <h5 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-envelope text-primary mr-2"></i> 联系方式
+                    </h5>
+                    <div class="space-y-4">
+                        <!-- 电子邮件卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-bold">电子邮件</h6>
+                                    <p class="text-sm text-gray-500">24小时内回复</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <p class="text-sm text-gray-600">2935278133@qq.com</p>
+                                <button class="btn-primary text-sm py-1.5" onclick="window.location.href='mailto:2935278133@qq.com'" data-umami-event="发送邮件">
+                                    <i class="fa fa-paper-plane mr-1"></i> 发送邮件
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- QQ卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-qq text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-bold">QQ</h6>
+                                    <p class="text-sm text-gray-500">在线时间: 工作日 9:00-18:00</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <p class="text-sm text-gray-600">2935278133</p>
+                                <button class="btn-primary text-sm py-1.5" onclick="window.location.href='tencent://message/?uin=2935278133&Site=领创工作室&Menu=yes'" data-umami-event="联系QQ">
+                                    <i class="fa fa-comments mr-1"></i> 在线联系
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 留言板卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-comment text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-bold">留言板</h6>
+                                    <p class="text-sm text-gray-500">随时留言，我们会尽快回复</p>
+                                </div>
+                            </div>
+                            <button class="btn-primary text-sm py-1.5 w-full" onclick="openLink('https://lacs.cc/message')" data-umami-event="访问留言板">
+                                <i class="fa fa-pencil mr-1"></i> 前往留言板
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 群聊 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <h5 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-users text-primary mr-2"></i> 官方群聊
+                    </h5>
+                    <div class="space-y-4">
+                        <!-- QQ大群-1卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-users text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-bold">QQ大群-1</h6>
+                                    <p class="text-sm text-gray-500">群聊限制: 500人</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <p class="text-sm text-gray-600">群号: 676581092</p>
+                                <div class="flex space-x-2">
+                                    <button class="btn-primary text-sm py-1.5 flex-1" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/Q群.webp', 'QQ大群-1', '扫码加入QQ群', '')">
+                                        <i class="fa fa-qrcode mr-1"></i> 查看二维码
+                                    </button>
+                                    <button class="btn-primary text-sm py-1.5 flex-1" onclick="openLink('https://qm.qq.com/q/THPI65KdyK')" data-umami-event="加入群聊1">
+                                        <i class="fa fa-user-plus mr-1"></i> 加入
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- QQ大群-2卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-users text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-bold">QQ大群-2</h6>
+                                    <p class="text-sm text-gray-500">群聊限制: 500人</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <p class="text-sm text-gray-600">群号: 785492361</p>
+                                <div class="flex space-x-2">
+                                    <button class="btn-primary text-sm py-1.5 flex-1" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/q2群.webp', 'QQ大群-2', '扫码加入QQ群', '')">
+                                        <i class="fa fa-qrcode mr-1"></i> 查看二维码
+                                    </button>
+                                    <button class="btn-primary text-sm py-1.5 flex-1" onclick="openLink('https://qm.qq.com/q/sy4UQSJG2A')" data-umami-event="加入群聊2">
+                                        <i class="fa fa-user-plus mr-1"></i> 加入
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 微信群卡片 -->
+                        <div class="border border-gray-100 rounded-lg p-4 hover:border-primary/30 transition-all duration-300">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-wechat text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-bold">QQ频道</h6>
+                                    <p class="text-sm text-gray-500">4k233e56bg</p>
+                                </div>
+                            </div>
+                            <button class="btn-primary text-sm py-1.5 w-full" onclick="showModal('https://gitee.com/lacsgf/img/raw/master/webp/qq频道.webp', 'QQ频道', '扫码加入QQ频道', '')">
+                                <i class="fa fa-qrcode mr-1"></i> 查看二维码
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 友情链接 -->
+    <div class="section py-16 bg-gradient-to-br from-[#2196F3]/10 to-[#03A9F4]/10" id="links-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-header text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">友情链接</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">我们推荐的一些优秀网站与合作伙伴</p>
+                <button id="applyLinkBtn" class="mt-6 btn-primary inline-flex items-center">
+                    <i class="fa fa-plus mr-2"></i> 申请友情链接
+                </button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="links-cards-container">
+                <!-- 示例链接 1 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden card-hover hover:shadow-lg transition-shadow duration-300">
+                    <div class="p-6">
+                        <div class="card-icon-wrapper mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fa fa-link fa-xl text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-xl font-bold mb-2">JiLin的小窝</h5>
+                        <p class="card-text text-gray-600 mb-4">分享前沿科技资讯</p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://jilin9527.top/" class="btn-primary block text-center" target="_blank" rel="noopener noreferrer">
+                            立即访问
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-20">
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-white">
+            <p>&copy; 2020-2025 领创工作室. 保留所有权利.</p>
+            <img src="img/icons/icp.svg" alt="icp" class="inline-block ml-2 h-6">
+            <a class="mt-2 text-sm" link href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">辽ICP备2025056705号</a>
+            <img src="img/icons/gawb.png" alt="公安备案" class="inline-block ml-2 h-6">
+            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=21122402000208" rel="noopener noreferrer" target="_blank">辽公网安备21122402000208号</a>
+            <p> </p>
+            <a href="sitemap/sitemap.xml"  class="text-sm text-gray-400 hover:text-white ml-4" target="_blank" rel="noopener noreferrer">网站地图</a>
+        </div>
+    </footer>
+
+    <!-- 固定悬浮按钮区域 -->
+    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 flex flex-row space-x-2 z-40" id="floating-buttons">
+        <a href="/jz" target="_blank" rel="noopener noreferrer" class="floating-button bg-primary text-white p-3 rounded-full shadow-lg flex items-center justify-center hover:bg-primary/90 opacity-50" title="捐赠我们">
+            捐赠
+        </a>
+        <a href="https://lacs.cc/yc" class="floating-button bg-secondary text-white p-3 rounded-full shadow-lg flex items-center justify-center hover:bg-secondary/90 opacity-50" data-umami-event="访问远程刷机" title="远程刷机">
+            远程
+        </a>
+        <button id="back-to-top" class="floating-button bg-gray-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-700 opacity-50" title="返回顶部">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-xl max-w-lg w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="modal-content">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold" id="modal-title">详情</h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-4" id="modal-body">
+                    <img id="modal-image" src="" alt="" class="max-w-full h-auto rounded-lg">
+                    <p id="modal-description" class="mt-4 text-gray-600"></p>
+                </div>
+                <div class="flex justify-end" id="modal-footer">
+                    <button id="modal-link-btn" class="btn-primary hidden">
+                        <i class="fa fa-external-link-alt mr-1"></i> 访问链接
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- 友情链接申请弹窗 -->
+<div id="applyLinkModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+  <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <!-- 垂直居中容器 -->
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="sm:flex sm:items-start">
+          <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 sm:mx-0 sm:h-10 sm:w-10">
+            <i class="fa fa-link text-primary"></i>
+          </div>
+          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+              友情链接申请
+            </h3>
+            <div class="mt-2">
+              <p class="text-sm text-gray-500 mb-4">
+                感谢您对我们网站的关注！请填写以下信息，我们将尽快审核。
+              </p>
+              <form id="linkApplicationForm" class="space-y-4">
+                <div>
+                  <label for="siteName" class="block text-sm font-medium text-gray-700 mb-1">网站名称</label>
+                  <input type="text" id="siteName" name="siteName" required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50">
+                </div>
+                <div>
+                  <label for="siteUrl" class="block text-sm font-medium text-gray-700 mb-1">网站地址</label>
+                  <input type="url" id="siteUrl" name="siteUrl" required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50">
+                </div>
+                <div>
+                  <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-1">联系邮箱</label>
+                  <input type="email" id="contactEmail" name="contactEmail" required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50">
+                </div>
+                <div>
+                  <label for="description" class="block text-sm font-medium text-gray-700 mb-1">网站描述</label>
+                  <textarea id="description" name="description" rows="3" required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <button type="button" id="submitApplication" class="btn-primary inline-flex items-center mr-2">
+          <i class="fa fa-paper-plane mr-2"></i> 提交申请
+        </button>
+        <button type="button" id="closeModal" class="mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" aria-label="关闭弹窗">
+          取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // 移动端菜单切换
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // 项目筛选功能
+    const filterButtons = document.querySelectorAll('.btn-filter');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 移除所有按钮的活动状态
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-primary', 'text-white');
+                btn.classList.add('bg-gray-200', 'hover:bg-primary', 'hover:text-white');
+            });
+            
+            // 添加当前按钮的活动状态
+            button.classList.add('active', 'bg-primary', 'text-white');
+            button.classList.remove('bg-gray-200', 'hover:bg-primary', 'hover:text-white');
+            
+            const category = button.getAttribute('data-project');
+            
+            // 筛选项目卡片
+            projectCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // 如果是移动端，点击后关闭菜单
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    });
+
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+        
+        // 导航栏滚动效果
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 50) {
+            nav.classList.remove('nav-default');
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+            nav.classList.add('nav-default');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // 模态框功能
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalLinkBtn = document.getElementById('modal-link-btn');
+    const closeModal = document.getElementById('close-modal');
+    
+    function showModal(imageUrl, title = '', description = '', link = '') {
+        modalImage.src = imageUrl;
+        modalTitle.textContent = title || '详情';
+        modalDescription.textContent = description;
+        
+        if (link) {
+            modalLinkBtn.classList.remove('hidden');
+            modalLinkBtn.onclick = () => {
+                openLink(link);
+                closeModalFunc();
+            };
+        } else {
+            modalLinkBtn.classList.add('hidden');
+        }
+        
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+        }, 10);
+    }
+    
+    function closeModalFunc() {
+        modalContent.classList.remove('scale-100', 'opacity-100');
+        modalContent.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+    
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModalFunc();
+        }
+    });
+
+    // 主题切换功能
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark');
+        // 更新图标，根据你的需求调整
+        const isDark = document.body.classList.contains('dark');
+        darkModeToggle.innerHTML = isDark ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon-o"></i>';
+    }
+    
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+
+    // 模拟获取粉丝数和GitHub stars
+    function fetchBilibiliFans() {
+        // 实际项目中这里应该是API请求
+        setTimeout(() => {
+            document.getElementById('bilibili-fans').textContent = '12,345';
+        }, 1000);
+    }
+    
+    function fetchGitHubStars() {
+        // 实际项目中这里应该是API请求
+        setTimeout(() => {
+            document.getElementById('github-stars').textContent = '50+';
+        }, 1500);
+    }
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', () => {
+        const floatingButtons = document.querySelector('.fixed.bottom-6');
+
+        // 添加高亮跳动效果
+        floatingButtons.classList.add('animate-bounce-highlight');
+
+        // 3秒后移除动画效果
+        setTimeout(() => {
+            floatingButtons.classList.remove('animate-bounce-highlight');
+        }, 3000);
+
+        fetchBilibiliFans();
+        fetchGitHubStars();
+    });
+    
+    // 打开链接函数
+    function openLink(url) {
+        window.open(url, '_blank');
+    }
+</script>
+<script defer src="https://umami.lacs.cc/script.js" data-website-id="a4e8c20f-d2e8-4b10-bdf5-2d52c389fd45"></script>
+</body>
+</html>

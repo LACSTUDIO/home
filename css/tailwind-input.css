@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义变量 */
+:root {
+  --primary-color: #0062F5;
+  --primary-dark: #0050CC;
+  --secondary-color: #f8fafc;
+  --accent-color: #00C2FF;
+  --bg-color: #ffffff;
+  --text-color: #0A1F44;
+  --text-muted: #4E5D78;
+  --light-gray: #EEF2F6;
+  --border-radius: 16px;
+  --box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  --card-shadow: 0 8px 16px rgba(0,0,0,0.04), 0 16px 24px rgba(0,0,0,0.06);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --section-spacing: 120px;
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  --heading-color: #0A1F44;
+}
+
+/* 自定义组件 */
+@layer components {
+  .section-container {
+    @apply max-w-7xl w-[90%] mx-auto py-10;
+  }
+  
+  .section-title {
+    @apply text-5xl font-bold mb-10 text-center relative pb-5 tracking-tight text-text;
+  }
+  
+  .section-title:after {
+    content: '';
+    @apply absolute w-20 h-1 bg-gradient-to-r from-primary to-accent bottom-0 left-1/2 -translate-x-1/2 rounded shadow-md;
+  }
+  
+  .feature-card {
+    @apply bg-white rounded-xl p-6 text-center transition-all duration-300 hover:shadow-card hover:-translate-y-1;
+  }
+  
+  .feature-icon {
+    @apply w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center text-white text-2xl;
+  }
+  
+  .tutorial-card {
+    @apply bg-white rounded-xl p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-card;
+  }
+  
+  .tutorial-icon {
+    @apply w-[70px] h-[70px] mx-auto mb-5 bg-primary rounded-full flex items-center justify-center;
+  }
+  
+  .tutorial-button {
+    @apply inline-flex items-center gap-2 bg-blue-100 text-primary px-5 py-2.5 rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white;
+  }
+  
+  .floating-download-btn {
+    @apply fixed bottom-[30px] right-[30px] bg-primary text-white rounded-full py-3 px-5 flex items-center gap-2 shadow-btn cursor-pointer z-50 transition-all duration-300 font-semibold text-base hover:bg-primary-dark hover:-translate-y-1 hover:shadow-lg;
+  }
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支持领创工作室 - 捐赠与赞助</title>
+    <meta name="description" content="通过捐赠支持领创工作室的持续发展，帮助我们提供更多优质开源工具和数码科技内容。"/>
+    <meta name="keywords" content="领创工作室捐赠,开源项目赞助,数码科技创新,软件开发支持,领创赞助">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="领创工作室"/>
+    <link rel="shortcut icon" href="../img/捐赠.svg" type="image/x-icon"/>
+    <link rel="stylesheet" href="../css/twitter-bootstrap_4.6.2_css_bootstrap.css"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="canonical" href="https://lacs.cc/jz" />
+    <style>
+        :root {
+            --primary-color: #00a0e9;
+            --accent-color: #ffbb00;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: '微软雅黑', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #00a0e9, #0077b6, #004d80, #001e42 80%);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 80px auto 40px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--accent-color);
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-option {
+            position: relative;
+        }
+
+        .payment-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .payment-option label {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            background-color: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .payment-option input[type="radio"]:checked + label {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .qr-image {
+            width: 180px;
+            height: 250px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        .qr-code {
+            margin: 1rem auto;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 0.75rem;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+
+        /* 原有动画定义保持... */
+        .donors-list-container {
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .donors-list-container h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .donors-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 10rem;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) transparent;
+        }
+
+        .donors-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .donors-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .donors-list::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .donors-list li {
+            padding: 0.4rem;
+            margin: 0.2rem 0;
+            background: rgba(0, 160, 233, 0.08);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .donors-list li:hover {
+            background: rgba(0, 160, 233, 0.15);
+            transform: translateX(3px);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom-navbar">
+        <a class="navbar-brand" href="../index-a.html">
+            <img src="../img/lacs.webp" class="d-inline-block align-top" alt="领创工作室Logo">
+            返回主页
+        </a>
+    </nav>
+
+    <div class="container">
+        <h1>捐赠我们</h1>
+        <p id="payment-message">请选择支付方式</p>
+
+        <div class="payment-options">
+            <div class="payment-option">
+                <input type="radio" name="payment" id="weixin" value="weixin" onchange="showQRCode(this.value)">
+                <label for="weixin" class="payment-label">微信</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="payment" id="alipay" value="alipay" onchange="showQRCode(this.value)">
+                <label for="alipay" class="payment-label">支付宝</label>
+            </div>
+        </div>
+
+        <div class="qr-code" id="qr-code" aria-live="polite"></div>
+        <p class="thank-you">感谢您的支持与捐赠！</p>
+
+        <div class="donors-list-container">
+            <h3>捐赠人员名单,感谢支持！！</h3>
+            <ul class="donors-list" id="donors-list"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2021-<span id="currentYear"></span> 领创工作室, All rights reserved.</p>
+    </footer>
+
+    <script>
+        const paymentMethods = {
+            weixin: {
+                url: 'https://gitee.com/lacsgf/img/raw/master/webp/wechatpay.webp',
+                alt: '微信支付二维码'
+            },
+            alipay: {
+                url: 'https://gitee.com/lacsgf/img/raw/master/webp/alipay.webp',
+                alt: '支付宝支付二维码'
+            }
+        };
+
+        function showQRCode(method) {
+            const qrContainer = document.getElementById('qr-code');
+            const messageEl = document.getElementById('payment-message');
+
+            if (!paymentMethods[method]) {
+                qrContainer.innerHTML = '';
+                messageEl.textContent = '请选择支付方式';
+                return;
+            }
+
+            const { url, alt } = paymentMethods[method];
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = alt;
+            img.className = 'qr-image';
+            img.loading = 'lazy'; // 添加懒加载
+
+            qrContainer.innerHTML = '';
+            qrContainer.appendChild(img);
+            messageEl.innerHTML = `请使用${method === 'weixin' ? '微信' : '支付宝'}扫描二维码进行支付<br>${method === 'weixin' ? '微信捐赠会收集姓名和电话，用于捐赠记录' : '支付宝捐赠请在备注中添加姓名和电话'}`;
+        }
+
+        // 获取并显示捐赠者名单
+        async function fetchDonors() {
+            try {
+                const donorsList = document.getElementById('donors-list');
+                donorsList.innerHTML = '<li>正在加载捐赠者名单...</li>';
+                
+                const response = await fetch('https://api.lacs.cc/jz.json');
+                const data = await response.json();
+                
+                // 使用文档片段减少DOM重绘次数
+                const fragment = document.createDocumentFragment();
+                data.name_list.forEach(name => {
+                    const li = document.createElement('li');
+                    li.textContent = name;
+                    fragment.appendChild(li);
+                });
+                
+                donorsList.innerHTML = '';
+                donorsList.appendChild(fragment);
+            } catch (error) {
+                console.error('获取捐赠者名单失败:', error);
+                const donorsList = document.getElementById('donors-list');
+                donorsList.innerHTML = '<li>加载捐赠者名单失败，请稍后再试</li>';
+            }
+        }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // 页面加载完成后获取捐赠者名单
+        document.addEventListener('DOMContentLoaded', fetchDonors);
+    </script>
+</body>
+</html>
